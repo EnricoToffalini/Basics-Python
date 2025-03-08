@@ -1,0 +1,89 @@
+---
+title: "prove"
+author: "Enrico Toffalini"
+include-in-header: ../assets/slidesheader.html
+format:
+  revealjs:
+    css: custom.css
+    theme: default
+    slide-number: c/t
+    self-contained: false
+    title-slide-attributes: 
+     data-background-image: "figures/psicostatLogo.png"
+     data-background-size: "contain"
+     data-background-opacity: "0.15"
+execute:
+  echo: true
+  output: true
+---
+## Slide 1
+
+### slide 1
+
+slide 1
+
+```{python, error=T}
+# some Python code
+2 + 2
+```
+
+```{python, class="small-code"}
+# some Python code
+2 + 2
+```
+
+```{python, class="large-code"}
+# some Python code
+2 + 2
+```
+
+<!-- --------------------------------------------------------------------- -->
+
+## 
+
+titleless slide
+
+just some text
+
+<!-- --------------------------------------------------------------------- -->
+
+## Slide 3
+
+<div style="display: flex; justify-content: space-between;">
+<div style="width: 48%;">
+```{r, echo=T, output=T}
+# some R language
+x <- 1:10
+y <- x^2
+plot(x, y)
+```
+</div> 
+<div style="width: 48%;"> 
+```{r, echo=F} 
+z <- rnorm(10) 
+hist(z) 
+``` 
+</div> 
+</div>
+
+prova1
+<p class="small">prova2</p>
+<p class="smaller">prova3</p>
+<p class="smallest">prova3</p>
+
+## Slide 4
+
+```{python, error=T} 
+import xx as xx
+``` 
+
+```{python} 
+import numpy as np
+np.random.rand(10)
+``` 
+
+
+<!-- --------------------------------------------------------------------- -->
+
+
+

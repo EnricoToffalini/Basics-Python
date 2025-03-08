@@ -1,0 +1,34 @@
+a {
+    color: #096040;
+}
+
+a:hover {
+    color: black;
+}
+
+::selection {
+    background-color: #096040; /* Replace with your preferred background color */
+    color: white; /* Replace with your preferred text color */
+}
+
+.sidebar nav[role="doc-toc"] ul > li > a.active {
+    color: #096040 !important;
+    border-left: 2px solid #096040 !important;
+}
+
+.sidebar nav[role="doc-toc"] ul > li > a:hover {
+    color: #096040 !important;
+    border-left: 4px solid #096040 !important;
+}
+
+
+.sidebar nav[role="doc-toc"] ul > li > ul > li > a.active {
+    color: #096040 !important;
+    border-left: 2px solid #096040 !important;
+}
+
+.sidebar nav[role="doc-toc"] ul > li > ul > li > a:hover {
+    color: #096040 !important;
+    border-left: 4px solid #096040 !important;
+}
+
