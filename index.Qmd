@@ -15,34 +15,67 @@ format:
 editor: visual
 ---
 
+```{r, echo=F, include=F}
+reticulate::repl_python()
+```
+
 ## About This Course
 
-This is an introductory course on <a href="https://www.python.org/" target=_blank>**Python**</a> that is offered within the <a href="https://dottorato.psy.unipd.it/en">PhD program in Psychological Sciences</a> *(University of Padova)*. Although R is more extensively used for statistical analysis and data science within this PhD program, familiarity with Python is important for different purposes. These include advanced machine learning application, working with deep learning models, computational efficiency in some scenarios, programming experiments, or just knowing a little bit of a language that is widely demanded in industry and business contexts.
+This is an introductory course on <a href="https://www.python.org/" target=_blank>**Python**</a> that is offered within the <a href="https://dottorato.psy.unipd.it/en" target="_blank">PhD program in Psychological Sciences</a> *(University of Padova)*. While R is much more extensively used for statistical analysis and data science in this PhD program, familiarity with Python is important for different purposes. These include advanced machine learning application, working with deep learning models, computational efficiency in some scenarios, and programming experiments. In addition, knowledge of Python is widely required in industry and business, making some basic proficiency with it a valuable asset! Unlike the course <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank">*Basics of R for Data Science*</a>, which served as a foundation for many subsequent courses, this Python course is more self-contained. It aims to provide a general overview of different kinds of tasks that researchers in psychology and behavioral data science can do using Python.
 
-Students are encouraged to look at this online book available on GitHub: <a href="https://jakevdp.github.io/PythonDataScienceHandbook//" target="_blank">***Python Data Science Handbook***</a>. Those interested in deepening their knowledge are recommended to buy a copy of it.
+You are encouraged to look at this online book available on GitHub: <a href="https://jakevdp.github.io/PythonDataScienceHandbook//" target="_blank">***Python Data Science Handbook***</a>.
 
-## Dates and Rooms
+## Dates and Rooms 2025
 
-| Day        | Time        | Room |
-|------------|-------------|------|
-| 03/06/2025 | 09:00-11:30 | 4R   |
-| 04/06/2025 | 09:00-11:30 | 4R   |
-| 05/06/2025 | 09:00-11:30 | 4S   |
-| 06/06/2025 | 09:00-11:30 | 4S   |
+| Day                 | Time        | Room |
+|---------------------|-------------|------|
+| Tuesday, June 3rd   | 09:00-11:30 | 4R   |
+| Wednesday, June 4th | 09:00-11:30 | 4R   |
+| Thursday, June 5th  | 09:00-11:30 | 4S   |
+| Friday, June 6th    | 09:00-11:30 | 4S   |
 
-### Getting Started
+## Getting Started
 
-1.  **xx**
+Bookmark this course homepage to have a quick access to this material (<a href="https://enricotoffalini.github.io/Basics-Python/">https://enricotoffalini.github.io/Basics-Python/</a>). Then do this:
 
-### Course Topics
+1.  **Install** <a href="https://www.python.org/downloads/" target="_blank">Python</a> locally: go to the official <a href="https://www.python.org/downloads/" target="_blank">Python download page</a> and follow the installation instructions for your operating system.
+2.  **Install an IDE** *(Integrated Development Environment)*: Suggested IDEs are <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Posit/**RStudio**</a> (which you should have already installed for the other courses; it also supports Python!) or <a href="https://www.spyder-ide.org/" target="_blank">**Spyder**</a>.
+3.  **Test your local setup**: Make sure that your Python installation works; open your IDE (RStudio or Spyder), and run the following code in the console:
 
-Throughout the course, we will explore the Python development environment, practice with common data structures and the essential concepts of programming, and introduce the fundamentals of data visualization and machine learning. Upon request, the course may also cover more advanced topics, such as the use of deep learning and language models from Hugging Face or OpenAI, or basic experiment programming.
+```{python, eval=F}
+!pip install numpy # install package "numpy" from inside IDE
+
+import numpy as np
+np.random.normal(0,1,size=10)
+```
+
+If you get any errors when running the first line, try install the package via terminal with <br/> `pip install numpy`
+
+4.  **Take a look at** <a href="https://colab.research.google.com/" target="_blank">Colab</a>: Some basic practice and exercises will be conducted on <a href="https://colab.research.google.com/" target="_blank">**Google Colab**</a> (you need to log in with a Google account), a free online environment for writing and running Python in the browser without any local installation.
+
+## Course Topics
+
+##### Introduction to the Python Environment and First Steps in Python
+
+Getting started with Python; using IDEs and Colab; basic syntax; basic operations; creating and naming objects; installing packages and using functions; basic data structures (*list*, *tuple*, *dict*) and indexing.
+
+##### Basics of Programming in Python
+
+The essential programming concepts: conditional statements, loops, and custom functions in Python.
+
+##### Entering the World of Data Science in Python: `pandas`, `numpy`, and more
+
+Python core libraries for data science! We will manipulate tabular data with `pandas`, perform operations `numpy`; some basic machine learning and statistical analysis from `scikit-learn` and `statsmodels`.
+
+##### A Bit on Fancy Topics?
+
+Data visualization, machine learning, use of deep learning & language models from HuggingFace 🤗, basic experiment programming - mostly upon request! That's truly why we want to use Python, after all.
 
 ## Materials
 
 ### Slides
 
--   **xx** - html - pdf
+-   **xx** - html
 -   
 
 ### Exercises
