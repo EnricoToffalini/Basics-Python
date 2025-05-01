@@ -1,0 +1,381 @@
+---
+title: "Python basics of syntax, typing, indexing..., and differences with R"
+author: "Enrico Toffalini"
+include-in-header: ../assets/slidesheader.html
+format:
+  revealjs:
+    code-line-numbers: false
+    css: custom.css
+    theme: default
+    slide-number: c/t
+    self-contained: false
+    title-slide-attributes: 
+     data-background-image: "figures/psicostatLogo.png"
+     data-background-size: "contain"
+     data-background-opacity: "0.15"
+execute:
+  echo: true
+  output: true
+---
+
+```{r, echo=F, include=F}
+reticulate::repl_python()
+```
+
+## Two Languages, Two Philosophies
+
+<div style="font-size:40px;">
+*Python* and *R* are powerful programming languages widely used in data science and in many cases they do not feel much different
+
+But *R* was developed by statisticians for **statistical computing**, **modeling**, and data visualization, while *Python* is more **general-purpose** language designed for **readability**, **efficiency** and **scalability** in large-scale computation across many possible uses. 
+
+Their syntax, typing rules and behavior reflect these different purposes...
+</div>
+
+<!-- --------------------------------------------------------------------- -->
+
+## Basic syntax
+
+Many basic aspects of syntax and functions may feel practically the same...
+
+<div style="font-size:28px;">
+| Task                 | Python        | R |
+|-----------|-------------|-------------|
+| Assignment   | `x = [1,2,3]` | `x <- c(1,2,3)` or <br> `x = c(1,2,3)` |
+| Indexing   | `x[1]` | `x[2]` |
+| Comments | `# like this` | `# like this`   |
+| Print  | `print(x)` | `print(x)`   |
+| Functions    | `sum(x)`  | `sum(x)`  |
+| Functions    | `round(2/3, 3)`  | `round(2/3, 3)`  |
+| Coercion    | `float("5.334")`  | `as.numeric("5.334")`  |
+| Type check    | `type(x)`  | `typeof(x)`  |
+| Logical values    | `True`, `False`  | `TRUE`, `FALSE`  |
+</div>
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: BUILT-IN FUNCTIONS for stats
+
+...but for us, it might be a bit annoying that Python does not have built-in functions for statistical- and data-related tasks like
+
+<div style="font-size:28px;">
+| Task                 | Python        | R |
+|-----------|-------------|-------------|
+| average   | `np.mean(x)`  | `mean(x)` |
+| standard deviation   |  `np.sd(x)` | `sd(x)` |
+| square root | `np.sqrt(x)`  | `sqrt(x)`   |
+| linear model  | `smf.ols("y ~ x", data=df).fit()` | `lm(y ~ x, data=df)`   |
+| correlation    |  `np.corrcoef(x, y)` | `cor(x,y)`  |
+| create data frame   | `pd.DataFrame(...)`  | `data.frame(...)` |
+| random normal | `np.random.normal(0,1,size=1)`  | `rnorm(n=1)` |
+| normal cdf | `scipy.stats.norm.cdf(1.96)`  | `pnorm(1.96)` |
+</div>
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: ROLE OF "**`.`**"
+
+In Python, the dot ("**`.`**") has a very special role and it is part of the **syntax** 
+
+- Access objects attributes, methods and functions: 
+  - `df.shape`: access attribute of dataframe `df`;
+  - `df.head()`: access method attached to a DataFrame;
+  - `math.sqrt(16)`: access method of a package (like `::` in R);
+  - `sklearn.linear_model`: access submodule of a package; 
+  - `model.fit()`: access function for fitting object `model`;
+- Cannot be used in variable names!
+  - `my.data = 5`: returns error in Python!
+
+On the contrary, in R it has no particular meaning and can be part of names
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: INDEXING
+
+::: {.columns}
+::: {.column width="50%"}
+**Python**
+```{python}
+grades = ["a","b","c","d","f"]
+grades[1]
+```
+1^st^ element is actually "zero"
+```{python}
+grades[0]
+```
+:::
+::: {.column width="50%"}
+**R**
+```{r}
+grades = c("a","b","c","d","f")
+grades[1]
+```
+:::
+:::
+::: {.columns}
+::: {.column width="50%"}
+"minus" means index from end
+```{python}
+grades[-2]
+```
+:::
+::: {.column width="50%"}
+"minus" means exclude
+```{r}
+grades[-2]
+```
+:::
+:::
+::: {.columns}
+::: {.column width="50%"}
+takes at `[2]` and `[3]`
+```{python}
+grades[2:4]
+```
+:::
+::: {.column width="50%"}
+takes at `[2]`, `[3]`, and `[4]`
+```{r}
+grades[2:4]
+```
+:::
+:::
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: INDEXING
+
+In Python you cannot index outside a list or vector
+
+::: {.columns}
+::: {.column width="50%"}
+**Python**
+```{python, error = T}
+grades = ["A","B","C","D","E","F"]
+grades[10]
+```
+:::
+::: {.column width="50%"}
+**R**
+```{r}
+grades = c("A","B","C","D","E","F")
+grades[10]
+```
+:::
+:::
+::: {.columns}
+::: {.column width="50%"}
+```{python, error = T}
+grades[10] = "K"
+```
+:::
+::: {.column width="50%"}
+```{r}
+grades[10] = "K"
+grades
+```
+:::
+:::
+
+But in Python you can use the built-in function `append()`:
+```{python, error = T}
+grades.append("K")
+grades
+```
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: VECTORIZED OPERATIONS
+
+::: {.columns}
+::: {.column width="50%"}
+**Python**
+```{python}
+grades = [10, 11, 12, 13, 14, 15]
+grades * 3
+```
+```{python}
+grades = ["a","b","c","d","f"]
+grades * 3
+```
+```{python, error=T}
+grades = [10, 11, 12, 13, 14, 15]
+grades + 10
+```
+```{python}
+grades = [10, 11, 12, 13, 14, 15]
+grades + [10, 1000]
+```
+:::
+::: {.column width="50%"}
+**R**
+```{r}
+grades = c(10,11,12,13,14,15)
+grades * 3
+```
+```{r, error=T}
+grades = c("a","b","c","d","f")
+grades * 3
+```
+```{r}
+grades = c(10,11,12,13,14,15)
+grades + 10
+```
+<br/>
+```{r, error=T}
+grades = c(10,11,12,13,14,15)
+grades + c(10, 1000)
+```
+:::
+:::
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: VECTORIZED OPERATIONS
+
+In *Python*, you may even multiply a single string:
+
+```{python}
+ourCourse = "BasicsPy"
+ourCourse * 10
+```
+
+To obtain vectorized operations like those of R, you need to import **`numpy`**
+
+```{python}
+import numpy as np
+grades = np.array([10,11,12,13,14,15])
+
+grades * 3
+grades + 10
+```
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: COPYING MUTABLE TYPES
+
+With mutable types like lists, "`=`" creates a reference, not a copy like in R
+
+::: {.columns}
+::: {.column width="50%"}
+**Python**
+```{python}
+v1 = ["A","B","C","D"]
+
+myvar = v1
+
+v1[0:2] = [100,200]
+v1
+```
+references to the original object:
+```{python}
+myvar
+```
+:::
+::: {.column width="50%"}
+**R**
+```{r}
+v1 = c("A","B","C","D")
+
+myvar = v1
+
+v1[1:2] = c(100, 200)
+v1
+```
+actually copied the original object:
+```{r}
+myvar
+```
+:::
+:::
+
+<div style="font-size: 30px;">
+This referencing allows for faster, convenient, and memory-efficient operations when editing large datasets, although of course it requires caution to avoid unintended modifications
+</div>
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: COPYING MUTABLE TYPES
+
+To create a copy, you could use the **`copy()`** function
+
+::: {.columns}
+::: {.column width="50%"}
+**Python**
+```{python}
+v1 = ["A","B","C","D"]
+
+myvar = v1.copy()
+
+v1[0:2] = [100,200]
+v1
+```
+actually copied the original object:
+```{python}
+myvar
+```
+:::
+::: {.column width="50%"}
+**R**
+```{r}
+v1 = c("A","B","C","D")
+
+myvar = v1
+
+v1[1:2] = c(100, 200)
+v1
+```
+actually copied the original object:
+```{r}
+myvar
+```
+:::
+:::
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: COERCING TYPES
+
+::: {.columns}
+::: {.column width="50%"}
+**Python**
+```{python}
+x = np.array([10,11,12,13,14])
+x[0] = np.pi
+
+x
+```
+:::
+::: {.column width="50%"}
+**R**
+```{r}
+x = c(10,11,12,13,14)
+x[1] = pi
+
+x
+```
+:::
+:::
+
+Even with characters!
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+x = np.array(["AA","BB","CC","DD","EE"])
+x[0] = "Hello world"
+
+x
+```
+:::
+::: {.column width="50%"}
+```{r}
+x = c("AA","BB","CC","DD","EE")
+x[1] = "Hello world"
+
+x
+```
+:::
+:::
+
+<!-- --------------------------------------------------------------------- -->
