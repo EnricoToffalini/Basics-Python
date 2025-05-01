@@ -1,0 +1,170 @@
+---
+title: "Introduction to Basics of Python"
+author: "Enrico Toffalini"
+include-in-header: ../assets/slidesheader.html
+format:
+  revealjs:
+    css: custom.css
+    theme: default
+    slide-number: c/t
+    self-contained: false
+    title-slide-attributes: 
+     data-background-image: "figures/psicostatLogo.png"
+     data-background-size: "contain"
+     data-background-opacity: "0.15"
+execute:
+  echo: true
+  output: true
+---
+
+## Why becoming a Python user?
+
+<div style="font-size:30px;">
+- **Ultra mainstream and global leader in data science!**, especially in industry, but also increasingly adopted in academia. *Huge job market advantage as a data scientist, especially outside academia!*
+- **Huge community & ecosystem**: most used programming language in the world, even more than JavaScript! >600,000 packages on PyPI! (more than 30x compared to R);
+- **Free & open-source**, like R... wherever you go, Python will be with you, for free!
+- **Strong programming language**, considered easier to read than R, and very widely used even outside data analysis (e.g., developing web apps, machine learning, deep learning & AI, programming experiments); 
+- **Great for reproducibility**: like R, it integrates well with *GitHub*, *Quarto*, *Jupyter*, *RStudio*, and more; allows you to create reports, articles, books, web apps, experiments... A great tool for Open Science!
+</div>
+
+## What you may expect to learn in this course
+
+<div style="font-size:38px;">
+- Running fundamental operations and using core functions; 
+- Working with basic data types and structures (`list`, `dict`, `DataFrame`); 
+- Basic programming tools: loops, conditionals, and functions; 
+- A bit of data manipulation for data science with `pandas` and `numpy`; 
+- Brief overview of fancy stuff with machine learning, deep learning, natural language processing, experiment programming. 
+</div>
+
+## Why should you use Python, later in your PhD?
+
+I don't recommend using Python for doing the exact same things you could do with R. R is much more used in this PhD program and generally for statistical analysis in academia. 
+
+So why learning Python? Apart from its importance for "outside academia", you could learn Python for your PhD for: 
+
+1) Advanced applications of **pretrained models** and **Natural Language Processing** (e.g., sentiment analysis, text analysis, semantic embeddings); 
+2) **Computational efficiency** especially when handling **big data**; 
+3) **Behavioral experiment** (e.g., PsychoPy, OpenSesame are becoming widely used in cognitive science). 
+
+## Python vs R (for us): Different Strengths
+
+<div style="font-size:28px;">
+| Task                           | R                           | Python                              |
+| ------------------------------ | --------------------------------- | ----------------------------------- |
+| Data management for data science   | ✅ `base`, `dplyr`, `tidyverse`; base R more specialized for statistics and data analysis    | ✅ `pandas`, `numpy`; very flexible; more scalable on big data            |
+| Visualization                  | ✅ `ggplot2` ♥️             | ✅ `matplotlib`, `seaborn`           |
+| Statistical modeling | ✅ `base`, `lme4`, `glmmTMB`, `mgcv`, `lavaan`, ... ♥️ 🏆 | ⚠️ many alternatives, but generally less flexible       |
+| Advanced machine learning               | ⚠️ `caret`, `mlr3`          | ✅ `scikit-learn`, industry standard |
+| Deep learning & Natural Language Processing AI  | ❌ Limited, maybe `nnet`, `neuralnet`      | ✅ `transformers`, `keras`, `torch`; Hugging Face platform ♥️  |
+| Behavioral experiments         | ❌ Practically absent        | ✅ `PsychoPy`, `OpenSesame`          |
+</div>
+
+##  Python vs R (for us): increasingly integrated
+
+In fact, Python and R are becoming increasingly integrated, and often used together in research. For example:
+
+- You can use Python in R using `reticulate` and R in Python using `rpy2`;
+- *RStudio* and *Quarto* can run Python script and chunks;
+- *Jupyter* and *Colab* allow R kernels;
+- `shiny` and `ggplot2` exist also for Python;
+- `keras` and `tensorflow` can be used in R via `reticulate`; 
+- `ellmer` allows you to use LLMs (including ChatGPT via API!) from inside R;
+- `lme4` can be used inside Python via `pymer4`;
+- SEM can be run in Python using `semopy` (similar to `lavaan`)
+
+
+##  Python vs R Efficiency: GMM
+
+<details>
+<summary><strong>Some explanation (click to expand)</strong></summary>
+Gaussian Mixture Models is a type of model-based clustering; for R `Mclusts()` from the `mclust` package was used; for Python `GaussianMixture()` from the `sklearn.mixture` module was used
+</details>
+
+<div style="text-align: center;">
+  <img src="figures/PyVsRefficiency/GMM.png" style="width: 100%;" />
+</div>
+
+
+##  Python vs R Efficiency: Logistic Regression
+
+<details>
+<summary><strong>Some explanation (click to expand)</strong></summary>
+For R the base `glm()` function was used; for Python `LogisticRegression()` from the `sklearn.linear_model` module was used
+</details>
+
+<div style="text-align: center;">
+  <img src="figures/PyVsRefficiency/LogisticReg.png" style="width: 85%;" />
+</div>
+
+
+##  Python vs R Efficiency: Mixed-effects models
+
+<details>
+<summary><strong>Some explanation (click to expand)</strong></summary>
+For R, `lmer()` and `glmmTMB()` from the `lme4` and `glmmTMB` packages were used; for Python `mixedlm()` from the `statsmodels.formula` submodule was used
+</details>
+
+<div style="text-align: center;">
+  <img src="figures/PyVsRefficiency/lmer.png" style="width: 100%;" />
+</div>
+
+
+##  Python vs R Efficiency: Mixed-effects models
+
+<details>
+<summary><strong>Some explanation (click to expand)</strong></summary>
+Each blue dot is a model with a randomly defined complexity (from 1 to 15 terms, both fixed and random, ranging from main effects to 4-way interactions)
+</details>
+
+<div style="text-align: center;">
+  <img src="figures/PyVsRefficiency/complexity.png" style="width: 100%;" />
+</div>
+
+
+##
+### e.g., Data visualization with `seaborn`
+
+<div style="text-align: center;">
+  <img src="figures/exampleTraditionalPlotting.png" style="width: 80%;" />
+</div>
+
+##
+### e.g., Data visualization with `matplotlib`
+
+<div style="text-align: center;">
+  <img src="figures/exampleFancyInfographic.png" style="width: 100%;" />
+</div>
+
+##
+### e.g., Interactive Data visualization with `plotly`
+
+<iframe src="figures/examplePlotlyOnnvll.html"
+        style="width:1000px; height:600px; border:none;"
+        scrolling="no"></iframe>
+
+##
+### e.g., Shiny app with Python
+
+<div style="text-align: center;">
+  <a href="https://shiny.posit.co/py/" target="_blank"><img src="figures/exampleShinyPython.png" style="width: 100%;"/></a>
+</div>
+
+##
+### e.g., Working with semantic embeddings using LLMs (extracted with OpenAI's `text-embedding-ada-002`)
+
+<div style="text-align: center;">
+  <img src="figures/exampleMatrixEmbeddings.png" style="width: 55%;" />
+</div>
+
+##
+### e.g., Working with semantic embeddings using LLMs (extracted with OpenAI's `text-embedding-ada-002`)
+
+<div style="text-align: center;">
+  <img src="figures/example2Dembeddings.png" style="width: 82%;" />
+</div>
+
+<!-- --------------------------------------------------------------------- -->
+
+
+

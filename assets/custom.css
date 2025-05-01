@@ -32,3 +32,31 @@ a:hover {
     border-left: 4px solid #096040 !important;
 }
 
+.sourceCode.r span.co {
+    color: #777799 !important;
+    font-style: italic !important;
+}
+.sourceCode.r span.fu {
+    color: #darkblue !important;
+}
+.sourceCode.python span.dv  {
+    color: #EE5522!important;
+}
+.sourceCode.python span.co {
+    color: #779997 !important;
+    font-style: italic !important;
+}
+.sourceCode.python span.op {
+    color: #004400 !important;
+}
+.sourceCode.python span.im {
+    color: #1881cc !important;
+}
+.reveal a {
+  color: #096040;
+  border-radius: 3px;
+}
+.reveal ::selection {
+    background-color: #096040 !important;
+    color: white;
+}

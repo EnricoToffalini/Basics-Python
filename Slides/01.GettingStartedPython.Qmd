@@ -1,0 +1,252 @@
+---
+title: "Getting Started with Python"
+author: "Enrico Toffalini"
+include-in-header: ../assets/slidesheader.html
+format:
+  revealjs:
+    code-line-numbers: false
+    css: custom.css
+    theme: default
+    slide-number: c/t
+    self-contained: false
+    title-slide-attributes: 
+     data-background-image: "figures/psicostatLogo.png"
+     data-background-size: "contain"
+     data-background-opacity: "0.15"
+execute:
+  echo: true
+  output: true
+---
+
+```{r, echo=F, include=F}
+reticulate::repl_python()
+```
+
+## Where to run Python: *terminal / bash*
+
+<div style="text-align: center;">
+  <img src="figures/terminal.png" style="width: 100%;" />
+</div>
+
+## Where to run Python: <a href="https://www.spyder-ide.org/" target="_blank">*Spyder*</a> (full IDE)
+
+<div style="text-align: center;">
+  <img src="figures/spyder.png" style="width: 100%;" />
+</div>
+
+## Where to run Python: <a href="https://posit.co/download/rstudio-desktop/" target="_blank">*RStudio*</a> (full IDE)
+
+<div style="text-align: center;">
+  <img src="figures/RStudio.png" style="width: 100%;" />
+</div>
+
+## Where to run Python: <a href="https://colab.research.google.com/" target="_blank">*Google Colab*</a>
+
+<div style="text-align: center;">
+  <a href="https://colab.research.google.com/" target="_blank">
+  <img src="figures/colab.png" style="width: 100%; border: 2px solid black;" />
+  </a>
+</div>
+
+## Let's Test the Environment
+
+Let’s run a few commands in your IDE or Colab to see if it works...
+
+```{python, eval=F}
+IDEs = ["Spyder", "PyCharm", "RStudio"]
+IDEs.append("VS Code") 
+print(IDEs) 
+```
+
+Let's try to install and use a package:
+
+```{python, eval=F}
+!pip install numpy # if not already installed
+
+import numpy as np # import and alias before using
+
+N = 20
+x = np.random.normal(0, 1, size=N)
+y = -0.5 + x*0.3 + np.random.normal(0, 0.8, size=N)
+
+print(y.round(3))
+```
+
+(The whole thing of installing, loading packages, and using functions is much like R, <a href="https://enricotoffalini.github.io/Basics-R/Slides/1.2.FirstStepsR-2.html" target="_blank">*as previously seen*</a>)
+
+## Use basic operations
+### Python as calculator: basic operators
+
+| Operator  | What it does        | Example        | Result |
+|-----------|---------------------|----------------|--------|
+| `+`       | Addition             | `5.4 + 6.1`    | `11.5` |
+| `-`       | Subtraction          | `9 - 4.3`      | `4.7`  |
+| `*`       | Multiplication       | `7 * 1.4`      | `9.8`  |
+| `/`       | Division             | `9 / 12`       | `0.75` |
+| `//`      | Floor division       | `13 // 4`      | `3`    |
+| `%`       | Modulus              | `13 % 4`       | `1`    |
+| `**`      | Exponentiation       | `15 ** 2`      | `225`  |
+
+(Math constants like `pi` might require modules, e.g., `math.pi`)
+
+## Use basic operations
+### Python as calculator: functions
+Unlike R, many math functions require importing a module: `import math`
+
+<div style="font-size:25px;">
+| Function         | What it does                   | Example                  | Result     |
+|--------------------|--------------------------------|--------------------------|------------|
+| `abs(x)`         | Absolute value                 | `abs(4.3 - 9.8)`         | `5.5`      |
+| `round(x)`       | Round to nearest integer       | `round(1.7384)`          | `2`        |
+| `round(x, n)`    | Round to `n` digits            | `round(1.7384, 2)`       | `1.74`     |
+| `math.sqrt(x)`   | Square root                    | `math.sqrt(176.4)`       | `13.28157` |
+| `math.exp(x)`    | Exponential function ($e^x$)   | `math.exp(2.2)`          | `9.02501`  |
+| `math.log(x)`    | Natural logarithm, base $e$    | `math.log(9.025013)`     | `2.2`      |
+| `math.log(x, b)` | Logarithm, base $b$            | `math.log(10, 2)`        | `3.32193`  |
+</div>
+
+## Use basic operations
+### Relational operators
+
+```{python}
+age = 20
+```
+
+| Operator  |   What it does  | Example | Result |
+|------------|-------------|------|------|
+| `==` | Equal to | `age == 18`   | `False` |
+| `!=` | Not equal to | `age != 18`   | `True` |
+| `>` | Greater than | `age > 18`   | `True` |
+| `<` | Less than | `age < 18`   | `False` |
+| `>=` | Greater than or equal to | `age >= 18`   | `True` |
+| `<=` | Less than or equal to | `age <= 18`   | `False` |
+
+## Use basic operations
+### Basic logical operators
+
+Logical operators combine Boolean values (`True`, `False`) and are often used in conditional expressions.
+
+Once again, let's say that we defined `age = 20`, now let's make a few examples:
+
+| Operator  |   What it does  | Example | Result |
+|------------|-------------|------|------|
+| `and` | AND | `age>25 and age<60`   |`False` |
+| `or` | OR | `age<25 or age>60`   |`True` |
+| `not` | NOT | `not age<18`   |`True` |
+
+<!-- --------------------------------------------------------------------- -->
+
+## Basic types of data
+### numeric and logical
+
+So far, we have already encountered at least two types of data: 
+
+- **Numeric**: e.g., `20`,  `11.5`,  `13.28157`;
+
+- **Logical / Boolean** (i.e., `True`, `False`).
+
+Like in R, **numeric** data could actually be ***`float`*** ("*floating-point*") that is with decimals like `11.5`, and ***`int`*** ("*integer*") like `20`
+
+Unlike R, there is not need to specify "`L`" for integers
+
+
+## Basic types of data
+### strings (text values) 
+
+Another very important type of data is:
+
+This is much like R. Python uses **strings** to represent text, that must be enclosed in quotes (**`' '`**, or **`" "`**), like this:
+
+```{python}
+myName = "Enrico"
+```
+
+And you may even perform operations with strings like:
+
+```{python}
+myName == "Bob" # is my name equal to Bob?
+myName != "Bob" # is my name NOT equal to Bob?
+myName > "Bob" # is my name larger than Bob? (yes, alphabetically!)
+```
+
+## Basic types of data
+### Lists and Tuples: ordered collections
+
+**Lists** are ordered, mutable series of elements that can be of **mixed types**
+
+```{python}
+myList = [10, 3.14, "Enrico", True, [8, 7.2], 11]
+```
+
+**Tuples** are exactly the same, just immutable (cannot update their values!)
+
+```{python}
+myTup = (10, 3.14, "Enrico", True, [8, 7.2], 11)
+```
+
+Both can be indexed by numeric position using `[ ]`:
+```{python}
+myTup[0] # first element
+myTup[-2] # second last element 
+```
+
+
+## Basic types of data
+### Dictionaries: unordered collection of key-value pairs
+
+```{python}
+student = {  "name": "Jim",
+             "age": 25,
+             "courses": ["BasicsR", "BasicPy", "Simulations"]
+          }
+```
+
+Cannot be indexed by numeric position, but by key:
+
+```{python}
+student["name"]
+student["courses"]
+student["age"] ** 2
+
+student["courses"][1] # but you can index a list inside a dict
+```
+
+
+## Basic types of data
+### inspect variables types
+
+Python has the built-in **`type()`** function to inspect the type of any object:
+
+```{python}
+myName = "Enrico"
+isProf = True
+coursesTaught = ["GenPsy","Olfact","BasicsR","BasicsPy"]
+nCourses = len(coursesTaught)
+
+# see objects types
+type(myName)
+type(isProf)
+type(coursesTaught)
+type(nCourses)
+```
+
+
+## Basic types of data
+### inspect variables types
+
+You may also inquire data type directly with functions `is.*`:
+```{python}
+isinstance(isProf, bool)
+isinstance(coursesTaught, bool)
+isinstance(nCourses, int)
+isinstance(nCourses, float)
+isinstance(myName, str)
+```
+
+<div style="font-size:26px;">
+Python has no built-in missing data type like `NA` in R. `None` can be used but is not a type and operations may incur errors. Libraries like `numpy` and `pandas` have their own `np.nan` and `pd.NA` missing value markers that are more like `NA` in R.
+</div>
+
+<!-- --------------------------------------------------------------------- -->
+
+
