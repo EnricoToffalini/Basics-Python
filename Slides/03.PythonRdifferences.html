@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.550">
 
   <meta name="author" content="Enrico Toffalini">
-  <title>Python basics of syntax, typing, indexing…, and differences with R</title>
+  <title>Python basics of syntax, typing, indexing… and differences with R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -393,7 +393,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="figures/psicostatLogo.png" data-background-opacity="0.15" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Python basics of syntax, typing, indexing…, and differences with R</h1>
+  <h1 class="title">Python basics of syntax, typing, indexing… and differences with R</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -745,7 +745,7 @@ Enrico Toffalini
 <p><br></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
-<span id="cb39-2"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-2"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">1000</span>) <span class="co"># vector recycling</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]   20 1011   22 1013   24 1015</code></pre>
 </div>
@@ -771,10 +771,10 @@ Enrico Toffalini
 <p>However, classical numerical vectorized operations may appear incredibly painful for us…</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>]</span>
-<span id="cb45-2"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> [g <span class="op">*</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">10</span> <span class="cf">for</span> g <span class="kw">in</span> grades]</span>
+<span id="cb45-2"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> [g <span class="op">+</span> <span class="dv">10</span> <span class="cf">for</span> g <span class="kw">in</span> grades]</span>
 <span id="cb45-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[40, 43, 46, 49, 52, 55]</code></pre>
+<pre><code>[20, 21, 22, 23, 24, 25]</code></pre>
 </div>
 </div>
 <!-- --------------------------------------------------------------------- -->

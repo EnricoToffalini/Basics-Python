@@ -1,5 +1,5 @@
 ---
-title: "Python basics of syntax, typing, indexing..., and differences with R"
+title: "Python basics of syntax, typing, indexing... and differences with R"
 author: "Enrico Toffalini"
 include-in-header: ../assets/slidesheader.html
 format:
@@ -224,7 +224,7 @@ grades + 10
 <br/>
 ```{r, error=T}
 grades = c(10,11,12,13,14,15)
-grades + c(10, 1000)
+grades + c(10, 1000) # vector recycling
 ```
 :::
 :::
@@ -245,7 +245,7 @@ However, classical numerical vectorized operations may appear incredibly painful
 
 ```{python}
 grades = [10, 11, 12, 13, 14, 15]
-grades = [g * 3 + 10 for g in grades]
+grades = [g + 10 for g in grades]
 print(grades)
 
 ```

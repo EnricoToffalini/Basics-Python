@@ -93,7 +93,7 @@ Use `tab` to autocomplete and explore
 ### Working directory
 
 <div style="font-size:24px;">
-Unlike R's `getwd()` / `setwd()`, in Python use:
+Equivalent to R's `getwd()` / `setwd()`:
 ```{python, eval=F}
 import os
 
@@ -119,11 +119,12 @@ with open("myObject.pkl", "rb") as file:       # "rb" is for "reading"
 <!------------------------------------------------------------------>
 
 ## 
-### Import data
+### Import tabular data (more on `pandas` later!)
 
 from CSV
 ```{python, eval=F}
 import pandas as pd
+
 df = pd.read_csv("data/Courses40Cycle.csv")
 ```
 
@@ -132,14 +133,14 @@ from Excel
 df = pd.read_excel("data/Courses40Cycle.xlsx")
 ```
 
-from `Ctrl+C` copied elements (beautiful, but only for Windows)
+from `Ctrl+C` copied elements (beautiful ❤️ but only for Windows)
 ```{python, eval=F}
 df = pd.read_clipboard()
 ```
 
 <br/> 
 
-### Export data
+### Export tabular data 
 
 ```{python, eval=F}
 df.to_csv("exported_data.csv", index=False) # index=False excludes row numbers
@@ -153,6 +154,7 @@ df.to_excel("exported_data.xlsx", index=False)
 ### Export figures
 ```{python, eval=F}
 import matplotlib.pyplot as plt
+
 plt.scatter(np.random.normal(0,1,10), np.random.normal(0,1,10))
 plt.title("Example Plot")
 
@@ -170,13 +172,13 @@ del df
 <br/>
 
 ### Listing all objects in workspace <span style="font-size:32px;">*(similar to `ls()` in R)*</span>
-```{python, eval=F}
+```{python}
 dir()
 ```
 
 <!------------------------------------------------------------------>
 
-## Like a pro
+## Project like a pro 😎
 
 - Use a **virtual environment** per project (as a subfolder);
 - Place scripts, notebooks, and data in different subfolders;

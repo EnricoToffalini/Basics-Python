@@ -1,0 +1,505 @@
+---
+title: "The basic Data Science packages: Numpy and Pandas"
+author: "Enrico Toffalini"
+include-in-header: ../assets/slidesheader.html
+format:
+  revealjs:
+    code-line-numbers: false
+    css: custom.css
+    theme: default
+    slide-number: c/t
+    self-contained: false
+    title-slide-attributes: 
+     data-background-image: "figures/psicostatLogo.png"
+     data-background-size: "contain"
+     data-background-opacity: "0.15"
+execute:
+  echo: true
+  output: true
+---
+
+```{r, echo=F, include=F}
+reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/python.exe")
+reticulate::repl_python()
+```
+
+
+## Why NumPy and Pandas?
+
+<div style="font-size:42px;">
+- `numpy`: efficient numerical computing (homogeneous 1-D to n-D arrays, vectorized operations) and some basic math, algebraic, and statistical functions;
+- `pandas`: fundamental data structures for tabular data (DataFrames), with convenient indexing, reshaping, and manipulation tools;
+</div>
+
+Most data science pipelines in Python rely on these two packages, as base Python lacks built-in data structures like *vectors* with vectorized operations, *matrices* / *arrays*, and *data frames*
+
+<!--------------------------------------------------------------------->
+
+## NumPy arrays
+
+Remember the concept of "array" from <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank">*Basics of R for Data Science*</a>?
+
+<div style="text-align: center;">
+  <img src="figures/arraysStructures.png" style="width: 85%;" />
+</div>
+
+<!--------------------------------------------------------------------->
+
+## NumPy arrays
+
+```{python}
+import numpy as np
+```
+
+Example of 1-D array
+```{python}
+x = np.array( [6, 9.7, 2, 3.1, 6.73, 4] )
+x
+```
+
+Example of 2-D array (aka matrix, structured as a list of equally-long lists)
+```{python}
+x = np.array( [[9, 6.5, 3.4, 0, 0.2, 12], 
+               [10, 73.2, 8, 2, 0.4, 11], 
+               [34, 52, 19,  1.6, 4, 15 ]] )
+x
+```
+
+<!--------------------------------------------------------------------->
+
+## Vectorized Operations
+
+Unlike basic lists, arrays are **homogenous** and support **fast vectorized operations**, e.g., `x*10`, `x**2`, `np.sqrt(x)`, etc.
+
+```{python}
+x * 10
+```
+
+Different ways of doing the same thing (comments?):
+```{python}
+np.sqrt(x).round(4)
+```
+
+```{python}
+np.round(x**0.5, 4)
+```
+
+<!--------------------------------------------------------------------->
+
+## Vectorized Operations
+
+```{python}
+ar1 = np.array([1, 2, 3, 4])
+
+ar2 = np.array([5, 6, 7, 8])
+
+print(ar1 + ar2)       # element-wise addition
+print(ar1 * ar2)       # element-wise multiplication
+print(np.dot(ar1, ar2)) # dot product
+```
+
+These features make `np.array()` conceptually very similar to the `c()` and `array()` objects of R. However, as we will see, `np.array()` is stricter in enforcing data types
+
+<!--------------------------------------------------------------------->
+
+## Structural attributes of arrays
+
+What you can inspect for an array: 
+```{python}
+x.shape    # tuple of sizes of dimensions
+x.ndim     # just the number of dimensions
+x.size     # total number of elements
+x.itemsize # memory size in bytes taken by a single element
+x.nbytes   # total number of memory bytes occupied by the array
+x.dtype    # data type of the array
+```
+
+<!--------------------------------------------------------------------->
+
+## Different data types of `numpy` arrays
+
+```{python}
+x = np.array([1.51, 2/3, 10, 14, 0.6])
+x.dtype
+x = np.array([24, 161, 10, 14, 188])
+x.dtype
+x = np.array(["aa","bb","cc","dd","❤❤"])
+x.dtype
+x = np.array(["Hello world!","bb","cc","dd","❤❤"])
+x.dtype
+x = np.array(["uselessly long string","bb","cc","dd","❤❤"])
+x.dtype
+```
+
+<!--------------------------------------------------------------------->
+
+## Data type coercion in Python `numpy`
+
+::: {.columns}
+::: {.column width="50%"}
+**Python numpy**
+```{python}
+x = np.array([10,11,12,13,14])
+x[0] = 0.9456
+x
+```
+:::
+::: {.column width="50%"}
+**R**
+```{r}
+x = c(10,11,12,13,14)
+x[1] = 0.9456
+x
+```
+:::
+:::
+
+Even with characters!
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+x = np.array(["aa","bb","cc","dd","ee"])
+x[0] = "Hello world!"
+x
+```
+:::
+::: {.column width="50%"}
+```{r}
+x = c("aa","bb","cc","dd","ee")
+x[1] = "Hello world!"
+x
+```
+:::
+:::
+
+<div style="text-align:center; font-size:75px;">😱</div>
+
+<!--------------------------------------------------------------------->
+
+## Data type coercion in Python `numpy`
+
+Actually, this "problem" is part of the secret of what makes Python **`numpy`** so **efficient**... **but be careful**!
+
+How do you avoid this silent coercion? Explicitly state the data type from the beginning!
+
+```{python}
+x = np.array([10,11,12,13,14], dtype="float64")
+x[0] = 0.9456
+x
+```
+
+```{python}
+x = np.array(["aa","bb","cc","dd","ee"], dtype="<U40")
+x[0] = "Hello world!"
+x
+```
+
+<!--------------------------------------------------------------------->
+
+## Slicing and Indexing in `numpy`
+
+```{python}
+x = np.array([10, 20, 30, 40, 50])
+print(x[0])     # first element
+print(x[-1])    # last element
+print(x[1:4])   # elements 1 to 3
+```
+
+```{python}
+x = np.array([[1,2,3,4], 
+              [5,6,7,8]])
+print(x[1,0])     # 2nd row, 1st column
+print(x[-1,-1])   # last row, last column
+print(x[0,])      # 1st row, all columns
+```
+
+<!--------------------------------------------------------------------->
+
+## `Pandas` Series
+
+```{python}
+import pandas as pd
+
+grades = pd.Series([28, 15, 30, 23], index=["Jane", "Jim", "John", "Jack"])
+
+print( grades["Jack"] )
+print( grades[grades >= 18] )
+print( grades[["Jack","Jane"]] )
+```
+
+`Series` are essentially like 1D `numpy arrays`, but labelled with keys (numerical indexing is deprecated for `Series`)
+
+<!--------------------------------------------------------------------->
+
+## `Pandas` DataFrame ❤️
+
+```{python}
+myDF = {
+    "id": [1, 2, 3, 4],
+    "name": ["Pastore", "Granziol", "Feraco","Altoe"],
+    "course": ["CurrentIssues", "BasicsInference", "SEM","Outliers"],
+    "hours": [10, 20, 20, 5],
+    "mandatory": [True, True, False, False]
+}
+type(myDF)
+myDF = pd.DataFrame(myDF)
+myDF
+```
+
+`pandas DataFrame` is the classical tabular object we are familiar with; can be seen as a special type of Python `dict` *(dictionary)*, composed of internally-homogeneous, equally-long, labelled lists
+
+<!--------------------------------------------------------------------->
+
+## Inspecting a DataFrame
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+myDF.shape      # rows x columns
+myDF.columns    # column names
+myDF.info()     # structure
+```
+:::
+::: {.column width="50%"}
+```{python}
+myDF.dtypes     # data types
+myDF.describe() # summary stats
+```
+<span style="font-size:24px;">*about equivalent to `str()` and `summary()` in R*</span>
+:::
+:::
+
+<!--------------------------------------------------------------------->
+
+## Indexing a DataFrame (1/2)
+
+```{python}         
+myDF
+```
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}         
+myDF.course    # accessing via "."
+myDF["course"] # access as a Series
+```
+:::
+::: {.column width="50%"}
+```{python}
+myDF.iloc[0]   # just row
+myDF.iloc[0, 2]   # row and column
+myDF.loc[0, "course"] # row and column
+```
+:::
+:::
+<div style="text-align:center; font-size:28px;">`.iloc[]` = integer-position based; `.loc[]` = label-based</div>
+
+<!--------------------------------------------------------------------->
+
+## Indexing a DataFrame (2/2)
+
+```{python}         
+myDF
+```
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}         
+myDF.course[0:2]
+myDF["course"][0:2] 
+```
+:::
+::: {.column width="50%"}
+```{python}
+myDF.iloc[0 , :] # everything in a row
+myDF.iloc[: , 2] # everything in a column
+```
+:::
+:::
+<div style="text-align:center; font-size:28px;">`.iloc[]` = integer-position based; `.loc[]` = label-based</div>
+
+<!--------------------------------------------------------------------->
+
+## Logical indexing a DataFrame
+
+```{python}         
+myDF
+```
+
+```{python}         
+myDF[myDF["hours"] > 15]
+myDF[(myDF["hours"] > 15) & (myDF["mandatory"] == True) ]
+myDF[myDF["name"] == "Pastore"]
+```
+
+<!--------------------------------------------------------------------->
+
+## Add and Modify Columns in a DataFrame
+
+```{python}         
+myDF
+```
+
+```{python}
+myDF["wellBoh"] = np.random.normal(0,1,size=len(myDF)).round(3)
+myDF
+```
+
+```{python}
+myDF.loc[myDF["hours"]>15, "wellBoh"] += 100000
+myDF
+```
+
+<!--------------------------------------------------------------------->
+
+## DataFrame (`Python pandas`) vs data.frame (`R`)
+
+<div style="font-size:26px;">
+| Task               | Python (`pandas`)     | R                   |
+|--------------------|------------------------|----------------------|
+| Select column      | `df["var"]`            | `df["var"]`          |
+| Select column      | `df.var`               | `df$var`          |
+| Multiple columns  | `df[["a", "b"]]`  | `df[, c("a", "b")]` |
+| Filter rows        | `df[df["var"] > 0]`      | `df[df$var > 0, ]`     |
+| Add column         | `df["newVar"] = ...`        | `df$newVar = ...`        |
+| Modify column         | `df["var"] = df["var"]+10` <br/> `df["var"] += 10`    | `df$var = df$var+10`        |
+| Summary            | `df.describe()`       | `summary(df)`        |
+| Row access         | `df.loc[0]`           | `df[1, ]`            |
+| Cell access        | `df.loc[0, "var"]`    | `df[1, "var"]`       |
+| Cell access        | `df.iloc[0, 2]`       | `df[1, 3]`       |
+</div>
+
+<!--------------------------------------------------------------------->
+
+## Merging DataFrames (with `pd.merge()`)
+
+::: {.columns}
+::: {.column width="56%"}
+```{python}         
+df1 = pd.DataFrame({
+  "name": ["Jane", "Jim", "John", "Jack"],
+  "grade": [28, 15, 30, 23]
+})
+df1
+
+df2 = pd.DataFrame({
+  "name": ["Jane", "Jim", "John", "Jack"],
+  "age": [21.4, 22.5, 20.2, 23.0]
+})
+df2
+```
+:::
+::: {.column width="44%"}
+```{python}
+df = pd.merge(df1, df2, on="name")
+df
+```
+<br/>
+<div style="font-size:22px;">*be careful! it will lose any row that does not match across both DataFrames by `"name"`! to keep all values and possibly fill with `NaN` (missing values), add argument `how="outer"`*</div>
+:::
+:::
+
+<!--------------------------------------------------------------------->
+
+## Concat. DataFrames (with `pd.concat()`)
+
+::: {.columns}
+::: {.column width="56%"}
+```{python}         
+dfDPG = pd.DataFrame({
+  "name": ["Jane", "Jim"],
+  "grade": [28, 15],
+  "department": ["dpg", "dpg"]
+})
+dfDPG
+
+dfDPSS = pd.DataFrame({
+  "name": ["John", "Jack"],
+  "grade": [30, 23],
+  "department": ["dpss", "dpss"]
+})
+dfDPSS
+```
+:::
+::: {.column width="44%"}
+```{python}
+df = pd.concat([dfDPG, dfDPSS])
+df
+```
+<br/>
+<div style="font-size:22px;">*this is much like `rbind()` in R, but using the argument `axis` may also work like the function `cbind()`*</div>
+:::
+:::
+
+<!--------------------------------------------------------------------->
+
+## Reshape Wide → Long (with `.melt()`)
+
+```{python}
+dfWide = pd.DataFrame({
+  "ID": ["id01", "id02", "id03"],
+  "gender": ["m", "m", "f"],
+  "T0": [-2.31, -1.70, -2.64],
+  "T1": [-1.50, -0.86, -2.30]
+})
+dfWide
+
+dfLong = dfWide.melt(id_vars=["ID","gender"], var_name="TIME", 
+                          value_name="SCORE", value_vars=["T0","T1"])
+dfLong
+```
+
+<!--------------------------------------------------------------------->
+
+## Reshape Long → Wide (with `.pivot()`)
+
+```{python}
+dfLong = pd.DataFrame({
+  "ID": ["id01", "id01", "id02", "id02", "id03", "id03"],
+  "gender": ["m", "m", "m", "m", "f", "f"],
+  "TIME": ["T0", "T1", "T0", "T1", "T0", "T1"],
+  "SCORE": [-2.31, -1.50, -1.70, -0.86, -2.64, -2.30]
+}); dfLong
+
+dfWide = dfLong.pivot(index=["ID","gender"], 
+                        columns="TIME", values="SCORE").reset_index()
+dfWide
+```
+
+<!--------------------------------------------------------------------->
+
+## Grouped operations (with `.groupby()`)
+
+```{python}
+myDF
+```
+
+#### Count by group
+```{python}
+myDF.groupby("mandatory").size()
+```
+
+#### Average by group
+```{python}
+myDF.groupby("mandatory")["hours"].mean()
+```
+
+<!--------------------------------------------------------------------->
+
+## Grouped operations (with `.groupby()`)
+
+#### Average multiple columns by group
+```{python}
+myDF.groupby("mandatory")[["hours","wellBoh"]].mean()
+```
+
+#### Use `.agg()` to apply multiple functions
+```{python}
+myDF.groupby("mandatory").agg({"hours": ["mean","std","max"],
+                               "wellBoh": ["mean","std","max"]
+                              })
+```
+
+
+<!--------------------------------------------------------------------->
