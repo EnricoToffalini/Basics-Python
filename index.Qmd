@@ -21,9 +21,9 @@ reticulate::repl_python()
 
 ## About This Course
 
-This is an introductory course on <a href="https://www.python.org/" target=_blank>**Python**</a> that is offered within the <a href="https://dottorato.psy.unipd.it/en" target="_blank">PhD program in Psychological Sciences</a> *(University of Padova)*. While R is much more extensively used for statistical analysis and data science in this PhD program, familiarity with Python is important for different purposes. These include advanced machine learning application, working with deep learning models, computational efficiency in some scenarios, and programming experiments. In addition, knowledge of Python is widely required in industry and business, making some basic proficiency with it a valuable asset! Unlike the course <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank">*Basics of R for Data Science*</a>, which served as a foundation for many subsequent courses, this Python course is more self-contained. It aims to provide a general overview of different kinds of tasks that researchers in psychology and behavioral data science can do using Python.
+This is an introductory course on <a href="https://www.python.org/" target=_blank>**Python**</a> that is offered within the <a href="https://dottorato.psy.unipd.it/en" target="_blank">PhD program in Psychological Sciences</a> *(University of Padova)*. While R is more extensively used for statistical analysis and data science in this PhD program, familiarity with Python is useful for different purposes, including advanced machine learning application, deep learning models, natural language processing, computational efficiency in some scenarios, and programming experiments. Also, Python is widely required in industry and business, so basic proficiency with it a valuable asset! There are no prerequisites, but having attended <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank">*Basics of R for Data Science*</a> may greatly help (and, well, it was a mandatory course for our PhD students).
 
-You are encouraged to look at this online book available on GitHub: <a href="https://jakevdp.github.io/PythonDataScienceHandbook//" target="_blank">***Python Data Science Handbook***</a>.
+You are encouraged to look at this online book available on GitHub: <a href="https://jakevdp.github.io/PythonDataScienceHandbook//" target="_blank">***Python Data Science Handbook***</a>
 
 ## Dates and Rooms 2025
 
@@ -38,7 +38,7 @@ You are encouraged to look at this online book available on GitHub: <a href="htt
 
 Bookmark this course homepage to have a quick access to this material (<a href="https://enricotoffalini.github.io/Basics-Python/">https://enricotoffalini.github.io/Basics-Python/</a>). Then do this:
 
-1.  **Install** <a href="https://www.python.org/downloads/" target="_blank">Python</a> locally: go to the official <a href="https://www.python.org/downloads/" target="_blank">Python download page</a> and follow the installation instructions for your operating system.
+1.  **Install Python** locally: go to the official <a href="https://www.python.org/downloads/" target="_blank">Python download page</a> and follow the installation instructions for your operating system.
 2.  **Install an IDE** *(Integrated Development Environment)*: Suggested IDEs are <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Posit/**RStudio**</a> (which you should have already installed for the other courses; it also supports Python!) or <a href="https://www.spyder-ide.org/" target="_blank">**Spyder**</a>.
 3.  **Test your local setup**: Make sure that your Python installation works; open your IDE (RStudio or Spyder), and run the following code in the console:
 
@@ -85,21 +85,10 @@ Data visualization, machine learning, use of deep learning & language models fro
 -   **xx** - html
 -   
 
-*— These other exercises are beyond the scope of this introductory course, but they could be stimulating and useful for more advanced R users:*
+*— These other exercises are beyond the scope of this introductory course, but they could be stimulating and useful for more advanced users:*
 
 -   **xx** - html
 -   
-
-``` csharp
-my_project/
-├── venv/         ← <span style="color:#b600b6;">virtual environment</span> (excluded <span style="color:#b600b6;">from</span> Git)
-├── data/         ← raw .csv, .xlsx, etc.
-├── notebooks/    ← Jupyter <span style="color:#ff5f5f;">or</span> Colab notebooks
-├── scripts/      ← your Python scripts
-├── results/      ← output files, figures
-├── requirements.txt ← list of installed <span style="color:#368ad1;">packages</span> (<span style="color:#b600b6;">for</span> reproducibility)
-└── README.md     ← <span style="color:#e6b800;">short</span> description of the project
-```
 
 ------------------------------------------------------------------------
 

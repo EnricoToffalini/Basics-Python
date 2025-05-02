@@ -1,0 +1,197 @@
+---
+title: "Setting Up the Environment, Import/Export"
+author: "Enrico Toffalini"
+include-in-header: ../assets/slidesheader.html
+format:
+  revealjs:
+    code-line-numbers: false
+    css: custom.css
+    theme: default
+    slide-number: c/t
+    self-contained: false
+    title-slide-attributes: 
+     data-background-image: "figures/psicostatLogo.png"
+     data-background-size: "contain"
+     data-background-opacity: "0.15"
+execute:
+  echo: true
+  output: true
+---
+
+```{r, echo=F, include=F}
+reticulate::repl_python()
+```
+
+## Virtual Environment
+
+<div style="font-size:38px;">
+A "virtual environment" (*`venv`*) is practically a local folder with **an isolated Python environment**. It contains a copy of the **Python interpreter** and **all the packages you install** at the **exact versions** used at that time. This folder can ideally be placed inside your project directory
+
+Virtual environments are routinely used in "serious" / professional projects, so we will not use them systematically in this course. However, they are considered best practice for **avoiding version conflicts** and **ensuring reproducibility**. (BTW, something similar now exists also in R via the *`renv`* package, although unfortunately not widely used)
+</div>
+
+<!------------------------------------------------------------------>
+
+## Virtual Environment
+
+Create a virtual environment with this command in your bash/terminal:
+
+```{bash, eval=F}
+python -m venv nameOfMyEnv
+```
+
+then activate it before using
+
+```{bash, eval=F}
+source nameOfMyEnv/bin/activate     # Linux/macOS
+
+nameOfMyEnv\Scripts\activate.bat    # Windows
+# or alternatively
+nameOfMyEnv\Scripts\activate.ps1    # Windows
+```
+
+...alternatively, inside IDEs, you may activate the `venv` via specific commands like `reticulate::use_virtualenv("nameOfMyEnv", required=T)` (in ***RStudio***), or setting the Python interpreter manually and then restarting the kernel (in ***Spyder***)
+
+<!------------------------------------------------------------------>
+
+## Installing and importing packages
+
+Installing, in an IDE console or Colab: 
+```{python, eval=F}
+!pip install pandas numpy seaborn
+```
+
+Then, before using any of their functions, import the packages:
+```{python, eval=F}
+import pandas as pd
+import numpy as np
+import seaborn as sns
+```
+
+`as` gives a shorter alias to a package name (e.g., `pd` for `pandas`, `np` for `numpy`); this is important because in Python functions must *always* be called by specifying the package name (unlike in R)
+
+<!------------------------------------------------------------------>
+
+## Using functions, help, autocomplete
+
+Call a function from a package and getting help:
+```{python, eval=F}
+np.mean([1, 2, 3]) # call a function from a package
+?np.mean      # help only in IDE console or Colab,         
+help(np.mean) # help via built-in function
+```
+
+Use `tab` to autocomplete and explore
+
+<div style="text-align: center;">
+  <img src="figures/tabFunction.png" style="width: 100%;" />
+</div>
+
+<!------------------------------------------------------------------>
+
+## 
+### Working directory
+
+<div style="font-size:24px;">
+Unlike R's `getwd()` / `setwd()`, in Python use:
+```{python, eval=F}
+import os
+
+os.getcwd()               # Get current working directory
+os.chdir("path/to/folder") # Change working directory
+```
+In **Colab**, paths are relative to the notebook location in Google Drive
+</div>
+
+### Import/Export objects <span style="font-size:32px;">*(no equivalent of `save.image()` of R)*</span>
+```{python, eval=F}
+import pickle
+
+# Save an object 
+with open("myObject.pkl", "wb") as file:       # "wb" is for "writing"
+    pickle.dump(myObject, file)
+    
+# Load that object later
+with open("myObject.pkl", "rb") as file:       # "rb" is for "reading"
+    myObject = pickle.load(file)
+```
+
+<!------------------------------------------------------------------>
+
+## 
+### Import data
+
+from CSV
+```{python, eval=F}
+import pandas as pd
+df = pd.read_csv("data/Courses40Cycle.csv")
+```
+
+from Excel
+```{python, eval=F}
+df = pd.read_excel("data/Courses40Cycle.xlsx")
+```
+
+from `Ctrl+C` copied elements (beautiful, but only for Windows)
+```{python, eval=F}
+df = pd.read_clipboard()
+```
+
+<br/> 
+
+### Export data
+
+```{python, eval=F}
+df.to_csv("exported_data.csv", index=False) # index=False excludes row numbers
+
+df.to_excel("exported_data.xlsx", index=False)
+```
+
+<!------------------------------------------------------------------>
+
+## 
+### Export figures
+```{python, eval=F}
+import matplotlib.pyplot as plt
+plt.scatter(np.random.normal(0,1,10), np.random.normal(0,1,10))
+plt.title("Example Plot")
+
+plt.savefig("myPlot.png", dpi=300)  # export as PNG
+plt.savefig("myPlot.pdf")           # export as PDF
+```
+
+<br/>
+
+### Delete an object <span style="font-size:32px;">*(similar to `rm(df)` in R)*</span>
+```{python, eval=F}
+del df
+```
+
+<br/>
+
+### Listing all objects in workspace <span style="font-size:32px;">*(similar to `ls()` in R)*</span>
+```{python, eval=F}
+dir()
+```
+
+<!------------------------------------------------------------------>
+
+## Like a pro
+
+- Use a **virtual environment** per project (as a subfolder);
+- Place scripts, notebooks, and data in different subfolders;
+- Use **relative paths** (e.g., `"data/myfile.csv"`);
+- Save results and figures via code (not manually)
+
+```csharp
+myProjectFolder/
+├── venv/             ← virtual environment
+├── data/             ← .csv, .xlsx, etc.
+├── scripts/          ← .py scripts
+├── results/          ← output files, figures
+├── notebooks/        ← markdowns, colab notebooks, etc.
+├── requirements.txt  ← list of installed packages for reproducibility
+└── README.md         ← brief description of the project
+```
+
+<!------------------------------------------------------------------>

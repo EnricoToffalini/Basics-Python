@@ -177,7 +177,7 @@ grades
 :::
 :::
 
-But in Python you can use the built-in function `append()`:
+But you can use the built-in function `append()`:
 ```{python, error = T}
 grades.append("K")
 grades
@@ -233,22 +233,96 @@ grades + c(10, 1000)
 
 ## Key differences: VECTORIZED OPERATIONS
 
-In *Python*, you may even multiply a single string:
+In *Python*, you may even multiply and add strings:
 
 ```{python}
-ourCourse = "BasicsPy"
-ourCourse * 10
+ourCourse = "BasicsPython"
+ourCourse * 5
+ourCourse + " is a PhD course at Psychological Sciences"
 ```
 
-To obtain vectorized operations like those of R, you need to import **`numpy`**
+However, classical numerical vectorized operations may appear incredibly painful for us...
+
+```{python}
+grades = [10, 11, 12, 13, 14, 15]
+grades = [g * 3 + 10 for g in grades]
+print(grades)
+
+```
+
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: VECTORIZED OPERATIONS
+
+...luckily, there are good packages for data science in Python! To obtain vectorized operations like those we expect for data analysis and we are accustomed to in R, we can use the **`numpy`** package:
 
 ```{python}
 import numpy as np
+
 grades = np.array([10,11,12,13,14,15])
 
 grades * 3
+
 grades + 10
 ```
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: THE CRUCIAL ROLE OF INDENTATION
+
+<div style="font-size: 30px;">
+Unlike in R, where *syntactic symbols* such as the **curly brackets `{}`** define code blocks, Python uses ***indentation*** (i.e., spaces at the beginning of lines) to delimit blocks of code. **This makes the code more readable... but also unforgiving: indentation is part of the syntax**!
+</div>
+
+::: {.columns}
+::: {.column width="50%"}
+**Python: indentation is not just style, it's mandatory!**
+```{python}
+age = 20
+if age >= 18:
+    print("Adult")  # indented block
+else:
+    print("Minor")  # same indentation
+```
+:::
+::: {.column width="50%"}
+**R: indentation is good practice, but it relies on brackets**
+```{r}
+age = 20
+if(age >= 18){
+print("Adult")
+} else {
+print("Minor")
+}
+```
+:::
+:::
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: THE CRUCIAL ROLE OF INDENTATION
+
+::: {.columns}
+::: {.column width="50%"}
+**Incorrect indentation in Python raises an error ❌ **
+```{python, error=T}
+if age >= 18: 
+print("Adult") 
+```
+:::
+::: {.column width="50%"}
+**R accepts even totally inconsistent indentation**
+```{r}
+if(age >= 18){print("Adult") } else {
+print("Minor") }
+```
+:::
+:::
+
+<div style="font-size: 28px; margin-top: 1em;">
+This enforces clarity in Python code, but requires **discipline**! Actually, writing tidy and readable code is **best practice**! 
+</div>
 
 <!-- --------------------------------------------------------------------- -->
 
@@ -328,52 +402,6 @@ v1
 actually copied the original object:
 ```{r}
 myvar
-```
-:::
-:::
-
-<!-- --------------------------------------------------------------------- -->
-
-## Key differences: COERCING TYPES
-
-::: {.columns}
-::: {.column width="50%"}
-**Python**
-```{python}
-x = np.array([10,11,12,13,14])
-x[0] = np.pi
-
-x
-```
-:::
-::: {.column width="50%"}
-**R**
-```{r}
-x = c(10,11,12,13,14)
-x[1] = pi
-
-x
-```
-:::
-:::
-
-Even with characters!
-
-::: {.columns}
-::: {.column width="50%"}
-```{python}
-x = np.array(["AA","BB","CC","DD","EE"])
-x[0] = "Hello world"
-
-x
-```
-:::
-::: {.column width="50%"}
-```{r}
-x = c("AA","BB","CC","DD","EE")
-x[1] = "Hello world"
-
-x
 ```
 :::
 :::

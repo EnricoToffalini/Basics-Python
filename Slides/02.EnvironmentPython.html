@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="01.GettingStartedPython_files/libs/clipboard/clipboard.min.js"></script>
-<script src="01.GettingStartedPython_files/libs/quarto-html/tabby.min.js"></script>
-<script src="01.GettingStartedPython_files/libs/quarto-html/popper.min.js"></script>
-<script src="01.GettingStartedPython_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="01.GettingStartedPython_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="01.GettingStartedPython_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="01.GettingStartedPython_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="01.GettingStartedPython_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="02.EnvironmentPython_files/libs/clipboard/clipboard.min.js"></script>
+<script src="02.EnvironmentPython_files/libs/quarto-html/tabby.min.js"></script>
+<script src="02.EnvironmentPython_files/libs/quarto-html/popper.min.js"></script>
+<script src="02.EnvironmentPython_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="02.EnvironmentPython_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="02.EnvironmentPython_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="02.EnvironmentPython_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="02.EnvironmentPython_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.550">
 
   <meta name="author" content="Enrico Toffalini">
-  <title>Getting Started with Python</title>
+  <title>Setting Up the Environment, Import/Export</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="01.GettingStartedPython_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="01.GettingStartedPython_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="02.EnvironmentPython_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="02.EnvironmentPython_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -95,12 +95,12 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="01.GettingStartedPython_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="02.EnvironmentPython_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="custom.css">
-  <link href="01.GettingStartedPython_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="01.GettingStartedPython_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="01.GettingStartedPython_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="01.GettingStartedPython_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="02.EnvironmentPython_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="02.EnvironmentPython_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="02.EnvironmentPython_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="02.EnvironmentPython_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -393,7 +393,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="figures/psicostatLogo.png" data-background-opacity="0.15" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Getting Started with Python</h1>
+  <h1 class="title">Setting Up the Environment, Import/Export</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -404,427 +404,152 @@ Enrico Toffalini
 </div>
 
 </section>
-<section id="where-to-run-python-terminal-bash" class="slide level2">
-<h2>Where to run Python: <em>terminal / bash</em></h2>
-<div style="text-align: center;">
-<p><img src="figures/terminal.png" style="width: 100%;"></p>
+<section id="virtual-environment" class="slide level2">
+<h2>Virtual Environment</h2>
+<div style="font-size:38px;">
+<p>A “virtual environment” (<em><code>venv</code></em>) is practically a local folder with <strong>an isolated Python environment</strong>. It contains a copy of the <strong>Python interpreter</strong> and <strong>all the packages you install</strong> at the <strong>exact versions</strong> used at that time. This folder can ideally be placed inside your project directory</p>
+<p>Virtual environments are routinely used in “serious” / professional projects, so we will not use them systematically in this course. However, they are considered best practice for <strong>avoiding version conflicts</strong> and <strong>ensuring reproducibility</strong>. (BTW, something similar now exists also in R via the <em><code>renv</code></em> package, although unfortunately not widely used)</p>
 </div>
+<!------------------------------------------------------------------>
 </section>
-<section id="where-to-run-python-spyder-full-ide" class="slide level2">
-<h2>Where to run Python: <a href="https://www.spyder-ide.org/" target="_blank"><em>Spyder</em></a> (full IDE)</h2>
-<div style="text-align: center;">
-<p><img src="figures/spyder.png" style="width: 100%;"></p>
-</div>
-</section>
-<section id="where-to-run-python-rstudio-full-ide" class="slide level2">
-<h2>Where to run Python: <a href="https://posit.co/download/rstudio-desktop/" target="_blank"><em>RStudio</em></a> (full IDE)</h2>
-<div style="text-align: center;">
-<p><img src="figures/RStudio.png" style="width: 100%;"></p>
-</div>
-</section>
-<section id="where-to-run-python-google-colab" class="slide level2">
-<h2>Where to run Python: <a href="https://colab.research.google.com/" target="_blank"><em>Google Colab</em></a></h2>
-<div style="text-align: center;">
-<p><a href="https://colab.research.google.com/" target="_blank"> <img src="figures/colab.png" style="width: 100%; border: 2px solid black;"> </a></p>
-</div>
-</section>
-<section id="where-to-run-python-other-options" class="slide level2">
-<h2>Where to run Python? Other options…</h2>
-<div style="font-size:45px;">
-<ul>
-<li><a href="https://code.visualstudio.com/" target="_blank"><strong><em>Visual Studio (VS) Code</em></strong></a>: Full general-purpose IDE, maybe the most used for Python today; by Microsoft, but free</li>
-<li><a href="https://www.jetbrains.com/pycharm/" target="_blank"><strong><em>PyCharm</em></strong></a>: powerful IDE dedicated to Python; paid professional licence, but also free version available</li>
-<li><a href="https://jupyter.org/" target="_blank"><strong><em>Jupyter Notebooks</em></strong></a>: ideal for reports and markdown; very similar to Colab but run locally; free</li>
-<li><a href="https://thonny.org/" target="_blank"><strong><em>Thonny</em></strong></a>: super-simple interface IDE; free</li>
-</ul>
-</div>
-</section>
-<section id="lets-test-the-environment" class="slide level2">
-<h2>Let’s Test the Environment</h2>
-<p>Let’s run a few commands in your IDE or Colab to see if it works…</p>
+<section id="virtual-environment-1" class="slide level2">
+<h2>Virtual Environment</h2>
+<p>Create a virtual environment with this command in your bash/terminal:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a>IDEs <span class="op">=</span> [<span class="st">"Spyder"</span>, <span class="st">"PyCharm"</span>, <span class="st">"RStudio"</span>]</span>
-<span id="cb1-2"><a href="" aria-hidden="true" tabindex="-1"></a>IDEs.append(<span class="st">"VS Code"</span>) </span>
-<span id="cb1-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(IDEs) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv nameOfMyEnv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s try to install and use a package:</p>
+<p>then activate it before using</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy <span class="co"># if not already installed</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> nameOfMyEnv/bin/activate     <span class="co"># Linux/macOS</span></span>
 <span id="cb2-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np <span class="co"># import and alias before using</span></span>
-<span id="cb2-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb2-6"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, size<span class="op">=</span>N)</span>
-<span id="cb2-7"><a href="" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span> <span class="op">+</span> x<span class="op">*</span><span class="fl">0.3</span> <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.8</span>, size<span class="op">=</span>N)</span>
-<span id="cb2-8"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y.<span class="bu">round</span>(<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">nameOfMyEnv\Scripts\activate.bat</span>    <span class="co"># Windows</span></span>
+<span id="cb2-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># or alternatively</span></span>
+<span id="cb2-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">nameOfMyEnv\Scripts\activate.ps1</span>    <span class="co"># Windows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>(The whole thing of installing, loading packages, and using functions is much like R, <a href="https://enricotoffalini.github.io/Basics-R/Slides/1.2.FirstStepsR-2.html" target="_blank"><em>as previously seen</em></a>)</p>
+<p>…alternatively, inside IDEs, you may activate the <code>venv</code> via specific commands like <code>reticulate::use_virtualenv("nameOfMyEnv", required=T)</code> (in <strong><em>RStudio</em></strong>), or setting the Python interpreter manually and then restarting the kernel (in <strong><em>Spyder</em></strong>)</p>
+<!------------------------------------------------------------------>
 </section>
-<section id="use-basic-operations" class="slide level2">
-<h2>Use basic operations</h2>
-<h3 id="python-as-calculator-basic-operators">Python as calculator: basic operators</h3>
-<table>
-<thead>
-<tr class="header">
-<th>Operator</th>
-<th>What it does</th>
-<th>Example</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>+</code></td>
-<td>Addition</td>
-<td><code>5.4 + 6.1</code></td>
-<td><code>11.5</code></td>
-</tr>
-<tr class="even">
-<td><code>-</code></td>
-<td>Subtraction</td>
-<td><code>9 - 4.3</code></td>
-<td><code>4.7</code></td>
-</tr>
-<tr class="odd">
-<td><code>*</code></td>
-<td>Multiplication</td>
-<td><code>7 * 1.4</code></td>
-<td><code>9.8</code></td>
-</tr>
-<tr class="even">
-<td><code>/</code></td>
-<td>Division</td>
-<td><code>9 / 12</code></td>
-<td><code>0.75</code></td>
-</tr>
-<tr class="odd">
-<td><code>//</code></td>
-<td>Floor division</td>
-<td><code>13 // 4</code></td>
-<td><code>3</code></td>
-</tr>
-<tr class="even">
-<td><code>%</code></td>
-<td>Modulus</td>
-<td><code>13 % 4</code></td>
-<td><code>1</code></td>
-</tr>
-<tr class="odd">
-<td><code>**</code></td>
-<td>Exponentiation</td>
-<td><code>15 ** 2</code></td>
-<td><code>225</code></td>
-</tr>
-</tbody>
-</table>
-<p>(Math constants like <code>pi</code> might require modules, e.g., <code>math.pi</code>)</p>
-</section>
-<section id="use-basic-operations-1" class="slide level2">
-<h2>Use basic operations</h2>
-<h3 id="python-as-calculator-functions">Python as calculator: functions</h3>
-<p>Unlike R, many math functions require importing a module: <code>import math</code></p>
-<div style="font-size:25px;">
-<table style="width:100%;">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 35%">
-<col style="width: 28%">
-<col style="width: 13%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Function</th>
-<th>What it does</th>
-<th>Example</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>abs(x)</code></td>
-<td>Absolute value</td>
-<td><code>abs(4.3 - 9.8)</code></td>
-<td><code>5.5</code></td>
-</tr>
-<tr class="even">
-<td><code>round(x)</code></td>
-<td>Round to nearest integer</td>
-<td><code>round(1.7384)</code></td>
-<td><code>2</code></td>
-</tr>
-<tr class="odd">
-<td><code>round(x, n)</code></td>
-<td>Round to <code>n</code> digits</td>
-<td><code>round(1.7384, 2)</code></td>
-<td><code>1.74</code></td>
-</tr>
-<tr class="even">
-<td><code>math.sqrt(x)</code></td>
-<td>Square root</td>
-<td><code>math.sqrt(176.4)</code></td>
-<td><code>13.28157</code></td>
-</tr>
-<tr class="odd">
-<td><code>math.exp(x)</code></td>
-<td>Exponential function (<span class="math inline">\(e^x\)</span>)</td>
-<td><code>math.exp(2.2)</code></td>
-<td><code>9.02501</code></td>
-</tr>
-<tr class="even">
-<td><code>math.log(x)</code></td>
-<td>Natural logarithm, base <span class="math inline">\(e\)</span></td>
-<td><code>math.log(9.025013)</code></td>
-<td><code>2.2</code></td>
-</tr>
-<tr class="odd">
-<td><code>math.log(x, b)</code></td>
-<td>Logarithm, base <span class="math inline">\(b\)</span></td>
-<td><code>math.log(10, 2)</code></td>
-<td><code>3.32193</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="use-basic-operations-2" class="slide level2">
-<h2>Use basic operations</h2>
-<h3 id="relational-operators">Relational operators</h3>
+<section id="installing-and-importing-packages" class="slide level2">
+<h2>Installing and importing packages</h2>
+<p>Installing, in an IDE console or Colab:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas numpy seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<table>
-<thead>
-<tr class="header">
-<th>Operator</th>
-<th>What it does</th>
-<th>Example</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>==</code></td>
-<td>Equal to</td>
-<td><code>age == 18</code></td>
-<td><code>False</code></td>
-</tr>
-<tr class="even">
-<td><code>!=</code></td>
-<td>Not equal to</td>
-<td><code>age != 18</code></td>
-<td><code>True</code></td>
-</tr>
-<tr class="odd">
-<td><code>&gt;</code></td>
-<td>Greater than</td>
-<td><code>age &gt; 18</code></td>
-<td><code>True</code></td>
-</tr>
-<tr class="even">
-<td><code>&lt;</code></td>
-<td>Less than</td>
-<td><code>age &lt; 18</code></td>
-<td><code>False</code></td>
-</tr>
-<tr class="odd">
-<td><code>&gt;=</code></td>
-<td>Greater than or equal to</td>
-<td><code>age &gt;= 18</code></td>
-<td><code>True</code></td>
-</tr>
-<tr class="even">
-<td><code>&lt;=</code></td>
-<td>Less than or equal to</td>
-<td><code>age &lt;= 18</code></td>
-<td><code>False</code></td>
-</tr>
-</tbody>
-</table>
+<p>Then, before using any of their functions, import the packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>as</code> gives a shorter alias to a package name (e.g., <code>pd</code> for <code>pandas</code>, <code>np</code> for <code>numpy</code>); this is important because in Python functions must <em>always</em> be called by specifying the package name (unlike in R)</p>
+<!------------------------------------------------------------------>
 </section>
-<section id="use-basic-operations-3" class="slide level2">
-<h2>Use basic operations</h2>
-<h3 id="basic-logical-operators">Basic logical operators</h3>
-<p>Logical operators combine Boolean values (<code>True</code>, <code>False</code>) and are often used in conditional expressions.</p>
-<p>Once again, let’s say that we defined <code>age = 20</code>, now let’s make a few examples:</p>
-<table>
-<thead>
-<tr class="header">
-<th>Operator</th>
-<th>What it does</th>
-<th>Example</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>and</code></td>
-<td>AND</td>
-<td><code>age&gt;25 and age&lt;60</code></td>
-<td><code>False</code></td>
-</tr>
-<tr class="even">
-<td><code>or</code></td>
-<td>OR</td>
-<td><code>age&lt;25 or age&gt;60</code></td>
-<td><code>True</code></td>
-</tr>
-<tr class="odd">
-<td><code>not</code></td>
-<td>NOT</td>
-<td><code>not age&lt;18</code></td>
-<td><code>True</code></td>
-</tr>
-</tbody>
-</table>
-<!-- --------------------------------------------------------------------- -->
+<section id="using-functions-help-autocomplete" class="slide level2">
+<h2>Using functions, help, autocomplete</h2>
+<p>Call a function from a package and getting help:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.mean([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="co"># call a function from a package</span></span>
+<span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a>?np.mean      <span class="co"># help only in IDE console or Colab,         </span></span>
+<span id="cb5-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(np.mean) <span class="co"># help via built-in function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use <code>tab</code> to autocomplete and explore</p>
+<div style="text-align: center;">
+<p><img src="figures/tabFunction.png" style="width: 100%;"></p>
+</div>
+<!------------------------------------------------------------------>
 </section>
-<section id="basic-types-of-data" class="slide level2">
-<h2>Basic types of data</h2>
-<h3 id="numeric-and-logical">numeric and logical</h3>
-<p>So far, we have already encountered at least two types of data:</p>
+<section id="section" class="slide level2">
+<h2></h2>
+<h3 id="working-directory">Working directory</h3>
+<div style="font-size:24px;">
+<p>Unlike R’s <code>getwd()</code> / <code>setwd()</code>, in Python use:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb6-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="" aria-hidden="true" tabindex="-1"></a>os.getcwd()               <span class="co"># Get current working directory</span></span>
+<span id="cb6-4"><a href="" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">"path/to/folder"</span>) <span class="co"># Change working directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In <strong>Colab</strong>, paths are relative to the notebook location in Google Drive</p>
+</div>
+<h3 id="importexport-objects-no-equivalent-of-save.image-of-r">Import/Export objects <span style="font-size:32px;"><em>(no equivalent of <code>save.image()</code> of R)</em></span></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb7-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Save an object </span></span>
+<span id="cb7-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"myObject.pkl"</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">file</span>:       <span class="co"># "wb" is for "writing"</span></span>
+<span id="cb7-5"><a href="" aria-hidden="true" tabindex="-1"></a>    pickle.dump(myObject, <span class="bu">file</span>)</span>
+<span id="cb7-6"><a href="" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Load that object later</span></span>
+<span id="cb7-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"myObject.pkl"</span>, <span class="st">"rb"</span>) <span class="im">as</span> <span class="bu">file</span>:       <span class="co"># "rb" is for "reading"</span></span>
+<span id="cb7-9"><a href="" aria-hidden="true" tabindex="-1"></a>    myObject <span class="op">=</span> pickle.load(<span class="bu">file</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!------------------------------------------------------------------>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<h3 id="import-data">Import data</h3>
+<p>from CSV</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/Courses40Cycle.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>from Excel</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"data/Courses40Cycle.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>from <code>Ctrl+C</code> copied elements (beautiful, but only for Windows)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_clipboard()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<h3 id="export-data">Export data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"exported_data.csv"</span>, index<span class="op">=</span><span class="va">False</span>) <span class="co"># index=False excludes row numbers</span></span>
+<span id="cb11-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="" aria-hidden="true" tabindex="-1"></a>df.to_excel(<span class="st">"exported_data.xlsx"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!------------------------------------------------------------------>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<h3 id="export-figures">Export figures</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-2"><a href="" aria-hidden="true" tabindex="-1"></a>plt.scatter(np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>), np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>))</span>
+<span id="cb12-3"><a href="" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Example Plot"</span>)</span>
+<span id="cb12-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>)  <span class="co"># export as PNG</span></span>
+<span id="cb12-6"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.pdf"</span>)           <span class="co"># export as PDF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<h3 id="delete-an-object-similar-to-rmdf-in-r">Delete an object <span style="font-size:32px;"><em>(similar to <code>rm(df)</code> in R)</em></span></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<h3 id="listing-all-objects-in-workspace-similar-to-ls-in-r">Listing all objects in workspace <span style="font-size:32px;"><em>(similar to <code>ls()</code> in R)</em></span></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!------------------------------------------------------------------>
+</section>
+<section id="like-a-pro" class="slide level2">
+<h2>Like a pro</h2>
 <ul>
-<li><p><strong>Numeric</strong>: e.g., <code>20</code>, <code>11.5</code>, <code>13.28157</code>;</p></li>
-<li><p><strong>Logical / Boolean</strong> (i.e., <code>True</code>, <code>False</code>).</p></li>
+<li>Use a <strong>virtual environment</strong> per project (as a subfolder);</li>
+<li>Place scripts, notebooks, and data in different subfolders;</li>
+<li>Use <strong>relative paths</strong> (e.g., <code>"data/myfile.csv"</code>);</li>
+<li>Save results and figures via code (not manually)</li>
 </ul>
-<p>Like in R, <strong>numeric</strong> data could actually be <strong><em><code>float</code></em></strong> (“<em>floating-point</em>”) that is with decimals like <code>11.5</code>, and <strong><em><code>int</code></em></strong> (“<em>integer</em>”) like <code>20</code></p>
-<p>Unlike R, there is not need to specify “<code>L</code>” for integers</p>
-</section>
-<section id="basic-types-of-data-1" class="slide level2">
-<h2>Basic types of data</h2>
-<h3 id="strings-text-values">strings (text values)</h3>
-<p>Another very important type of data is:</p>
-<p>This is much like R. Python uses <strong>strings</strong> to represent text, that must be enclosed in quotes (<strong><code>' '</code></strong>, or <strong><code>" "</code></strong>), like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">=</span> <span class="st">"Enrico"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>And you may even perform operations with strings like:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">==</span> <span class="st">"Bob"</span> <span class="co"># is my name equal to Bob?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>False</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">!=</span> <span class="st">"Bob"</span> <span class="co"># is my name NOT equal to Bob?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>True</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">&gt;</span> <span class="st">"Bob"</span> <span class="co"># is my name larger than Bob? (yes, alphabetically!)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>True</code></pre>
-</div>
-</div>
-</section>
-<section id="basic-types-of-data-2" class="slide level2">
-<h2>Basic types of data</h2>
-<h3 id="lists-and-tuples-ordered-collections">Lists and Tuples: ordered collections</h3>
-<p><strong>Lists</strong> are ordered, mutable series of elements that can be of <strong>mixed types</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a>myList <span class="op">=</span> [<span class="dv">10</span>, <span class="fl">3.14</span>, <span class="st">"Enrico"</span>, <span class="va">True</span>, [<span class="dv">8</span>, <span class="fl">7.2</span>], <span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Tuples</strong> are exactly the same, just immutable (cannot update their values!)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup <span class="op">=</span> (<span class="dv">10</span>, <span class="fl">3.14</span>, <span class="st">"Enrico"</span>, <span class="va">True</span>, [<span class="dv">8</span>, <span class="fl">7.2</span>], <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Both can be indexed by numeric position using <code>[ ]</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup[<span class="dv">0</span>] <span class="co"># first element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>10</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup[<span class="op">-</span><span class="dv">2</span>] <span class="co"># second last element </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[8, 7.2]</code></pre>
-</div>
-</div>
-</section>
-<section id="basic-types-of-data-3" class="slide level2">
-<h2>Basic types of data</h2>
-<h3 id="dictionaries-unordered-collection-of-key-value-pairs">Dictionaries: unordered collection of key-value pairs</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {  <span class="st">"name"</span>: <span class="st">"Jim"</span>,</span>
-<span id="cb17-2"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"age"</span>: <span class="dv">25</span>,</span>
-<span id="cb17-3"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"courses"</span>: [<span class="st">"BasicsR"</span>, <span class="st">"BasicPy"</span>, <span class="st">"Simulations"</span>]</span>
-<span id="cb17-4"><a href="" aria-hidden="true" tabindex="-1"></a>          }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Cannot be indexed by numeric position, but by key:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"name"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'Jim'</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"courses"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>['BasicsR', 'BasicPy', 'Simulations']</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"age"</span>] <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>625</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"courses"</span>][<span class="dv">1</span>] <span class="co"># but you can index a list inside a dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'BasicPy'</code></pre>
-</div>
-</div>
-</section>
-<section id="basic-types-of-data-4" class="slide level2">
-<h2>Basic types of data</h2>
-<h3 id="inspect-variables-types">inspect variables types</h3>
-<p>Python has the built-in <strong><code>type()</code></strong> function to inspect the type of any object:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">=</span> <span class="st">"Enrico"</span></span>
-<span id="cb26-2"><a href="" aria-hidden="true" tabindex="-1"></a>isProf <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb26-3"><a href="" aria-hidden="true" tabindex="-1"></a>coursesTaught <span class="op">=</span> [<span class="st">"GenPsy"</span>,<span class="st">"Olfact"</span>,<span class="st">"BasicsR"</span>,<span class="st">"BasicsPy"</span>]</span>
-<span id="cb26-4"><a href="" aria-hidden="true" tabindex="-1"></a>nCourses <span class="op">=</span> <span class="bu">len</span>(coursesTaught)</span>
-<span id="cb26-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># see objects types</span></span>
-<span id="cb26-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(myName)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'str'&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(isProf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'bool'&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(coursesTaught)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'list'&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(nCourses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'int'&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="basic-types-of-data-5" class="slide level2">
-<h2>Basic types of data</h2>
-<h3 id="inspect-variables-types-1">inspect variables types</h3>
-<p>You may also inquire data type directly with functions <code>is.*</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(isProf, <span class="bu">bool</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>True</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(coursesTaught, <span class="bu">bool</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>False</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(nCourses, <span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>True</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(nCourses, <span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>False</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(myName, <span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>True</code></pre>
-</div>
-</div>
-<div style="font-size:26px;">
-<p>Python has no built-in missing data type like <code>NA</code> in R. <code>None</code> can be used but is not a type and operations may incur errors. Libraries like <code>numpy</code> and <code>pandas</code> have their own <code>np.nan</code> and <code>pd.NA</code> missing value markers that are more like <code>NA</code> in R.</p>
-</div>
-<!-- --------------------------------------------------------------------- -->
+<div class="sourceCode" id="cb15"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a>myProjectFolder<span class="op">/</span></span>
+<span id="cb15-2"><a href="" aria-hidden="true" tabindex="-1"></a>├── venv<span class="op">/</span>             ← <span class="kw">virtual</span> environment</span>
+<span id="cb15-3"><a href="" aria-hidden="true" tabindex="-1"></a>├── data<span class="op">/</span>             ← <span class="op">.</span><span class="fu">csv</span><span class="op">,</span> <span class="op">.</span><span class="fu">xlsx</span><span class="op">,</span> etc<span class="op">.</span></span>
+<span id="cb15-4"><a href="" aria-hidden="true" tabindex="-1"></a>├── scripts<span class="op">/</span>          ← <span class="op">.</span><span class="fu">py</span> scripts</span>
+<span id="cb15-5"><a href="" aria-hidden="true" tabindex="-1"></a>├── results<span class="op">/</span>          ← output files<span class="op">,</span> figures</span>
+<span id="cb15-6"><a href="" aria-hidden="true" tabindex="-1"></a>├── notebooks<span class="op">/</span>        ← markdowns<span class="op">,</span> colab notebooks<span class="op">,</span> etc<span class="op">.</span></span>
+<span id="cb15-7"><a href="" aria-hidden="true" tabindex="-1"></a>├── requirements<span class="op">.</span><span class="fu">txt</span>  ← list of installed packages <span class="kw">for</span> reproducibility</span>
+<span id="cb15-8"><a href="" aria-hidden="true" tabindex="-1"></a>└── README<span class="op">.</span><span class="fu">md</span>         ← brief description of the project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!------------------------------------------------------------------>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -835,19 +560,19 @@ Enrico Toffalini
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="01.GettingStartedPython_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="02.EnvironmentPython_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="01.GettingStartedPython_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="01.GettingStartedPython_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="01.GettingStartedPython_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="01.GettingStartedPython_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="01.GettingStartedPython_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="02.EnvironmentPython_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="02.EnvironmentPython_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="02.EnvironmentPython_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="02.EnvironmentPython_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="02.EnvironmentPython_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="01.GettingStartedPython_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="01.GettingStartedPython_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="01.GettingStartedPython_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="01.GettingStartedPython_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="02.EnvironmentPython_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="02.EnvironmentPython_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="02.EnvironmentPython_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="02.EnvironmentPython_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

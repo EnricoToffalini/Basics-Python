@@ -48,6 +48,16 @@ reticulate::repl_python()
   </a>
 </div>
 
+## Where to run Python? Other options...
+
+<div style="font-size:45px;">
+- <a href="https://code.visualstudio.com/" target="_blank">***Visual Studio (VS) Code***</a>: Full general-purpose IDE, maybe the most used for Python today; by Microsoft, but free
+- <a href="https://www.jetbrains.com/pycharm/" target="_blank">***PyCharm***</a>: powerful IDE dedicated to Python; paid professional licence, but also free version available
+- <a href="https://jupyter.org/" target="_blank">***Jupyter Notebooks***</a>: ideal for reports and markdown; very similar to Colab but run locally; free
+- <a href="https://thonny.org/" target="_blank">***Thonny***</a>: super-simple interface IDE; free
+</div>
+
+
 ## Let's Test the Environment
 
 Let’s run a few commands in your IDE or Colab to see if it works...
