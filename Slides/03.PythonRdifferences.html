@@ -768,7 +768,7 @@ Enrico Toffalini
 <pre><code>'BasicsPython is a PhD course at Psychological Sciences'</code></pre>
 </div>
 </div>
-<p>However, classical numerical vectorized operations may appear incredibly painful for us…</p>
+<p>However, classical numerical operations on vectors may appear incredibly painful for us…</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>]</span>
 <span id="cb45-2"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> [g <span class="op">+</span> <span class="dv">10</span> <span class="cf">for</span> g <span class="kw">in</span> grades]</span>
@@ -781,7 +781,7 @@ Enrico Toffalini
 </section>
 <section id="key-differences-vectorized-operations-2" class="slide level2">
 <h2>Key differences: VECTORIZED OPERATIONS</h2>
-<p>…luckily, there are good packages for data science in Python! To obtain vectorized operations like those we expect for data analysis and we are accustomed to in R, we can use the <strong><code>numpy</code></strong> package:</p>
+<p>…luckily, there are good packages for data science in Python! To obtain vectorized operations like those we expect for data analysis and we are accustomed to in R, we can use the <strong><code>numpy</code></strong> package (more on <strong><code>numpy</code></strong> later!):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb47-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -805,7 +805,7 @@ Enrico Toffalini
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Python: indentation is not just style, it’s mandatory!</strong></p>
+<p><strong>Python: indentation is not just style, it is mandatory!</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">20</span></span>
 <span id="cb51-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> age <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
@@ -817,13 +817,13 @@ Enrico Toffalini
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<p><strong>R: indentation is good practice, but it relies on brackets</strong></p>
+<p><strong>R: indentation is good practice, but it relies on brackets <code>{ }</code></strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="dv">20</span></span>
 <span id="cb53-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(age <span class="sc">&gt;=</span> <span class="dv">18</span>){</span>
-<span id="cb53-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Adult"</span>)</span>
+<span id="cb53-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Adult"</span>)</span>
 <span id="cb53-4"><a href="" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb53-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Minor"</span>)</span>
+<span id="cb53-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Minor"</span>)</span>
 <span id="cb53-6"><a href="" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Adult"</code></pre>
@@ -837,7 +837,7 @@ Enrico Toffalini
 <h2>Key differences: THE CRUCIAL ROLE OF INDENTATION</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Incorrect indentation in Python raises an error ❌ </strong></p>
+<p><strong>Incorrect indentation in Python raises errors 🤯 </strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> age <span class="op">&gt;=</span> <span class="dv">18</span>: </span>
 <span id="cb55-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Adult"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -856,8 +856,29 @@ Enrico Toffalini
 </div>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb59-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>expected an indented block after 'for' statement on line 1 (&lt;string&gt;, line 2)</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
+<span id="cb61-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(i) }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 2
+[1] 3</code></pre>
+</div>
+</div>
+</div>
+</div>
 <div style="font-size: 28px; margin-top: 1em;">
-<p>This enforces clarity in Python code, but requires <strong>discipline</strong>! Actually, writing tidy and readable code is <strong>best practice</strong>!</p>
+<p>This enforces clarity in Python code, but requires <strong>discipline</strong>… <br>Remember that, in any case, writing tidy and readable code is a <strong>best practice</strong>!</p>
 </div>
 <!-- --------------------------------------------------------------------- -->
 </section>
@@ -868,19 +889,19 @@ Enrico Toffalini
 <div class="column" style="width:50%;">
 <p><strong>Python</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> [<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>]</span>
-<span id="cb59-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-3"><a href="" aria-hidden="true" tabindex="-1"></a>myvar <span class="op">=</span> v1</span>
-<span id="cb59-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-5"><a href="" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">0</span>:<span class="dv">2</span>] <span class="op">=</span> [<span class="dv">100</span>,<span class="dv">200</span>]</span>
-<span id="cb59-6"><a href="" aria-hidden="true" tabindex="-1"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> [<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>]</span>
+<span id="cb63-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="" aria-hidden="true" tabindex="-1"></a>myvar <span class="op">=</span> v1</span>
+<span id="cb63-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">0</span>:<span class="dv">2</span>] <span class="op">=</span> [<span class="dv">100</span>,<span class="dv">200</span>]</span>
+<span id="cb63-6"><a href="" aria-hidden="true" tabindex="-1"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[100, 200, 'C', 'D']</code></pre>
 </div>
 </div>
 <p>references to the original object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="" aria-hidden="true" tabindex="-1"></a>myvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="" aria-hidden="true" tabindex="-1"></a>myvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[100, 200, 'C', 'D']</code></pre>
 </div>
@@ -888,19 +909,19 @@ Enrico Toffalini
 </div><div class="column" style="width:50%;">
 <p><strong>R</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>)</span>
-<span id="cb63-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-3"><a href="" aria-hidden="true" tabindex="-1"></a>myvar <span class="ot">=</span> v1</span>
-<span id="cb63-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-5"><a href="" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>)</span>
-<span id="cb63-6"><a href="" aria-hidden="true" tabindex="-1"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>)</span>
+<span id="cb67-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="" aria-hidden="true" tabindex="-1"></a>myvar <span class="ot">=</span> v1</span>
+<span id="cb67-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>)</span>
+<span id="cb67-6"><a href="" aria-hidden="true" tabindex="-1"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "100" "200" "C"   "D"  </code></pre>
 </div>
 </div>
 <p>actually copied the original object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="" aria-hidden="true" tabindex="-1"></a>myvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="" aria-hidden="true" tabindex="-1"></a>myvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "A" "B" "C" "D"</code></pre>
 </div>
@@ -919,19 +940,19 @@ Enrico Toffalini
 <div class="column" style="width:50%;">
 <p><strong>Python</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> [<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>]</span>
-<span id="cb67-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-3"><a href="" aria-hidden="true" tabindex="-1"></a>myvar <span class="op">=</span> v1.copy()</span>
-<span id="cb67-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-5"><a href="" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">0</span>:<span class="dv">2</span>] <span class="op">=</span> [<span class="dv">100</span>,<span class="dv">200</span>]</span>
-<span id="cb67-6"><a href="" aria-hidden="true" tabindex="-1"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> [<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>]</span>
+<span id="cb71-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="" aria-hidden="true" tabindex="-1"></a>myvar <span class="op">=</span> v1.copy()</span>
+<span id="cb71-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-5"><a href="" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">0</span>:<span class="dv">2</span>] <span class="op">=</span> [<span class="dv">100</span>,<span class="dv">200</span>]</span>
+<span id="cb71-6"><a href="" aria-hidden="true" tabindex="-1"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[100, 200, 'C', 'D']</code></pre>
 </div>
 </div>
 <p>actually copied the original object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="" aria-hidden="true" tabindex="-1"></a>myvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="" aria-hidden="true" tabindex="-1"></a>myvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['A', 'B', 'C', 'D']</code></pre>
 </div>
@@ -939,19 +960,19 @@ Enrico Toffalini
 </div><div class="column" style="width:50%;">
 <p><strong>R</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>)</span>
-<span id="cb71-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-3"><a href="" aria-hidden="true" tabindex="-1"></a>myvar <span class="ot">=</span> v1</span>
-<span id="cb71-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-5"><a href="" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>)</span>
-<span id="cb71-6"><a href="" aria-hidden="true" tabindex="-1"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>)</span>
+<span id="cb75-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="" aria-hidden="true" tabindex="-1"></a>myvar <span class="ot">=</span> v1</span>
+<span id="cb75-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-5"><a href="" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>)</span>
+<span id="cb75-6"><a href="" aria-hidden="true" tabindex="-1"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "100" "200" "C"   "D"  </code></pre>
 </div>
 </div>
 <p>actually copied the original object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="" aria-hidden="true" tabindex="-1"></a>myvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="" aria-hidden="true" tabindex="-1"></a>myvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "A" "B" "C" "D"</code></pre>
 </div>

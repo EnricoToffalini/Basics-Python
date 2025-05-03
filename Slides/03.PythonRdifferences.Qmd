@@ -241,7 +241,7 @@ ourCourse * 5
 ourCourse + " is a PhD course at Psychological Sciences"
 ```
 
-However, classical numerical vectorized operations may appear incredibly painful for us...
+However, classical numerical operations on vectors may appear incredibly painful for us...
 
 ```{python}
 grades = [10, 11, 12, 13, 14, 15]
@@ -255,7 +255,7 @@ print(grades)
 
 ## Key differences: VECTORIZED OPERATIONS
 
-...luckily, there are good packages for data science in Python! To obtain vectorized operations like those we expect for data analysis and we are accustomed to in R, we can use the **`numpy`** package:
+...luckily, there are good packages for data science in Python! To obtain vectorized operations like those we expect for data analysis and we are accustomed to in R, we can use the **`numpy`** package (more on **`numpy`** later!):
 
 ```{python}
 import numpy as np
@@ -277,7 +277,7 @@ Unlike in R, where *syntactic symbols* such as the **curly brackets `{}`** defin
 
 ::: {.columns}
 ::: {.column width="50%"}
-**Python: indentation is not just style, it's mandatory!**
+**Python: indentation is not just style, it is mandatory!**
 ```{python}
 age = 20
 if age >= 18:
@@ -287,13 +287,13 @@ else:
 ```
 :::
 ::: {.column width="50%"}
-**R: indentation is good practice, but it relies on brackets**
+**R: indentation is good practice, but it relies on brackets `{ }`**
 ```{r}
 age = 20
 if(age >= 18){
-print("Adult")
+    print("Adult")
 } else {
-print("Minor")
+    print("Minor")
 }
 ```
 :::
@@ -305,7 +305,7 @@ print("Minor")
 
 ::: {.columns}
 ::: {.column width="50%"}
-**Incorrect indentation in Python raises an error ❌ **
+**Incorrect indentation in Python raises errors 🤯 **
 ```{python, error=T}
 if age >= 18: 
 print("Adult") 
@@ -320,8 +320,23 @@ print("Minor") }
 :::
 :::
 
+::: {.columns}
+::: {.column width="50%"}
+```{python, error=T}
+for i in range(3):
+print(i)
+```
+:::
+::: {.column width="50%"}
+```{r}
+for(i in 1:3){
+print(i) }
+```
+:::
+:::
+
 <div style="font-size: 28px; margin-top: 1em;">
-This enforces clarity in Python code, but requires **discipline**! Actually, writing tidy and readable code is **best practice**! 
+This enforces clarity in Python code, but requires **discipline**... <br/>Remember that, in any case, writing tidy and readable code is a **best practice**! 
 </div>
 
 <!-- --------------------------------------------------------------------- -->

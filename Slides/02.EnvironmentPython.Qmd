@@ -19,6 +19,7 @@ execute:
 ---
 
 ```{r, echo=F, include=F}
+reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/python.exe")
 reticulate::repl_python()
 ```
 
@@ -175,6 +176,24 @@ del df
 ```{python}
 dir()
 ```
+
+<!------------------------------------------------------------------>
+
+## `dir()`
+
+**`dir()`** is a built-in function that does more than just returning a list of objects in workspace; it allows you to inspect all ***attributes*** and ***methods*** of any object
+
+```{python}
+a = [5.2, 2, 0, 98, 11.5, 63.11]
+dir(a)[37:47]
+
+import numpy as np
+dir(np)[40:70]
+
+a = np.array([5.2, 2, 0, 98, 11.5, 63.11])
+dir(a)[130:160]
+```
+
 
 <!------------------------------------------------------------------>
 

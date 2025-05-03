@@ -523,7 +523,7 @@ Enrico Toffalini
 <section id="use-basic-operations-1" class="slide level2">
 <h2>Use basic operations</h2>
 <h3 id="python-as-calculator-functions">Python as calculator: functions</h3>
-<p>Unlike R, many math functions require importing a module: <code>import math</code></p>
+<p>Unlike R, many math functions require importing a module: <strong><code>import math</code></strong></p>
 <div style="font-size:25px;">
 <table style="width:100%;">
 <colgroup>
@@ -587,9 +587,8 @@ Enrico Toffalini
 </table>
 </div>
 </section>
-<section id="use-basic-operations-2" class="slide level2">
-<h2>Use basic operations</h2>
-<h3 id="relational-operators">Relational operators</h3>
+<section id="relational-operators" class="slide level2">
+<h2>Relational operators</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -642,11 +641,12 @@ Enrico Toffalini
 </tbody>
 </table>
 </section>
-<section id="use-basic-operations-3" class="slide level2">
-<h2>Use basic operations</h2>
-<h3 id="basic-logical-operators">Basic logical operators</h3>
-<p>Logical operators combine Boolean values (<code>True</code>, <code>False</code>) and are often used in conditional expressions.</p>
-<p>Once again, let’s say that we defined <code>age = 20</code>, now let’s make a few examples:</p>
+<section id="logical-operators" class="slide level2">
+<h2>Logical operators</h2>
+<p>basic logical operators are <strong><code>and</code></strong>, <strong><code>or</code></strong>, <strong><code>not</code></strong>, just natural language words!</p>
+<div class="large-code">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <table>
 <thead>
 <tr class="header">
@@ -659,24 +659,61 @@ Enrico Toffalini
 <tbody>
 <tr class="odd">
 <td><code>and</code></td>
-<td>AND</td>
-<td><code>age&gt;25 and age&lt;60</code></td>
+<td>and</td>
+<td><code>age &gt; 25 and age &lt; 60</code></td>
 <td><code>False</code></td>
 </tr>
 <tr class="even">
 <td><code>or</code></td>
-<td>OR</td>
-<td><code>age&lt;25 or age&gt;60</code></td>
+<td>or</td>
+<td><code>age &lt; 25 or age &gt; 60</code></td>
 <td><code>True</code></td>
 </tr>
 <tr class="odd">
 <td><code>not</code></td>
-<td>NOT</td>
-<td><code>not age&lt;18</code></td>
+<td>not</td>
+<td><code>not age &lt; 18</code></td>
 <td><code>True</code></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="logical-operators-1" class="slide level2">
+<h2>Logical operators</h2>
+<p>however, when dealing with <code>arrays</code> (more on them later!) you need to use elementwise operators, as basic ones will not work!</p>
+<div class="large-code">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a>ages <span class="op">=</span> np.array([<span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">5</span>, <span class="dv">52</span>, <span class="dv">46</span>, <span class="dv">29</span>, <span class="dv">39</span>]) <span class="co"># more on this later!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&amp;</code></td>
+<td>elementwise “<code>and</code>”</td>
+<td><code>(ages &gt; 18) &amp; (ages &lt; 60)</code></td>
+</tr>
+<tr class="even">
+<td><code>|</code></td>
+<td>elementwise “<code>or</code>”</td>
+<td><code>(ages &lt; 18) | (ages &gt; 60)</code></td>
+</tr>
+<tr class="odd">
+<td><code>~</code></td>
+<td>elementwise “<code>not</code>”</td>
+<td><code>~(ages &lt; 18)</code></td>
+</tr>
+</tbody>
+</table>
+<br>
+<div style="font-size:30px;">
+<em>These elementwise operators are much like “<em><code>&amp;</code></em>”, “<em><code>|</code></em>”, and “<em><code>!</code></em>” in R</em>
+</div>
 <!-- --------------------------------------------------------------------- -->
 </section>
 <section id="basic-types-of-data" class="slide level2">
@@ -696,19 +733,19 @@ Enrico Toffalini
 <p>Another very important type of data is:</p>
 <p>This is much like R. Python uses <strong>strings</strong> to represent text, that must be enclosed in quotes (<strong><code>' '</code></strong>, or <strong><code>" "</code></strong>), like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">=</span> <span class="st">"Enrico"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">=</span> <span class="st">"Enrico"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And you may even perform operations with strings like:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">==</span> <span class="st">"Bob"</span> <span class="co"># is my name equal to Bob?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">==</span> <span class="st">"Bob"</span> <span class="co"># is my name equal to Bob?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>False</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">!=</span> <span class="st">"Bob"</span> <span class="co"># is my name NOT equal to Bob?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">!=</span> <span class="st">"Bob"</span> <span class="co"># is my name NOT equal to Bob?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">&gt;</span> <span class="st">"Bob"</span> <span class="co"># is my name larger than Bob? (yes, alphabetically!)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">&gt;</span> <span class="st">"Bob"</span> <span class="co"># is my name larger than Bob? (yes, alphabetically!)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
@@ -719,19 +756,19 @@ Enrico Toffalini
 <h3 id="lists-and-tuples-ordered-collections">Lists and Tuples: ordered collections</h3>
 <p><strong>Lists</strong> are ordered, mutable series of elements that can be of <strong>mixed types</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a>myList <span class="op">=</span> [<span class="dv">10</span>, <span class="fl">3.14</span>, <span class="st">"Enrico"</span>, <span class="va">True</span>, [<span class="dv">8</span>, <span class="fl">7.2</span>], <span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a>myList <span class="op">=</span> [<span class="dv">10</span>, <span class="fl">3.14</span>, <span class="st">"Enrico"</span>, <span class="va">True</span>, [<span class="dv">8</span>, <span class="fl">7.2</span>], <span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Tuples</strong> are exactly the same, just immutable (cannot update their values!)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup <span class="op">=</span> (<span class="dv">10</span>, <span class="fl">3.14</span>, <span class="st">"Enrico"</span>, <span class="va">True</span>, [<span class="dv">8</span>, <span class="fl">7.2</span>], <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup <span class="op">=</span> (<span class="dv">10</span>, <span class="fl">3.14</span>, <span class="st">"Enrico"</span>, <span class="va">True</span>, [<span class="dv">8</span>, <span class="fl">7.2</span>], <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Both can be indexed by numeric position using <code>[ ]</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup[<span class="dv">0</span>] <span class="co"># first element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup[<span class="dv">0</span>] <span class="co"># first element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup[<span class="op">-</span><span class="dv">2</span>] <span class="co"># second last element </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup[<span class="op">-</span><span class="dv">2</span>] <span class="co"># second last element </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[8, 7.2]</code></pre>
 </div>
@@ -741,26 +778,26 @@ Enrico Toffalini
 <h2>Basic types of data</h2>
 <h3 id="dictionaries-unordered-collection-of-key-value-pairs">Dictionaries: unordered collection of key-value pairs</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {  <span class="st">"name"</span>: <span class="st">"Jim"</span>,</span>
-<span id="cb17-2"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"age"</span>: <span class="dv">25</span>,</span>
-<span id="cb17-3"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"courses"</span>: [<span class="st">"BasicsR"</span>, <span class="st">"BasicPy"</span>, <span class="st">"Simulations"</span>]</span>
-<span id="cb17-4"><a href="" aria-hidden="true" tabindex="-1"></a>          }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {  <span class="st">"name"</span>: <span class="st">"Jim"</span>,</span>
+<span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"age"</span>: <span class="dv">25</span>,</span>
+<span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"courses"</span>: [<span class="st">"BasicsR"</span>, <span class="st">"BasicPy"</span>, <span class="st">"Simulations"</span>]</span>
+<span id="cb19-4"><a href="" aria-hidden="true" tabindex="-1"></a>          }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Cannot be indexed by numeric position, but by key:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"name"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"name"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'Jim'</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"courses"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"courses"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['BasicsR', 'BasicPy', 'Simulations']</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"age"</span>] <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"age"</span>] <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>625</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"courses"</span>][<span class="dv">1</span>] <span class="co"># but you can index a list inside a dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"courses"</span>][<span class="dv">1</span>] <span class="co"># but you can index a list inside a dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'BasicPy'</code></pre>
 </div>
@@ -771,25 +808,25 @@ Enrico Toffalini
 <h3 id="inspect-variables-types">inspect variables types</h3>
 <p>Python has the built-in <strong><code>type()</code></strong> function to inspect the type of any object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">=</span> <span class="st">"Enrico"</span></span>
-<span id="cb26-2"><a href="" aria-hidden="true" tabindex="-1"></a>isProf <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb26-3"><a href="" aria-hidden="true" tabindex="-1"></a>coursesTaught <span class="op">=</span> [<span class="st">"GenPsy"</span>,<span class="st">"Olfact"</span>,<span class="st">"BasicsR"</span>,<span class="st">"BasicsPy"</span>]</span>
-<span id="cb26-4"><a href="" aria-hidden="true" tabindex="-1"></a>nCourses <span class="op">=</span> <span class="bu">len</span>(coursesTaught)</span>
-<span id="cb26-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># see objects types</span></span>
-<span id="cb26-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(myName)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">=</span> <span class="st">"Enrico"</span></span>
+<span id="cb28-2"><a href="" aria-hidden="true" tabindex="-1"></a>isProf <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb28-3"><a href="" aria-hidden="true" tabindex="-1"></a>coursesTaught <span class="op">=</span> [<span class="st">"GenPsy"</span>,<span class="st">"Olfact"</span>,<span class="st">"BasicsR"</span>,<span class="st">"BasicsPy"</span>]</span>
+<span id="cb28-4"><a href="" aria-hidden="true" tabindex="-1"></a>nCourses <span class="op">=</span> <span class="bu">len</span>(coursesTaught)</span>
+<span id="cb28-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># see objects types</span></span>
+<span id="cb28-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(myName)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'str'&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(isProf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(isProf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'bool'&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(coursesTaught)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(coursesTaught)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'list'&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(nCourses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(nCourses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'int'&gt;</code></pre>
 </div>
@@ -800,23 +837,23 @@ Enrico Toffalini
 <h3 id="inspect-variables-types-1">inspect variables types</h3>
 <p>You may also inquire data type directly with functions <code>is.*</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(isProf, <span class="bu">bool</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(isProf, <span class="bu">bool</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(coursesTaught, <span class="bu">bool</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(coursesTaught, <span class="bu">bool</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>False</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(nCourses, <span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(nCourses, <span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(nCourses, <span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(nCourses, <span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>False</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(myName, <span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(myName, <span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>

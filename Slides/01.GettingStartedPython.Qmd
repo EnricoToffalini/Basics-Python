@@ -101,7 +101,7 @@ print(y.round(3))
 
 ## Use basic operations
 ### Python as calculator: functions
-Unlike R, many math functions require importing a module: `import math`
+Unlike R, many math functions require importing a module: **`import math`**
 
 <div style="font-size:25px;">
 | Function         | What it does                   | Example                  | Result     |
@@ -115,8 +115,7 @@ Unlike R, many math functions require importing a module: `import math`
 | `math.log(x, b)` | Logarithm, base $b$            | `math.log(10, 2)`        | `3.32193`  |
 </div>
 
-## Use basic operations
-### Relational operators
+## Relational operators
 
 ```{python}
 age = 20
@@ -131,18 +130,40 @@ age = 20
 | `>=` | Greater than or equal to | `age >= 18`   | `True` |
 | `<=` | Less than or equal to | `age <= 18`   | `False` |
 
-## Use basic operations
-### Basic logical operators
+## Logical operators
 
-Logical operators combine Boolean values (`True`, `False`) and are often used in conditional expressions.
+basic logical operators are **`and`**, **`or`**, **`not`**, just natural language words!
 
-Once again, let's say that we defined `age = 20`, now let's make a few examples:
+<div class="large-code">
+```python
+age = 20
+```
+</div>
 
 | Operator  |   What it does  | Example | Result |
 |------------|-------------|------|------|
-| `and` | AND | `age>25 and age<60`   |`False` |
-| `or` | OR | `age<25 or age>60`   |`True` |
-| `not` | NOT | `not age<18`   |`True` |
+| `and` | and | `age > 25 and age < 60`   |`False` |
+| `or` | or | `age < 25 or age > 60`   |`True` |
+| `not` | not | `not age < 18`   |`True` |
+
+## Logical operators
+
+however, when dealing with `arrays` (more on them later!) you need to use elementwise operators, as basic ones will not work!
+
+<div class="large-code">
+```python
+ages = np.array([20, 18, 5, 52, 46, 29, 39]) # more on this later!
+```
+</div>
+
+| Operator | Description     | Example                           |
+|----------|-----------------|-----------------------------------|
+| `&`      | elementwise "`and`" | `(ages > 18) & (ages < 60)`       |
+| `|`      | elementwise "`or`"  | `(ages < 18) | (ages > 60)`       |
+| `~`      | elementwise "`not`" | `~(ages < 18)`                    |
+
+<br/>
+<div style="font-size:30px;">*These elementwise operators are much like "*`&`*", "*`|`*", and "*`!`*" in R*</div>
 
 <!-- --------------------------------------------------------------------- -->
 
