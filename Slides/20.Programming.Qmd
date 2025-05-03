@@ -1,5 +1,5 @@
 ---
-title: "Basics of Programming: <br/> conditional statements, loops, <br/>custom functions"
+title: "Programming: <br/>Conditionals, Loops, <br/>Custom Functions"
 author: "Enrico Toffalini"
 include-in-header: ../assets/slidesheader.html
 format:

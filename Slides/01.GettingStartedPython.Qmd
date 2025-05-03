@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with Python"
+title: "Getting Started:<br/> IDEs, Operations, <br/>Basic Types of Data"
 author: "Enrico Toffalini"
 include-in-header: ../assets/slidesheader.html
 format:

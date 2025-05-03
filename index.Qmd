@@ -21,7 +21,7 @@ reticulate::repl_python()
 
 ## About This Course
 
-This is an introductory course on <a href="https://www.python.org/" target=_blank>**Python**</a> that is offered within the <a href="https://dottorato.psy.unipd.it/en" target="_blank">PhD program in Psychological Sciences</a> *(University of Padova)*. While R is more extensively used for statistical analysis and data science in this PhD program, familiarity with Python is useful for different purposes, including advanced machine learning application, deep learning models, natural language processing, computational efficiency in some scenarios, and programming experiments. Also, Python is widely required in industry and business, so basic proficiency with it a valuable asset! There are no prerequisites, but having attended <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank">*Basics of R for Data Science*</a> may greatly help (and, well, it was a mandatory course for our PhD students).
+This is a short (10 hours) introductory course on <a href="https://www.python.org/" target=_blank>**Python**</a> that is offered within the <a href="https://dottorato.psy.unipd.it/en" target="_blank">PhD program in Psychological Sciences</a> *(University of Padova)*. R is more extensively used for statistical analysis and data science in this PhD program, but familiarity with Python is useful for different purposes, including advanced machine learning applications, deep learning models, natural language processing, computational efficiency in some scenarios, and programming experiments. Also, Python is widely required in industry and business, so basic proficiency with it a valuable asset! No prerequisites, but having attended <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank">*Basics of R for Data Science*</a> may greatly help (well, it is a mandatory course for our PhD students)
 
 You are encouraged to look at this online book available on GitHub: <a href="https://jakevdp.github.io/PythonDataScienceHandbook//" target="_blank">***Python Data Science Handbook***</a>
 
@@ -38,9 +38,9 @@ You are encouraged to look at this online book available on GitHub: <a href="htt
 
 Bookmark this course homepage to have a quick access to this material (<a href="https://enricotoffalini.github.io/Basics-Python/">https://enricotoffalini.github.io/Basics-Python/</a>). Then do this:
 
-1.  **Install Python** locally: go to the official <a href="https://www.python.org/downloads/" target="_blank">Python download page</a> and follow the installation instructions for your operating system.
+1.  **Install Python**: go to the official <a href="https://www.python.org/downloads/" target="_blank">Python download page</a> and follow the installation instructions for your operating system.
 2.  **Install an IDE** *(Integrated Development Environment)*: Suggested IDEs are <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Posit/**RStudio**</a> (which you should have already installed for the other courses; it also supports Python!) or <a href="https://www.spyder-ide.org/" target="_blank">**Spyder**</a>.
-3.  **Test your local setup**: Make sure that your Python installation works; open your IDE (RStudio or Spyder), and run the following code in the console:
+3.  **Test your local setup**: Make sure that your Python installation works; open your IDE of choice and run the following code in the console:
 
 ```{python, eval=F}
 !pip install numpy # install package "numpy" from inside IDE
@@ -51,7 +51,7 @@ np.random.normal(0,1,size=10)
 
 If you get any errors when running the first line, try install the package via terminal with <br/> `pip install numpy`
 
-4.  **Take a look at** <a href="https://colab.research.google.com/" target="_blank">Colab</a>: Some basic practice and exercises will be conducted on <a href="https://colab.research.google.com/" target="_blank">**Google Colab**</a> (you need to log in with a Google account), a free online environment for writing and running Python in the browser without any local installation.
+4.  **Take a look at <a href="https://colab.research.google.com/" target="_blank">Colab</a>**: Some basic practice and exercises will be conducted on <a href="https://colab.research.google.com/" target="_blank">**Google Colab**</a> (you need to log in with a Google account), a free online environment for writing and running Python in the browser without any local installation.
 
 ## Course Topics
 
@@ -69,25 +69,29 @@ Python core libraries for data science! We will manipulate tabular data with `pa
 
 ##### A Bit on Fancy Topics?
 
-Data visualization, machine learning, use of deep learning & language models from HuggingFace 🤗, basic experiment programming - mostly upon request! That's truly why we want to use Python, after all.
+Data visualization, machine learning, use of deep learning & language models from <a href="https://huggingface.co/" target="_blank">HuggingFace</a> 🤗, basic experiment programming - mostly upon request! That's truly why we want to use Python, after all.
 
 ## Materials
 
-### Slides
+### Slides *(in progress!)*
 
--   **xx** - html
--   
+- [**Intro to This Course, aka Why We Should Use Python**](Slides/00.IntroPython.html){target="_blank"}
+- [**Getting Started: IDEs, Operations, Basic Types of Data**](Slides/01.GettingStartedPython.html){target="_blank"}
+- [**Virtual Environment, Packages, Import/Export**](Slides/02.EnvironmentPython.html){target="_blank"}
+- [**Basic Syntax, Typing, Indexing, Differences with R**](Slides/03.PythonRdifferences.html){target="_blank"}
+- [**Basics of Data Science: Intro to `NumPy` and `Pandas`**](Slides/10.NumpyPandas.html){target="_blank"}
+- [**Programming: Conditionals, Loops, Custom Functions**](Slides/20.Programming.html){target="_blank"}
 
 ### Exercises
 
 *— The following exercises are fundamental, and they importantly integrate concepts from the slides and introduce new functions and methods that you want to know!*
 
--   **xx** - html
+-   **xx** *(in progress!)*
 -   
 
 *— These other exercises are beyond the scope of this introductory course, but they could be stimulating and useful for more advanced users:*
 
--   **xx** - html
+-   **xx** *(in progress!)*
 -   
 
 ------------------------------------------------------------------------

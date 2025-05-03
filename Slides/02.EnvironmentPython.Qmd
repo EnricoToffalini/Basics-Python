@@ -1,5 +1,5 @@
 ---
-title: "Setting Up the Environment, Import/Export"
+title: "Virtual Environment, Packages, Import/Export"
 author: "Enrico Toffalini"
 include-in-header: ../assets/slidesheader.html
 format:

@@ -3085,7 +3085,7 @@ vertical-align: -.125em;
   <li><a href="#course-topics" id="toc-course-topics" class="nav-link" data-scroll-target="#course-topics">Course Topics</a></li>
   <li><a href="#materials" id="toc-materials" class="nav-link" data-scroll-target="#materials">Materials</a>
   <ul class="collapse">
-  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#slides-in-progress" id="toc-slides-in-progress" class="nav-link" data-scroll-target="#slides-in-progress">Slides <em>(in progress!)</em></a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
   </ul>
@@ -3121,7 +3121,7 @@ vertical-align: -.125em;
 
 <section id="about-this-course" class="level2">
 <h2 class="anchored" data-anchor-id="about-this-course">About This Course</h2>
-<p>This is an introductory course on <a href="https://www.python.org/" target="_blank"><strong>Python</strong></a> that is offered within the <a href="https://dottorato.psy.unipd.it/en" target="_blank">PhD program in Psychological Sciences</a> <em>(University of Padova)</em>. While R is more extensively used for statistical analysis and data science in this PhD program, familiarity with Python is useful for different purposes, including advanced machine learning application, deep learning models, natural language processing, computational efficiency in some scenarios, and programming experiments. Also, Python is widely required in industry and business, so basic proficiency with it a valuable asset! There are no prerequisites, but having attended <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank"><em>Basics of R for Data Science</em></a> may greatly help (and, well, it was a mandatory course for our PhD students).</p>
+<p>This is a short (10 hours) introductory course on <a href="https://www.python.org/" target="_blank"><strong>Python</strong></a> that is offered within the <a href="https://dottorato.psy.unipd.it/en" target="_blank">PhD program in Psychological Sciences</a> <em>(University of Padova)</em>. R is more extensively used for statistical analysis and data science in this PhD program, but familiarity with Python is useful for different purposes, including advanced machine learning applications, deep learning models, natural language processing, computational efficiency in some scenarios, and programming experiments. Also, Python is widely required in industry and business, so basic proficiency with it a valuable asset! No prerequisites, but having attended <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank"><em>Basics of R for Data Science</em></a> may greatly help (well, it is a mandatory course for our PhD students)</p>
 <p>You are encouraged to look at this online book available on GitHub: <a href="https://jakevdp.github.io/PythonDataScienceHandbook//" target="_blank"><strong><em>Python Data Science Handbook</em></strong></a></p>
 </section>
 <section id="dates-and-rooms-2025" class="level2">
@@ -3162,9 +3162,9 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
 <p>Bookmark this course homepage to have a quick access to this material (<a href="https://enricotoffalini.github.io/Basics-Python/">https://enricotoffalini.github.io/Basics-Python/</a>). Then do this:</p>
 <ol type="1">
-<li><strong>Install Python</strong> locally: go to the official <a href="https://www.python.org/downloads/" target="_blank">Python download page</a> and follow the installation instructions for your operating system.</li>
+<li><strong>Install Python</strong>: go to the official <a href="https://www.python.org/downloads/" target="_blank">Python download page</a> and follow the installation instructions for your operating system.</li>
 <li><strong>Install an IDE</strong> <em>(Integrated Development Environment)</em>: Suggested IDEs are <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Posit/<strong>RStudio</strong></a> (which you should have already installed for the other courses; it also supports Python!) or <a href="https://www.spyder-ide.org/" target="_blank"><strong>Spyder</strong></a>.</li>
-<li><strong>Test your local setup</strong>: Make sure that your Python installation works; open your IDE (RStudio or Spyder), and run the following code in the console:</li>
+<li><strong>Test your local setup</strong>: Make sure that your Python installation works; open your IDE of choice and run the following code in the console:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy <span class="co"># install package &quot;numpy&quot; from inside IDE</span></span>
@@ -3174,7 +3174,7 @@ vertical-align: -.125em;
 </div>
 <p>If you get any errors when running the first line, try install the package via terminal with <br> <code>pip install numpy</code></p>
 <ol start="4" type="1">
-<li><strong>Take a look at</strong> <a href="https://colab.research.google.com/" target="_blank">Colab</a>: Some basic practice and exercises will be conducted on <a href="https://colab.research.google.com/" target="_blank"><strong>Google Colab</strong></a> (you need to log in with a Google account), a free online environment for writing and running Python in the browser without any local installation.</li>
+<li><strong>Take a look at <a href="https://colab.research.google.com/" target="_blank">Colab</a></strong>: Some basic practice and exercises will be conducted on <a href="https://colab.research.google.com/" target="_blank"><strong>Google Colab</strong></a> (you need to log in with a Google account), a free online environment for writing and running Python in the browser without any local installation.</li>
 </ol>
 </section>
 <section id="course-topics" class="level2">
@@ -3193,28 +3193,32 @@ vertical-align: -.125em;
 </section>
 <section id="a-bit-on-fancy-topics" class="level5">
 <h5 class="anchored" data-anchor-id="a-bit-on-fancy-topics">A Bit on Fancy Topics?</h5>
-<p>Data visualization, machine learning, use of deep learning &amp; language models from HuggingFace 🤗, basic experiment programming - mostly upon request! That’s truly why we want to use Python, after all.</p>
+<p>Data visualization, machine learning, use of deep learning &amp; language models from <a href="https://huggingface.co/" target="_blank">HuggingFace</a> 🤗, basic experiment programming - mostly upon request! That’s truly why we want to use Python, after all.</p>
 </section>
 </section>
 <section id="materials" class="level2">
 <h2 class="anchored" data-anchor-id="materials">Materials</h2>
-<section id="slides" class="level3">
-<h3 class="anchored" data-anchor-id="slides">Slides</h3>
+<section id="slides-in-progress" class="level3">
+<h3 class="anchored" data-anchor-id="slides-in-progress">Slides <em>(in progress!)</em></h3>
 <ul>
-<li><strong>xx</strong> - html</li>
-<li></li>
+<li><a href="Slides/00.IntroPython.html" target="_blank"><strong>Intro to This Course, aka Why We Should Use Python</strong></a></li>
+<li><a href="Slides/01.GettingStartedPython.html" target="_blank"><strong>Getting Started: IDEs, Operations, Basic Types of Data</strong></a></li>
+<li><a href="Slides/02.EnvironmentPython.html" target="_blank"><strong>Virtual Environment, Packages, Import/Export</strong></a></li>
+<li><a href="Slides/03.PythonRdifferences.html" target="_blank"><strong>Basic Syntax, Typing, Indexing, Differences with R</strong></a></li>
+<li><a href="Slides/10.NumpyPandas.html" target="_blank"><strong>Basics of Data Science: Intro to <code>NumPy</code> and <code>Pandas</code></strong></a></li>
+<li><a href="Slides/20.Programming.html" target="_blank"><strong>Programming: Conditionals, Loops, Custom Functions</strong></a></li>
 </ul>
 </section>
 <section id="exercises" class="level3">
 <h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
 <p><em>— The following exercises are fundamental, and they importantly integrate concepts from the slides and introduce new functions and methods that you want to know!</em></p>
 <ul>
-<li><strong>xx</strong> - html</li>
+<li><strong>xx</strong> <em>(in progress!)</em></li>
 <li></li>
 </ul>
 <p><em>— These other exercises are beyond the scope of this introductory course, but they could be stimulating and useful for more advanced users:</em></p>
 <ul>
-<li><strong>xx</strong> - html</li>
+<li><strong>xx</strong> <em>(in progress!)</em></li>
 <li></li>
 </ul>
 <hr>

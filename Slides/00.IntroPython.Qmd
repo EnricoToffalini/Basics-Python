@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Basics of Python"
+title: "Intro to This Course, aka Why We Should Use Python"
 author: "Enrico Toffalini"
 include-in-header: ../assets/slidesheader.html
 format:

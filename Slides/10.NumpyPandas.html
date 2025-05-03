@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.550">
 
   <meta name="author" content="Enrico Toffalini">
-  <title>The basic Data Science packages: Numpy and Pandas</title>
+  <title>Basics of Data Science:  Numpy and Pandas</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -393,7 +393,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="figures/psicostatLogo.png" data-background-opacity="0.15" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">The basic Data Science packages: Numpy and Pandas</h1>
+  <h1 class="title">Basics of Data Science: <br>Numpy and Pandas</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -950,21 +950,21 @@ Name: course, dtype: object</code></pre>
 <span id="cb116-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   id      name           course  hours  mandatory  wellBoh
-0   1   Pastore    CurrentIssues     10       True    0.424
-1   2  Granziol  BasicsInference     20       True    0.803
-2   3    Feraco              SEM     20      False   -0.450
-3   4     Altoe         Outliers      5      False    0.721</code></pre>
+0   1   Pastore    CurrentIssues     10       True    0.750
+1   2  Granziol  BasicsInference     20       True   -0.696
+2   3    Feraco              SEM     20      False   -0.647
+3   4     Altoe         Outliers      5      False   -0.495</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[myDF[<span class="st">"hours"</span>]<span class="op">&gt;</span><span class="dv">15</span>, <span class="st">"wellBoh"</span>] <span class="op">+=</span> <span class="dv">100000</span></span>
 <span id="cb118-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory     wellBoh
-0   1   Pastore    CurrentIssues     10       True       0.424
-1   2  Granziol  BasicsInference     20       True  100000.803
-2   3    Feraco              SEM     20      False   99999.550
-3   4     Altoe         Outliers      5      False       0.721</code></pre>
+<pre><code>   id      name           course  hours  mandatory    wellBoh
+0   1   Pastore    CurrentIssues     10       True      0.750
+1   2  Granziol  BasicsInference     20       True  99999.304
+2   3    Feraco              SEM     20      False  99999.353
+3   4     Altoe         Outliers      5      False     -0.495</code></pre>
 </div>
 </div>
 <!--------------------------------------------------------------------->
@@ -1205,11 +1205,11 @@ Name: course, dtype: object</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory     wellBoh
-0   1   Pastore    CurrentIssues     10       True       0.424
-1   2  Granziol  BasicsInference     20       True  100000.803
-2   3    Feraco              SEM     20      False   99999.550
-3   4     Altoe         Outliers      5      False       0.721</code></pre>
+<pre><code>   id      name           course  hours  mandatory    wellBoh
+0   1   Pastore    CurrentIssues     10       True      0.750
+1   2  Granziol  BasicsInference     20       True  99999.304
+2   3    Feraco              SEM     20      False  99999.353
+3   4     Altoe         Outliers      5      False     -0.495</code></pre>
 </div>
 </div>
 <h4 id="count-by-group">Count by group</h4>
@@ -1240,10 +1240,10 @@ Name: hours, dtype: float64</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>)[[<span class="st">"hours"</span>,<span class="st">"wellBoh"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           hours     wellBoh
-mandatory                   
-False       12.5  50000.1355
-True        15.0  50000.6135</code></pre>
+<pre><code>           hours    wellBoh
+mandatory                  
+False       12.5  49999.429
+True        15.0  50000.027</code></pre>
 </div>
 </div>
 <h4 id="use-.agg-to-apply-multiple-functions">Use <code>.agg()</code> to apply multiple functions</h4>
@@ -1252,11 +1252,11 @@ True        15.0  50000.6135</code></pre>
 <span id="cb148-2"><a href="" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"wellBoh"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"max"</span>]</span>
 <span id="cb148-3"><a href="" aria-hidden="true" tabindex="-1"></a>                              })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          hours                    wellBoh                          
-           mean        std max        mean           std         max
-mandatory                                                           
-False      12.5  10.606602  20  50000.1355  70709.850097   99999.550
-True       15.0   7.071068  20  50000.6135  70710.946112  100000.803</code></pre>
+<pre><code>          hours                   wellBoh                         
+           mean        std max       mean           std        max
+mandatory                                                         
+False      12.5  10.606602  20  49999.429  70710.570638  99999.353
+True       15.0   7.071068  20  50000.027  70709.655642  99999.304</code></pre>
 </div>
 </div>
 <!--------------------------------------------------------------------->

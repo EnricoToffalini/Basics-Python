@@ -1,5 +1,5 @@
 ---
-title: "Python basics of syntax, typing, indexing... and differences with R"
+title: "Basic Syntax, Typing, Indexing, Differences with R"
 author: "Enrico Toffalini"
 include-in-header: ../assets/slidesheader.html
 format:
