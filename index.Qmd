@@ -51,7 +51,7 @@ np.random.normal(0,1,size=10)
 
 If you get any errors when running the first line, try install the package via terminal with <br/> `pip install numpy`
 
-4.  **Take a look at <a href="https://colab.research.google.com/" target="_blank">Colab</a>**: Some basic practice and exercises will be conducted on <a href="https://colab.research.google.com/" target="_blank">**Google Colab**</a> (you need to log in with a Google account), a free online environment for writing and running Python in the browser without any local installation.
+4.  **Take a look at** <a href="https://colab.research.google.com/" target="_blank">Colab</a>: Some basic practice and exercises will be conducted on <a href="https://colab.research.google.com/" target="_blank">**Google Colab**</a> (you need to log in with a Google account), a free online environment for writing and running Python in the browser without any local installation.
 
 ## Course Topics
 
@@ -75,17 +75,18 @@ Data visualization, machine learning, use of deep learning & language models fro
 
 ### Slides *(in progress!)*
 
-- [**Intro to This Course, aka Why We Should Use Python**](Slides/00.IntroPython.html){target="_blank"}
-- [**Getting Started: IDEs, Operations, Basic Types of Data**](Slides/01.GettingStartedPython.html){target="_blank"}
-- [**Virtual Environment, Packages, Import/Export**](Slides/02.EnvironmentPython.html){target="_blank"}
-- [**Basic Syntax, Typing, Indexing, Differences with R**](Slides/03.PythonRdifferences.html){target="_blank"}
-- [**Basics of Data Science: Intro to `NumPy` and `Pandas`**](Slides/10.NumpyPandas.html){target="_blank"}
-- [**Programming: Conditionals, Loops, Custom Functions**](Slides/20.Programming.html){target="_blank"}
+-   [**Intro to This Course, aka Why We Should Use Python**](Slides/00.IntroPython.html){target="_blank"}
+-   [**Getting Started: IDEs, Operations, Basic Types of Data**](Slides/01.GettingStartedPython.html){target="_blank"}
+-   [**Virtual Environment, Packages, Import/Export**](Slides/02.EnvironmentPython.html){target="_blank"}
+-   [**Basic Syntax, Typing, Indexing, Differences with R**](Slides/03.PythonRdifferences.html){target="_blank"}
+-   [**Basics of Data Science: Intro to `NumPy` and `Pandas`**](Slides/10.NumpyPandas.html){target="_blank"}
+-   [**Programming: Conditionals, Loops, Custom Functions**](Slides/20.Programming.html){target="_blank"}
 
 ### Exercises
 
 *— The following exercises are fundamental, and they importantly integrate concepts from the slides and introduce new functions and methods that you want to know!*
 
+-   [**First steps in Python**](https://colab.research.google.com/drive/1wp8LpzaO4wu-I6yhQS6uqD74h_739YWS){target="_blank"}
 -   **xx** *(in progress!)*
 -   
 
