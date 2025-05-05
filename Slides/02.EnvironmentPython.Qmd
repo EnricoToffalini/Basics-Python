@@ -77,16 +77,56 @@ import seaborn as sns
 
 Call a function from a package and getting help:
 ```{python, eval=F}
-np.mean([1, 2, 3]) # call a function from a package
+np.mean([2.0, 1.5, 7.1, 4.2]) # call a function from a package
 ?np.mean      # help only in IDE console or Colab,         
 help(np.mean) # help via built-in function
 ```
 
-Use `tab` to autocomplete and explore
+Use `tab` to autocomplete and explore available functions of a package ↴
 
 <div style="text-align: center;">
   <img src="figures/tabFunction.png" style="width: 100%;" />
 </div>
+
+<!------------------------------------------------------------------>
+
+## Accessing functions as methods
+
+In Python, many objects have functions *attached* to them — these are called **methods**, and are accessed using dot (`.`) notation *(more on this later!)*
+
+```{python}
+import numpy as np
+myVect = np.array([2.0, 1.5, 7.1, 4.2])
+```
+
+::: columns
+::: {.column width="50%"}
+***Object-oriented style***, requires that the object has this method:
+```{python}
+myVect.mean()
+```
+:::
+::: {.column width="50%"}
+***Function-oriented style*** <br/> (more like R):
+```{python}
+np.mean(myVect)
+```
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+<div style="text-align:right;">
+Use `tab` to autocomplete and explore available methods of an object → 
+</div>
+:::
+::: {.column width="70%"}
+<div style="text-align: center;">
+  <img src="figures/tabMethod.png" style="width: 100%;" />
+</div>
+:::
+:::
+
 
 <!------------------------------------------------------------------>
 

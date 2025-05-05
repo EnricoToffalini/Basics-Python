@@ -19,6 +19,7 @@ execute:
 ---
 
 ```{r, echo=F, include=F}
+reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/python.exe")
 reticulate::repl_python()
 ```
 
@@ -87,6 +88,82 @@ In Python, the dot ("**`.`**") has a very special role and it is part of the **s
   - `my.data = 5`: returns error in Python!
 
 On the contrary, in R it has no particular meaning and can be part of names
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: ROLE OF "**`.`**"
+
+
+```{python}
+import numpy as np
+import pandas as pd
+import math
+myVect = np.array([7.3, 22.5, 30.0, 25.3])
+df = pd.DataFrame({"x": [1, 2, 3, 4], "y": [5, 6, 7, 8]})
+```
+
+<div class="large-code">
+**`.mean()`** accesses a method of a numpy array
+```{python}
+myVect.mean()
+```
+
+**`.shape`** accesses an attribute of a pandas DataFrame
+```{python}
+
+df.shape
+```
+
+**`.pi`** accesses an attribute of module '`math`'
+```{python}
+math.pi
+```
+</div>
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: ROLE OF "**`.`**"
+
+using **`.`** to access submodules of modules: `statsmodels.formula.api`, `np.random`; class constructor methods: `.DataFrame()`, `.ols()`; methods: `.fit()`, `.normal()`, `.summary()`; attributes: `.bic`
+<div class="large-code">
+```python
+import statsmodels.formula.api as smf
+
+df = pd.DataFrame({
+  "x1": np.random.normal(size=20),
+  "x2": np.random.normal(size=20),
+  "y" : np.random.normal(size=20)
+})
+
+myModel = smf.ols("y ~ x1 + x2", data=df)
+myFit = myModel.fit()
+
+myFit.summary()
+myFit.bic
+```
+</div>
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: ROLE OF "**`.`**"
+
+<div style="font-size:10px;">
+```{python, echo=F, results="as-is"}
+import statsmodels.formula.api as smf
+df = pd.DataFrame({
+  "x1": np.random.normal(size=20),
+  "x2": np.random.normal(size=20),
+  "y" : np.random.normal(size=20)
+})
+myModel = smf.ols("y ~ x1 + x2", data=df)
+myFit = myModel.fit()
+
+x = myFit.summary2().as_text().splitlines()[:-3]
+print("\n".join(x))
+
+myFit.bic
+```
+</div>
 
 <!-- --------------------------------------------------------------------- -->
 
@@ -249,7 +326,6 @@ grades = [g + 10 for g in grades]
 print(grades)
 
 ```
-
 
 <!-- --------------------------------------------------------------------- -->
 
