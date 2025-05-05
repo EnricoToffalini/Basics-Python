@@ -43,8 +43,9 @@ summary {
 
 pre code.sourceCode.python {
     background-color: #EFF9EE !important; 
-    padding: 0.2em;
-    border-radius: 5px;
+    padding: 0.2em !important;
+    border-radius: 5px !important;
+    /*font-family: DejaVu Sans Mono !important;*/
 }
 
 pre code.sourceCode.r {
