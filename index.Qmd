@@ -86,7 +86,8 @@ Data visualization, machine learning, use of deep learning & language models fro
 
 *— The following exercises are fundamental, and they importantly integrate concepts from the slides and introduce new functions and methods that you want to know!*
 
--   [**First steps in Python**](https://colab.research.google.com/drive/1wp8LpzaO4wu-I6yhQS6uqD74h_739YWS){target="_blank"}
+-   [**First steps in Python** *(via Colab)*](https://colab.research.google.com/drive/1wp8LpzaO4wu-I6yhQS6uqD74h_739YWS){target="_blank"}
+-   [**First steps with `NumPy` and `Pandas`** *(via Colab)*](https://colab.research.google.com/drive/1m3C52Ps-6g_PghzXEjtG2pr0pWFcB1EY){target="_blank"}
 -   **xx** *(in progress!)*
 -   
 

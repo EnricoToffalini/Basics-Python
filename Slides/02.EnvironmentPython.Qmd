@@ -101,13 +101,13 @@ myVect = np.array([2.0, 1.5, 7.1, 4.2])
 
 ::: columns
 ::: {.column width="50%"}
-***Object-oriented style***, requires that the object has this method:
+***Method-style syntax***, requires that the object has this method:
 ```{python}
 myVect.mean()
 ```
 :::
 ::: {.column width="50%"}
-***Function-oriented style*** <br/> (more like R):
+***Function-style syntax*** <br/> (more like R):
 ```{python}
 np.mean(myVect)
 ```
