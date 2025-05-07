@@ -127,7 +127,7 @@ import scipy.stats as st
 x1 = np.random.normal(0, 1, size=30)
 x2 = np.random.normal(0.5, 1, size=30)
 
-tt = st.ttest_rel(x1, x2)
+tt = st.ttest_ind(x1, x2)
 print(tt.pvalue.round(4))
 
 if tt.pvalue < 0.05:
@@ -323,7 +323,7 @@ while pval >= 0.001: # go on until p < 0.001
   i += 1
   x1 = np.random.normal(0,1,size=30)
   x2 = np.random.normal(0,1,size=30)
-  tt = st.ttest_rel(x1, x2)
+  tt = st.ttest_ind(x1, x2)
   pval = tt.pvalue
   Now = time.time()
   if Now - Start > 10: 
