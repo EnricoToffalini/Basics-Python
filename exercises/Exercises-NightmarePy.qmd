@@ -1,0 +1,61 @@
+---
+title: "Exercises - Dataframes: *The nightmare*... in Python"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    self-contained: true
+    toc-depth: 4  
+    toc-expand: 4
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+## Like a ~~data scientist~~ data cleaner
+
+This is the 🐍 version of the exercise that you (as students of the PhD program in Psychological Sciences) previously encountered for the course on <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank"><em>Basics of R for Data Science</em></a>
+
+
+## Scenario
+
+You have received messy datasets from students or colleagues who have been collecting data from different tests: INVALSI, Wechsler, an experimental attention task, and personality questionnaires. Before you can do any meaningful analysis, you need to **clean**, **merge**, and **analyze** the data.
+
+
+## Your Final Goals
+
+-   Produce a clean dataframe with one row per participant including only the total/aggregate scores for each type of data (e.g., "`InvalsiTot`" for INVALSI items data, "`WechslerTot`" for Wechsler subtests data, "`meanAcc` for the lab-based trials data, "`OpennessTot`" and "`AgreabTot`" for the personality-questionnaires data);
+-   Produce a readable correlation matrix between all aggregate scores;
+-   Produce some descriptive statistics for the aggregate scores (e.g., means, standard deviations, skewness coefficients, counts of missing values);
+-   T-test comparison on INVALSI data (for males vs females);
+-   Some histograms and scatter plots for distributions and pairs of variables.
+
+### Datasets:
+
+-   INVALSI items data: <a href="data/ExerData_Invalsi_1.csv" download="ExerData_Invalsi_1.csv">`ExerData_Invalsi_1.csv`</a> and <a href="data/ExerData_Invalsi_2.csv" download="ExerData_Invalsi_2.csv">`ExerData_Invalsi_2.csv`</a>, participant responses to INVALSI tasks splitted in two different datasets (need to be merged first);
+-   Wechsler subtests data: <a href="data/ExerData_Wechsler.xlsx" download="ExerData_Wechsler.xlsx">`ExerData_Wechsler.xlsx`</a>;
+-   Lab-based trials data on an attentional task, includes accuracies to repeated trials: <a href="data/ExerData_LabTrials.csv" download="ExerData_LabTrials.csv">`ExerData_LabTrials.csv`</a>;
+-   Personality questionnaires: <a href="data/ExerData_Questionnaires.csv" download="ExerData_Questionnaires.csv">`ExerData_Questionnaires.csv`</a>, includes item-by-item scores for Openness and Agreeableness.
+
+
+## Tasks and suggestions
+
+| **Task**                  | **Subtask**                                                   | **Key Commands / Notes**                                   |
+|---------------------------|----------------------------------------------------------------|-------------------------------------------------------------|
+| **Data Import**        | Load datasets from CSV/Excel                                  | `pd.read_csv()` ,<br/> `pd.read_excel()`                          |
+| **Data Cleaning**      | Stack INVALSI data                                             | `pd.concat([inv1, inv2])`                                   |
+|                           | Convert strings to numbers, handle malformed entries           | `.str.replace()` ,<br/> `pd.to_numeric(..., errors="coerce")`     |
+|                           | Replace invalid values (e.g., too large scores) with missing               | `df.loc[...] = np.nan`                                      |
+|                           | Clean string-based numeric data                                | `.str.replace(",", ".")`                |
+| **Data Wrangling**     | Aggregate lab trials by participant                            | `groupby("idName").sum().reset_index()`                     |
+|                           | Merge datasets by participant ID                               | `df.merge(..., on="idName", how="outer")`                   |
+| **Variable Creation**  | Compute total scores                                           | `df["newcol"] = df[cols].sum(1)`                            |
+| **Descriptive Stats**  | Summary statistics                                             | `df.describe().round(2).loc[["mean", "std"]]`               |
+|                           | Correlation matrix                                             | `df[cols].corr().round(2)`                                  |
+|                           | Skewness and kurtosis                                          | `df[cols].skew()`, `df[cols].kurt()`                        |
+| **Inferential Stats**  | Compare genders using t-test, dropping missing values                                   | `ttest_ind(...).dropna()` (from module `scipy.stats`)                |
+| **Visualization**      | Histogram of a total score                                     | `plt.hist()`, `plt.show()`, `plt.clf()`                     |
+|                           | Other plots (optional)                                         | `sns.boxplot()`, `sns.scatterplot()`                        |
+
+

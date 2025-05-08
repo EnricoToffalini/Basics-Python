@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
+import seaborn as sns
 
 #############################
 
@@ -70,6 +71,8 @@ stats.ttest_ind(df["InvalsiTot"][df["gender"]=="M"].dropna(), df["InvalsiTot"][d
 plt.hist(df["WechslerTot"],bins=50)
 plt.show(); plt.clf()
 
+sns.boxplot(x="WechslerTot",data=df)
+plt.show()
 
 #############################
 
