@@ -3068,7 +3068,7 @@ vertical-align: -.125em;
 </section>
 <section id="scenario" class="level2">
 <h2 class="anchored" data-anchor-id="scenario">Scenario</h2>
-<p>You have received messy datasets from students or colleagues who have been collecting data from different tests: INVALSI, Wechsler, an experimental attention task, and personality questionnaires. Before you can do any meaningful analysis, you need to <strong>clean</strong>, <strong>merge</strong>, and <strong>analyze</strong> the data.</p>
+<p>You have received messy datasets from students or colleagues who have been collecting data from different tests: INVALSI, Wechsler, an experimental attention task, and personality questionnaires. Before you can do any meaningful analysis, you need to <strong>clean</strong>, <strong>merge</strong>, <strong>combine</strong>, and <strong>analyze</strong> the data</p>
 </section>
 <section id="your-final-goals" class="level2">
 <h2 class="anchored" data-anchor-id="your-final-goals">Your Final Goals</h2>
@@ -3082,98 +3082,98 @@ vertical-align: -.125em;
 <section id="datasets" class="level3">
 <h3 class="anchored" data-anchor-id="datasets">Datasets:</h3>
 <ul>
-<li>INVALSI items data: <a href="data/ExerData_Invalsi_1.csv" download="ExerData_Invalsi_1.csv"><code>ExerData_Invalsi_1.csv</code></a> and <a href="data/ExerData_Invalsi_2.csv" download="ExerData_Invalsi_2.csv"><code>ExerData_Invalsi_2.csv</code></a>, participant responses to INVALSI tasks splitted in two different datasets (need to be merged first);</li>
+<li>INVALSI items data: <a href="data/ExerData_Invalsi_1.csv" download="ExerData_Invalsi_1.csv"><code>ExerData_Invalsi_1.csv</code></a> and <a href="data/ExerData_Invalsi_2.csv" download="ExerData_Invalsi_2.csv"><code>ExerData_Invalsi_2.csv</code></a>, participant responses to INVALSI tasks splitted in two different datasets (need to be combined first);</li>
 <li>Wechsler subtests data: <a href="data/ExerData_Wechsler.xlsx" download="ExerData_Wechsler.xlsx"><code>ExerData_Wechsler.xlsx</code></a>;</li>
 <li>Lab-based trials data on an attentional task, includes accuracies to repeated trials: <a href="data/ExerData_LabTrials.csv" download="ExerData_LabTrials.csv"><code>ExerData_LabTrials.csv</code></a>;</li>
 <li>Personality questionnaires: <a href="data/ExerData_Questionnaires.csv" download="ExerData_Questionnaires.csv"><code>ExerData_Questionnaires.csv</code></a>, includes item-by-item scores for Openness and Agreeableness.</li>
 </ul>
 </section>
 </section>
-<section id="tasks-and-suggestions" class="level2">
-<h2 class="anchored" data-anchor-id="tasks-and-suggestions">Tasks and suggestions</h2>
+<section id="recommended-functions-and-methods" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-functions-and-methods">Recommended functions and methods</h2>
 <table class="table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 42%">
-<col style="width: 40%">
+<col style="width: 23%">
+<col style="width: 38%">
+<col style="width: 37%">
 </colgroup>
 <thead>
 <tr class="header">
 <th><strong>Task</strong></th>
 <th><strong>Subtask</strong></th>
-<th><strong>Key Commands / Notes</strong></th>
+<th><strong>Function / Method</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Data Import</strong></td>
 <td>Load datasets from CSV/Excel</td>
-<td><code>pd.read_csv()</code> ,<br> <code>pd.read_excel()</code></td>
+<td><code>pd.read_csv(...)</code> <br> <code>pd.read_excel(...)</code></td>
 </tr>
 <tr class="even">
 <td><strong>Data Cleaning</strong></td>
-<td>Stack INVALSI data</td>
-<td><code>pd.concat([inv1, inv2])</code></td>
+<td>In a DataFrame column, replace character with another (e.g., “,” with “.”)</td>
+<td><code>.astype(str).str.replace(&quot;,&quot;,&quot;.&quot;)</code></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Convert strings to numbers, handle malformed entries</td>
-<td><code>.str.replace()</code> ,<br> <code>pd.to_numeric(..., errors=&quot;coerce&quot;)</code></td>
+<td>Coerce a string column to numbers, handling errors as <code>NaN</code></td>
+<td><code>pd.to_numeric(..., errors=&quot;coerce&quot;)</code></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>Replace invalid values (e.g., too large scores) with missing</td>
+<td>Remove invalid values (e.g., implausibly large scores) replacing them with missing values</td>
 <td><code>df.loc[...] = np.nan</code></td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Clean string-based numeric data</td>
-<td><code>.str.replace(&quot;,&quot;, &quot;.&quot;)</code></td>
+<td><strong>Data Wrangling</strong></td>
+<td>Sum repeated observations by participant</td>
+<td><code>.groupby(...).sum().reset_index()</code></td>
 </tr>
 <tr class="even">
-<td><strong>Data Wrangling</strong></td>
-<td>Aggregate lab trials by participant</td>
-<td><code>groupby(&quot;idName&quot;).sum().reset_index()</code></td>
+<td></td>
+<td>Combine DataFrames that have the same columns</td>
+<td><code>pd.concat([df1, df2])</code></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Merge datasets by participant ID</td>
+<td>Merge info across different DataFrames by the same participant ID, keeping all information</td>
 <td><code>df.merge(..., on=&quot;idName&quot;, how=&quot;outer&quot;)</code></td>
 </tr>
 <tr class="even">
 <td><strong>Variable Creation</strong></td>
-<td>Compute total scores</td>
-<td><code>df[&quot;newcol&quot;] = df[cols].sum(1)</code></td>
+<td>Compute a new “total score” column that includes the sum of values across other columns</td>
+<td><code>df[...] = df[...].sum(1)</code></td>
 </tr>
 <tr class="odd">
 <td><strong>Descriptive Stats</strong></td>
-<td>Summary statistics</td>
-<td><code>df.describe().round(2).loc[[&quot;mean&quot;, &quot;std&quot;]]</code></td>
+<td>Quickly compute some summary statistics from a DataFrame</td>
+<td><code>df.describe()</code></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>Correlation matrix</td>
-<td><code>df[cols].corr().round(2)</code></td>
+<td>Correlation matrix from a selection of DataFrame columns</td>
+<td><code>df[[...]].corr()</code></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Skewness and kurtosis</td>
-<td><code>df[cols].skew()</code>, <code>df[cols].kurt()</code></td>
+<td>Skewness and kurtosis of DataFrame column(s)</td>
+<td><code>.skew()</code><br> <code>.kurt()</code></td>
 </tr>
 <tr class="even">
 <td><strong>Inferential Stats</strong></td>
-<td>Compare genders using t-test</td>
+<td>Compare genders using t-test, dropping missing values</td>
 <td><code>ttest_ind(...).dropna()</code> (from module <code>scipy.stats</code>)</td>
 </tr>
 <tr class="odd">
 <td><strong>Visualization</strong></td>
-<td>Histogram of a total score</td>
-<td><code>plt.hist()</code>, <code>plt.show()</code>, <code>plt.clf()</code></td>
+<td>Histograms (create, show, clear)</td>
+<td><code>plt.hist(...)</code><br> <code>plt.show()</code><br> <code>plt.clf()</code></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>Other plots (optional)</td>
-<td><code>sns.boxplot()</code>, <code>sns.scatterplot()</code></td>
+<td>Other plots from the <code>seaborn</code> package (as <code>sns</code>); remember to render them with <code>plt.show()</code> after creating them</td>
+<td><code>sns.boxplot(...)</code><br> <code>sns.scatterplot(x=...,y=...)</code><br> <code>sns.regplot(x=...,y=...,scatter=True,ci=95)</code></td>
 </tr>
 </tbody>
 </table>

@@ -90,6 +90,39 @@ Use `tab` to autocomplete and explore available functions of a package ↴
 
 <!------------------------------------------------------------------>
 
+## Using functions, help, autocomplete
+
+As in R, you can rely on positional order of arguments instead of naming them, or you can completely omit them if there are valid default arguments. However, it’s best practice to make all relevant arguments explicit for readability and reproducibility
+
+<div class="large-code">
+```{python, eval=F}
+sns.regplot(data=myDF, x="Age", y="Score", scatter=True, ci=95)
+plt.show()
+```
+</div>
+<div style="text-align:center; max-width:70%;">
+```{python, echo=F}
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+plt.clf()
+N = 100
+Age = np.random.uniform(65,85,N)
+Score = np.random.normal(100-Age/1.5,10,N)
+df = pd.DataFrame({"Age":Age, "Score":Score})
+pl = sns.regplot(data=df, x="Age", y="Score", 
+                          scatter=True, ci=95)
+pl.collections[0].set_alpha(0.8)
+pl.collections[1].set_alpha(0.25)
+
+plt.show()
+```
+</div>
+
+<!------------------------------------------------------------------>
+
 ## Accessing functions as methods
 
 In Python, many objects have functions *attached* to them — these are called **methods**, and are accessed using dot (`.`) notation *(more on this later!)*
