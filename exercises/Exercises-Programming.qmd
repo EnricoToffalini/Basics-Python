@@ -1,0 +1,52 @@
+---
+title: "Exercises - Basics of Programming"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    self-contained: true
+    toc-depth: 4  
+    toc-expand: 4
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+First of all<br/>
+`import numpy as np`<br/>
+`import matplotlib.pyplot as plt`<br/>
+then:
+
+-   Write a `for` loop that runs 20 iterations, each time generating and printing a single random number, rounded to the 3^rd^ decimal point, and drawn from a distribution of your choice (e.g., `np.random.binomial()`, `np.random.normal()`, `np.random.gamma()`, `np.random.poisson()`, `np.random.logistic()`).
+
+-   Write a `for` loop that runs 20 iterations, each time: 
+
+    -   drawing a single number from a *standard normal distribution* (with `np.random.normal()`);
+    -   `if` the number is negative print it, `else` print the string `"positive"`.
+
+-   Create an array of 10 random numbers from a standard normal distribution (using `np.random.normal()`), then use `np.where()` to create a new character array where each element is: `"neg"` if the number is negative, `"pos"` otherwise.
+
+-   We want to examine the sampling variability of the correlation between two normally distributed but unrelated variables (i.e., their underlying true correlation is $r = 0$), when the sample size is $N = 30$; so write a `for` loop that:
+
+    -   runs thousands of iterations, each time generating two independent random variables (using `np.random.normal()`) with $N = 30$;
+    -   at each iteration, compute the estimated correlation coefficient with `np.corrcoef()` and store it as a number in a list or array *(warning: `np.corrcoeff()` returns a small 2x2 matrix, so you have to extract the coefficient of interest from there before storing it)*;
+    -   after completing all the iterations, visualize the distribution of estimated correlation coefficients with `plt.hist()` *(hint: then also call `plt.show()`)* or any other plotting method; also, compute the `np.median()` and the *95% confidence interval* using the quantile method (i.e., with `np.quantile()` setting `q=[.025,.975]`).
+
+-   Write a custom function called `describe_sign()` that takes a number as input and returns as output: `"negative"` if the input value is below zero, `"zero"` if it is exactly zero, or `"positive"` if it is greater than zero.
+
+-   Write a custom function called `simulate_correlations()` that does the following (this is a bit advanced but funny 🙂):
+
+    -   take two numeric arguments as input: `N` and `n_sim`;
+    -   initializes an empty array (`np.empty()`) that has `n_sim` elements, all filled with `np.nan`;
+    -   run a `for` loop `n_sim` times;
+    -   inside the loop, at each iteration it generates two independent normally distributed variables each with `N` observations, computes the correlation coefficient between them, and stores it in the appropriate position of the previously initialized array *(hint: this had already been done in the exercise above)*; 
+    -   return as output the array filled with simulated correlation coefficients
+
+-   *Extra for advanced users:* Repeat the above exercise on the `simulate_correlations()` custom function, but now adding a third numeric argument as input, called `r`, which defines the true correlation between the two normally distributed variables. To generate correlated variables, you can use `np.random.multivariate_normal()` *(first of all, see and understand the documentation!)*
+
+- You are working with standardized test scores and you want to label each score as `"low"` (below −1), `"average"` (between −1 and +1), or `"high"` (above +1):
+
+    -   Generate an array of 50 standard normal scores; 
+    -   Use `np.select()` to transform the scores into the above labels.
+

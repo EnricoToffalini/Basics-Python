@@ -39,7 +39,7 @@ You have received messy datasets from students or colleagues who have been colle
 ## Recommended functions and methods
 
 | **Task** | **Subtask** | **Function / Method** |
-|------------------|----------------------------|---------------------------|
+|----|----|----|
 | **Data Import** | Load datasets from CSV/Excel | `pd.read_csv(...)` <br/> `pd.read_excel(...)` |
 | **Data Cleaning** | In a DataFrame column, replace character with another (e.g., "," with ".") | `.astype(str).str.replace(",",".")` |
 |  | Coerce a string column to numbers, handling errors as `NaN` | `pd.to_numeric(..., errors="coerce")` |
