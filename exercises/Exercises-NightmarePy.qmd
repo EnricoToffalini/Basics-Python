@@ -39,10 +39,10 @@ You have received messy datasets from students or colleagues who have been colle
 ## Recommended functions and methods
 
 | **Task** | **Subtask** | **Function / Method** |
-|-----------------|----------------------------|---------------------------|
+|------------------|----------------------------|---------------------------|
 | **Data Import** | Load datasets from CSV/Excel | `pd.read_csv(...)` <br/> `pd.read_excel(...)` |
 | **Data Cleaning** | In a DataFrame column, replace character with another (e.g., "," with ".") | `.astype(str).str.replace(",",".")` |
-|  | Coerce a string column to numbers, handling errors as `NaN`  | `pd.to_numeric(..., errors="coerce")` |
+|  | Coerce a string column to numbers, handling errors as `NaN` | `pd.to_numeric(..., errors="coerce")` |
 |  | Remove invalid values (e.g., implausibly large scores) replacing them with missing values | `df.loc[...] = np.nan` |
 | **Data Wrangling** | Sum repeated observations by participant | `.groupby(...).sum().reset_index()` |
 |  | Combine DataFrames that have the same columns | `pd.concat([df1, df2])` |
@@ -54,5 +54,3 @@ You have received messy datasets from students or colleagues who have been colle
 | **Inferential Stats** | Compare genders using t-test, dropping missing values | `ttest_ind(...).dropna()` (from module `scipy.stats`) |
 | **Visualization** | Histograms (create, show, clear) | `plt.hist(...)`<br/> `plt.show()`<br/> `plt.clf()` |
 |  | Other plots from the `seaborn` package (as `sns`); remember to render them with `plt.show()` after creating them | `sns.boxplot(...)`<br/> `sns.scatterplot(x=...,y=...)`<br/> `sns.regplot(x=...,y=...,scatter=True,ci=95)` |
-
-
