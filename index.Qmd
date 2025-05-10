@@ -88,6 +88,7 @@ Data visualization, machine learning, use of deep learning & language models fro
 
 -   [**First steps in Python** *(via Colab)*](https://colab.research.google.com/drive/1wp8LpzaO4wu-I6yhQS6uqD74h_739YWS){target="_blank"}
 -   [**First steps with `NumPy` and `Pandas`** *(via Colab)*](https://colab.research.google.com/drive/1m3C52Ps-6g_PghzXEjtG2pr0pWFcB1EY){target="_blank"}
+-   [**Basics of Programming... with some data science**](exercises/Exercises-Programming.html){target="_blank"}
 -   [**The data <em>nightmare</em> exercise... in Python**](exercises/Exercises-NightmarePy.html){target="_blank"}
 -   **xx** *(in progress!)*
 -   

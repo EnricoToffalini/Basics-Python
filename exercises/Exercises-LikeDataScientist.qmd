@@ -1,0 +1,68 @@
+---
+title: "Exercises - Programming Like a Data Scientist"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    self-contained: true
+    toc-depth: 4  
+    toc-expand: 4
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+*This set of exercises requires practicing and combining various skills: creating a project folder with a virtual environment, working with arrays and dataframes, using conditional statements and loops. Some of these exercises are bit advanced for the purposes of the present course!*
+
+::: {style="color: #1943CF;"}
+*This first part in blue concerns managing a virtual environment for reproducibility. It is not strictly mandatory for completing the rest of the exercise, so you could skip it, but it is good for doing practice... so you are encouraged to try!*
+
+-   Create a new project folder somewhere on your computer. In it, create a new python virtual environment (with this command in your *bash/terminal*: `python -m venv nameOfYourEnv`), and activate it as shown in the slides depending on your operating system and whether you work in an IDE. The whole project folder should be organized as follows:
+
+``` csharp
+yourProjectFolder/
+├── venv/             ← virtual environment
+├── data/             ← .csv (see below)
+├── scripts/          ← .py scripts
+├── results/          ← output files, figures
+├── requirements.txt  ← list of installed packages for reproducibility (see below)
+└── README.md         ← brief description of the project (with something related to this course)
+```
+
+-   In the just created virtual environment install `numpy`, `pandas`, `matplotlib`, `seaborn` (even if you had already installed them in the main python installation, you should re-install them in your local virtual environment)
+
+-   After having successfully installed the above packages, generate the `requirements.txt` file for reproducibility, using this command in your *bash/terminal* (after having activated the virtual environment): `pip freeze > requirements.txt`
+:::
+
+-   Import the above listed python packages using appropriate aliases (e.g., `import matplotlib as mpl`)
+
+-   Download the following dataframes: <a href="data/df1.csv">`df1.csv`</a>, <a href="data/dfWide1.csv">`dfWide1.csv`</a>, <a href="data/dfWide2.csv">`dfWide2.csv`</a> and import them in Python using `pd.read_csv()`
+
+-   If the imported dataframes present a strange initial column like `"Unnamed: 0"` know that it is an artifact and should be removed. You could try removing it with the method `.drop(columns=["Unnamed: 0"])`
+
+-   The dataframe `df1` has all its columns stored as strings, but many are mostly numeric, and should be treated as such. Your task is to determine which columns can be "acceptably" coerced to numeric. Use a combination of iterative and conditional programming to complete the following steps:
+
+    -   Iterate over all columns of `df1` (using a `for` loop is recommended);
+    -   For each column, attempt coercion to numeric using `pd.to_numeric(..., errors='coerce')`, and calculate the percentage of valid (i.e., non-`NaN`) values (you can use the methods `.isna().sum()`);
+    -   If the percentage of valid values exceeds 80%, actually convert/coerce the column to numeric;
+    -   Keep track of which columns were coerced by storing their names in a separate list or array;
+    -   After processing all columns, compute a correlation matrix including only the coerced-to-numeric columns (`df1.corr()` with `method="pearson"`);
+    -   Redo the previous step using the method `.dropna()` before computing `.corr()` in order to remove listwise any row with any missing values, and visually inspect whether the correlation coefficients have changed a lot;
+    -   inspect the `.shape` attribute to see how many (complete) rows are left in the DataFrame after the listwise deletion with `.dropna()`;
+    -   *Optional:* Use `seaborn.heatmap()` to produce a colorful correlation matrix plot.
+
+-   The dataframe `dfWide1` contains data for treated subjects at three times (`"T0"`, `"T1"`, and `"T2"`) in **wide format**, but it needs to be reshaped to **long format** for data analysis. Use `pd.melt()` (or `pd.wide_to_long()`) for reshaping *(hint: first look the help/documentation and/or the examples in the slides.)*
+
+-   *Extra for advanced users:* The dataframe `dfWide2` is even more complex: it contains two variables, `Acc` (for *accuracy*) and `RT` (for *response times*), measured at three time points. Reshape `dfWide2` to *long format*, keeping `Acc` and `RT` as separate columns. You could "melt" each variable separately, and the use `pd.merge()` to combine the two dataframes... but mind the names of the values!
+
+- *Extra*: enjoy some data visualization on the long-form dataframe using for example:
+
+    - "spaghetti plot" for individual trajectories:<br/>
+    `sns.lineplot(data=..., x="Time", y="Score", hue="id", units="id")`
+    - more classical plot showing average scores and their CIs:<br/>
+    `sns.pointplot(data=..., x="Time",  y="Score", hue="group", errorbar="ci", dodge=True, join=True)`
+
+Finally, tidy up!: place all documents, code, results, figures, and related files into the appropriate subfolders within your project folder.
+
+
