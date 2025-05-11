@@ -77,7 +77,7 @@ Data visualization, machine learning, use of deep learning & language models fro
 
 -   [**Intro to This Course, aka Why We Should Use Python**](Slides/00.IntroPython.html){target="_blank"}
 -   [**Getting Started: IDEs, Operations, Basic Types of Data**](Slides/01.GettingStartedPython.html){target="_blank"}
--   [**Virtual Environment, Packages, Import/Export**](Slides/02.EnvironmentPython.html){target="_blank"}
+-   [**Virtual Environments, Packages, Import/Export**](Slides/02.EnvironmentPython.html){target="_blank"}
 -   [**Basic Syntax, Typing, Indexing, Differences with R**](Slides/03.PythonRdifferences.html){target="_blank"}
 -   [**Basics of Data Science: Intro to `NumPy` and `Pandas`**](Slides/10.NumpyPandas.html){target="_blank"}
 -   [**Programming: Conditionals, Loops, Custom Functions**](Slides/20.Programming.html){target="_blank"}
@@ -96,7 +96,7 @@ Data visualization, machine learning, use of deep learning & language models fro
 
 -   [**Basics of Clustering with K-Means and GMM**](exercises/Exercises-UnsupervClustering.html){target="_blank"}
     -   ::: {style="font-size:14px;"}
-        **additional exercise on [Simulating clusters and assessing inferential risks ](exercises/ExercisesExtra-SimulateClustering.html){target="_blank"}**
+        **additional exercise on [Simulating clusters and assessing inferential risks](exercises/ExercisesExtra-SimulateClustering.html){target="_blank"}**
         :::
 -   **xx** *(in progress!)*
 -   

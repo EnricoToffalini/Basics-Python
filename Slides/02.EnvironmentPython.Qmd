@@ -1,5 +1,5 @@
 ---
-title: "Virtual Environment, Packages, Import/Export"
+title: "Virtual Environments, Packages, Import/Export"
 author: "Enrico Toffalini"
 include-in-header: ../assets/slidesheader.html
 format:
@@ -52,6 +52,21 @@ nameOfMyEnv\Scripts\activate.ps1    # Windows
 ```
 
 ...alternatively, inside IDEs, you may activate the `venv` via specific commands like `reticulate::use_virtualenv("nameOfMyEnv", required=T)` (in ***RStudio***), or setting the Python interpreter manually and then restarting the kernel (in ***Spyder***)
+
+<!------------------------------------------------------------------>
+
+## Virtual Environment
+
+<div style="font-size:30px;">
+Even if some are already installed in your main Python installation, you should **reinstall packages needed for your project in the local `venv`** (after activating it). This is considered best practice, as it ensures **isolation** across projects and **reproducibility**. After (re-)installing them, you can export a **`requirements.txt`** file to document the exact versions of all installed packages (this is particularly useful for sharing your environment, e.g., via *GitHub*):
+</div>
+```{bash, eval=F}
+pip freeze > requirements.txt
+```
+
+<div style="text-align: center;">
+  <img src="figures/requirements.png" style="width: 80%;" />
+</div>
 
 <!------------------------------------------------------------------>
 
