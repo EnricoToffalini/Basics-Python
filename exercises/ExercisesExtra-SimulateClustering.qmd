@@ -1,0 +1,101 @@
+---
+title: "Exercises – Additional: Simulating Distributions and Assessing Inferential Risks in Clustering"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    self-contained: true
+    toc-depth: 4  
+    toc-expand: 4
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+```{r, echo=F, include=F}
+reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/python.exe")
+reticulate::repl_python()
+```
+
+## Scenario
+
+In the [previous exercise](Exercises-UnsupervClustering.html){target="_blank"}, you learned how to use *K-Means* and *GMM* for unsupervised clustering. Now, your task is to assess whether clustering results are robust across different scenarios involving correlated variables, heterogeneous variances, non-normal distributions, and varying numbers of true underlying clusters (`k`). In other words, you will **simulate data** under a range of **assumption violations** (e.g., correlated features, unequal variances, non-Gaussian distributions), and then apply clustering methods to see whether they still:
+
+- Correctly identify the number of underlying clusters;
+- Provide accurate classification (e.g., as evaluated using the *Adjusted Rand Index*).
+
+## Suggestions
+
+### Simulating correlated, skewed, and heteroscedastic variables
+
+```{python}
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from scipy.stats import skewnorm
+
+# set desired sample size
+N = 500
+
+# Create a strongly positively skewed variable
+x1 = skewnorm.rvs(a=20, loc=0, scale=1, size=N)
+
+# Create a normally distributed variable highly correlated with x1
+x2 = 0.8*x1 + np.random.normal(0, 0.5, size=N)
+
+# Create a third negatively skewed variable with much higher variance
+x3 = skewnorm.rvs(a=-5, loc=0, scale=5, size=N)
+
+# Combine into a DataFrame
+df = pd.DataFrame({'x1': x1, 'x2': x2, 'x3': x3})
+
+# Pairplot to visualize relationships
+sns.pairplot(df);
+plt.show(); plt.close()
+```
+
+### Simulating more than one true component
+
+```{python}
+# Simulate 3 clusters (with 2-D features, but only to facilitate visualization)
+n = 300
+
+# generate three different clusters and combine them in a single 2-D array
+c1 = np.random.normal(loc=[0, 0], scale=[0.9, 1.4], size=(n, 2))
+c2 = np.random.normal(loc=[3, 3], scale=[1.2, 0.8], size=(n, 2))
+c3 = np.random.normal(loc=[-2, 4], scale=[0.6, 1.3], size=(n, 2))
+x = np.vstack([c1, c2, c3])
+
+# generate a dataframe in DataFrame and add labels of true cluster
+df = pd.DataFrame(x, columns=["x1", "x2"])
+df["TrueCluster"] = ["c1"]*n + ["c2"]*n + ["c3"]*n
+
+# Scatter plot with color by true cluster label
+sns.scatterplot(data=df, x="x1", y="x2", hue="TrueCluster")
+plt.title("Simulated Data with 3 True Clusters")
+plt.xlabel("x1")
+plt.ylabel("x2")
+plt.show()
+```
+
+### Example of (Adjusted) Rand Index 
+
+The following example on the calculation of the Rand Index is applied the `df` dataframe with 3 true clusters simulated in the previous chunk
+
+```{python}
+# import packages and functions as needed
+from sklearn.cluster import KMeans
+from sklearn.metrics import adjusted_rand_score
+
+# Fit K-Means clustering with k=3
+kmeans = KMeans(n_clusters=3)
+predicted_labels = kmeans.fit_predict(df[["x1","x2"]])
+
+# Compute Adjusted Rand Index
+ari = adjusted_rand_score(df["TrueCluster"], predicted_labels)
+print(round(ari,4))
+```
+
+*Note:* The Adjusted Rand Index (ARI) ranges from -1 to 1, with **1** indicating perfect agreement between the predicted and the true cluster labels, and **0** indicating that the agreement is at chance level (i.e., worst possible performance). Non-adjusted Rand Index, on the contrary, would have `1 / number_of_clusters` as the chance level (in the case above, it would have been `0.333`).

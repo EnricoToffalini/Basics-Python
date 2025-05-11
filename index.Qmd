@@ -95,9 +95,11 @@ Data visualization, machine learning, use of deep learning & language models fro
 *— These other exercises are beyond the scope of this introductory course, but they could be stimulating and useful for more advanced users:*
 
 -   [**Basics of Clustering with K-Means and GMM**](exercises/Exercises-UnsupervClustering.html){target="_blank"}
+    -   ::: {style="font-size:14px;"}
+        **additional exercise on [Simulating clusters and assessing inferential risks ](exercises/ExercisesExtra-SimulateClustering.html){target="_blank"}**
+        :::
 -   **xx** *(in progress!)*
 -   
-
 
 ------------------------------------------------------------------------
 
