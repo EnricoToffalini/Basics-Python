@@ -169,6 +169,14 @@ myFit.bic
 
 ## Key differences: INDEXING
 
+<div style="text-align: center;">
+  <img src="figures/indexing01.png" style="width: 80%;" />
+</div>
+
+<!-- --------------------------------------------------------------------- -->
+
+## Key differences: INDEXING
+
 ::: {.columns}
 ::: {.column width="50%"}
 **Python**

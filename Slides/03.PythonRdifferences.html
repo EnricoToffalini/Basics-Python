@@ -625,34 +625,41 @@ using <strong><code>.</code></strong> to access submodules of modules: <code>sta
 <div class="cell-output cell-output-stdout">
 <pre><code>                Results: Ordinary least squares
 ================================================================
-Model:              OLS              Adj. R-squared:     0.087  
-Dependent Variable: y                AIC:                52.8735
-Date:               2025-05-05 16:00 BIC:                55.8607
-No. Observations:   20               Log-Likelihood:     -23.437
-Df Model:           2                F-statistic:        1.906  
-Df Residuals:       17               Prob (F-statistic): 0.179  
-R-squared:          0.183            Scale:              0.71772
+Model:              OLS              Adj. R-squared:     -0.082 
+Dependent Variable: y                AIC:                58.6563
+Date:               2025-05-11 13:00 BIC:                61.6435
+No. Observations:   20               Log-Likelihood:     -26.328
+Df Model:           2                F-statistic:        0.2796 
+Df Residuals:       17               Prob (F-statistic): 0.760  
+R-squared:          0.032            Scale:              0.95835
 -----------------------------------------------------------------
                Coef.   Std.Err.     t     P&gt;|t|    [0.025  0.975]
 -----------------------------------------------------------------
-Intercept      0.0132    0.2134   0.0619  0.9514  -0.4371  0.4635
-x1            -0.4121    0.2130  -1.9346  0.0699  -0.8615  0.0373
-x2             0.1501    0.2524   0.5947  0.5599  -0.3824  0.6825
+Intercept     -0.3083    0.2219  -1.3895  0.1826  -0.7765  0.1598
+x1             0.0196    0.1904   0.1027  0.9194  -0.3821  0.4212
+x2             0.1783    0.2387   0.7470  0.4653  -0.3253  0.6820
 ----------------------------------------------------------------
-Omnibus:               4.530       Durbin-Watson:          1.886
-Prob(Omnibus):         0.104       Jarque-Bera (JB):       2.406
-Skew:                  0.737       Prob(JB):               0.300
-Kurtosis:              3.847       Condition No.:          2    
+Omnibus:              1.876        Durbin-Watson:          2.194
+Prob(Omnibus):        0.391        Jarque-Bera (JB):       1.104
+Skew:                 -0.227       Prob(JB):               0.576
+Kurtosis:             1.942        Condition No.:          1    
 ================================================================</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>np.float64(55.86074670437123)</code></pre>
+<pre><code>np.float64(61.643531588401544)</code></pre>
 </div>
 </div>
 </div>
 <!-- --------------------------------------------------------------------- -->
 </section>
 <section id="key-differences-indexing" class="slide level2">
+<h2>Key differences: INDEXING</h2>
+<div style="text-align: center;">
+<p><img src="figures/indexing01.png" style="width: 80%;"></p>
+</div>
+<!-- --------------------------------------------------------------------- -->
+</section>
+<section id="key-differences-indexing-1" class="slide level2">
 <h2>Key differences: INDEXING</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -722,7 +729,7 @@ Kurtosis:              3.847       Condition No.:          2
 </div>
 <!-- --------------------------------------------------------------------- -->
 </section>
-<section id="key-differences-indexing-1" class="slide level2">
+<section id="key-differences-indexing-2" class="slide level2">
 <h2>Key differences: INDEXING</h2>
 <p>In Python you cannot index outside a list or vector</p>
 <div class="columns">
