@@ -1,0 +1,220 @@
+---
+title: "Exercises - Basics of Clustering with K-Means and GMM"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    self-contained: true
+    toc-depth: 4  
+    toc-expand: 4
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+```{r, echo=F, include=F}
+reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/python.exe")
+reticulate::repl_python()
+```
+
+## From raw data to cluster profiles
+
+Let's do some basic unsupervised machine learning / clustering analysis. We will use **K-Means** and **Gaussian Mixture Models (GMM)** to group participants based on their standardized test scores or questionnaire responses
+
+## Scenario
+
+You must analyze a dataset containing some numerical scores per participant. Your goal is to learn how to run *k-means* clustering and *GMM* to group participants (i.e., multivariate observations) based on their features, without any prior labels. You could do it with any dataset available online. Below, the exercise is done using the final output (simulated) dataset from the *"data nightmare"* exercise (you can download it from here: <a href="data/dataForCluster.csv" download>`dataForCluster.csv`</a>) 
+
+## Your Final Goals
+
+-   Run clustering with a different number `k` of components;
+-   Decide the best number of clusters using appropriate metrics (e.g., silhouette values for *K-Means*; BIC for *GMM*);
+-   Compare clustering results between *K-Means* and *GMM*;
+-   Inspect the average profiles of resulting clusters with data visualization.
+
+## Script
+
+#### Preliminary steps
+
+```{python}
+import pandas as pd
+import numpy as np
+import sklearn as skl  # includes both k-means and GMM methods
+import matplotlib.pyplot as plt # for data visualization
+import seaborn as sns # for data visualization
+
+# Load data, keep only numeric columns, drop rows with missing values
+dfTot = pd.read_csv("data/dataForCluster.csv") 
+df = dfTot.select_dtypes(include=np.number).dropna()
+```
+
+### *K-Means*
+
+For k-means, it's essential that features have the same variance (otherwise some features might be weighted enormously more than others in the clustering... but try to skip it and see what changes, if you like 🙂). Additionally, features should ideally be orthogonal, otherwise k-means tend to group observations along correlated features. So, preliminary PCA would be warranted! Now we skip it to avoid making this too long, but know that in real research this *would* be important!
+
+```{python}
+# Standardize all numeric features (mean=0, std=1)
+x = skl.preprocessing.StandardScaler().fit_transform(df)
+```
+
+**Compute silhouette scores for various numbers of components `k`**
+
+```{python}
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+
+Ks = range(2, 7) # from 2 to 6
+silhouetteValues = [] # initialize list of results
+
+for k in Ks:
+    # create k-means object
+    kmeans = KMeans(n_clusters=k) 
+    # predict classification using data
+    classification = kmeans.fit_predict(x) 
+    # compute and store silhouette score for k
+    silhouetteValues.append(silhouette_score(x, classification))
+
+# Plot silhouette scores
+plt.figure(figsize=(6,4))
+sns.pointplot(x=list(Ks), y=silhouetteValues)
+plt.title("Silhouette scores vs k")
+plt.xlabel("k"); plt.ylabel("Silhouette score")
+plt.show(); plt.close()
+```
+
+- According to this plot, what is the most appropriate number of clusters?
+- Note that the silhouette score could not be computed for `k = 1`, which is a relevant limitation when using *k-means*, because it leaves it unclear whether the "just one population" solution is actually best; alternatives could be computing the *Duda-Hart* test under some assumptions, or computing additional statistics (e.g., the within-cluster sum of squares (WCSS) / `.inertia_`) and inspect the plot with the "elbow method"
+
+
+**Plot cluster profiles when k = 2**
+
+```{python}
+# Fit K-Means with k = 2 and take classifications/labels
+kmeans = KMeans(n_clusters=2)
+classification = kmeans.fit_predict(x)
+
+# Compute mean profile of each cluster
+clusterMeans = pd.DataFrame(x).groupby(classification).mean()
+clusterMeans.columns = df.columns
+
+# Plot average standardized scores for each cluster (".T" is for transposing)
+sns.lineplot(data=clusterMeans.T, markers=True)
+plt.title("Cluster profiles (KMeans, k=2)")
+plt.ylabel("z-score")
+plt.show(); plt.close()
+```
+
+**Plot cluster profiles when k = 2, also with confidence intervals**
+
+```{python}
+kmeans = KMeans(n_clusters=2)
+classification = kmeans.fit_predict(x)
+
+# Add cluster label to each observation in the dataframe
+dfx = pd.DataFrame(x, columns=df.columns)
+dfx["cluster"] = classification
+
+# Convert to long format for plotting (like pivot_longer in R)
+dfxLong = dfx.melt(id_vars="cluster", var_name="Variable", value_name="Score")
+
+# Plot average standardized scores for each cluster, with CIs
+sns.pointplot(data=dfxLong, x="Variable", y="Score", hue="cluster")
+plt.title("Cluster profiles with CI (KMeans)")
+plt.ylabel("z-score")
+plt.show(); plt.close()
+```
+
+
+### *Gaussian Mixture Models*
+
+*GMM* is more flexible than *K-Means*. It is does not assume equal variances across clusters and can model (because it's actually a model) correlations between features (i.e., full covariance structures). It can also be fitted for `k = 1`, so you can formally compare models with different numbers of components, starting from one, using criteria like `BIC` or `AIC`. Its main limitation is the assumption that data within each cluster follow a Gaussian distribution.
+
+**Compute BIC values for various numbers of components `k`**
+
+```{python}
+
+from sklearn.mixture import GaussianMixture
+
+BICs = []
+Ks = range(1, 7)
+
+for k in Ks:
+    # create GMM object
+    gmm = GaussianMixture(n_components=k) 
+    # fit GMM
+    gmm.fit(x)
+    # extract and store BIC
+    BICs.append(gmm.bic(x))
+
+# Plot BIC values
+sns.pointplot(x=list(Ks), y=BICs)
+plt.title("BIC values for different GMMs")
+plt.xlabel("Number of Components")
+plt.ylabel("BIC")
+plt.show(); plt.close()
+```
+
+**Plot cluster profiles when k = 2**
+
+```{python}
+gmm = GaussianMixture(n_components=2).fit(x)
+clusterMeans = pd.DataFrame(gmm.means_)
+clusterMeans.columns = df.columns
+
+sns.lineplot(data=clusterMeans.T, markers=True)
+plt.title("Cluster profiles (GMM)")
+plt.ylabel("z-score")
+plt.show(); plt.close()
+```
+
+**Plot cluster profiles when k = 3**
+
+```{python}
+gmm = GaussianMixture(n_components=3).fit(x)
+clusterMeans = pd.DataFrame(gmm.means_)
+clusterMeans.columns = df.columns
+
+sns.lineplot(data=clusterMeans.T, markers=True)
+plt.title("Cluster profiles (GMM)")
+plt.ylabel("z-score")
+plt.show(); plt.close()
+```
+
+### *Extra: Dimensionality reduction and 2-D scatter plots*
+
+The following chunk runs a *GMM* with `k = 3` clusters. Then, runs a *PCA* to reduce the data to two dimensions for visualization, and finally shows the GMM-predicted clusters in a 2-D scatterplot.
+
+```{python}
+# Fit GMM with 3 components
+gmm = GaussianMixture(n_components=3).fit(x)
+
+# Reduce data to 2-D using PCA for plotting
+from sklearn.decomposition import PCA
+pca_2D = PCA(n_components=2).fit_transform(x)
+
+# Plot PCA projection as 2-D scatterplot
+sns.scatterplot(x=pca_2D[:,0], y=pca_2D[:,1], hue=gmm.predict(x))
+plt.title("PCA projection of KMeans clusters")
+plt.xlabel("PCA Component 1")
+plt.ylabel("PCA Component 2")
+plt.show(); plt.close()
+```
+
+## What could you do, now?
+
+<div style="font-size:20px;">
+- Repeat using your own dataset, or a dataset publicly available from <a href="https://osf.io/" target="_blank">OSF</a>, <a href="https://zenodo.org/" target="_blank">Zenodo</a>, <a href="https://figshare.com/" target="_blank">Figshare</a>, or elsewhere.
+- Repeat k-means, but first perform PCA on the dataset to ensure you use orthogonal features. 
+- Generate data (e.g., with `np.random.normal()`) to simulate different clusters, and see whether the clustering methods return what you expect. 
+</div>
+
+
+::: {.callout-warning title="Interpret clustering with caution"}
+Clustering techniques such as **K-Means** and **Gaussian Mixture Models (GMM)** will **always assign data points to clusters**, even when no true underlying structure exists, which can create an illusion of meaningful subgroups. 
+
+**Avoid interpreting clusters as real psychological types** unless have very strong theoretical and empirical justification. 
+
+Personally, I believe that in **virtually no case** clustering can meaningfully reveal any real underlying "category" when using behavioral data, e.g., <a href="https://doi.org/10.1002/ijop.13246" target="_blank">here</a> and <a href="https://doi.org/10.1371/journal.pone.0269584" target="_blank">here</a>.
+:::
+
