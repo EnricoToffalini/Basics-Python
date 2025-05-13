@@ -98,6 +98,7 @@ Data visualization, machine learning, use of deep learning & language models fro
     -   ::: {style="font-size:14px;"}
         **additional exercise on [Simulating clusters and assessing inferential risks](exercises/ExercisesExtra-SimulateClustering.html){target="_blank"}**
         :::
+-   [**Basics of Sentiment Analysis with Hugging Face Transformers**](exercises/Exercises-SentimentAnalysis.html){target="_blank"}
 -   **xx** *(in progress!)*
 -   
 
