@@ -55,21 +55,21 @@ If you get any errors when running the first line, try install the package via t
 
 ## Course Topics
 
-##### Introduction to the Python Environment and First Steps in Python
+##### Getting Started with Python: Environment, Syntax, Tools
 
-Getting started with Python; using IDEs and Colab; basic syntax; basic operations; creating and naming objects; installing packages and using functions; basic data structures (*list*, *tuple*, *dict*) and indexing.
+An introduction to Python and its ecosystem: setting up Python locally or in the cloud (*Google Colab*), using *IDE*s, understanding basic syntax and operations, creating and naming variables, using packages and functions, and working with core data structures (*lists*, *tuples*, *dictionaries*) and indexing.
 
 ##### Basics of Programming in Python
 
-The essential programming concepts: conditional statements, loops, and custom functions in Python.
+A hands-on to basic programming concepts such as conditional logic, loops, and write and use custom functions. These are core skills for writing flexible and efficient Python code.
 
 ##### Entering the World of Data Science in Python: `pandas`, `numpy`, and more
 
-Python core libraries for data science! We will manipulate tabular data with `pandas`, perform operations `numpy`; some basic machine learning and statistical analysis from `scikit-learn` and `statsmodels`.
+Explore the Python core libraries for data science. We will learn how to manipulate and analyze tabular data with `pandas`, handle arrays and numerical operations with `numpy`, and get a taste of statistical modeling and basic machine learning using `statsmodels` and `scikit-learn`.
 
 ##### A Bit on Fancy Topics?
 
-Data visualization, machine learning, use of deep learning & language models from <a href="https://huggingface.co/" target="_blank">HuggingFace</a> 🤗, basic experiment programming - mostly upon request! That's truly why we want to use Python, after all.
+Depending on interest, we may explore more advanced topics such as data visualization, basic machine learning, and use of deep learning and language models available via *<a href="https://huggingface.co/" target="_blank">HuggingFace</a>* 🤗, or even simple experiment programming. After all, that's truly why we want to use Python.
 
 ## Materials
 
