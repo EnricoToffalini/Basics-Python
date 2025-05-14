@@ -69,7 +69,7 @@ Explore the Python core libraries for data science. We will learn how to manipul
 
 ##### A Bit on Fancy Topics?
 
-Depending on interest, we may explore more advanced topics such as data visualization, basic machine learning, and use of deep learning and language models available via *<a href="https://huggingface.co/" target="_blank">HuggingFace</a>* 🤗, or even simple experiment programming. After all, that's truly why we want to use Python.
+Depending on interest, we may explore more advanced topics such as data visualization, basic machine learning, and use of deep learning and language models available via <a href="https://huggingface.co/" target="_blank">HuggingFace</a> 🤗, or even simple experiment programming. After all, that's truly why we want to use Python.
 
 ## Materials
 
@@ -99,8 +99,8 @@ Depending on interest, we may explore more advanced topics such as data visualiz
         **additional exercise on [Simulating clusters and assessing inferential risks](exercises/ExercisesExtra-SimulateClustering.html){target="_blank"}**
         :::
 -   [**Basics of Sentiment Analysis with Hugging Face Transformers**](exercises/Exercises-SentimentAnalysis.html){target="_blank"}
+-   [**Basics of Text Embeddings (plus PCA and Clustering)**](exercises/Exercises-EmbeddingsPCAClust.html){target="_blank"}
 -   **xx** *(in progress!)*
--   
 
 ------------------------------------------------------------------------
 

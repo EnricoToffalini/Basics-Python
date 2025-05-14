@@ -42,7 +42,7 @@ plt.show()
 
 ###########################################
 
-# feasible pca for our purposes
+# feasible pca for our actual purposes (number of components is limited because of the number of available observations)
 
 pca10 = PCA(n_components=10)
 pca10_emb = pca.fit_transform(embeddings)
