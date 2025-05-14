@@ -150,12 +150,14 @@ print(logitScores)
 
 -   Third, let's convert logits to probabilities. A logit score can directly be converted into probability; more logit scores can be normalized to probabilities that cumulatively add to one. We can use the `softmax()` function (from the `torch.nn.functional` submodule; `dim=1` tells the function that it must be computed row-wise):
 
+*note: softmax does like: $\frac{e^{0.4030}}{e^{0.4030} + e^{0.2260} + e^{-0.6003}} = 0.4536$*
+
 ```{python, cache=T}
 probs = softmax(logitScores, dim=1)
 print(probs)
 ```
 
--   To summarize "valence" as one single score, we could multiply *negative* -1 times, *neutral* 0 times, *positive* +1 times, so the final valence will be in a continuous range of \[-1, 1\]:
+-   Finally, to summarize valence as one single score, we could multiply *negative* -1 times, *neutral* 0 times, *positive* +1 times, so the final score will be in a continuous range of \[-1, 1\]:
 
 ```{python, cache=T}
 probs[0][0]*(-1) + probs[0][1] * 0 + probs[0][2] * (+1)
