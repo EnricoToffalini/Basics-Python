@@ -164,7 +164,12 @@ Each blue dot is a model with a randomly defined complexity (from 1 to 15 terms,
   <img src="figures/example2Dembeddings.png" style="width: 82%;" />
 </div>
 
+##
+### An exercise we will see 😉
+
+<div style="text-align: center;">
+  <img src="figures/exampleEmbeddingsEmotText.png" style="width: 82%;" />
+</div>
+
 <!-- --------------------------------------------------------------------- -->
-
-
 
