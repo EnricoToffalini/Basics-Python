@@ -92,15 +92,15 @@ Depending on interest, we may explore more advanced topics such as data visualiz
 -   [**Programming like a data scientist**](exercises/Exercises-LikeDataScientist.html){target="_blank"}
 -   [<b>The data <em>nightmare</em> exercise... in Python</b>](exercises/Exercises-NightmarePy.html){target="_blank"}
 
-*— These other exercises are beyond the scope of this introductory course, but they could be stimulating and useful for more advanced users:*
+*— These other exercises are beyond the scope of this introductory course, but they could be stimulating and useful as simple tutorials for some users:*
 
 -   [**Basics of Clustering with K-Means and GMM**](exercises/Exercises-UnsupervClustering.html){target="_blank"}
     -   ::: {style="font-size:14px;"}
         **additional exercise on [Simulating clusters and assessing inferential risks](exercises/ExercisesExtra-SimulateClustering.html){target="_blank"}**
         :::
--   [**Basics of Sentiment Analysis with <em>HuggingFace</em> Transformers**](exercises/Exercises-SentimentAnalysis.html){target="_blank"}
+-   [**Basics of Sentiment Analysis with** <em>HuggingFace</em> Transformers](exercises/Exercises-SentimentAnalysis.html){target="_blank"}
 -   [**Basics of Text Embeddings (plus PCA and Clustering)**](exercises/Exercises-EmbeddingsPCAClust.html){target="_blank"}
--   **xx** *(in progress!)*
+-   [**Basics of Text Classification using Embeddings and Cosine Similarity**](exercises/Exercises-EmbeddingsCosineSim.html){target="_blank"}
 
 ------------------------------------------------------------------------
 

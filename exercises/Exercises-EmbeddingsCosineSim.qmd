@@ -1,0 +1,163 @@
+---
+title: "Exercises – Basics of Text Classification using Embeddings and Cosine Similarity"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    self-contained: true
+    toc-depth: 4  
+    toc-expand: 4
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+```{r, echo=F, include=F}
+reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/python.exe")
+reticulate::repl_python()
+```
+
+## Cosine similarity
+
+**Cosine similarity** is conceptually similar to correlation, and it provides an index of how aligned two vectors are; it ranges in $[-1, +1]$. We can compute this similarity across **sentence embeddings**: the more similar a *sentence embedding* is to the embedding of a *reference concept*, the more likely it is that the sentence expresses that concept.
+
+## Scenario
+
+We want to classify emotional sentences based on their similarity to a set of ***reference emotion words*** in `{"joy", "sadness", "anger", "fear", "surprise", "disgust"}`. To do so, we compute the *cosine similarity* between the *embedding* of each sentence and the *embeddings* of the *reference emotion words*. The idea is that the *reference emotion word* whose embedding (thus, meaning) is most similar/aligned with a sentence embedding will present the highest cosine similarity to it.
+
+## Preliminary Steps
+
+```{python}
+# recommended if not already done
+# !pip install sentence-transformers
+
+# import required packages
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics.pairwise import cosine_similarity
+from sentence_transformers import SentenceTransformer
+```
+
+## Import Dataset, Load Pretrained Model, Generate Sentence Embedding
+
+You can download the dataset from: <a href="data/emotionalTexts1.csv" download>`emotionalTexts1.csv`</a>. The following steps are the same as in the previous exercise:
+
+#### Import dataset
+
+```{python}
+df = pd.read_csv("data/emotionalTexts1.csv")
+df.head()
+```
+
+#### Load pretrained model (once again, let's use `"all-MiniLM-L6-v2"` from Sentence Transformers)
+
+```{python}
+model = SentenceTransformer("all-MiniLM-L6-v2")
+```
+
+#### Generate Sentence Embeddings
+
+```{python}
+sentenceEmbeddings = model.encode(df["text"])
+
+sentenceEmbeddings = pd.DataFrame(sentenceEmbeddings)
+sentenceEmbeddings.round(3)
+```
+
+This gives us a matrix of shape (n_sentences, embedding_dim), where each row is a numerical representation of a sentence.
+
+## Also, Compute Embeddings for the "target" emotions
+
+Our chosen target emotions / emotional categories are `{"joy", "sadness", "anger", "fear", "surprise", "disgust"}`. However, to make them more interpretable and unambiguous in terms of the natural language meaning, and thus of the embeddings, let's incorporate the target emotions into short sentences like `{"a person feeling joy", "a person feeling sadness", "a person feeling anger", "a person feeling fear", "a person feeling surprise", "a person feeling disgust"}`. This is useful because text embedding models are specifically trained to capture meaning from sentences rather than isolated words:
+
+```{python}
+emotions = ["joy", "sadness", "anger", "fear", "surprise", "disgust"]
+targetEmotions = ["a person feeling "+e for e in emotions]
+
+emotionEmbeddings = model.encode(targetEmotions)
+
+emotionEmbeddings = pd.DataFrame(emotionEmbeddings)
+emotionEmbeddings.round(3)
+```
+
+## Compute Cosine Similarities
+
+Now finally we can compute the cosine similarities! This allows us to compare each **sentence** (e.g., `"Walking into the kitchen, I expected silence..."`) with the **reference emotion "target"** (e.g., `"a person feeling joy"`)
+
+```{python}
+similarityMatrix = cosine_similarity(sentenceEmbeddings, emotionEmbeddings)
+
+similarityMatrix.round(3)
+```
+
+#### Visualize as heatmap
+
+Perhaps a heatmap will be more effective for reporting and understanding 🙂
+
+```{python}
+plt.figure(figsize=(8, 10))
+plt.imshow(similarityMatrix[:25,:], aspect='auto', cmap='Blues')
+plt.colorbar();
+plt.title('Cosine Similarity Heatmap', fontsize=20)
+plt.ylabel('Sentence #', fontsize=18)
+plt.xticks(ticks=range(0,len(emotions)),
+                        labels=emotions, fontsize=18, rotation=45);
+plt.yticks(ticks=range(0,25),fontsize=14);
+plt.show()
+plt.clf(); plt.close()
+```
+
+The above heatmap suggests that, for example, **sentence #2 is clearly associated with surprise** (sentence is: *`"Walking into the kitchen, I expected silence, but instead I was greeted by an unexpected choir of 'Happy Birthday!' with smiling faces peeking out from every corner. My eyes widened as I took in the sight of balloons and a cake that I had surely not planned for"`*); while for example **sentence #15 is clearly associated with joy** (sentence is: *`The sun warmed my skin as I spun around in the open field, arms outstretched, feeling the breeze dance through my hair. Laughter bubbled up uncontrollably, as if it were the most natural sound in the world`*)
+
+## Predict the Closest Emotion
+
+Now let's assign each sentence to the emotion with the highest similarity using the **`.argmax()`** method
+
+```{python}
+closestEmotion = similarityMatrix.argmax(axis=1)
+df["predictedEmotion"] = [emotions[i] for i in closestEmotion]
+df.head()
+```
+
+**Question: Do the assigned emotions seem plausible, just by inspecting the text and predictions? Inspect a few of them!**
+
+## Evaluate Against Ground Truth
+
+Actually, there was a ground truth! 🙂 As I generated the sentences based on specific prompts that mentioned those emotions, we can evaluate whether the classification based on the closest cosine similarity is sufficiently accurate. The labelled version of the dataset can be downloaded here: <a href="data/emotionalTexts1Labelled.csv" download>`emotionalTexts1Labelled.csv`</a>
+
+```{python}
+dfLabelled = pd.read_csv("data/emotionalTexts1Labelled.csv")
+dfLabelled.head()
+
+df["labelledEmotion"] = dfLabelled["emotion"]
+```
+
+Let's compare predicted vs labelled emotions in a **confusion matrix** (the **`crosstab()`** function from the `pandas` package is very convenient for computing a confusion matrix, in a way similar to the `table()` function in R):
+
+```{python}
+confusionMatrix = pd.crosstab(df["labelledEmotion"],
+                              df["predictedEmotion"])
+confusionMatrix
+
+plt.figure(figsize=(9, 6))
+sns.heatmap(confusionMatrix, annot=True, cmap='Blues')
+plt.title("Predicted-Labelled Confusion Matrix", fontsize=15)
+plt.xlabel("Predicted Emotion", fontsize=15)
+plt.ylabel("Labelled Emotion", fontsize=15)
+plt.xticks(fontsize=13);
+plt.yticks(fontsize=13, rotation=0);
+plt.show()
+plt.clf(); plt.close()
+```
+
+## What could you do next?
+
+::: {style="font-size:20px;"}
+-   Try using different target sentences for the emotions (e.g., `"I feel joy"` instead of `"a person feeling joy"`);
+-   Try to group sentences based on other *a priori* defined target categories (e.g., non-emotional categories); 
+-   Try to expand the exercise to other datasets of texts/sentences that you may find around; 
+-   Replace the model with a larger one from [HuggingFace](https://huggingface.co/sentence-transformers) and see if it works better.
+:::

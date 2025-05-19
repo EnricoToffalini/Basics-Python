@@ -106,7 +106,7 @@ plt.grid(True)
 plt.show()
 ```
 
-**Question: based on the** <em>elbow method</em> applied to the above plot of the <em>explained variance by component</em>, how many components should we retain?
+<b>Question: based on the <em>elbow method</em> applied to the above plot of the <em>explained variance by component</em>, how many components should we retain?</b>
 
 ## Actually Reduce Embeddings for Clustering
 
