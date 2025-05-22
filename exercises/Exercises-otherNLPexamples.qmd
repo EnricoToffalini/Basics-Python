@@ -1,0 +1,134 @@
+---
+title: "Exercises – Other Examples of Language, Speech, and Image Processing"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    toc: true   
+    self-contained: true
+    toc-depth: 2  
+    toc-expand: 2 
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+```{python}
+#| echo: false
+from transformers import logging
+logging.set_verbosity_error()
+```
+
+First of all, let's import the `pipeline()` function from the `transformers` library. `transformers` provides access to several *deep learning models* for NLP and speech processing hosted on <a href="https://huggingface.co/" target="_blank">HuggingFace</a>. The `pipeline()` function provides a very simple interface to access these models and apply them to common tasks (e.g., text generation, transcription of audio, predict missing word).
+
+```{python}
+from transformers import pipeline
+```
+
+## Text Generation
+
+Transformer models like GPT-2 are **pretrained to generate natural language based on linguistic prompts** (we all know *chatGPT*!). Unlike newer GPT versions, *GPT-2* has been made freely available via *HuggingFace*, and it can be used even without an openAI API and billing plan
+
+All we have to do is initialize and use an instance of `pipeline()`, specifying the desired model (`"gpt2"`) and the required task (`"text-generation"`):
+
+::: cell
+```{python, cache=T}
+textgenerator = pipeline(task="text-generation", model="gpt2")
+
+text = textgenerator("Once upon a time in academia", max_length=150, temperature=1)
+
+print(text)
+```
+
+<style> pre, code { white-space: pre-wrap; word-break: break-word; } </style>
+:::
+
+The model continues the text following the initial prompt that you provided with a series of plausible (even though not necessarily coherent) sentences. In addition to the *prompt*, we have passed two arguments:
+
+-   `max_length`, which defines the total number of tokens (including the input prompt) in the generated sequence;
+-   `temperature` which controls the randomness of predictions: lower values make the output more deterministic and even repetitive, while higher values leads to more randomness and creativity, but at extreme values may lead to totally incoherent outputs (`temperature` must be greater than `0` and smaller than `2`).
+
+## Audio Speech Transcription
+
+Another very useful application is automatic **speech recognition and transcription**. In the following chunk we use a *whisper* model to transcribe a short speech from an `.mp3` file
+
+The specific model we use here (`"openai/whisper-small"`), which is quite lightweight, can be found on *HuggingFace* at this link: <a href="https://huggingface.co/openai/whisper-small" target="_blank">https://huggingface.co/openai/whisper-small</a>. Larger and more powerful versions, like `"openai/whisper-medium"` and `"openai/whisper-large"` are also available
+
+::: cell
+```{python, cache=T}
+#| messages: false
+#| warnings: false
+whisperpipe = pipeline(model="openai/whisper-small")
+
+transcription = whisperpipe("data/gelmanstats.mp3", return_timestamps=True)
+
+print(transcription['text'])
+```
+
+<style> pre, code { white-space: pre-wrap; word-break: break-word; } </style>
+:::
+
+-   ⚠️ Download the audio file <a href="data/gelmanstats.mp3" Download>`gelmanstats.mp3`</a>, and then make sure that it can be correctly accessed from the working directory.
+-   `return_timestamps=True` is required for relatively long audios, but it can be set to `False` for shorter audios for a simpler output.
+
+If you prefer not to download and run the whole `whisper` model locally, you could use the OpenAI API (this effectively transfers the task on the cloud). But note that to do so you need **a valid <a href="https://platform.openai.com/settings/organization/billing/overview" target="_blank">billing plan with OpenAI</a>** and **a valid API key** (also, the following code may no longer work if OpenAI changes the pipeline interface, which happens quite often):
+
+``` python
+from openai import OpenAI
+
+client = OpenAI(api_key="sk-proj-4slS9XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+
+audio_file = open("data/gelmanstats.mp3", "rb")
+
+transcript = client.audio.transcriptions.create(
+    model="whisper-1",
+    file = audio_file
+)
+print(transcript)
+```
+
+## Predict Missing Word
+
+Models like BERT (Bidirectional Encoder Representations from Transformers) are trained to predict sentences and tokens that follow in a text. An interest feature is that they allow to to **predict a missing "masked" word** in a chunk of text, based on the surrounding context. This can be adapted for tasks like establishing the most expected word in a context, correcting typos or clarifying the meaning of ambiguous sentences given the context.
+
+The specific model we use here can be found on *HuggingFace* at this link: <a href="https://huggingface.co/google-bert/bert-base-uncased" target="_blank">https://huggingface.co/google-bert/bert-base-uncased</a>
+
+```{python, cache=T}
+findmaskedword = pipeline(task="fill-mask", model="bert-base-uncased")
+
+findmaskedword("My professor is [MASK].")
+```
+
+We get the top 5 most likely words for the masked token. To demonstrate how the likelihood of the words change with the context, let's slightly modify the sentence:
+
+```{python, cache=T}
+findmaskedword("My professor is [MASK], so don't worry.")
+```
+
+## Image Classification
+
+Let's try a simple example of **image classification** using a pretrained computer vision model from *HuggingFace*. The chosen model (`"microsoft/resnet-18"`)is not very powerful, but it is small and very lightweight (for more powerful but also heavier model, try`"microsoft/resnet-152"`, `"google/efficientnet-b4"` or `"google/efficientnet-b7"`). The task is to predict the most likely category for the image below
+
+<img src="data/figureexample.png" width="600" height="auto">
+
+```{python, cache=T}
+#| messages: false
+#| warnings: false
+
+from PIL import Image
+myImage = Image.open("data/figureexample.png")
+
+imageclassifier = pipeline(task="image-classification", model="microsoft/resnet-18")
+
+predictions = imageclassifier(myImage)
+print(predictions)
+```
+
+## *What could you do next?*
+
+- Play a bit with text generation and change the prompt (e.g., `"In the far future,"`, `"Brilliant psychologists discovered that"`)
+- Vary arguments like `max_length`, `num_return_sequences`, or `temperature` and see what happens to text generation.
+- Try to run image classification using pictures with different styles (e.g., photographs, drawings) and see the performance of the model.
+- If you have a few pictures of different categories (e.g., *animate objects* vs *inanimate objects*), try to run a look, classify all of them, and then use another model for text classification to categorize the textual outputs into these two (or more) *a priori* categories. 
+- Have a look at all `task` options that are available using *transformers pipelines*, at this link: <a href="https://huggingface.co/docs/transformers/main_classes/pipelines" target="_blank">https://huggingface.co/docs/transformers/main_classes/pipelines</a> (e.g., try `text-classification`, `"zero-shot-classification"`, `translation` using the *`"Helsinki-NLP/opus-mt-en-it"`* model for English-to-Italian translation).

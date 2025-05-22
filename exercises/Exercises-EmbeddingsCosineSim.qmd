@@ -157,7 +157,7 @@ plt.clf(); plt.close()
 
 ::: {style="font-size:20px;"}
 -   Try using different target sentences for the emotions (e.g., `"I feel joy"` instead of `"a person feeling joy"`);
--   Try to group sentences based on other *a priori* defined target categories (e.g., non-emotional categories); 
--   Try to expand the exercise to other datasets of texts/sentences that you may find around; 
+-   Try to group sentences based on other *a priori* defined target categories (e.g., non-emotional categories);
+-   Try to expand the exercise to other datasets of texts/sentences that you may find around;
 -   Replace the model with a larger one from [HuggingFace](https://huggingface.co/sentence-transformers) and see if it works better.
 :::
