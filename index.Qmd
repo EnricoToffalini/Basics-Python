@@ -30,7 +30,7 @@ You are encouraged to look at this online book available on GitHub: <a href="htt
 | Day                 | Time        | Room |
 |---------------------|-------------|------|
 | Tuesday, June 3rd   | 09:00-11:30 | 4R   |
-| Wednesday, June 4th | 09:00-11:30 | 4R   |
+| Wednesday, June 4th | 13:00-15:30 | 4R   |
 | Thursday, June 5th  | 09:00-11:30 | 4S   |
 | Friday, June 6th    | 09:00-11:30 | 4S   |
 
