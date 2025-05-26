@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="00.IntroPython_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="custom.css">
@@ -488,48 +553,73 @@ Each blue dot is a model with a randomly defined complexity (from 1 to 15 terms,
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<h3 id="e.g.-data-visualization-with-seaborn">e.g., Data visualization with <code>seaborn</code></h3>
+<h3 id="data-visualization-with-seaborn">Data visualization with <code>seaborn</code></h3>
 <div style="text-align: center;">
 <p><img src="figures/exampleTraditionalPlotting.png" style="width: 80%;"></p>
 </div>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
-<h3 id="e.g.-data-visualization-with-matplotlib">e.g., Data visualization with <code>matplotlib</code></h3>
+<h3 id="data-visualization-with-matplotlib">Data visualization with <code>matplotlib</code></h3>
 <div style="text-align: center;">
 <p><img src="figures/exampleFancyInfographic.png" style="width: 100%;"></p>
 </div>
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
-<h3 id="e.g.-interactive-data-visualization-with-plotly">e.g., Interactive Data visualization with <code>plotly</code></h3>
+<h3 id="interactive-data-visualization-with-plotly">Interactive Data visualization with <code>plotly</code></h3>
 <iframe src="figures/examplePlotlyOnnvll.html" style="width:1000px; height:600px; border:none;" scrolling="no">
 </iframe>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
-<h3 id="e.g.-shiny-app-with-python">e.g., Shiny app with Python</h3>
+<h3 id="shiny-app-with-python">Shiny app with Python</h3>
 <div style="text-align: center;">
 <p><a href="https://shiny.posit.co/py/" target="_blank"><img src="figures/exampleShinyPython.png" style="width: 100%;"></a></p>
 </div>
 </section>
 <section id="section-4" class="slide level2">
 <h2></h2>
-<h3 id="e.g.-working-with-semantic-embeddings-using-llms-extracted-with-openais-text-embedding-ada-002">e.g., Working with semantic embeddings using LLMs (extracted with OpenAI’s <code>text-embedding-ada-002</code>)</h3>
+<h3 id="image-classification-with-ai-models-via-transformers">Image Classification with AI models via <code>transformers</code></h3>
 <div style="text-align: center;">
-<p><img src="figures/exampleMatrixEmbeddings.png" style="width: 55%;"></p>
+<p><img src="figures/figureexample.png" style="width: 50%;"></p>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                                        label  score
+                                  water snake 0.2936
+                      Indian cobra, Naja naja 0.2809
+ringneck snake, ring-necked snake, ring snake 0.1630
+thunder snake, worm snake, Carphophis amoenus 0.1213
+        hognose snake, puff adder, sand viper 0.0520</code></pre>
+</div>
 </div>
 </section>
 <section id="section-5" class="slide level2">
 <h2></h2>
-<h3 id="e.g.-working-with-semantic-embeddings-using-llms-extracted-with-openais-text-embedding-ada-002-1">e.g., Working with semantic embeddings using LLMs (extracted with OpenAI’s <code>text-embedding-ada-002</code>)</h3>
+<h3 id="text-transcription-from-audio-using-transformers">Text transcription from audio using <code>transformers</code></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">from</span> transformers <span class="im">import</span> pipeline</span>
+<span id="cb2-2"><a href=""></a>whisperpipe <span class="op">=</span> pipeline(model<span class="op">=</span><span class="st">"openai/whisper-small"</span>)</span>
+<span id="cb2-3"><a href=""></a>whisperpipe(<span class="st">"data/gelmanstats.mp3"</span>, return_timestamps<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>Hi, my name is Andrew Gelman. I'm a professor of statistics and political science at Columbia. I've been teaching here since 1996. I'm always impressed that the students know more than I do about so many things. Just this morning, a graduate student came to me. He had been looking at data from ticketing, police moving violations. And there's this suspicion that the police have some sort of unofficial quota so that they're supposed to get a certain number of tickets by the end of the month. But you can look at the data and see whether you have more tickets at the very end of the month. He looked at something slightly different. He compared police that had had fewer tickets in the first half of the month to those who had more tickets and found that the ones who had fewer in the first half had a big jump in the second half of the month, which he attributed to a policy where the police don't have a quote of, but they do it comparatively. So if you've been ticketing fewer than other people in your precinct, then they hassle you and tell you you're supposed to do more. But we're still not quite sure. He was just telling me about this today. It's complicated because there could just be a variation. It could just be that the police who had more tickets in the first half have fewer in the second half just because it goes up and it goes down. and you happen to see that. So we have to do more, look at the data in different ways in order to try to understand, like to rule out different explanations for what's happening. I think that at least well it depends on what field you're working on. So if if someone's working, we have a student working on astronomy and there we're working with the astronomy professor David Shimonovich and it's It's very, it's necessary for us to combine our skills. So we have skills in visualizing data and fitting models and computation, but it's not like David Shimano, which gives us the data and we fit it. We have to work together in a collaboration. So that's sort of always the case, that we have to have a bridge connecting the applications to the modeling and the data. I think all the projects I've told you so far are exciting and interesting, and we're We're doing other things too. We have a paper called 19 Things We Learned From The 2016 Election. We're breaking down survey data, looking at how people voted, how young people and old people voted, comparing the gender gap among younger and older voters and among different ethnic groups. That's very challenging. Even if you have a big survey where you want to estimate small subgroups of the population, it requires some statistical modeling. Well, I think the polls were pretty good. They had Hillary Clinton ahead by getting about 52% of the two-party vote, and she actually got 51%, so that wasn't too bad. Polls are often some key states. I think that had to do with non-response, that people, certain Republicans who are not responding to polls in certain states. The way we can go forward is to do more adjustment of surveys. So it's harder and harder to reach people, so more and more adjustment needs to be done, but maybe surveys need to be adjusted also based on whether people are living in urban or rural areas and their partisanship and some other things. So one is never going to do perfect, but there's potential for improvement.</code></pre>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<h3 id="working-with-semantic-embeddings-using-llms-extracted-with-openais-text-embedding-ada-002">Working with semantic embeddings using LLMs (extracted with OpenAI’s <code>text-embedding-ada-002</code>)</h3>
+<div style="text-align: center;">
+<p><img src="figures/exampleMatrixEmbeddings.png" style="width: 55%;"></p>
+</div>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<h3 id="working-with-semantic-embeddings-using-llms-extracted-with-openais-text-embedding-ada-002-1">Working with semantic embeddings using LLMs (extracted with OpenAI’s <code>text-embedding-ada-002</code>)</h3>
 <div style="text-align: center;">
 <p><img src="figures/example2Dembeddings.png" style="width: 82%;"></p>
 </div>
 </section>
-<section id="section-6" class="slide level2">
+<section id="section-8" class="slide level2">
 <h2></h2>
-<h3 id="an-exercise-we-will-see">An exercise we will see 😉</h3>
+<h3 id="embeddings-clustering-an-exercise-we-will-see">Embeddings + Clustering, An exercise we will see 😉</h3>
 <div style="text-align: center;">
 <p><img src="figures/exampleEmbeddingsEmotText.png" style="width: 82%;"></p>
 </div>
@@ -750,6 +840,44 @@ Each blue dot is a model with a randomly defined complexity (from 1 to 15 terms,
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

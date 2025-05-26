@@ -72,7 +72,7 @@ print(transcription['text'])
 -   ⚠️ Download the audio file <a href="data/gelmanstats.mp3" Download>`gelmanstats.mp3`</a>, and then make sure that it can be correctly accessed from the working directory.
 -   `return_timestamps=True` is required for relatively long audios, but it can be set to `False` for shorter audios for a simpler output.
 
-If you prefer not to download and run the whole `whisper` model locally, you could use the OpenAI API (this effectively transfers the task on the cloud). But note that to do so you need **a valid <a href="https://platform.openai.com/settings/organization/billing/overview" target="_blank">billing plan with OpenAI</a>** and **a valid API key** (also, the following code may no longer work if OpenAI changes the pipeline interface, which happens quite often):
+If you prefer not to download and run the whole `whisper` model locally, you could use the OpenAI API (this effectively transfers the task on the cloud). But note that to do so you need **a valid** <a href="https://platform.openai.com/settings/organization/billing/overview" target="_blank">billing plan with OpenAI</a> and **a valid API key** (also, the following code may no longer work if OpenAI changes the pipeline interface, which happens quite often):
 
 ``` python
 from openai import OpenAI
@@ -110,7 +110,7 @@ findmaskedword("My professor is [MASK], so don't worry.")
 
 Let's try a simple example of **image classification** using a pretrained computer vision model from *HuggingFace*. The chosen model (`"microsoft/resnet-18"`)is not very powerful, but it is small and very lightweight (for more powerful but also heavier model, try`"microsoft/resnet-152"`, `"google/efficientnet-b4"` or `"google/efficientnet-b7"`). The task is to predict the most likely category for the image below
 
-<img src="data/figureexample.png" width="600" height="auto">
+<img src="data/figureexample.png" width="600" height="auto"/>
 
 ```{python, cache=T}
 #| messages: false
@@ -127,8 +127,8 @@ print(predictions)
 
 ## *What could you do next?*
 
-- Play a bit with text generation and change the prompt (e.g., `"In the far future,"`, `"Brilliant psychologists discovered that"`)
-- Vary arguments like `max_length`, `num_return_sequences`, or `temperature` and see what happens to text generation.
-- Try to run image classification using pictures with different styles (e.g., photographs, drawings) and see the performance of the model.
-- If you have a few pictures of different categories (e.g., *animate objects* vs *inanimate objects*), try to run a look, classify all of them, and then use another model for text classification to categorize the textual outputs into these two (or more) *a priori* categories. 
-- Have a look at all `task` options that are available using *transformers pipelines*, at this link: <a href="https://huggingface.co/docs/transformers/main_classes/pipelines" target="_blank">https://huggingface.co/docs/transformers/main_classes/pipelines</a> (e.g., try `text-classification`, `"zero-shot-classification"`, `translation` using the *`"Helsinki-NLP/opus-mt-en-it"`* model for English-to-Italian translation).
+-   Play a bit with text generation and change the prompt (e.g., `"In the far future,"`, `"Brilliant psychologists discovered that"`)
+-   Vary arguments like `max_length`, `num_return_sequences`, or `temperature` and see what happens to text generation.
+-   Try to run image classification using pictures with different styles (e.g., photographs, drawings) and see the performance of the model.
+-   If you have a few pictures of different categories (e.g., *animate objects* vs *inanimate objects*), try to run a look, classify all of them, and then use another model for text classification to categorize the textual outputs into these two (or more) *a priori* categories.
+-   Have a look at all `task` options that are available using *transformers pipelines*, at this link: <a href="https://huggingface.co/docs/transformers/main_classes/pipelines" target="_blank">https://huggingface.co/docs/transformers/main_classes/pipelines</a> (e.g., try `text-classification`, `"zero-shot-classification"`, `translation` using the *`"Helsinki-NLP/opus-mt-en-it"`* model for English-to-Italian translation).

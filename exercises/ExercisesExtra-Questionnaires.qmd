@@ -1,0 +1,78 @@
+---
+title: "Exercises – Additional: Using Text Embeddings to Automatically Evaluate Construct Validity"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    self-contained: true
+    toc-depth: 4  
+    toc-expand: 4
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+```{r, echo=F, include=F}
+reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/python.exe")
+reticulate::repl_python()
+```
+
+This is not a tutorial but an open-ended exercise. It assumes you read and practiced with previous exercises on text embeddings, PCA, clustering, and cosine similarity.
+
+## The Idea
+
+In a recent article in ***Nature Human Behaviour***, <a href="https://www.nature.com/articles/s41562-024-02089-y" target="_blank">Wulff and Mata (2025)</a> suggested that we might use sentence embeddings to alert about possible **jingle-jangle fallacies** in psychological questionnaires. 
+
+The ideas is that possible fallacies might be associated with:
+
+- Items meant to measure the same construct not semantically clustering together / better clustering with other groups of items meant to measure another construct;
+- An item embedding being closer (in terms of cosine similarity) to the *factor description* of a different construct than the one it is meant to measure.
+
+The idea is that, while semantic similarity does not entirely replace expert evaluation, it may serve as an **automated alert system** to flag problematic items *before data are collected*, which could potentially save time and resources. This method has also been proposed as a pre-validation step for more complex *Structural Equation Models* (<a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2024.1433339/full" target="_blank">Feraco & Toffalini, 2025</a>).
+
+## The Dataset
+
+The suggested dataset is <a href="data/itemTexts.xlsx" download="itemTexts.xlsx">`itemTexts.xlsx`</a>, but you could use any other list of items that you are working on or are interested in
+
+```{python}
+import pandas as pd
+
+df = pd.read_excel("data/itemTexts.xlsx")
+
+df
+
+df.columns
+```
+
+The dataset includes:
+
+- `text`: the item text;
+- `itemID`: the item unique identifier;
+- `factorLabel`: the factor unique identifier;
+- `factorDescription`: a short description of the latent construct that the item is meant to measure;
+- `questionnaireName`: the name of the questionnaire the item belongs to (not strictly needed for this task).
+
+## Your Tasks
+
+- **Semantic Clustering of Items**  
+   Compute sentence embeddings of the items (already embedded if using the provided dataset); 
+   - Use PCA and clustering techniques (as in prior exercises); 
+   - See whether items cluster by declared constructs (a *confusion matrix* might be useful here);
+
+- **Item-Factor Matching via Cosine Similarity**  
+   - Compute embeddings for each `factorDescription`; 
+   - For each item, calculate cosine similarity with all factor descriptions;
+   - Examine if there is any items that is more similar to a factor *other than* the one it is meant to measure; 
+   - Try to understand why the mismatch might occur;
+
+- **Visualization**  
+   - Plot items in 2D (e.g., via PCA or t-SNE), color-coded by `factorLabel` and/or by *data driven clusters*;   
+   - Create heatmaps of cosine similarities between items and factor description. 
+
+You are encouraged to reflect on when semantic similarity *might* be misleading, when it could be useful to prevent models misfit or conceptual overlap between construct, and what a discrepancy between the similarity across item embeddings and their correlation in real data might possibly mean. 
+
+- **Extend**  
+   - If you have any real collected data using questionnaires, it would be of great interest to examine whether correlation observed across participants responses to items are actually proportional to the cosine similarities across items embeddings. 
+
+**Super open-ended question of actual theorethical relevance: <em>Should correlations observed in real data strictly reflect the semantic proximity of items? but then, why should we collect any data?</em>**
