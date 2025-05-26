@@ -39,7 +39,7 @@ You are encouraged to look at this online book available on GitHub: <a href="htt
 Bookmark this course homepage to have a quick access to this material (<a href="https://enricotoffalini.github.io/Basics-Python/">https://enricotoffalini.github.io/Basics-Python/</a>). Then do this:
 
 1.  **Install Python**: go to the official <a href="https://www.python.org/downloads/" target="_blank">Python download page</a> and follow the installation instructions for your operating system.
-2.  **Install an IDE** *(Integrated Development Environment)*: Suggested IDEs are <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Posit/**RStudio**</a> (which you should have already installed for the other courses; it also supports Python!) or <a href="https://www.spyder-ide.org/" target="_blank">**Spyder**</a>.
+2.  **Install an IDE** *(Integrated Development Environment)*: Suggested IDEs are <a href="https://www.spyder-ide.org/" target="_blank">**Spyder**</a> or <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Posit-**RStudio**</a> (which you should have already installed for the other courses; it also supports Python!).
 3.  **Test your local setup**: Make sure that your Python installation works; open your IDE of choice and run the following code in the console:
 
 ```{python, eval=F}
@@ -51,7 +51,7 @@ np.random.normal(0,1,size=10)
 
 If you get any errors when running the first line, try install the package via terminal with <br/> `pip install numpy`
 
-4.  **Take a look at** <a href="https://colab.research.google.com/" target="_blank">Colab</a>: Some basic practice and exercises will be conducted on <a href="https://colab.research.google.com/" target="_blank">**Google Colab**</a> (you need to log in with a Google account), a free online environment for writing and running Python in the browser without any local installation.
+4.  <b>Take a look at <a href="https://colab.research.google.com/" target="_blank">Colab</a></b>: Some basic practice and exercises will be conducted on <a href="https://colab.research.google.com/" target="_blank">**Google Colab**</a> (you need to log in with a Google account), a free online environment for writing and running Python in the browser without any local installation.
 
 ## Course Topics
 
@@ -113,4 +113,3 @@ GitHub repository associated to the present course website: <em>[https://github.
 
 Many thanks to <b><a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a></b> for sharing his expertise with using GitHub and Quarto, to <b><a href="https://github.com/Mar-Cald" target="_blank">Margherita Calderan</a></b> for her valuable assistance with programming experiments, and <b><a href="https://github.com/feracotommaso" target="_blank">Tommaso Feraco</a></b> for a fruitful collaboration on the use and interpretation of semantic embeddings
 :::
-

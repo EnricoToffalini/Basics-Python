@@ -1,0 +1,14 @@
+Subject: Course website + Getting Started (Basics of Python 🐍)
+
+Hi everyone,
+
+Just a quick update to help you get ready for the course.
+
+All materials and instructions are now available on the course website: https://enricotoffalini.github.io/Basics-Python/
+
+Please make sure to carefully follow the steps in the "Getting started" section of the website before our first class. If you encounter any issues and cannot complete these steps successfully, please contact me at your earliest convenience. 
+
+Looking forward to seeing you soon! 
+
+Best,  
+Enrico
