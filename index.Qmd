@@ -113,3 +113,8 @@ GitHub repository associated to the present course website: <em>[https://github.
 
 Many thanks to <b><a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a></b> for sharing his expertise with using GitHub and Quarto, to <b><a href="https://github.com/Mar-Cald" target="_blank">Margherita Calderan</a></b> for her valuable assistance with programming experiments, and <b><a href="https://github.com/feracotommaso" target="_blank">Tommaso Feraco</a></b> for a fruitful collaboration on the use and interpretation of semantic embeddings
 :::
+
+<div style="display: flex; align-items: center; gap: 25px; white-space: nowrap">
+<span style="font-size: 12px;">Read a modest proposal for <a href="https://docs.google.com/document/d/1-2Ty2Sd1QQzCCFt3SZpz3hhRkM3XEdvf/" target="_blank">open source software in the PhD program in Psychological Sciences</span>
+  <img src="figures/qrcode_manifesto_opensource.png" style="height: 50px;">
+  </div>
