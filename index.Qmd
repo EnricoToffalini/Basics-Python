@@ -109,5 +109,8 @@ Depending on interest, we may explore more advanced topics such as data visualiz
 ------------------------------------------------------------------------
 
 ::: {style="font-size:11px;"}
-GitHub repository associated to the present course website: [https://github.com/EnricoToffalini/Basics-Python](https://github.com/EnricoToffalini/Basics-Python){target="_blank"}
+GitHub repository associated to the present course website: <em>[https://github.com/EnricoToffalini/Basics-Python](https://github.com/EnricoToffalini/Basics-Python){target="_blank"}</em>
+
+Many thanks to <b><a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a></b> for sharing his expertise with using GitHub and Quarto, to <b><a href="https://github.com/Mar-Cald" target="_blank">Margherita Calderan</a></b> for her valuable assistance with programming experiments, and <b><a href="https://github.com/feracotommaso" target="_blank">Tommaso Feraco</a></b> for a fruitful collaboration on the use and interpretation of semantic embeddings
 :::
+
