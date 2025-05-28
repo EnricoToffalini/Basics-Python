@@ -406,13 +406,24 @@ Enrico Toffalini
 </section>
 <section id="virtual-environment" class="slide level2">
 <h2>Virtual Environment</h2>
-<div style="font-size:38px;">
-<p>A “virtual environment” (<em><code>venv</code></em>) is practically a local folder with <strong>an isolated Python environment</strong>. It contains a copy of the <strong>Python interpreter</strong> and <strong>all the packages you install</strong> at the <strong>exact versions</strong> used at that time. This folder can ideally be placed inside your project directory</p>
-<p>Virtual environments are routinely used in “serious” / professional projects, so we will not use them systematically in this course. However, they are considered best practice for <strong>avoiding version conflicts</strong> and <strong>ensuring reproducibility</strong>. (BTW, something similar now exists also in R via the <em><code>renv</code></em> package, although unfortunately not widely used)</p>
+<div style="font-size:40px;">
+<p>– an <strong>isolated Python environment</strong> that allows you to install packages and manage dependencies <strong>separately from your system/main Python installation</strong>. This helps avoid conflicts between projects that may require different versions of the same packages. <code>venv</code>s are routinely used in professional projects. We will not use them systematically in this course, but know that they are <strong>best practice for managing projects ensuring reproducibility</strong></p>
+<p><em>BTW, something similar now exists also in R via the <code>renv</code> package, although unfortunately not widely used</em></p>
+</div>
+</section>
+<section id="virtual-environment-1" class="slide level2">
+<h2>Virtual Environment</h2>
+<div style="font-size:50px;">
+<p>Practically, it is a <strong>local folder</strong> with <strong>an isolated full Python environment</strong>. It contains:</p>
+<ul>
+<li>a copy of the <strong>Python interpreter</strong>;</li>
+<li><strong>all the packages you install</strong> at the <strong>exact versions</strong> used at that time</li>
+</ul>
+<p>This folder can ideally be placed inside your project directory</p>
 </div>
 <!------------------------------------------------------------------>
 </section>
-<section id="virtual-environment-1" class="slide level2">
+<section id="virtual-environment-2" class="slide level2">
 <h2>Virtual Environment</h2>
 <p>Create a virtual environment with this command in your bash/terminal:</p>
 <div class="cell">
@@ -429,10 +440,10 @@ Enrico Toffalini
 <p>…alternatively, inside IDEs, you may activate the <code>venv</code> via specific commands like <code>reticulate::use_virtualenv("nameOfMyEnv", required=T)</code> (in <strong><em>RStudio</em></strong>), or setting the Python interpreter manually and then restarting the kernel (in <strong><em>Spyder</em></strong>)</p>
 <!------------------------------------------------------------------>
 </section>
-<section id="virtual-environment-2" class="slide level2">
+<section id="virtual-environment-3" class="slide level2">
 <h2>Virtual Environment</h2>
 <div style="font-size:30px;">
-<p>Even if some are already installed in your main Python installation, you should <strong>reinstall packages needed for your project in the local <code>venv</code></strong> (after activating it). This is considered best practice, as it ensures <strong>isolation</strong> across projects and <strong>reproducibility</strong>. After (re-)installing them, you can export a <strong><code>requirements.txt</code></strong> file to document the exact versions of all installed packages (this is particularly useful for sharing your environment, e.g., via <em>GitHub</em>):</p>
+<p>Regardless of your main Python installation, you should <strong>reinstall all packages needed for your project inside the local <code>venv</code></strong> (after activating it). This is considered best practice, as it ensures <strong>isolation</strong> across projects and <strong>reproducibility</strong>. At any time, you can export a <strong><code>requirements.txt</code></strong> file to document the exact versions of all installed packages (this is particularly useful for sharing your environment, e.g., via <em>GitHub</em>):</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -444,28 +455,33 @@ Enrico Toffalini
 </section>
 <section id="installing-and-importing-packages" class="slide level2">
 <h2>Installing and importing packages</h2>
-<p>Installing, in an IDE console or Colab:</p>
+<p>Installing, inside an IDE console or Colab:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas numpy seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy  <span class="co"># install one package</span></span>
+<span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy pandas seaborn  <span class="co"># install multiple packages</span></span>
+<span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy<span class="op">==</span><span class="fl">2.2.5</span>  <span class="co"># install package and specify which version </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Then, before using any of their functions, import the packages:</p>
+<p>Then, before using any of their functions, import packages and modules:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb5-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>as</code> gives a shorter alias to a package name (e.g., <code>pd</code> for <code>pandas</code>, <code>np</code> for <code>numpy</code>); this is important because in Python functions must <em>always</em> be called by specifying the package name (unlike in R)</p>
+<div style="font-size:30px;">
+<p><strong><code>as</code></strong> gives a shorter <strong><em>alias</em></strong> to a package or module name (e.g., <code>pd</code> for <code>pandas</code>, <code>np</code> for <code>numpy</code>); this is convenient because in Python you frequently need to call different functions by <em>always</em> specifying the package/module name (unlike in R; unless you import individual functions, e.g., <code>from numpy import array</code>)</p>
+</div>
 <!------------------------------------------------------------------>
 </section>
 <section id="using-functions-help-autocomplete" class="slide level2">
 <h2>Using functions, help, autocomplete</h2>
-<p>Call a function from a package and getting help:</p>
+<p><strong>Use</strong> a function from a package, and call <strong>help</strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.mean([<span class="fl">2.0</span>, <span class="fl">1.5</span>, <span class="fl">7.1</span>, <span class="fl">4.2</span>]) <span class="co"># call a function from a package</span></span>
 <span id="cb6-2"><a href="" aria-hidden="true" tabindex="-1"></a>?np.mean      <span class="co"># help only in IDE console or Colab,         </span></span>
 <span id="cb6-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(np.mean) <span class="co"># help via built-in function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Use <code>tab</code> to autocomplete and explore available functions of a package ↴</p>
+<p>Use <code>tab</code> to <strong>autocomplete and explore</strong> available functions of a package ↴</p>
 <div style="text-align: center;">
 <p><img src="figures/tabFunction.png" style="width: 100%;"></p>
 </div>
@@ -494,15 +510,15 @@ Enrico Toffalini
 <!------------------------------------------------------------------>
 </section>
 <section id="accessing-functions-as-methods" class="slide level2">
-<h2>Accessing functions as methods</h2>
-<p>In Python, many objects have functions <em>attached</em> to them — these are called <strong>methods</strong>, and are accessed using dot (<code>.</code>) notation <em>(more on this later!)</em></p>
+<h2>Accessing functions as <em>methods</em></h2>
+<p>In Python, objects may have functions <em>attached</em> to them: these are called <strong>methods</strong>, and are accessed using dot (<strong><code>.</code></strong>) notation <em>(more on this later!)</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a href="" aria-hidden="true" tabindex="-1"></a>myVect <span class="op">=</span> np.array([<span class="fl">2.0</span>, <span class="fl">1.5</span>, <span class="fl">7.1</span>, <span class="fl">4.2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong><em>Method-style syntax</em></strong>, requires that the object has this method:</p>
+<p><u><strong><em>Method-style syntax</em></strong></u>, requires that the object has this method:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a>myVect.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -510,7 +526,7 @@ Enrico Toffalini
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<p><strong><em>Function-style syntax</em></strong> <br> (more like R):</p>
+<p><u><strong><em>Function-style syntax</em></strong></u> <br> (more like R):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.mean(myVect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -522,7 +538,7 @@ Enrico Toffalini
 <div class="columns">
 <div class="column" style="width:30%;">
 <div style="text-align:right;">
-<p>Use <code>tab</code> to autocomplete and explore available methods of an object →</p>
+<p><b>Use <code>tab</code> to autocomplete and explore available methods of an object →</b></p>
 </div>
 </div><div class="column" style="width:70%;">
 <div style="text-align: center;">
@@ -590,19 +606,22 @@ Enrico Toffalini
 <h3 id="export-figures">Export figures</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a>plt.scatter(np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>), np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>))</span>
-<span id="cb19-4"><a href="" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Example Plot"</span>)</span>
-<span id="cb19-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>)  <span class="co"># export as PNG</span></span>
-<span id="cb19-7"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.pdf"</span>)           <span class="co"># export as PDF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a>plt.scatter(np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>), np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>))</span>
+<span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Example Plot"</span>)</span>
+<span id="cb19-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>)  <span class="co"># export as PNG</span></span>
+<span id="cb19-6"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.pdf"</span>)           <span class="co"># export as PDF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div style="font-size:20px;">
 <p><br></p>
+</div>
 <h3 id="delete-an-object-similar-to-rmdf-in-r">Delete an object <span style="font-size:32px;"><em>(similar to <code>rm(df)</code> in R)</em></span></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div style="font-size:20px;">
 <p><br></p>
+</div>
 <h3 id="listing-all-objects-in-workspace-similar-to-ls-in-r">Listing all objects in workspace <span style="font-size:32px;"><em>(similar to <code>ls()</code> in R)</em></span></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -621,15 +640,15 @@ Enrico Toffalini
 <div class="cell-output cell-output-stdout">
 <pre><code>['append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse']</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb25-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(np)[<span class="dv">40</span>:<span class="dv">70</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="fl">5.2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">98</span>, <span class="fl">11.5</span>, <span class="fl">63.11</span>])</span>
+<span id="cb25-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(a)[<span class="dv">97</span>:<span class="dv">127</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['all', 'any', 'argmax', 'argmin', 'argpartition', 'argsort', 'astype', 'base', 'byteswap', 'choose', 'clip', 'compress', 'conj', 'conjugate', 'copy', 'ctypes', 'cumprod', 'cumsum', 'data', 'device', 'diagonal', 'dot', 'dtype', 'dump', 'dumps', 'fill', 'flags', 'flat', 'flatten', 'getfield']</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb27-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(np)[<span class="dv">40</span>:<span class="dv">70</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['abs', 'absolute', 'acos', 'acosh', 'add', 'all', 'allclose', 'amax', 'amin', 'angle', 'any', 'append', 'apply_along_axis', 'apply_over_axes', 'arange', 'arccos', 'arccosh', 'arcsin', 'arcsinh', 'arctan', 'arctan2', 'arctanh', 'argmax', 'argmin', 'argpartition', 'argsort', 'argwhere', 'around', 'array', 'array2string']</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="fl">5.2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">98</span>, <span class="fl">11.5</span>, <span class="fl">63.11</span>])</span>
-<span id="cb27-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(a)[<span class="dv">130</span>:<span class="dv">160</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>['itemsize', 'mT', 'max', 'mean', 'min', 'nbytes', 'ndim', 'newbyteorder', 'nonzero', 'partition', 'prod', 'ptp', 'put', 'ravel', 'real', 'repeat', 'reshape', 'resize', 'round', 'searchsorted', 'setfield', 'setflags', 'shape', 'size', 'sort', 'squeeze', 'std', 'strides', 'sum', 'swapaxes']</code></pre>
 </div>
 </div>
 <!------------------------------------------------------------------>

@@ -25,10 +25,21 @@ reticulate::repl_python()
 
 ## Virtual Environment
 
-<div style="font-size:38px;">
-A "virtual environment" (*`venv`*) is practically a local folder with **an isolated Python environment**. It contains a copy of the **Python interpreter** and **all the packages you install** at the **exact versions** used at that time. This folder can ideally be placed inside your project directory
+<div style="font-size:40px;">
+– an **isolated Python environment** that allows you to install packages and manage dependencies **separately from your system/main Python installation**. This helps avoid conflicts between projects that may require different versions of the same packages. `venv`s are routinely used in professional projects. We will not use them systematically in this course, but know that they are **best practice for managing projects ensuring reproducibility**
 
-Virtual environments are routinely used in "serious" / professional projects, so we will not use them systematically in this course. However, they are considered best practice for **avoiding version conflicts** and **ensuring reproducibility**. (BTW, something similar now exists also in R via the *`renv`* package, although unfortunately not widely used)
+<em>BTW, something similar now exists also in R via the `renv` package, although unfortunately not widely used</em>
+</div>
+
+## Virtual Environment
+
+<div style="font-size:50px;">
+Practically, it is a **local folder** with **an isolated full Python environment**. It contains:
+
+- a copy of the **Python interpreter**;
+- **all the packages you install** at the **exact versions** used at that time
+
+This folder can ideally be placed inside your project directory
 </div>
 
 <!------------------------------------------------------------------>
@@ -58,7 +69,7 @@ nameOfMyEnv\Scripts\activate.ps1    # Windows
 ## Virtual Environment
 
 <div style="font-size:30px;">
-Even if some are already installed in your main Python installation, you should **reinstall packages needed for your project in the local `venv`** (after activating it). This is considered best practice, as it ensures **isolation** across projects and **reproducibility**. After (re-)installing them, you can export a **`requirements.txt`** file to document the exact versions of all installed packages (this is particularly useful for sharing your environment, e.g., via *GitHub*):
+Regardless of your main Python installation, you should **reinstall all packages needed for your project inside the local `venv`** (after activating it). This is considered best practice, as it ensures **isolation** across projects and **reproducibility**. At any time, you can export a **`requirements.txt`** file to document the exact versions of all installed packages (this is particularly useful for sharing your environment, e.g., via *GitHub*):
 </div>
 ```{bash, eval=F}
 pip freeze > requirements.txt
@@ -72,32 +83,37 @@ pip freeze > requirements.txt
 
 ## Installing and importing packages
 
-Installing, in an IDE console or Colab: 
+Installing, inside an IDE console or Colab: 
 ```{python, eval=F}
-!pip install pandas numpy seaborn
+!pip install numpy  # install one package
+!pip install numpy pandas seaborn  # install multiple packages
+!pip install numpy==2.2.5  # install package and specify which version 
 ```
 
-Then, before using any of their functions, import the packages:
+Then, before using any of their functions, import packages and modules:
 ```{python, eval=F}
 import pandas as pd
 import numpy as np
 import seaborn as sns
+import matplotlib.pyplot as plt
 ```
 
-`as` gives a shorter alias to a package name (e.g., `pd` for `pandas`, `np` for `numpy`); this is important because in Python functions must *always* be called by specifying the package name (unlike in R)
+<div style="font-size:30px;">
+**`as`** gives a shorter ***alias*** to a package or module name (e.g., `pd` for `pandas`, `np` for `numpy`); this is convenient because in Python you frequently need to call different functions by *always* specifying the package/module name (unlike in R; unless you import individual functions, e.g., `from numpy import array`)
+</div>
 
 <!------------------------------------------------------------------>
 
 ## Using functions, help, autocomplete
 
-Call a function from a package and getting help:
+**Use** a function from a package, and call **help**:
 ```{python, eval=F}
 np.mean([2.0, 1.5, 7.1, 4.2]) # call a function from a package
 ?np.mean      # help only in IDE console or Colab,         
 help(np.mean) # help via built-in function
 ```
 
-Use `tab` to autocomplete and explore available functions of a package ↴
+Use `tab` to **autocomplete and explore** available functions of a package ↴
 
 <div style="text-align: center;">
   <img src="figures/tabFunction.png" style="width: 100%;" />
@@ -138,9 +154,9 @@ plt.show()
 
 <!------------------------------------------------------------------>
 
-## Accessing functions as methods
+## Accessing functions as *methods*
 
-In Python, many objects have functions *attached* to them — these are called **methods**, and are accessed using dot (`.`) notation *(more on this later!)*
+In Python, objects may have functions *attached* to them: these are called **methods**, and are accessed using dot (**`.`**) notation *(more on this later!)*
 
 ```{python}
 import numpy as np
@@ -149,13 +165,13 @@ myVect = np.array([2.0, 1.5, 7.1, 4.2])
 
 ::: columns
 ::: {.column width="50%"}
-***Method-style syntax***, requires that the object has this method:
+<u>***Method-style syntax***</u>, requires that the object has this method:
 ```{python}
 myVect.mean()
 ```
 :::
 ::: {.column width="50%"}
-***Function-style syntax*** <br/> (more like R):
+<u>***Function-style syntax***</u> <br/> (more like R):
 ```{python}
 np.mean(myVect)
 ```
@@ -165,7 +181,7 @@ np.mean(myVect)
 ::: columns
 ::: {.column width="30%"}
 <div style="text-align:right;">
-Use `tab` to autocomplete and explore available methods of an object → 
+<b>Use `tab` to autocomplete and explore available methods of an object →</b>
 </div>
 :::
 ::: {.column width="70%"}
@@ -243,23 +259,22 @@ df.to_excel("exported_data.xlsx", index=False)
 ### Export figures
 ```{python, eval=F}
 import matplotlib.pyplot as plt
-
 plt.scatter(np.random.normal(0,1,10), np.random.normal(0,1,10))
 plt.title("Example Plot")
 
 plt.savefig("myPlot.png", dpi=300)  # export as PNG
 plt.savefig("myPlot.pdf")           # export as PDF
 ```
-
+<div style="font-size:20px;">
 <br/>
-
+</div>
 ### Delete an object <span style="font-size:32px;">*(similar to `rm(df)` in R)*</span>
 ```{python, eval=F}
 del df
 ```
-
+<div style="font-size:20px;">
 <br/>
-
+</div>
 ### Listing all objects in workspace <span style="font-size:32px;">*(similar to `ls()` in R)*</span>
 ```{python}
 dir()
@@ -275,11 +290,11 @@ dir()
 a = [5.2, 2, 0, 98, 11.5, 63.11]
 dir(a)[37:47]
 
+a = np.array([5.2, 2, 0, 98, 11.5, 63.11])
+dir(a)[97:127]
+
 import numpy as np
 dir(np)[40:70]
-
-a = np.array([5.2, 2, 0, 98, 11.5, 63.11])
-dir(a)[130:160]
 ```
 
 

@@ -42,8 +42,8 @@ Many basic aspects of syntax and functions may feel practically the same...
 <div style="font-size:28px;">
 | Task                 | Python        | R |
 |-----------|-------------|-------------|
-| Assignment   | `x = [1,2,3]` | `x <- c(1,2,3)` or <br> `x = c(1,2,3)` |
-| Indexing   | `x[1]` | `x[2]` |
+| Assignment   | `x = [1,2,3]` | `x = list(1,2,3)` or <br> `x <- list(1,2,3)` |
+| Indexing   | `x[0]` | `x[1]` |
 | Comments | `# like this` | `# like this`   |
 | Print  | `print(x)` | `print(x)`   |
 | Functions    | `sum(x)`  | `sum(x)`  |
@@ -432,33 +432,33 @@ With mutable types like lists, "`=`" creates a reference, not a copy like in R
 ::: {.columns}
 ::: {.column width="50%"}
 **Python**
+<div class="large-code">
 ```{python}
 v1 = ["A","B","C","D"]
 
-myvar = v1
-
-v1[0:2] = [100,200]
+newvar = v1
+newvar[0] = "ZZZ"
+newvar
+```
+```{python}
 v1
 ```
-references to the original object:
-```{python}
-myvar
-```
+</div>
 :::
 ::: {.column width="50%"}
 **R**
+<div class="large-code">
 ```{r}
 v1 = c("A","B","C","D")
 
-myvar = v1
-
-v1[1:2] = c(100, 200)
-v1
+newvar = v1
+newvar[1] = "ZZZ"
+newvar
 ```
-actually copied the original object:
 ```{r}
-myvar
+v1  # untouched!
 ```
+</div>
 :::
 :::
 
@@ -475,33 +475,33 @@ To create a copy, you could use the **`copy()`** function
 ::: {.columns}
 ::: {.column width="50%"}
 **Python**
+<div class="large-code">
 ```{python}
 v1 = ["A","B","C","D"]
 
-myvar = v1.copy()
-
-v1[0:2] = [100,200]
-v1
+newvar = v1.copy()
+newvar[0] = "ZZZ"
+newvar
 ```
-actually copied the original object:
 ```{python}
-myvar
+v1  # untouched!
 ```
+</div>
 :::
 ::: {.column width="50%"}
 **R**
+<div class="large-code">
 ```{r}
 v1 = c("A","B","C","D")
 
-myvar = v1
-
-v1[1:2] = c(100, 200)
-v1
+newvar = v1
+newvar[1] = "ZZZ"
+newvar
 ```
-actually copied the original object:
 ```{r}
-myvar
+v1  # untouched!
 ```
+</div>
 :::
 :::
 
