@@ -60,17 +60,11 @@ df.columns
 
 ## Load the Pretrained Sentiment Model
 
--   First of all, we choose a model from <a href="https://huggingface.co/" target="_blank">HuggingFace</a> (we must specify the exact `"Model Name"`);
--   Then, we load and initialize both the `model` itself and its `tokenizer` (i.e., the function that splits text into tokens \[subword units with meaning, that the language models can understand\]);
--   Finally, we initialize the pipeline for the `"sentiment-analysis"` *task* using that model and tokenizer
+All we need to do is to create a sentiment analysis pipeline specifying the `model` name and the `task` that it is required to do. The model is hosted on <a href="https://huggingface.co/" target="_blank">HuggingFace</a> (we must specify the exact `"Model Name"`), and it is automatically accessed by `transformers`.
 
 ```{python}
-modelName = "cardiffnlp/twitter-roberta-base-sentiment"
-
-model = transformers.AutoModelForSequenceClassification.from_pretrained(modelName)
-tokenizer = transformers.AutoTokenizer.from_pretrained(modelName)
-
-classifier = transformers.pipeline(task="sentiment-analysis", model=model, tokenizer=tokenizer)
+classifier = transformers.pipeline(task="sentiment-analysis", 
+                                  model="cardiffnlp/twitter-roberta-base-sentiment")
 ```
 
 ## Run the Sentiment Analysis Task for each Review
@@ -137,20 +131,25 @@ I actually don't like categorical classification very much. I would prefer to ob
 -   First, let's tokenize the sentence. Now, this is a bit technical...
 
 ```{python, cache=T}
-sentence = tokenizer("My day was so-so, but afterall not so bad", return_tensors="pt")
-print(sentence)
+tokenizer = transformers.AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
+
+tokenSentence = tokenizer("My day was so-so, but afterall not so bad", return_tensors="pt")
+print(tokenSentence)
 ```
 
 -   Second, let's run the model on the tensor of tokens and extract the logits (the first score is for *negative*, the second for *neutral*, the third for *positive*):
 
 ```{python, cache=T}
-logitScores = model(**sentence).logits
+model = transformers.AutoModelForSequenceClassification.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
+
+logitScores = model(input_ids=tokenSentence["input_ids"],
+               attention_mask=tokenSentence["attention_mask"]).logits
 print(logitScores)
 ```
 
 -   Third, let's convert logits to probabilities. A logit score can directly be converted into probability; more logit scores can be normalized to probabilities that cumulatively add to one. We can use the `softmax()` function (from the `torch.nn.functional` submodule; `dim=1` tells the function that it must be computed row-wise):
 
-*note: softmax does like: $\frac{e^{0.4030}}{e^{0.4030} + e^{0.2260} + e^{-0.6003}} = 0.4536$*
+*note: softmax does like:* $\frac{e^{0.4030}}{e^{0.4030} + e^{0.2260} + e^{-0.6003}} = 0.4536$
 
 ```{python, cache=T}
 probs = softmax(logitScores, dim=1)

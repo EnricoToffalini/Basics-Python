@@ -37,15 +37,25 @@ You must analyze a dataset containing some numerical scores per participant. You
 
 #### Preliminary steps
 
+*Import packages*
+
 ```{python}
 import pandas as pd
 import numpy as np
 import sklearn as skl  # includes both k-means and GMM methods
 import matplotlib.pyplot as plt # for data visualization
 import seaborn as sns # for data visualization
+```
 
-# Load data, keep only numeric columns, drop rows with missing values
+*Import data*
+
+```{python}
 dfTot = pd.read_csv("data/dataForCluster.csv") 
+```
+
+*Take only numeric columns, and drop rows with any missing value*
+
+```{python}
 dfNum = dfTot.select_dtypes(include=np.number).dropna()
 ```
 
