@@ -1,0 +1,131 @@
+---
+title: "Exercises – Additional: Using AI / LLM as research assistants in systematic reviews"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    self-contained: true
+    toc-depth: 4  
+    toc-expand: 4
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+```{r, echo=F, include=F}
+reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/python.exe")
+reticulate::repl_python()
+```
+
+## Information/Data Extraction
+
+The following series of code chunks were actually used to **process several PDF documents** in a review and **extract relevant information based on a textual prompt** using a language model (OpenAI GPT-4)
+
+##### Import libraries
+
+```python
+import os
+import openai
+import pandas as pd
+import numpy as np
+from PyPDF2 import PdfReader
+import tiktoken
+```
+
+- `os`: for file management  
+- `openai`: OpenAI package, interface via API / cloud based 
+- `pandas`/`numpy`: data manipulation, as we now know well
+- `PyPDF2`: reading PDF contents  
+- `tiktoken`: estimating token length for OpenAI models
+
+##### Authenticate with OpenAI API and load the text prompt
+
+You need a valid billing plan, and a valid API key! The billing plan require registering a credit card. The expense is not much unless you process many hundreds of papers
+
+```python
+client = openai.OpenAI(api_key="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+prompt = open("_Prompt AI.txt").read()
+```
+
+This initializes the OpenAI client with your API key and loads a pre-written prompt (stored in `_Prompt AI.txt`) that will be appended before each PDF’s full text.
+
+##### Scan the current directory for all PDF files
+
+```python
+allfilenames = os.listdir()
+filenames = [f for f in allfilenames if f.endswith(".pdf")]
+articles = [os.path.splitext(f)[0] for f in filenames]
+```
+
+##### Initializes a dataframe to hold the results
+
+```python
+result = pd.DataFrame({"filename":filenames, 
+                        "article":articles, 
+                         "length":np.nan, 
+                         "output":""})
+```
+
+##### Iterate through each PDF and extract information using the language model
+
+Below is the core loop:  
+- Saves progress in `_results.csv` (just in case everything crashes)
+- Extracts text from the current PDF  
+- Computes the token count  
+- Sends the text to the OpenAI model (if within lower and upper length limits)  
+- Stores the model's output 
+
+```python
+for i in range(len(result)):
+   try:
+       result.to_csv("_results.csv",index=False)  # save intermediate results so far
+       pdfreader = PdfReader(result["filename"][i])
+       fulltext = "\n".join(page.extract_text() or "" for page in pdfreader.pages).strip()
+
+       # Estimate the token count for the full text
+       textlength = len(tiktoken.encoding_for_model("gpt-4").encode(fulltext))
+       result.loc[i,"length"] = textlength
+
+       # Skip very short or very long documents
+       if textlength > 500 and textlength < 30000 and result.loc[i,"output"] == "":
+            
+            # the true "core": creates a gpt chat and launches the prompt + full text
+            response = client.chat.completions.create(
+                model = "gpt-4o-mini",  # choose the model, mind the price!
+                messages = [
+                      {"role":"system", "content": "You are a research assistant"},
+                      {"role":"user", "content": prompt + fulltext}
+                ],
+                temperature = 0.5
+            )
+            # store output text (replacing newline for convenience)
+            result.loc[i,"output"] = response.choices[0].message.content.replace("\n","___")
+       # print some notification as iteration is completed
+       print("------------- Done at row " + str(i) + 
+                    ". File: " + result["filename"][i] + ". Length: " + str(textlength))
+   except Exception as e:
+       print("------------- Error at row " + str(i))
+```
+
+##### Final: Just plot the distribution of token lengths across all PDFs
+
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.histplot(result["length"])
+plt.show()
+plt.clf(); plt.close()
+
+# checks the total token volume 
+result["length"].sum()
+```
+
+##### What could you do now?
+
+- Do nothing, just be aware that this is a possibility; 
+- Just give it a try and see how it performs; 
+- Rewrite this for a simpler but important task such as abstract screening; 
+- Re-implement the approach using a free and reproducible model (e.g., LLaMA, Mistral, SciBERT), but be aware that high quality models may be very large and not easily run locally on normal computers 
+

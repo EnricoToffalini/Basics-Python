@@ -102,10 +102,12 @@ Depending on interest, we may explore more advanced topics such as data visualiz
 -   [**Basics of Text Embeddings (plus PCA and Clustering)**](exercises/Exercises-EmbeddingsPCAClust.html){target="_blank"}
 -   [**Basics of Text Classification using Embeddings and Cosine Similarity**](exercises/Exercises-EmbeddingsCosineSim.html){target="_blank"}
     -   ::: {style="font-size:14px;"}
-        **additional exercise on [Using text embeddings to automatically evaluate construct validity](exercises/ExercisesExtra-Questionnaires.html){target="_blank"}**
+        **additional exercise on [Text embeddings to automatically evaluate construct validity](exercises/ExercisesExtra-Questionnaires.html){target="_blank"}**
         :::
 -   [**Other Examples of Language, Speech, and Image Processing**](exercises/Exercises-otherNLPexamples.html){target="_blank"}
-
+    -   ::: {style="font-size:14px;"}
+        **additional mini-tutorial on [AI/LLM as research assistants in systematic reviews](exercises/ExercisesExtra-SystematicReview.html){target="_blank"}**
+        :::
 ------------------------------------------------------------------------
 
 ::: {style="font-size:11px;"}
@@ -114,7 +116,6 @@ GitHub repository associated to the present course website: <em>[https://github.
 Many thanks to <b><a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a></b> for sharing his expertise with using GitHub and Quarto, to <b><a href="https://github.com/Mar-Cald" target="_blank">Margherita Calderan</a></b> for her valuable assistance with programming experiments, and <b><a href="https://github.com/feracotommaso" target="_blank">Tommaso Feraco</a></b> for a fruitful collaboration on the use and interpretation of semantic embeddings
 :::
 
-<div style="display: flex; align-items: center; gap: 25px; white-space: nowrap">
-<span style="font-size: 12px;">Read a modest proposal for <a href="https://docs.google.com/document/d/1-2Ty2Sd1QQzCCFt3SZpz3hhRkM3XEdvf/" target="_blank">open source software in the PhD program in Psychological Sciences</span>
-  <img src="figures/qrcode_manifesto_opensource.png" style="height: 50px;">
-  </div>
+::: {style="display: flex; align-items: center; gap: 25px; white-space: nowrap"}
+[Read a modest proposal for <a href="https://docs.google.com/document/d/1-2Ty2Sd1QQzCCFt3SZpz3hhRkM3XEdvf/" target="_blank">open source software in the PhD program in Psychological Sciences]{style="font-size: 12px;"} <img src="figures/qrcode_manifesto_opensource.png" style="height: 50px;"/>
+:::

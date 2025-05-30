@@ -128,7 +128,9 @@ print(CM / CM.sum(1))
 
 I actually don't like categorical classification very much. I would prefer to obtain a **continuum score of valence** where one extreme is absolutely negative, and the other is absolutely positive. In fact, our model was trained to assign discrete labels. However, it generates underlying **logit scores** that reflect its confidence for each sentiment class. We can use those as proxies to compute a single continuous valence score.
 
--   First, let's tokenize the sentence. Now, this is a bit technical...
+Now, this is a bit technical: instead of relying on the `pipeline`, we need to separately *tokenize* the sentence and apply the *model*
+
+-   First, let's tokenize the sentence
 
 ```{python, cache=T}
 tokenizer = transformers.AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
