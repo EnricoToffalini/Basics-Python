@@ -506,3 +506,41 @@ v1  # untouched!
 :::
 
 <!-- --------------------------------------------------------------------- -->
+
+## Key differences: MULTIPLE ASSIGNMENT AND UNPACKING
+
+::: {.columns}
+::: {.column width="55%"}
+**Python**
+```{python}
+a, b, c = 59.2, 11.4, 98.0
+print(b)
+```
+```{python}
+x = [59.2, 11.4, 98.0]
+a, b, c = x
+print(b)
+```
+```{python}
+a, b, c = np.random.normal(size=3)
+print(b)
+```
+```python
+intrcpt, beta0, beta1 = myModel.params
+```
+:::
+::: {.column width="45%"}
+**R**
+```{r, error=T}
+a, b, c = 59.2, 11.4, 98.0
+```
+<br/><br/><br/><br/>
+```r
+intrcpt = coef(myModel)[1]
+beta0 = coef(myModel)[2]
+beta1 = coef(myModel)[3]
+```
+:::
+:::
+
+<!-- --------------------------------------------------------------------- -->

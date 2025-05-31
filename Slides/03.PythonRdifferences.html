@@ -625,28 +625,28 @@ using <strong><code>.</code></strong> to access submodules of modules: <code>sta
 <div class="cell-output cell-output-stdout">
 <pre><code>                Results: Ordinary least squares
 ================================================================
-Model:              OLS              Adj. R-squared:     -0.109 
-Dependent Variable: y                AIC:                68.1198
-Date:               2025-05-28 17:53 BIC:                71.1070
-No. Observations:   20               Log-Likelihood:     -31.060
-Df Model:           2                F-statistic:        0.06764
-Df Residuals:       17               Prob (F-statistic): 0.935  
-R-squared:          0.008            Scale:              1.5382 
-------------------------------------------------------------------
-            Coef.    Std.Err.     t      P&gt;|t|     [0.025   0.975]
-------------------------------------------------------------------
-Intercept   0.1506     0.2815   0.5350   0.5996   -0.4434   0.7446
-x1          0.0382     0.2270   0.1682   0.8684   -0.4407   0.5170
-x2          0.1095     0.3830   0.2859   0.7784   -0.6986   0.9177
+Model:              OLS              Adj. R-squared:     -0.093 
+Dependent Variable: y                AIC:                50.2973
+Date:               2025-05-31 15:58 BIC:                53.2845
+No. Observations:   20               Log-Likelihood:     -22.149
+Df Model:           2                F-statistic:        0.1905 
+Df Residuals:       17               Prob (F-statistic): 0.828  
+R-squared:          0.022            Scale:              0.63097
+-----------------------------------------------------------------
+               Coef.   Std.Err.     t     P&gt;|t|    [0.025  0.975]
+-----------------------------------------------------------------
+Intercept     -0.2451    0.1777  -1.3794  0.1856  -0.6199  0.1298
+x1             0.0569    0.1824   0.3119  0.7589  -0.3279  0.4417
+x2            -0.0969    0.2088  -0.4641  0.6485  -0.5374  0.3436
 ----------------------------------------------------------------
-Omnibus:               0.940       Durbin-Watson:          1.467
-Prob(Omnibus):         0.625       Jarque-Bera (JB):       0.858
-Skew:                  0.435       Prob(JB):               0.651
-Kurtosis:              2.478       Condition No.:          2    
+Omnibus:              4.745        Durbin-Watson:          1.460
+Prob(Omnibus):        0.093        Jarque-Bera (JB):       2.529
+Skew:                 -0.660       Prob(JB):               0.282
+Kurtosis:             4.138        Condition No.:          1    
 ================================================================</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>np.float64(71.10696118682418)</code></pre>
+<pre><code>np.float64(53.284509520287756)</code></pre>
 </div>
 </div>
 </div>
@@ -1072,6 +1072,52 @@ Kurtosis:              2.478       Condition No.:          2
 </div>
 </div>
 </div>
+</div>
+</div>
+<!-- --------------------------------------------------------------------- -->
+</section>
+<section id="key-differences-multiple-assignment-and-unpacking" class="slide level2">
+<h2>Key differences: MULTIPLE ASSIGNMENT AND UNPACKING</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>Python</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> <span class="fl">59.2</span>, <span class="fl">11.4</span>, <span class="fl">98.0</span></span>
+<span id="cb89-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>11.4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">59.2</span>, <span class="fl">11.4</span>, <span class="fl">98.0</span>]</span>
+<span id="cb91-2"><a href="" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> x</span>
+<span id="cb91-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>11.4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb93-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.6916232191325358</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="" aria-hidden="true" tabindex="-1"></a>intrcpt, beta0, beta1 <span class="op">=</span> myModel.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:45%;">
+<p><strong>R</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="ot">=</span> <span class="fl">59.2</span>, <span class="fl">11.4</span>, <span class="fl">98.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:1:2: unexpected ','
+1: a,
+     ^</code></pre>
+</div>
+</div>
+<p><br><br><br><br></p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="" aria-hidden="true" tabindex="-1"></a>intrcpt <span class="ot">=</span> <span class="fu">coef</span>(myModel)[<span class="dv">1</span>]</span>
+<span id="cb98-2"><a href="" aria-hidden="true" tabindex="-1"></a>beta0 <span class="ot">=</span> <span class="fu">coef</span>(myModel)[<span class="dv">2</span>]</span>
+<span id="cb98-3"><a href="" aria-hidden="true" tabindex="-1"></a>beta1 <span class="ot">=</span> <span class="fu">coef</span>(myModel)[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <!-- --------------------------------------------------------------------- -->
