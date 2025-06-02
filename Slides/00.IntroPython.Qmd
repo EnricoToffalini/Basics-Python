@@ -22,14 +22,14 @@ reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/p
 reticulate::repl_python()
 ```
 
-## Why becoming a Python user?
+## Why learning Python?
 
 <div style="font-size:30px;">
-- **Ultra mainstream and global leader in data science!**, especially in industry, but also increasingly adopted in academia. *Huge job market advantage as a data scientist, especially outside academia!*
-- **Huge community & ecosystem**: most used programming language in the world, even more than JavaScript! >600,000 packages on PyPI! (more than 30x compared to R);
+- **Ultra mainstream and global leader in programming and data science!** <a href="https://www.tiobe.com/tiobe-index/" target="_blank">Most used programming language in the world</a>; extremely used in industry, but also increasingly adopted in academia. *Huge job market advantage as a data scientist, inside but especially outside academia!*
+- **Huge community & ecosystem**:  >600,000 packages on PyPI! (more than 30x compared to R);
 - **Free & open-source**, like R... wherever you go, Python will be with you, for free!
-- **Strong programming language**, considered easier to read than R, and very widely used even outside data analysis (e.g., developing web apps, machine learning, deep learning & AI, programming experiments); 
-- **Great for reproducibility**: like R, it integrates well with *GitHub*, *Quarto*, *Jupyter*, *RStudio*, and more; allows you to create reports, articles, books, web apps, experiments... A great tool for Open Science!
+- **Great for reproducibility**: like R, it integrates well with *GitHub*, *Quarto*, *Jupyter*, *RStudio*, *R* itself, and more; allows you to create reports, articles, books, web apps, experiments... A great tool for Open Science!
+- **Strong programming language**, considered easier to read than R, and very widely used beyond statistical analysis (e.g., developing web apps, machine learning, deep learning & AI, programming experiments)
 </div>
 
 ## What you may expect to learn in this course
@@ -37,9 +37,9 @@ reticulate::repl_python()
 <div style="font-size:38px;">
 - Running fundamental operations and using core functions; 
 - Working with basic data types and structures (`list`, `dict`, `DataFrame`); 
-- Basic programming tools: loops, conditionals, and functions; 
-- A bit of data manipulation for data science with `pandas` and `numpy`; 
-- Brief overview of fancy stuff with machine learning, deep learning, natural language processing, experiment programming. 
+- Learning a bit of data manipulation for data science with `Pandas` and `NumPy`; 
+- Learning fundamental programming tools: loops, conditionals, custom functions; 
+- Brief overview of fancy stuff with machine learning, deep learning, natural language processing, experiment programming
 </div>
 
 ## Why should you use Python, later in your PhD?
@@ -48,7 +48,7 @@ I don't recommend using Python for doing the exact same things you could do with
 
 So why learning Python? Apart from its importance for "outside academia", you could learn Python for your PhD for: 
 
-1) Advanced applications of **pretrained models** and **Natural Language Processing** (e.g., sentiment analysis, text analysis, semantic embeddings); 
+1) Advanced applications of **AI**: **pretrained models**, **Natural Language Processing** (e.g., sentiment analysis, text classification, embeddings); 
 2) **Computational efficiency** especially when handling **big data**; 
 3) **Behavioral experiment** (e.g., PsychoPy, OpenSesame are becoming widely used in cognitive science). 
 
@@ -61,7 +61,7 @@ So why learning Python? Apart from its importance for "outside academia", you co
 | Visualization                  | ✅ `ggplot2` ♥️             | ✅ `matplotlib`, `seaborn`           |
 | Statistical modeling | ✅ `base`, `lme4`, `glmmTMB`, `mgcv`, `lavaan`, ... ♥️ 🏆 | ⚠️ many alternatives, but generally less flexible       |
 | Advanced machine learning               | ⚠️ `caret`, `mlr3`          | ✅ `scikit-learn`, industry standard |
-| Deep learning & Natural Language Processing AI  | ❌ Limited, maybe `nnet`, `neuralnet`      | ✅ `transformers`, `keras`, `torch`; Hugging Face platform ♥️  |
+| Deep learning & Natural Language Processing AI  | ❌ Limited, maybe `nnet`, `neuralnet`      | ✅ `transformers`, `keras`, `torch`; Hugging Face platform ♥️  🏆|
 | Behavioral experiments         | ❌ Practically absent        | ✅ `PsychoPy`, `OpenSesame`          |
 </div>
 
@@ -71,24 +71,12 @@ In fact, Python and R are becoming increasingly integrated, and often used toget
 
 - You can use Python in R using `reticulate` and R in Python using `rpy2`;
 - *RStudio* and *Quarto* can run Python script and chunks;
-- *Jupyter* and *Colab* allow R kernels;
-- `shiny` and `ggplot2` exist also for Python;
+- *Jupyter* and *Colab* now allow R kernels;
+- `shiny` and `ggplot` exist also for Python;
 - `keras` and `tensorflow` can be used in R via `reticulate`; 
 - `ellmer` allows you to use LLMs (including ChatGPT via API!) from inside R;
 - `lme4` can be used inside Python via `pymer4`;
 - SEM can be run in Python using `semopy` (similar to `lavaan`)
-
-
-##  Python vs R Efficiency: GMM
-
-<details>
-<summary><strong>Some explanation (click to expand)</strong></summary>
-Gaussian Mixture Models is a type of model-based clustering; for R `Mclusts()` from the `mclust` package was used; for Python `GaussianMixture()` from the `sklearn.mixture` module was used
-</details>
-
-<div style="text-align: center;">
-  <img src="figures/PyVsRefficiency/GMM.png" style="width: 100%;" />
-</div>
 
 
 ##  Python vs R Efficiency: Logistic Regression
@@ -100,6 +88,18 @@ For R the base `glm()` function was used; for Python `LogisticRegression()` from
 
 <div style="text-align: center;">
   <img src="figures/PyVsRefficiency/LogisticReg.png" style="width: 85%;" />
+</div>
+
+
+##  Python vs R Efficiency: GMM
+
+<details>
+<summary><strong>Some explanation (click to expand)</strong></summary>
+Gaussian Mixture Models is a type of model-based clustering; for R `Mclusts()` from the `mclust` package was used; for Python `GaussianMixture()` from the `sklearn.mixture` module was used
+</details>
+
+<div style="text-align: center;">
+  <img src="figures/PyVsRefficiency/GMM.png" style="width: 100%;" />
 </div>
 
 
@@ -158,9 +158,18 @@ Each blue dot is a model with a randomly defined complexity (from 1 to 15 terms,
 ##
 ### Image Classification with AI models via `transformers`
 
+::: columns
+::: {.column width="70%"}
 <div style="text-align: center;">
-  <img src="figures/figureexample.png" style="width: 50%;" />
+  <img src="figures/figureexample.png" style="width: 75%;" />
 </div>
+:::
+::: {.column width="30%"}
+<div style="font-size:22px;">
+free model used: <br/>`"microsoft/resnet-18"`
+</div>
+:::
+:::
 
 ```{python}
 #| echo: false
@@ -174,6 +183,38 @@ data = [
 ]
 df = pd.DataFrame(data)
 df['score'] = df['score'].round(4)
+print(df.to_string(index=False))
+```
+
+
+##
+### Text Classification with AI models via `transformers`
+
+::: columns
+::: {.column width="60%"}
+<div class="large-code">
+<em>
+```
+"That was absolutely terrifying. My hands were shaking, my heart pounded so loudly I could barely hear my own thoughts, and each creak of the floorboards seemed to scream danger. I stood frozen in place, staring at the door, every nerve in my body bracing for something awful to emerge from the darkness behind it"
+```
+</em>
+</div>
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="30%"}
+<div style="font-size:22px;">
+free model used: <br/>`"all-MiniLM-L12-v2"`
+</div>
+:::
+:::
+
+```{python}
+#| echo: false
+import pandas as pd
+data = {'target': {0: 'fear', 1: 'disgust', 2: 'surprise', 3: 'sadness', 4: 'joy', 5: 'anger'}, 'cosineSimilarity': {0: 0.421103835105896, 1: 0.20817890763282776, 2: 0.16177059710025787, 3: 0.15281619131565094, 4: 0.12146811187267303, 5: 0.10975021123886108}}
+df = pd.DataFrame(data)
+df["cosineSimilarity"] = df["cosineSimilarity"].round(4)
 print(df.to_string(index=False))
 ```
 
