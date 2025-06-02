@@ -406,13 +406,13 @@ Enrico Toffalini
 </section>
 <section id="why-numpy-and-pandas" class="slide level2">
 <h2>Why NumPy and Pandas?</h2>
+<p>Most data science pipelines in Python rely on these two packages, as base Python lacks built-in data structures like <em>vectors</em> with vectorized operations, <em>matrices</em> / <em>arrays</em>, and <em>data frames</em></p>
 <div style="font-size:42px;">
 <ul>
-<li><code>numpy</code>: efficient numerical computing (homogeneous 1-D to n-D arrays, vectorized operations) and some basic math, algebraic, and statistical functions;</li>
-<li><code>pandas</code>: fundamental data structures for tabular data (DataFrames), with convenient indexing, reshaping, and manipulation tools;</li>
+<li><code>numpy</code>: efficient numerical computing (homogeneous arrays, vectorized operations) and many math, algebraic, and basic statistical functions;</li>
+<li><code>pandas</code>: fundamental data structures for tabular data (DataFrames), with convenient indexing, reshaping, and data manipulation tools;</li>
 </ul>
 </div>
-<p>Most data science pipelines in Python rely on these two packages, as base Python lacks built-in data structures like <em>vectors</em> with vectorized operations, <em>matrices</em> / <em>arrays</em>, and <em>data frames</em></p>
 <!--------------------------------------------------------------------->
 </section>
 <section id="numpy-arrays" class="slide level2">
@@ -450,9 +450,9 @@ Enrico Toffalini
 </div>
 <!--------------------------------------------------------------------->
 </section>
-<section id="vectorized-operations" class="slide level2">
-<h2>Vectorized Operations</h2>
-<p>Unlike basic lists, arrays are <strong>homogenous</strong> and support <strong>fast vectorized operations</strong>, e.g., <code>x*10</code>, <code>x**2</code>, <code>np.sqrt(x)</code>, etc.</p>
+<section id="arrays-vectorized-operations" class="slide level2">
+<h2>Arrays: Vectorized Operations</h2>
+<p>Unlike basic lists, arrays are <strong>homogenous</strong> and support <strong>fast vectorized operations</strong>, e.g., <code>np.sqrt(x)</code>, <code>x+5</code>, <code>x**2</code>, etc.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -461,9 +461,9 @@ Enrico Toffalini
        [340., 520., 190.,  16.,  40., 150.]])</code></pre>
 </div>
 </div>
-<p>Different ways of doing the same thing (comments?):</p>
+<p>Different ways of doing the same thing:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.sqrt(x).<span class="bu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(np.sqrt(x), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([[3.    , 2.5495, 1.8439, 0.    , 0.4472, 3.4641],
        [3.1623, 8.5557, 2.8284, 1.4142, 0.6325, 3.3166],
@@ -471,7 +471,7 @@ Enrico Toffalini
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(x<span class="op">**</span><span class="fl">0.5</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.sqrt(x).<span class="bu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([[3.    , 2.5495, 1.8439, 0.    , 0.4472, 3.4641],
        [3.1623, 8.5557, 2.8284, 1.4142, 0.6325, 3.3166],
@@ -480,8 +480,8 @@ Enrico Toffalini
 </div>
 <!--------------------------------------------------------------------->
 </section>
-<section id="vectorized-operations-1" class="slide level2">
-<h2>Vectorized Operations</h2>
+<section id="arrays-vectorized-operations-1" class="slide level2">
+<h2>Arrays: Vectorized Operations</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="" aria-hidden="true" tabindex="-1"></a>ar1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
 <span id="cb12-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -503,8 +503,8 @@ Enrico Toffalini
 <p>These features make <code>np.array()</code> conceptually very similar to the <code>c()</code> and <code>array()</code> objects of R. However, as we will see, <code>np.array()</code> is stricter in enforcing data types</p>
 <!--------------------------------------------------------------------->
 </section>
-<section id="structural-attributes-of-arrays" class="slide level2">
-<h2>Structural attributes of arrays</h2>
+<section id="arrays-structural-attributes" class="slide level2">
+<h2>Arrays: Structural attributes</h2>
 <p>What you can inspect for an array:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a>x.shape    <span class="co"># tuple of sizes of dimensions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -534,8 +534,8 @@ Enrico Toffalini
 </div>
 <!--------------------------------------------------------------------->
 </section>
-<section id="different-data-types-of-numpy-arrays" class="slide level2">
-<h2>Different data types of <code>numpy</code> arrays</h2>
+<section id="arrays-data-types" class="slide level2">
+<h2>Arrays: Data types</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="fl">1.51</span>, <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">14</span>, <span class="fl">0.6</span>])</span>
 <span id="cb30-2"><a href="" aria-hidden="true" tabindex="-1"></a>x.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -565,27 +565,27 @@ Enrico Toffalini
 </div>
 <!--------------------------------------------------------------------->
 </section>
-<section id="data-type-coercion-in-python-numpy" class="slide level2">
-<h2>Data type coercion in Python <code>numpy</code></h2>
+<section id="arrays-data-type-coercion" class="slide level2">
+<h2>Arrays: Data type coercion</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Python numpy</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>])</span>
-<span id="cb40-2"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.9456</span></span>
+<span id="cb40-2"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">3.14159</span></span>
 <span id="cb40-3"><a href="" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>array([ 0, 11, 12, 13, 14])</code></pre>
+<pre><code>array([ 3, 11, 12, 13, 14])</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>R</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>)</span>
-<span id="cb42-2"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="ot">=</span> <span class="fl">0.9456</span></span>
+<span id="cb42-2"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="ot">=</span> <span class="fl">3.14159</span></span>
 <span id="cb42-3"><a href="" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.9456 11.0000 12.0000 13.0000 14.0000</code></pre>
+<pre><code>[1]  3.14159 11.00000 12.00000 13.00000 14.00000</code></pre>
 </div>
 </div>
 </div>
@@ -617,16 +617,16 @@ Enrico Toffalini
 </div>
 <!--------------------------------------------------------------------->
 </section>
-<section id="data-type-coercion-in-python-numpy-1" class="slide level2">
-<h2>Data type coercion in Python <code>numpy</code></h2>
+<section id="arrays-data-type-coercion-1" class="slide level2">
+<h2>Arrays: Data type coercion</h2>
 <p>Actually, this “problem” is part of the secret of what makes Python <strong><code>numpy</code></strong> so <strong>efficient</strong>… <strong>but be careful</strong>!</p>
 <p>How do you avoid this silent coercion? Explicitly state the data type from the beginning!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>], dtype<span class="op">=</span><span class="st">"float64"</span>)</span>
-<span id="cb48-2"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.9456</span></span>
+<span id="cb48-2"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">3.14159</span></span>
 <span id="cb48-3"><a href="" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>array([ 0.9456, 11.    , 12.    , 13.    , 14.    ])</code></pre>
+<pre><code>array([ 3.14159, 11.     , 12.     , 13.     , 14.     ])</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -639,49 +639,49 @@ Enrico Toffalini
 </div>
 <!--------------------------------------------------------------------->
 </section>
-<section id="slicing-and-indexing-in-numpy" class="slide level2">
-<h2>Slicing and Indexing in <code>numpy</code></h2>
+<section id="arrays-slicing-and-indexing" class="slide level2">
+<h2>Arrays: Slicing and Indexing</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>])</span>
-<span id="cb52-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>])     <span class="co"># first element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-2"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>]     <span class="co"># first element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>10</code></pre>
+<pre><code>np.int64(10)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="op">-</span><span class="dv">1</span>])    <span class="co"># last element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">1</span>]    <span class="co"># last element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>50</code></pre>
+<pre><code>np.int64(50)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">1</span>:<span class="dv">4</span>])   <span class="co"># elements 1 to 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>:<span class="dv">4</span>]   <span class="co"># elements 1 to 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[20 30 40]</code></pre>
+<pre><code>array([20, 30, 40])</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>], </span>
 <span id="cb58-2"><a href="" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>]])</span>
-<span id="cb58-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">1</span>,<span class="dv">0</span>])     <span class="co"># 2nd row, 1st column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-3"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>,<span class="dv">0</span>]     <span class="co"># 2nd row, 1st column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5</code></pre>
+<pre><code>np.int64(5)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>])   <span class="co"># last row, last column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>]   <span class="co"># last row, last column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>8</code></pre>
+<pre><code>np.int64(8)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>,])      <span class="co"># 1st row, all columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>,]      <span class="co"># 1st row, all columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1 2 3 4]</code></pre>
+<pre><code>array([1, 2, 3, 4])</code></pre>
 </div>
 </div>
 <!--------------------------------------------------------------------->
 </section>
 <section id="pandas-series" class="slide level2">
 <h2><code>Pandas</code> Series</h2>
+<p><code>Series</code> are essentially like 1D <code>numpy arrays</code>, but labelled with keys (numerical indexing is deprecated for <code>Series</code>)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb64-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-3"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> pd.Series([<span class="dv">28</span>, <span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">23</span>], index<span class="op">=</span>[<span class="st">"Jane"</span>, <span class="st">"Jim"</span>, <span class="st">"John"</span>, <span class="st">"Jack"</span>])</span>
-<span id="cb64-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( grades[<span class="st">"Jack"</span>] )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb64-2"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> pd.Series([<span class="dv">28</span>, <span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">23</span>], index<span class="op">=</span>[<span class="st">"Jane"</span>, <span class="st">"Jim"</span>, <span class="st">"John"</span>, <span class="st">"Jack"</span>])</span>
+<span id="cb64-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( grades[<span class="st">"Jack"</span>] )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>23</code></pre>
 </div>
@@ -699,87 +699,82 @@ Jane    28
 dtype: int64</code></pre>
 </div>
 </div>
-<p><code>Series</code> are essentially like 1D <code>numpy arrays</code>, but labelled with keys (numerical indexing is deprecated for <code>Series</code>)</p>
 <!--------------------------------------------------------------------->
 </section>
 <section id="pandas-dataframe" class="slide level2">
 <h2><code>Pandas</code> DataFrame ❤️</h2>
+<p><code>pandas DataFrame</code> is the classical tabular object we are familiar with; can be seen as a special type of Python <code>dict</code> <em>(dictionary)</em>, composed of <strong>internally-homogeneous, equally-long, labelled lists</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF <span class="op">=</span> {</span>
-<span id="cb70-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"id"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
-<span id="cb70-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span>: [<span class="st">"Pastore"</span>, <span class="st">"Granziol"</span>, <span class="st">"Feraco"</span>,<span class="st">"Altoe"</span>],</span>
-<span id="cb70-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"course"</span>: [<span class="st">"CurrentIssues"</span>, <span class="st">"BasicsInference"</span>, <span class="st">"SEM"</span>,<span class="st">"Outliers"</span>],</span>
-<span id="cb70-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hours"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">5</span>],</span>
-<span id="cb70-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mandatory"</span>: [<span class="va">True</span>, <span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>]</span>
-<span id="cb70-7"><a href="" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb70-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(myDF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF <span class="op">=</span> pd.DataFrame( {</span>
+<span id="cb70-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"teacher"</span>: [<span class="st">"Pastore"</span>, <span class="st">"Granziol"</span>, <span class="st">"Feraco"</span>, <span class="st">"Altoe"</span>, <span class="st">"Marci"</span>],</span>
+<span id="cb70-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"course"</span>: [<span class="st">"CurrentIssues"</span>, <span class="st">"BasicsInference"</span>, <span class="st">"SEM"</span>, <span class="st">"Outliers"</span>, <span class="st">"QMP"</span>],</span>
+<span id="cb70-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hours"</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">5</span>],</span>
+<span id="cb70-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mandatory"</span>: [<span class="va">True</span>, <span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>],</span>
+<span id="cb70-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"semester"</span>: [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>]</span>
+<span id="cb70-7"><a href="" aria-hidden="true" tabindex="-1"></a> } , index<span class="op">=</span>[<span class="st">"t1"</span>,<span class="st">"t2"</span>,<span class="st">"t3"</span>,<span class="st">"t4"</span>,<span class="st">"t5"</span>])</span>
+<span id="cb70-8"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'dict'&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF <span class="op">=</span> pd.DataFrame(myDF)</span>
-<span id="cb72-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory
-0   1   Pastore    CurrentIssues     10       True
-1   2  Granziol  BasicsInference     20       True
-2   3    Feraco              SEM     20      False
-3   4     Altoe         Outliers      5      False</code></pre>
+<pre><code>     teacher           course  hours  mandatory  semester
+t1   Pastore    CurrentIssues     10       True         1
+t2  Granziol  BasicsInference     20       True         1
+t3    Feraco              SEM     20      False         2
+t4     Altoe         Outliers      5      False         2
+t5     Marci              QMP      5       True         2</code></pre>
 </div>
 </div>
-<p><code>pandas DataFrame</code> is the classical tabular object we are familiar with; can be seen as a special type of Python <code>dict</code> <em>(dictionary)</em>, composed of internally-homogeneous, equally-long, labelled lists</p>
 <!--------------------------------------------------------------------->
 </section>
-<section id="inspecting-a-dataframe" class="slide level2">
-<h2>Inspecting a DataFrame</h2>
+<section id="dataframe-inspecting" class="slide level2">
+<h2>DataFrame: Inspecting</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.shape      <span class="co"># rows x columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.shape      <span class="co"># rows x columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(4, 5)</code></pre>
+<pre><code>(5, 5)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.columns    <span class="co"># column names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.columns    <span class="co"># column names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Index(['id', 'name', 'course', 'hours', 'mandatory'], dtype='object')</code></pre>
+<pre><code>Index(['teacher', 'course', 'hours', 'mandatory', 'semester'], dtype='object')</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.info()     <span class="co"># structure</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.info()     <span class="co"># structure</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 4 entries, 0 to 3
+Index: 5 entries, t1 to t5
 Data columns (total 5 columns):
  #   Column     Non-Null Count  Dtype 
 ---  ------     --------------  ----- 
- 0   id         4 non-null      int64 
- 1   name       4 non-null      object
- 2   course     4 non-null      object
- 3   hours      4 non-null      int64 
- 4   mandatory  4 non-null      bool  
+ 0   teacher    5 non-null      object
+ 1   course     5 non-null      object
+ 2   hours      5 non-null      int64 
+ 3   mandatory  5 non-null      bool  
+ 4   semester   5 non-null      int64 
 dtypes: bool(1), int64(2), object(2)
-memory usage: 264.0+ bytes</code></pre>
+memory usage: 205.0+ bytes</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.dtypes     <span class="co"># data types</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.dtypes     <span class="co"># data types</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>id            int64
-name         object
+<pre><code>teacher      object
 course       object
 hours         int64
 mandatory      bool
+semester      int64
 dtype: object</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.describe() <span class="co"># summary stats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.describe() <span class="co"># summary stats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             id  hours
-count  4.000000   4.00
-mean   2.500000  13.75
-std    1.290994   7.50
-min    1.000000   5.00
-25%    1.750000   8.75
-50%    2.500000  15.00
-75%    3.250000  20.00
-max    4.000000  20.00</code></pre>
+<pre><code>           hours  semester
+count   5.000000  5.000000
+mean   12.000000  1.600000
+std     7.582875  0.547723
+min     5.000000  1.000000
+25%     5.000000  1.000000
+50%    10.000000  2.000000
+75%    20.000000  2.000000
+max    20.000000  2.000000</code></pre>
 </div>
 </div>
 <p><span style="font-size:24px;"><em>about equivalent to <code>str()</code> and <code>summary()</code> in R</em></span></p>
@@ -787,184 +782,430 @@ max    4.000000  20.00</code></pre>
 </div>
 <!--------------------------------------------------------------------->
 </section>
-<section id="indexing-a-dataframe-12" class="slide level2">
-<h2>Indexing a DataFrame (1/2)</h2>
+<section id="dataframe-indexing-columns" class="slide level2">
+<h2>DataFrame: Indexing columns</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory
-0   1   Pastore    CurrentIssues     10       True
-1   2  Granziol  BasicsInference     20       True
-2   3    Feraco              SEM     20      False
-3   4     Altoe         Outliers      5      False</code></pre>
+<pre><code>     teacher           course  hours  mandatory  semester
+t1   Pastore    CurrentIssues     10       True         1
+t2  Granziol  BasicsInference     20       True         1
+t3    Feraco              SEM     20      False         2
+t4     Altoe         Outliers      5      False         2
+t5     Marci              QMP      5       True         2</code></pre>
 </div>
 </div>
+<div class="large-code">
 <div class="columns">
 <div class="column" style="width:50%;">
+<p>Using general syntax: <strong><code>[ ]</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.course    <span class="co"># accessing via "."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[<span class="st">"teacher"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0      CurrentIssues
-1    BasicsInference
-2                SEM
-3           Outliers
-Name: course, dtype: object</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[<span class="st">"course"</span>] <span class="co"># access as a Series</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0      CurrentIssues
-1    BasicsInference
-2                SEM
-3           Outliers
-Name: course, dtype: object</code></pre>
+<pre><code>t1     Pastore
+t2    Granziol
+t3      Feraco
+t4       Altoe
+t5       Marci
+Name: teacher, dtype: object</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
+<p>Using <em>dot notation</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.iloc[<span class="dv">0</span>]   <span class="co"># just row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.teacher </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>id                       1
-name               Pastore
-course       CurrentIssues
-hours                   10
-mandatory             True
-Name: 0, dtype: object</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.iloc[<span class="dv">0</span>, <span class="dv">2</span>]   <span class="co"># row and column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'CurrentIssues'</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[<span class="dv">0</span>, <span class="st">"course"</span>] <span class="co"># row and column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'CurrentIssues'</code></pre>
+<pre><code>t1     Pastore
+t2    Granziol
+t3      Feraco
+t4       Altoe
+t5       Marci
+Name: teacher, dtype: object</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div style="text-align:center; font-size:28px;">
-<code>.iloc[]</code> = integer-position based; <code>.loc[]</code> = label-based
 </div>
 <!--------------------------------------------------------------------->
 </section>
-<section id="indexing-a-dataframe-22" class="slide level2">
-<h2>Indexing a DataFrame (2/2)</h2>
+<section id="dataframe-indexing-columns-row-slicing" class="slide level2">
+<h2>DataFrame: Indexing columns + row slicing</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory
-0   1   Pastore    CurrentIssues     10       True
-1   2  Granziol  BasicsInference     20       True
-2   3    Feraco              SEM     20      False
-3   4     Altoe         Outliers      5      False</code></pre>
+<pre><code>     teacher           course  hours  mandatory  semester
+t1   Pastore    CurrentIssues     10       True         1
+t2  Granziol  BasicsInference     20       True         1
+t3    Feraco              SEM     20      False         2
+t4     Altoe         Outliers      5      False         2
+t5     Marci              QMP      5       True         2</code></pre>
 </div>
 </div>
+<div class="large-code">
+<p>Combine column selection with row selection</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[<span class="st">"teacher"</span>][<span class="dv">0</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>t1     Pastore
+t2    Granziol
+t3      Feraco
+Name: teacher, dtype: object</code></pre>
+</div>
+</div>
+</div>
+<!--------------------------------------------------------------------->
+</section>
+<section id="dataframe-indexing-multiple-columns" class="slide level2">
+<h2>DataFrame: Indexing multiple columns</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     teacher           course  hours  mandatory  semester
+t1   Pastore    CurrentIssues     10       True         1
+t2  Granziol  BasicsInference     20       True         1
+t3    Feraco              SEM     20      False         2
+t4     Altoe         Outliers      5      False         2
+t5     Marci              QMP      5       True         2</code></pre>
+</div>
+</div>
+<div class="large-code">
+<p>Use a list of column names inside the brackets</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[[<span class="st">"teacher"</span>,<span class="st">"course"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     teacher           course
+t1   Pastore    CurrentIssues
+t2  Granziol  BasicsInference
+t3    Feraco              SEM
+t4     Altoe         Outliers
+t5     Marci              QMP</code></pre>
+</div>
+</div>
+</div>
+<!--------------------------------------------------------------------->
+</section>
+<section id="dataframe-indexing-columns-row-slicing-1" class="slide level2">
+<h2>DataFrame: Indexing columns + row slicing</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     teacher           course  hours  mandatory  semester
+t1   Pastore    CurrentIssues     10       True         1
+t2  Granziol  BasicsInference     20       True         1
+t3    Feraco              SEM     20      False         2
+t4     Altoe         Outliers      5      False         2
+t5     Marci              QMP      5       True         2</code></pre>
+</div>
+</div>
+<div class="large-code">
+<p>Combine column selection with row selection</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[[<span class="st">"teacher"</span>,<span class="st">"course"</span>]][<span class="dv">0</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     teacher           course
+t1   Pastore    CurrentIssues
+t2  Granziol  BasicsInference
+t3    Feraco              SEM</code></pre>
+</div>
+</div>
+</div>
+<!--------------------------------------------------------------------->
+</section>
+<section id="dataframe-indexing-rows" class="slide level2">
+<h2>DataFrame: Indexing rows</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     teacher           course  hours  mandatory  semester
+t1   Pastore    CurrentIssues     10       True         1
+t2  Granziol  BasicsInference     20       True         1
+t3    Feraco              SEM     20      False         2
+t4     Altoe         Outliers      5      False         2
+t5     Marci              QMP      5       True         2</code></pre>
+</div>
+</div>
+<div class="large-code">
 <div class="columns">
 <div class="column" style="width:50%;">
+<p>Access rows by position</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.course[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0      CurrentIssues
-1    BasicsInference
-Name: course, dtype: object</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[<span class="st">"course"</span>][<span class="dv">0</span>:<span class="dv">2</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0      CurrentIssues
-1    BasicsInference
-Name: course, dtype: object</code></pre>
+<pre><code>teacher            Pastore
+course       CurrentIssues
+hours                   10
+mandatory             True
+semester                 1
+Name: t1, dtype: object</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
+<p>Access rows by labels</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.iloc[<span class="dv">0</span> , :] <span class="co"># everything in a row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[<span class="st">"t1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>id                       1
-name               Pastore
+<pre><code>teacher            Pastore
 course       CurrentIssues
 hours                   10
 mandatory             True
-Name: 0, dtype: object</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.iloc[: , <span class="dv">2</span>] <span class="co"># everything in a column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0      CurrentIssues
-1    BasicsInference
-2                SEM
-3           Outliers
-Name: course, dtype: object</code></pre>
+semester                 1
+Name: t1, dtype: object</code></pre>
 </div>
 </div>
 </div>
-</div>
-<div style="text-align:center; font-size:28px;">
-<code>.iloc[]</code> = integer-position based; <code>.loc[]</code> = label-based
-</div>
-<!--------------------------------------------------------------------->
-</section>
-<section id="logical-indexing-a-dataframe" class="slide level2">
-<h2>Logical indexing a DataFrame</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory
-0   1   Pastore    CurrentIssues     10       True
-1   2  Granziol  BasicsInference     20       True
-2   3    Feraco              SEM     20      False
-3   4     Altoe         Outliers      5      False</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[myDF[<span class="st">"hours"</span>] <span class="op">&gt;</span> <span class="dv">15</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory
-1   2  Granziol  BasicsInference     20       True
-2   3    Feraco              SEM     20      False</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[(myDF[<span class="st">"hours"</span>] <span class="op">&gt;</span> <span class="dv">15</span>) <span class="op">&amp;</span> (myDF[<span class="st">"mandatory"</span>] <span class="op">==</span> <span class="va">True</span>) ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory
-1   2  Granziol  BasicsInference     20       True</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[myDF[<span class="st">"name"</span>] <span class="op">==</span> <span class="st">"Pastore"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   id     name         course  hours  mandatory
-0   1  Pastore  CurrentIssues     10       True</code></pre>
 </div>
 </div>
 <!--------------------------------------------------------------------->
 </section>
-<section id="add-and-modify-columns-in-a-dataframe" class="slide level2">
-<h2>Add and Modify Columns in a DataFrame</h2>
+<section id="dataframe-indexing-multiple-rows" class="slide level2">
+<h2>DataFrame: Indexing multiple rows</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory
-0   1   Pastore    CurrentIssues     10       True
-1   2  Granziol  BasicsInference     20       True
-2   3    Feraco              SEM     20      False
-3   4     Altoe         Outliers      5      False</code></pre>
+<pre><code>     teacher           course  hours  mandatory  semester
+t1   Pastore    CurrentIssues     10       True         1
+t2  Granziol  BasicsInference     20       True         1
+t3    Feraco              SEM     20      False         2
+t4     Altoe         Outliers      5      False         2
+t5     Marci              QMP      5       True         2</code></pre>
+</div>
+</div>
+<div class="large-code">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Access rows by position</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.iloc[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     teacher           course  hours  mandatory  semester
+t1   Pastore    CurrentIssues     10       True         1
+t2  Granziol  BasicsInference     20       True         1</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Access rows by labels</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[[<span class="st">"t1"</span>,<span class="st">"t2"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     teacher           course  hours  mandatory  semester
+t1   Pastore    CurrentIssues     10       True         1
+t2  Granziol  BasicsInference     20       True         1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--------------------------------------------------------------------->
+</section>
+<section id="dataframe-indexing-rows-columns" class="slide level2">
+<h2>DataFrame: Indexing rows + columns</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     teacher           course  hours  mandatory  semester
+t1   Pastore    CurrentIssues     10       True         1
+t2  Granziol  BasicsInference     20       True         1
+t3    Feraco              SEM     20      False         2
+t4     Altoe         Outliers      5      False         2
+t5     Marci              QMP      5       True         2</code></pre>
+</div>
+</div>
+<div class="large-code">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Access rows <em>and</em> columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[<span class="st">"t1"</span>, <span class="st">"teacher"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'Pastore'</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Access rows <em>and</em> columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.iloc[<span class="dv">0</span>, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'Pastore'</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br> <em>this is very similar to indexing using</em> <code>myDF[0,0]</code> <em>or</em> <code>myDF[0,"teacher"]</code> <em>in R</em></p>
+<!--------------------------------------------------------------------->
+</section>
+<section id="dataframe-indexing-rows-columns-1" class="slide level2">
+<h2>DataFrame: Indexing rows + columns</h2>
+<p>If you don’t like the row <strong>index, drop it!</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF <span class="op">=</span> myDF.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb111-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course  hours  mandatory  semester
+0   Pastore    CurrentIssues     10       True         1
+1  Granziol  BasicsInference     20       True         1
+2    Feraco              SEM     20      False         2
+3     Altoe         Outliers      5      False         2
+4     Marci              QMP      5       True         2</code></pre>
+</div>
+</div>
+<div class="large-code">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[<span class="dv">0</span>, <span class="st">"teacher"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'Pastore'</code></pre>
+</div>
+</div>
+</div>
+<p><br> <em>by default, rows have no names, and row names are not strictly needed in a DataFrame; without names, integer are used for indexing rows even using </em><code>.loc[]</code>, <em>which makes it more similar to R</em></p>
+<!--------------------------------------------------------------------->
+</section>
+<section id="dataframe-logical-indexing" class="slide level2">
+<h2>DataFrame Logical indexing</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course  hours  mandatory  semester
+0   Pastore    CurrentIssues     10       True         1
+1  Granziol  BasicsInference     20       True         1
+2    Feraco              SEM     20      False         2
+3     Altoe         Outliers      5      False         2
+4     Marci              QMP      5       True         2</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[<span class="st">"wellBoh"</span>] <span class="op">=</span> np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,size<span class="op">=</span><span class="bu">len</span>(myDF)).<span class="bu">round</span>(<span class="dv">3</span>)</span>
-<span id="cb116-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[ myDF[<span class="st">"hours"</span>] <span class="op">&gt;</span> <span class="dv">15</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory  wellBoh
-0   1   Pastore    CurrentIssues     10       True    0.750
-1   2  Granziol  BasicsInference     20       True   -0.696
-2   3    Feraco              SEM     20      False   -0.647
-3   4     Altoe         Outliers      5      False   -0.495</code></pre>
+<pre><code>    teacher           course  hours  mandatory  semester
+1  Granziol  BasicsInference     20       True         1
+2    Feraco              SEM     20      False         2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[ myDF[<span class="st">"teacher"</span>] <span class="op">==</span> <span class="st">"Pastore"</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   teacher         course  hours  mandatory  semester
+0  Pastore  CurrentIssues     10       True         1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[ (myDF[<span class="st">"hours"</span>] <span class="op">&gt;</span> <span class="dv">5</span>) <span class="op">&amp;</span> (myDF[<span class="st">"mandatory"</span>] <span class="op">==</span> <span class="va">True</span>) ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course  hours  mandatory  semester
+0   Pastore    CurrentIssues     10       True         1
+1  Granziol  BasicsInference     20       True         1</code></pre>
+</div>
+</div>
+<!--------------------------------------------------------------------->
+</section>
+<section id="dataframe-logical-indexing-1" class="slide level2">
+<h2>DataFrame Logical indexing</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course  hours  mandatory  semester
+0   Pastore    CurrentIssues     10       True         1
+1  Granziol  BasicsInference     20       True         1
+2    Feraco              SEM     20      False         2
+3     Altoe         Outliers      5      False         2
+4     Marci              QMP      5       True         2</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[myDF[<span class="st">"hours"</span>]<span class="op">&gt;</span><span class="dv">15</span>, <span class="st">"wellBoh"</span>] <span class="op">+=</span> <span class="dv">100000</span></span>
-<span id="cb118-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[ myDF[<span class="st">"hours"</span>] <span class="op">&gt;</span> <span class="dv">15</span> ][[<span class="st">"teacher"</span>,<span class="st">"course"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory    wellBoh
-0   1   Pastore    CurrentIssues     10       True      0.750
-1   2  Granziol  BasicsInference     20       True  99999.304
-2   3    Feraco              SEM     20      False  99999.353
-3   4     Altoe         Outliers      5      False     -0.495</code></pre>
+<pre><code>    teacher           course
+1  Granziol  BasicsInference
+2    Feraco              SEM</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[ myDF[<span class="st">"teacher"</span>] <span class="op">==</span> <span class="st">"Pastore"</span> ][[<span class="st">"teacher"</span>,<span class="st">"course"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   teacher         course
+0  Pastore  CurrentIssues</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[ (myDF[<span class="st">"hours"</span>] <span class="op">&gt;</span> <span class="dv">5</span>) <span class="op">&amp;</span> (myDF[<span class="st">"mandatory"</span>] <span class="op">==</span> <span class="va">True</span>) ][[<span class="st">"teacher"</span>,<span class="st">"course"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course
+0   Pastore    CurrentIssues
+1  Granziol  BasicsInference</code></pre>
+</div>
+</div>
+<!--------------------------------------------------------------------->
+</section>
+<section id="dataframe-logical-indexing-2" class="slide level2">
+<h2>DataFrame Logical indexing</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course  hours  mandatory  semester
+0   Pastore    CurrentIssues     10       True         1
+1  Granziol  BasicsInference     20       True         1
+2    Feraco              SEM     20      False         2
+3     Altoe         Outliers      5      False         2
+4     Marci              QMP      5       True         2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[ myDF[<span class="st">"hours"</span>] <span class="op">&gt;</span> <span class="dv">15</span> , [<span class="st">"teacher"</span>,<span class="st">"course"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course
+1  Granziol  BasicsInference
+2    Feraco              SEM</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[ myDF[<span class="st">"teacher"</span>] <span class="op">==</span> <span class="st">"Pastore"</span> , [<span class="st">"teacher"</span>,<span class="st">"course"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   teacher         course
+0  Pastore  CurrentIssues</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[ (myDF[<span class="st">"hours"</span>] <span class="op">&gt;</span> <span class="dv">5</span>) <span class="op">&amp;</span> (myDF[<span class="st">"mandatory"</span>] <span class="op">==</span> <span class="va">True</span>) , [<span class="st">"teacher"</span>,<span class="st">"course"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course
+0   Pastore    CurrentIssues
+1  Granziol  BasicsInference</code></pre>
+</div>
+</div>
+<p>Actually, this is the most recommended! especially for data manipulation</p>
+<!--------------------------------------------------------------------->
+</section>
+<section id="add-new-columns-in-a-dataframe" class="slide level2">
+<h2>Add new Columns in a DataFrame</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course  hours  mandatory  semester
+0   Pastore    CurrentIssues     10       True         1
+1  Granziol  BasicsInference     20       True         1
+2    Feraco              SEM     20      False         2
+3     Altoe         Outliers      5      False         2
+4     Marci              QMP      5       True         2</code></pre>
+</div>
+</div>
+<div class="large-code">
+<p>Just index a column that doesn’t exist… and fill it!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[<span class="st">"wellBoh"</span>] <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="bu">len</span>(myDF)).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb137-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course  hours  mandatory  semester  wellBoh
+0   Pastore    CurrentIssues     10       True         1    0.002
+1  Granziol  BasicsInference     20       True         1   -0.492
+2    Feraco              SEM     20      False         2   -0.068
+3     Altoe         Outliers      5      False         2   -1.487
+4     Marci              QMP      5       True         2   -1.143</code></pre>
+</div>
+</div>
+</div>
+<!--------------------------------------------------------------------->
+</section>
+<section id="modify-columns-in-a-dataframe" class="slide level2">
+<h2>Modify Columns in a DataFrame</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF[<span class="st">"wellBoh"</span>] <span class="op">=</span> myDF[<span class="st">"wellBoh"</span>] <span class="op">+</span> <span class="dv">50</span> </span>
+<span id="cb139-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course  hours  mandatory  semester  wellBoh
+0   Pastore    CurrentIssues     10       True         1   50.002
+1  Granziol  BasicsInference     20       True         1   49.508
+2    Feraco              SEM     20      False         2   49.932
+3     Altoe         Outliers      5      False         2   48.513
+4     Marci              QMP      5       True         2   48.857</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.loc[myDF[<span class="st">"hours"</span>]<span class="op">&gt;</span><span class="dv">15</span>, <span class="st">"wellBoh"</span>] <span class="op">+=</span> <span class="dv">100000</span></span>
+<span id="cb141-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    teacher           course  hours  mandatory  semester     wellBoh
+0   Pastore    CurrentIssues     10       True         1      50.002
+1  Granziol  BasicsInference     20       True         1  100049.508
+2    Feraco              SEM     20      False         2  100049.932
+3     Altoe         Outliers      5      False         2      48.513
+4     Marci              QMP      5       True         2      48.857</code></pre>
 </div>
 </div>
 <!--------------------------------------------------------------------->
@@ -1046,11 +1287,11 @@ Name: course, dtype: object</code></pre>
 <div class="columns">
 <div class="column" style="width:56%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb120-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name"</span>: [<span class="st">"Jane"</span>, <span class="st">"Jim"</span>, <span class="st">"John"</span>, <span class="st">"Jack"</span>],</span>
-<span id="cb120-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"grade"</span>: [<span class="dv">28</span>, <span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">23</span>]</span>
-<span id="cb120-4"><a href="" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb120-5"><a href="" aria-hidden="true" tabindex="-1"></a>df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb143-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name"</span>: [<span class="st">"Jane"</span>, <span class="st">"Jim"</span>, <span class="st">"John"</span>, <span class="st">"Jack"</span>],</span>
+<span id="cb143-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"grade"</span>: [<span class="dv">28</span>, <span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">23</span>]</span>
+<span id="cb143-4"><a href="" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb143-5"><a href="" aria-hidden="true" tabindex="-1"></a>df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   name  grade
 0  Jane     28
@@ -1058,11 +1299,11 @@ Name: course, dtype: object</code></pre>
 2  John     30
 3  Jack     23</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb122-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name"</span>: [<span class="st">"Jane"</span>, <span class="st">"Jim"</span>, <span class="st">"John"</span>, <span class="st">"Jack"</span>],</span>
-<span id="cb122-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"age"</span>: [<span class="fl">21.4</span>, <span class="fl">22.5</span>, <span class="fl">20.2</span>, <span class="fl">23.0</span>]</span>
-<span id="cb122-4"><a href="" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb122-5"><a href="" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb145-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name"</span>: [<span class="st">"Jane"</span>, <span class="st">"Jim"</span>, <span class="st">"John"</span>, <span class="st">"Jack"</span>],</span>
+<span id="cb145-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"age"</span>: [<span class="fl">21.4</span>, <span class="fl">22.5</span>, <span class="fl">20.2</span>, <span class="fl">23.0</span>]</span>
+<span id="cb145-4"><a href="" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb145-5"><a href="" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   name   age
 0  Jane  21.4
@@ -1073,8 +1314,8 @@ Name: course, dtype: object</code></pre>
 </div>
 </div><div class="column" style="width:44%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.merge(df1, df2, on<span class="op">=</span><span class="st">"name"</span>)</span>
-<span id="cb124-2"><a href="" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.merge(df1, df2, on<span class="op">=</span><span class="st">"name"</span>)</span>
+<span id="cb147-2"><a href="" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   name  grade   age
 0  Jane     28  21.4
@@ -1096,23 +1337,23 @@ Name: course, dtype: object</code></pre>
 <div class="columns">
 <div class="column" style="width:56%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfDPG <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb126-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name"</span>: [<span class="st">"Jane"</span>, <span class="st">"Jim"</span>],</span>
-<span id="cb126-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"grade"</span>: [<span class="dv">28</span>, <span class="dv">15</span>],</span>
-<span id="cb126-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"department"</span>: [<span class="st">"dpg"</span>, <span class="st">"dpg"</span>]</span>
-<span id="cb126-5"><a href="" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb126-6"><a href="" aria-hidden="true" tabindex="-1"></a>dfDPG</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfDPG <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb149-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name"</span>: [<span class="st">"Jane"</span>, <span class="st">"Jim"</span>],</span>
+<span id="cb149-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"grade"</span>: [<span class="dv">28</span>, <span class="dv">15</span>],</span>
+<span id="cb149-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"department"</span>: [<span class="st">"dpg"</span>, <span class="st">"dpg"</span>]</span>
+<span id="cb149-5"><a href="" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb149-6"><a href="" aria-hidden="true" tabindex="-1"></a>dfDPG</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   name  grade department
 0  Jane     28        dpg
 1   Jim     15        dpg</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfDPSS <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb128-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name"</span>: [<span class="st">"John"</span>, <span class="st">"Jack"</span>],</span>
-<span id="cb128-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"grade"</span>: [<span class="dv">30</span>, <span class="dv">23</span>],</span>
-<span id="cb128-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"department"</span>: [<span class="st">"dpss"</span>, <span class="st">"dpss"</span>]</span>
-<span id="cb128-5"><a href="" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb128-6"><a href="" aria-hidden="true" tabindex="-1"></a>dfDPSS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfDPSS <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb151-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name"</span>: [<span class="st">"John"</span>, <span class="st">"Jack"</span>],</span>
+<span id="cb151-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"grade"</span>: [<span class="dv">30</span>, <span class="dv">23</span>],</span>
+<span id="cb151-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"department"</span>: [<span class="st">"dpss"</span>, <span class="st">"dpss"</span>]</span>
+<span id="cb151-5"><a href="" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb151-6"><a href="" aria-hidden="true" tabindex="-1"></a>dfDPSS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   name  grade department
 0  John     30       dpss
@@ -1121,8 +1362,8 @@ Name: course, dtype: object</code></pre>
 </div>
 </div><div class="column" style="width:44%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([dfDPG, dfDPSS])</span>
-<span id="cb130-2"><a href="" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([dfDPG, dfDPSS])</span>
+<span id="cb153-2"><a href="" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   name  grade department
 0  Jane     28        dpg
@@ -1142,22 +1383,22 @@ Name: course, dtype: object</code></pre>
 <section id="reshape-wide-long-with-.melt" class="slide level2">
 <h2>Reshape Wide → Long (with <code>.melt()</code>)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfWide <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb132-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ID"</span>: [<span class="st">"id01"</span>, <span class="st">"id02"</span>, <span class="st">"id03"</span>],</span>
-<span id="cb132-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gender"</span>: [<span class="st">"m"</span>, <span class="st">"m"</span>, <span class="st">"f"</span>],</span>
-<span id="cb132-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"T0"</span>: [<span class="op">-</span><span class="fl">2.31</span>, <span class="op">-</span><span class="fl">1.70</span>, <span class="op">-</span><span class="fl">2.64</span>],</span>
-<span id="cb132-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"T1"</span>: [<span class="op">-</span><span class="fl">1.50</span>, <span class="op">-</span><span class="fl">0.86</span>, <span class="op">-</span><span class="fl">2.30</span>]</span>
-<span id="cb132-6"><a href="" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb132-7"><a href="" aria-hidden="true" tabindex="-1"></a>dfWide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfWide <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb155-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ID"</span>: [<span class="st">"id01"</span>, <span class="st">"id02"</span>, <span class="st">"id03"</span>],</span>
+<span id="cb155-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gender"</span>: [<span class="st">"m"</span>, <span class="st">"m"</span>, <span class="st">"f"</span>],</span>
+<span id="cb155-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"T0"</span>: [<span class="op">-</span><span class="fl">2.31</span>, <span class="op">-</span><span class="fl">1.70</span>, <span class="op">-</span><span class="fl">2.64</span>],</span>
+<span id="cb155-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"T1"</span>: [<span class="op">-</span><span class="fl">1.50</span>, <span class="op">-</span><span class="fl">0.86</span>, <span class="op">-</span><span class="fl">2.30</span>]</span>
+<span id="cb155-6"><a href="" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb155-7"><a href="" aria-hidden="true" tabindex="-1"></a>dfWide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     ID gender    T0    T1
 0  id01      m -2.31 -1.50
 1  id02      m -1.70 -0.86
 2  id03      f -2.64 -2.30</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfLong <span class="op">=</span> dfWide.melt(id_vars<span class="op">=</span>[<span class="st">"ID"</span>,<span class="st">"gender"</span>], var_name<span class="op">=</span><span class="st">"TIME"</span>, </span>
-<span id="cb134-2"><a href="" aria-hidden="true" tabindex="-1"></a>                          value_name<span class="op">=</span><span class="st">"SCORE"</span>, value_vars<span class="op">=</span>[<span class="st">"T0"</span>,<span class="st">"T1"</span>])</span>
-<span id="cb134-3"><a href="" aria-hidden="true" tabindex="-1"></a>dfLong</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfLong <span class="op">=</span> dfWide.melt(id_vars<span class="op">=</span>[<span class="st">"ID"</span>,<span class="st">"gender"</span>], var_name<span class="op">=</span><span class="st">"TIME"</span>, </span>
+<span id="cb157-2"><a href="" aria-hidden="true" tabindex="-1"></a>                          value_name<span class="op">=</span><span class="st">"SCORE"</span>, value_vars<span class="op">=</span>[<span class="st">"T0"</span>,<span class="st">"T1"</span>])</span>
+<span id="cb157-3"><a href="" aria-hidden="true" tabindex="-1"></a>dfLong</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     ID gender TIME  SCORE
 0  id01      m   T0  -2.31
@@ -1173,12 +1414,12 @@ Name: course, dtype: object</code></pre>
 <section id="reshape-long-wide-with-.pivot" class="slide level2">
 <h2>Reshape Long → Wide (with <code>.pivot()</code>)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfLong <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb136-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ID"</span>: [<span class="st">"id01"</span>, <span class="st">"id01"</span>, <span class="st">"id02"</span>, <span class="st">"id02"</span>, <span class="st">"id03"</span>, <span class="st">"id03"</span>],</span>
-<span id="cb136-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gender"</span>: [<span class="st">"m"</span>, <span class="st">"m"</span>, <span class="st">"m"</span>, <span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>],</span>
-<span id="cb136-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"TIME"</span>: [<span class="st">"T0"</span>, <span class="st">"T1"</span>, <span class="st">"T0"</span>, <span class="st">"T1"</span>, <span class="st">"T0"</span>, <span class="st">"T1"</span>],</span>
-<span id="cb136-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SCORE"</span>: [<span class="op">-</span><span class="fl">2.31</span>, <span class="op">-</span><span class="fl">1.50</span>, <span class="op">-</span><span class="fl">1.70</span>, <span class="op">-</span><span class="fl">0.86</span>, <span class="op">-</span><span class="fl">2.64</span>, <span class="op">-</span><span class="fl">2.30</span>]</span>
-<span id="cb136-6"><a href="" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span> dfLong</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfLong <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb159-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ID"</span>: [<span class="st">"id01"</span>, <span class="st">"id01"</span>, <span class="st">"id02"</span>, <span class="st">"id02"</span>, <span class="st">"id03"</span>, <span class="st">"id03"</span>],</span>
+<span id="cb159-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gender"</span>: [<span class="st">"m"</span>, <span class="st">"m"</span>, <span class="st">"m"</span>, <span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>],</span>
+<span id="cb159-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"TIME"</span>: [<span class="st">"T0"</span>, <span class="st">"T1"</span>, <span class="st">"T0"</span>, <span class="st">"T1"</span>, <span class="st">"T0"</span>, <span class="st">"T1"</span>],</span>
+<span id="cb159-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SCORE"</span>: [<span class="op">-</span><span class="fl">2.31</span>, <span class="op">-</span><span class="fl">1.50</span>, <span class="op">-</span><span class="fl">1.70</span>, <span class="op">-</span><span class="fl">0.86</span>, <span class="op">-</span><span class="fl">2.64</span>, <span class="op">-</span><span class="fl">2.30</span>]</span>
+<span id="cb159-6"><a href="" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span> dfLong</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     ID gender TIME  SCORE
 0  id01      m   T0  -2.31
@@ -1188,9 +1429,9 @@ Name: course, dtype: object</code></pre>
 4  id03      f   T0  -2.64
 5  id03      f   T1  -2.30</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfWide <span class="op">=</span> dfLong.pivot(index<span class="op">=</span>[<span class="st">"ID"</span>,<span class="st">"gender"</span>], </span>
-<span id="cb138-2"><a href="" aria-hidden="true" tabindex="-1"></a>                        columns<span class="op">=</span><span class="st">"TIME"</span>, values<span class="op">=</span><span class="st">"SCORE"</span>).reset_index()</span>
-<span id="cb138-3"><a href="" aria-hidden="true" tabindex="-1"></a>dfWide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="" aria-hidden="true" tabindex="-1"></a>dfWide <span class="op">=</span> dfLong.pivot(index<span class="op">=</span>[<span class="st">"ID"</span>,<span class="st">"gender"</span>], </span>
+<span id="cb161-2"><a href="" aria-hidden="true" tabindex="-1"></a>                        columns<span class="op">=</span><span class="st">"TIME"</span>, values<span class="op">=</span><span class="st">"SCORE"</span>).reset_index()</span>
+<span id="cb161-3"><a href="" aria-hidden="true" tabindex="-1"></a>dfWide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>TIME    ID gender    T0    T1
 0     id01      m -2.31 -1.50
@@ -1203,32 +1444,32 @@ Name: course, dtype: object</code></pre>
 <section id="grouped-operations-with-.groupby" class="slide level2">
 <h2>Grouped operations (with <code>.groupby()</code>)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id      name           course  hours  mandatory    wellBoh
-0   1   Pastore    CurrentIssues     10       True      0.750
-1   2  Granziol  BasicsInference     20       True  99999.304
-2   3    Feraco              SEM     20      False  99999.353
-3   4     Altoe         Outliers      5      False     -0.495</code></pre>
+<pre><code>    teacher           course  hours  mandatory  semester     wellBoh
+0   Pastore    CurrentIssues     10       True         1      50.002
+1  Granziol  BasicsInference     20       True         1  100049.508
+2    Feraco              SEM     20      False         2  100049.932
+3     Altoe         Outliers      5      False         2      48.513
+4     Marci              QMP      5       True         2      48.857</code></pre>
 </div>
 </div>
 <h4 id="count-by-group">Count by group</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>).size()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>).size()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mandatory
 False    2
-True     2
+True     3
 dtype: int64</code></pre>
 </div>
 </div>
 <h4 id="average-by-group">Average by group</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>)[<span class="st">"hours"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>)[<span class="st">"hours"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mandatory
-False    12.5
-True     15.0
+False    12.500000
+True     11.666667
 Name: hours, dtype: float64</code></pre>
 </div>
 </div>
@@ -1238,25 +1479,25 @@ Name: hours, dtype: float64</code></pre>
 <h2>Grouped operations (with <code>.groupby()</code>)</h2>
 <h4 id="average-multiple-columns-by-group">Average multiple columns by group</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>)[[<span class="st">"hours"</span>,<span class="st">"wellBoh"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>)[[<span class="st">"hours"</span>,<span class="st">"wellBoh"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           hours    wellBoh
-mandatory                  
-False       12.5  49999.429
-True        15.0  50000.027</code></pre>
+<pre><code>               hours     wellBoh
+mandatory                       
+False      12.500000  50049.2225
+True       11.666667  33382.7890</code></pre>
 </div>
 </div>
 <h4 id="use-.agg-to-apply-multiple-functions">Use <code>.agg()</code> to apply multiple functions</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>).agg({<span class="st">"hours"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"max"</span>],</span>
-<span id="cb148-2"><a href="" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"wellBoh"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"max"</span>]</span>
-<span id="cb148-3"><a href="" aria-hidden="true" tabindex="-1"></a>                              })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>).agg({<span class="st">"hours"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"max"</span>],</span>
+<span id="cb170-2"><a href="" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"wellBoh"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"max"</span>]</span>
+<span id="cb170-3"><a href="" aria-hidden="true" tabindex="-1"></a>                              })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          hours                   wellBoh                         
-           mean        std max       mean           std        max
-mandatory                                                         
-False      12.5  10.606602  20  49999.429  70710.570638  99999.353
-True       15.0   7.071068  20  50000.027  70709.655642  99999.304</code></pre>
+<pre><code>               hours                    wellBoh                          
+                mean        std max        mean           std         max
+mandatory                                                                
+False      12.500000  10.606602  20  50049.2225  70711.681503  100049.932
+True       11.666667   7.637626  20  33382.7890  57735.072244  100049.508</code></pre>
 </div>
 </div>
 <!--------------------------------------------------------------------->
