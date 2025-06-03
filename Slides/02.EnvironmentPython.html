@@ -453,20 +453,38 @@ Enrico Toffalini
 </div>
 <!------------------------------------------------------------------>
 </section>
+<section id="project-like-a-pro" class="slide level2">
+<h2>Project like a pro 😎</h2>
+<ul>
+<li>Use a <strong>virtual environment</strong> per project (as a subfolder);</li>
+<li>Place scripts, notebooks, and data in different subfolders;</li>
+<li>Use <strong>relative paths</strong> (e.g., <code>"data/myfile.csv"</code>);</li>
+<li>Save results and figures via code (not manually)</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a>myProjectFolder<span class="op">/</span></span>
+<span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a>├── venv<span class="op">/</span>             ← <span class="kw">virtual</span> environment</span>
+<span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a>├── data<span class="op">/</span>             ← <span class="op">.</span><span class="fu">csv</span><span class="op">,</span> <span class="op">.</span><span class="fu">xlsx</span><span class="op">,</span> etc<span class="op">.</span></span>
+<span id="cb4-4"><a href="" aria-hidden="true" tabindex="-1"></a>├── scripts<span class="op">/</span>          ← <span class="op">.</span><span class="fu">py</span> scripts</span>
+<span id="cb4-5"><a href="" aria-hidden="true" tabindex="-1"></a>├── results<span class="op">/</span>          ← output files<span class="op">,</span> figures</span>
+<span id="cb4-6"><a href="" aria-hidden="true" tabindex="-1"></a>├── notebooks<span class="op">/</span>        ← markdowns<span class="op">,</span> colab notebooks<span class="op">,</span> etc<span class="op">.</span></span>
+<span id="cb4-7"><a href="" aria-hidden="true" tabindex="-1"></a>├── requirements<span class="op">.</span><span class="fu">txt</span>  ← list of installed packages <span class="kw">for</span> reproducibility</span>
+<span id="cb4-8"><a href="" aria-hidden="true" tabindex="-1"></a>└── README<span class="op">.</span><span class="fu">md</span>         ← brief description of the project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!------------------------------------------------------------------>
+</section>
 <section id="installing-and-importing-packages" class="slide level2">
 <h2>Installing and importing packages</h2>
 <p>Installing, inside an IDE console or Colab:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy  <span class="co"># install one package</span></span>
-<span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy pandas seaborn  <span class="co"># install multiple packages</span></span>
-<span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy<span class="op">==</span><span class="fl">2.2.5</span>  <span class="co"># install package and specify which version </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy  <span class="co"># install one package</span></span>
+<span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy pandas seaborn  <span class="co"># install multiple packages</span></span>
+<span id="cb5-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy<span class="op">==</span><span class="fl">2.2.5</span>  <span class="co"># install package and specify which version </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then, before using any of their functions, import packages and modules:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb5-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb6-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="font-size:30px;">
 <p><strong><code>as</code></strong> gives a shorter <strong><em>alias</em></strong> to a package or module name (e.g., <code>pd</code> for <code>pandas</code>, <code>np</code> for <code>numpy</code>); this is convenient because in Python you frequently need to call different functions by <em>always</em> specifying the package/module name (unlike in R; unless you import individual functions, e.g., <code>from numpy import array</code>)</p>
@@ -477,9 +495,9 @@ Enrico Toffalini
 <h2>Using functions, help, autocomplete</h2>
 <p><strong>Use</strong> a function from a package, and call <strong>help</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.mean([<span class="fl">2.0</span>, <span class="fl">1.5</span>, <span class="fl">7.1</span>, <span class="fl">4.2</span>]) <span class="co"># call a function from a package</span></span>
-<span id="cb6-2"><a href="" aria-hidden="true" tabindex="-1"></a>?np.mean      <span class="co"># help only in IDE console or Colab,         </span></span>
-<span id="cb6-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(np.mean) <span class="co"># help via built-in function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.mean([<span class="fl">2.0</span>, <span class="fl">1.5</span>, <span class="fl">7.1</span>, <span class="fl">4.2</span>]) <span class="co"># call a function from a package</span></span>
+<span id="cb7-2"><a href="" aria-hidden="true" tabindex="-1"></a>?np.mean      <span class="co"># help only in IDE console or Colab,         </span></span>
+<span id="cb7-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(np.mean) <span class="co"># help via built-in function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Use <code>tab</code> to <strong>autocomplete and explore</strong> available functions of a package ↴</p>
 <div style="text-align: center;">
@@ -492,8 +510,8 @@ Enrico Toffalini
 <p>As in R, you can rely on positional order of arguments instead of naming them, or you can completely omit them if there are valid default arguments. However, it’s best practice to make all relevant arguments explicit for readability and reproducibility</p>
 <div class="large-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a>sns.regplot(data<span class="op">=</span>myDF, x<span class="op">=</span><span class="st">"Age"</span>, y<span class="op">=</span><span class="st">"Score"</span>, scatter<span class="op">=</span><span class="va">True</span>, ci<span class="op">=</span><span class="dv">95</span>)</span>
-<span id="cb7-2"><a href="" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a>sns.regplot(data<span class="op">=</span>myDF, x<span class="op">=</span><span class="st">"Age"</span>, y<span class="op">=</span><span class="st">"Score"</span>, scatter<span class="op">=</span><span class="va">True</span>, ci<span class="op">=</span><span class="dv">95</span>)</span>
+<span id="cb8-2"><a href="" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div style="text-align:center; max-width:70%;">
@@ -513,24 +531,30 @@ Enrico Toffalini
 <h2>Accessing functions as <em>methods</em></h2>
 <p>In Python, objects may have functions <em>attached</em> to them: these are called <strong>methods</strong>, and are accessed using dot (<strong><code>.</code></strong>) notation <em>(more on this later!)</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a href="" aria-hidden="true" tabindex="-1"></a>myVect <span class="op">=</span> np.array([<span class="fl">2.0</span>, <span class="fl">1.5</span>, <span class="fl">7.1</span>, <span class="fl">4.2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="" aria-hidden="true" tabindex="-1"></a>myVect <span class="op">=</span> np.array([<span class="fl">2.0</span>, <span class="fl">1.5</span>, <span class="fl">7.1</span>, <span class="fl">4.2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><u><strong><em>Method-style syntax</em></strong></u>, requires that the object has this method:</p>
+<div class="column" style="width:48%;">
+<u><strong><em>Method-style syntax</em></strong></u>, requires that the object has this method:
+<div class="large-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a>myVect.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="" aria-hidden="true" tabindex="-1"></a>myVect.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.float64(3.7)</code></pre>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<p><u><strong><em>Function-style syntax</em></strong></u> <br> (more like R):</p>
+</div>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:48%;">
+<u><strong><em>Function-style syntax</em></strong></u> <br> (more like R):
+<div class="large-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.mean(myVect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.mean(myVect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.float64(3.7)</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -548,30 +572,59 @@ Enrico Toffalini
 </div>
 <!------------------------------------------------------------------>
 </section>
+<section id="working-directory" class="slide level2">
+<h2>Working directory</h2>
+<div style="font-size:24px;">
+Equivalent to R’s <code>getwd()</code> / <code>setwd()</code>:
+<div class="large-code">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb14-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="" aria-hidden="true" tabindex="-1"></a>os.getcwd()               <span class="co"># Get current working directory</span></span>
+<span id="cb14-4"><a href="" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">"path/to/folder"</span>) <span class="co"># Change working directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>(in <strong>Colab</strong>, paths are relative to the notebook location in Google Drive)</p>
+</div>
+<div class="large-code">
+<p><em>Relative paths</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"myProjectFolder/"</span></span>
+<span id="cb15-2"><a href="" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"../myProjectFolder/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>Absolute paths</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"C:/Users/enric/Desktop/myProjectFolder/"</span> <span class="co"># windows-style</span></span>
+<span id="cb16-2"><a href="" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"/home/enric/Desktop/myProjectFolder/"</span> <span class="co"># linux-style</span></span>
+<span id="cb16-3"><a href="" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"/Users/enric/Desktop/myProjectFolder/"</span> <span class="co"># macOS-style</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<!------------------------------------------------------------------>
+</section>
 <section id="section" class="slide level2">
 <h2></h2>
-<h3 id="working-directory">Working directory</h3>
-<div style="font-size:24px;">
-<p>Equivalent to R’s <code>getwd()</code> / <code>setwd()</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb13-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="" aria-hidden="true" tabindex="-1"></a>os.getcwd()               <span class="co"># Get current working directory</span></span>
-<span id="cb13-4"><a href="" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">"path/to/folder"</span>) <span class="co"># Change working directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In <strong>Colab</strong>, paths are relative to the notebook location in Google Drive</p>
-</div>
 <h3 id="importexport-objects-no-equivalent-of-save.image-of-r">Import/Export objects <span style="font-size:32px;"><em>(no equivalent of <code>save.image()</code> of R)</em></span></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
-<span id="cb14-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Save an object </span></span>
-<span id="cb14-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"myObject.pkl"</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">file</span>:       <span class="co"># "wb" is for "writing"</span></span>
-<span id="cb14-5"><a href="" aria-hidden="true" tabindex="-1"></a>    pickle.dump(myObject, <span class="bu">file</span>)</span>
-<span id="cb14-6"><a href="" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Load that object later</span></span>
-<span id="cb14-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"myObject.pkl"</span>, <span class="st">"rb"</span>) <span class="im">as</span> <span class="bu">file</span>:       <span class="co"># "rb" is for "reading"</span></span>
-<span id="cb14-9"><a href="" aria-hidden="true" tabindex="-1"></a>    myObject <span class="op">=</span> pickle.load(<span class="bu">file</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb17-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="" aria-hidden="true" tabindex="-1"></a>myObject <span class="op">=</span> <span class="fl">10.5</span></span>
+<span id="cb17-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"myObject.pkl"</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">file</span>:       <span class="co"># "wb" is for "writing"</span></span>
+<span id="cb17-6"><a href="" aria-hidden="true" tabindex="-1"></a>    pickle.dump(myObject, <span class="bu">file</span>)                <span class="co"># Save an object </span></span>
+<span id="cb17-7"><a href="" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"myObject.pkl"</span>, <span class="st">"rb"</span>) <span class="im">as</span> <span class="bu">file</span>:       <span class="co"># "rb" is for "reading"</span></span>
+<span id="cb17-9"><a href="" aria-hidden="true" tabindex="-1"></a>    myObject <span class="op">=</span> pickle.load(<span class="bu">file</span>)               <span class="co"># Load &amp; assign that object later</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>simpler version</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a>myObject <span class="op">=</span> <span class="fl">10.5</span></span>
+<span id="cb18-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="" aria-hidden="true" tabindex="-1"></a>pickle.dump(myObject, <span class="bu">open</span>(<span class="st">"myObject.pkl"</span>, <span class="st">"wb"</span>)) <span class="co"># Save an object </span></span>
+<span id="cb18-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="" aria-hidden="true" tabindex="-1"></a>myObject <span class="op">=</span> pickle.load(<span class="bu">open</span>(<span class="st">"myObject.pkl"</span>, <span class="st">"rb"</span>)) <span class="co"># Load &amp; assign that object later</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="font-size:22px">
+<p><em>(this simpler version is suboptimal because it doesn’t properly close the file after using, but still works)</em></p>
 </div>
 <!------------------------------------------------------------------>
 </section>
@@ -580,24 +633,24 @@ Enrico Toffalini
 <h3 id="import-tabular-data-more-on-pandas-later">Import tabular data (more on <code>pandas</code> later!)</h3>
 <p>from CSV</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb15-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/Courses40Cycle.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/Courses40Cycle.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>from Excel</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"data/Courses40Cycle.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"data/Courses40Cycle.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>from <code>Ctrl+C</code> copied elements (beautiful ❤️ but only for Windows)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_clipboard()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_clipboard()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <h3 id="export-tabular-data">Export tabular data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"exported_data.csv"</span>, index<span class="op">=</span><span class="va">False</span>) <span class="co"># index=False excludes row numbers</span></span>
-<span id="cb18-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="" aria-hidden="true" tabindex="-1"></a>df.to_excel(<span class="st">"exported_data.xlsx"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"exported_data.csv"</span>, index<span class="op">=</span><span class="va">False</span>) <span class="co"># index=False excludes row numbers</span></span>
+<span id="cb22-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="" aria-hidden="true" tabindex="-1"></a>df.to_excel(<span class="st">"exported_data.xlsx"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!------------------------------------------------------------------>
 </section>
@@ -605,26 +658,26 @@ Enrico Toffalini
 <h2></h2>
 <h3 id="export-figures">Export figures</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a>plt.scatter(np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>), np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>))</span>
-<span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Example Plot"</span>)</span>
-<span id="cb19-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>)  <span class="co"># export as PNG</span></span>
-<span id="cb19-6"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.pdf"</span>)           <span class="co"># export as PDF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-2"><a href="" aria-hidden="true" tabindex="-1"></a>plt.scatter(np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>), np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>))</span>
+<span id="cb23-3"><a href="" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Example Plot"</span>)</span>
+<span id="cb23-4"><a href="" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb23-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>)  <span class="co"># export as PNG</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="font-size:20px;">
 <p><br></p>
 </div>
 <h3 id="delete-an-object-similar-to-rmdf-in-r">Delete an object <span style="font-size:32px;"><em>(similar to <code>rm(df)</code> in R)</em></span></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> df  <span class="co"># delete object named df</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="font-size:20px;">
 <p><br></p>
 </div>
 <h3 id="listing-all-objects-in-workspace-similar-to-ls-in-r">Listing all objects in workspace <span style="font-size:32px;"><em>(similar to <code>ls()</code> in R)</em></span></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Age', 'N', 'Score', '__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'df', 'myVect', 'np', 'pd', 'pl', 'plt', 'r', 'sns']</code></pre>
 </div>
@@ -635,40 +688,22 @@ Enrico Toffalini
 <h2><code>dir()</code></h2>
 <p><strong><code>dir()</code></strong> is a built-in function that does more than just returning a list of objects in workspace; it allows you to inspect all <strong><em>attributes</em></strong> and <strong><em>methods</em></strong> of any object</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="fl">5.2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">98</span>, <span class="fl">11.5</span>, <span class="fl">63.11</span>]</span>
-<span id="cb23-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(a)[<span class="dv">37</span>:<span class="dv">47</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="fl">5.2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">98</span>, <span class="fl">11.5</span>, <span class="fl">63.11</span>]</span>
+<span id="cb27-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(a)[<span class="dv">37</span>:<span class="dv">47</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse']</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="fl">5.2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">98</span>, <span class="fl">11.5</span>, <span class="fl">63.11</span>])</span>
-<span id="cb25-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(a)[<span class="dv">97</span>:<span class="dv">127</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="fl">5.2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">98</span>, <span class="fl">11.5</span>, <span class="fl">63.11</span>])</span>
+<span id="cb29-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(a)[<span class="dv">97</span>:<span class="dv">127</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['all', 'any', 'argmax', 'argmin', 'argpartition', 'argsort', 'astype', 'base', 'byteswap', 'choose', 'clip', 'compress', 'conj', 'conjugate', 'copy', 'ctypes', 'cumprod', 'cumsum', 'data', 'device', 'diagonal', 'dot', 'dtype', 'dump', 'dumps', 'fill', 'flags', 'flat', 'flatten', 'getfield']</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb27-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(np)[<span class="dv">40</span>:<span class="dv">70</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb31-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(np)[<span class="dv">40</span>:<span class="dv">70</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['abs', 'absolute', 'acos', 'acosh', 'add', 'all', 'allclose', 'amax', 'amin', 'angle', 'any', 'append', 'apply_along_axis', 'apply_over_axes', 'arange', 'arccos', 'arccosh', 'arcsin', 'arcsinh', 'arctan', 'arctan2', 'arctanh', 'argmax', 'argmin', 'argpartition', 'argsort', 'argwhere', 'around', 'array', 'array2string']</code></pre>
 </div>
 </div>
-<!------------------------------------------------------------------>
-</section>
-<section id="project-like-a-pro" class="slide level2">
-<h2>Project like a pro 😎</h2>
-<ul>
-<li>Use a <strong>virtual environment</strong> per project (as a subfolder);</li>
-<li>Place scripts, notebooks, and data in different subfolders;</li>
-<li>Use <strong>relative paths</strong> (e.g., <code>"data/myfile.csv"</code>);</li>
-<li>Save results and figures via code (not manually)</li>
-</ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode csharp code-with-copy"><code class="sourceCode cs"><span id="cb29-1"><a href="" aria-hidden="true" tabindex="-1"></a>myProjectFolder<span class="op">/</span></span>
-<span id="cb29-2"><a href="" aria-hidden="true" tabindex="-1"></a>├── venv<span class="op">/</span>             ← <span class="kw">virtual</span> environment</span>
-<span id="cb29-3"><a href="" aria-hidden="true" tabindex="-1"></a>├── data<span class="op">/</span>             ← <span class="op">.</span><span class="fu">csv</span><span class="op">,</span> <span class="op">.</span><span class="fu">xlsx</span><span class="op">,</span> etc<span class="op">.</span></span>
-<span id="cb29-4"><a href="" aria-hidden="true" tabindex="-1"></a>├── scripts<span class="op">/</span>          ← <span class="op">.</span><span class="fu">py</span> scripts</span>
-<span id="cb29-5"><a href="" aria-hidden="true" tabindex="-1"></a>├── results<span class="op">/</span>          ← output files<span class="op">,</span> figures</span>
-<span id="cb29-6"><a href="" aria-hidden="true" tabindex="-1"></a>├── notebooks<span class="op">/</span>        ← markdowns<span class="op">,</span> colab notebooks<span class="op">,</span> etc<span class="op">.</span></span>
-<span id="cb29-7"><a href="" aria-hidden="true" tabindex="-1"></a>├── requirements<span class="op">.</span><span class="fu">txt</span>  ← list of installed packages <span class="kw">for</span> reproducibility</span>
-<span id="cb29-8"><a href="" aria-hidden="true" tabindex="-1"></a>└── README<span class="op">.</span><span class="fu">md</span>         ← brief description of the project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!------------------------------------------------------------------>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

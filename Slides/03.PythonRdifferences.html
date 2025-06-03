@@ -625,28 +625,28 @@ using <strong><code>.</code></strong> to access submodules of modules: <code>sta
 <div class="cell-output cell-output-stdout">
 <pre><code>                Results: Ordinary least squares
 ================================================================
-Model:              OLS              Adj. R-squared:     -0.093 
-Dependent Variable: y                AIC:                50.2973
-Date:               2025-05-31 15:58 BIC:                53.2845
-No. Observations:   20               Log-Likelihood:     -22.149
-Df Model:           2                F-statistic:        0.1905 
-Df Residuals:       17               Prob (F-statistic): 0.828  
-R-squared:          0.022            Scale:              0.63097
+Model:              OLS              Adj. R-squared:     -0.004 
+Dependent Variable: y                AIC:                53.2773
+Date:               2025-06-03 16:28 BIC:                56.2645
+No. Observations:   20               Log-Likelihood:     -23.639
+Df Model:           2                F-statistic:        0.9639 
+Df Residuals:       17               Prob (F-statistic): 0.401  
+R-squared:          0.102            Scale:              0.73235
 -----------------------------------------------------------------
                Coef.   Std.Err.     t     P&gt;|t|    [0.025  0.975]
 -----------------------------------------------------------------
-Intercept     -0.2451    0.1777  -1.3794  0.1856  -0.6199  0.1298
-x1             0.0569    0.1824   0.3119  0.7589  -0.3279  0.4417
-x2            -0.0969    0.2088  -0.4641  0.6485  -0.5374  0.3436
+Intercept      0.2117    0.2146   0.9866  0.3377  -0.2410  0.6644
+x1            -0.2465    0.1778  -1.3865  0.1835  -0.6217  0.1286
+x2            -0.0035    0.2113  -0.0163  0.9871  -0.4493  0.4424
 ----------------------------------------------------------------
-Omnibus:              4.745        Durbin-Watson:          1.460
-Prob(Omnibus):        0.093        Jarque-Bera (JB):       2.529
-Skew:                 -0.660       Prob(JB):               0.282
-Kurtosis:             4.138        Condition No.:          1    
+Omnibus:              6.714        Durbin-Watson:          1.824
+Prob(Omnibus):        0.035        Jarque-Bera (JB):       4.168
+Skew:                 -0.968       Prob(JB):               0.124
+Kurtosis:             4.121        Condition No.:          2    
 ================================================================</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>np.float64(53.284509520287756)</code></pre>
+<pre><code>np.float64(56.2644801014292)</code></pre>
 </div>
 </div>
 </div>
@@ -1100,7 +1100,7 @@ Kurtosis:             4.138        Condition No.:          1
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb93-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1.6916232191325358</code></pre>
+<pre><code>0.42228159170481133</code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="" aria-hidden="true" tabindex="-1"></a>intrcpt, beta0, beta1 <span class="op">=</span> myModel.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

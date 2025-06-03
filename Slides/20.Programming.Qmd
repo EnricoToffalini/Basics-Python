@@ -26,9 +26,20 @@ reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/p
 reticulate::repl_python()
 ```
 
+
+## **`if`** statement
+
+automatically make decisions based on boolean value of a condition
+
+<div style="text-align: center;">
+  <img src="figures/if_chart.png" style="width: 60%;" />
+</div>
+
+<!--------------------------------------------------------------->
+
 ## Conditional Programming
 
-Conditional statements like `if`, `if ... else`, and `elif` are essential in Python to control the analysis pipeline and automating tasks and decisions. The logic closely resembles that in R, but as previously seen Python uses indentation (not curly or round brackets) to define blocks of code
+The logic closely resembles that in R, except that Python uses indentation (**not** curly or round brackets) to define blocks of code
 
 <hr/>
 
@@ -44,16 +55,6 @@ if age >= 18:
     print("Adult")
 ```
 </div> 
-
-<!--------------------------------------------------------------->
-
-## **`if`** statement
-
-Basic flowchart showing the logic of the **`if`** statement
-
-<div style="text-align: center;">
-  <img src="figures/if_chart.png" style="width: 60%;" />
-</div>
 
 
 <!--------------------------------------------------------------->
@@ -142,8 +143,9 @@ else:
 ## 
 ### Vectorized and Nested conditions
 
-All previous examples evaluated a single statement that may be `True` or `False`. However, you often want to apply this operation to an entire vector
+All previous examples evaluated **a single statement** that may be **`True`** or **`False`**. However, you often want to apply this operation to an entire vector
 
+<div class="large-code">
 ```{python, error=T}
 agesVector = np.array([2, 28, 15, 11, 4, 67, 0, 42, 14, 8])
 
@@ -152,34 +154,55 @@ if agesVector >= 18:
 else:
     print("Minor")
 ```
-
+</div>
+<div style="font-size:25px">
 *the error message suggests that I might use `np.any(agesVector >= 18)` or `np.all(agesVector >= 18)`, but this is not what I want! What I want is actually an `if...else` that evaluates across a whole vector of `True`s and `False`s (which should be like the `ifelse()` in R)*
+</div>
+
+<!--------------------------------------------------------------->
+
+## 
+### Vectorized and Nested conditions
+
+You could use ***list comprehension*** (more on this later!), but it's a bit **painful to write**, **less readable**, and **slower** (for large data)...
+
+<div class="large-code">
+```{python, error=T}
+agesVector = np.array([2, 28, 15, 11, 4, 67, 0, 42, 14, 8])
+
+["adult" if age >= 18 else "minor" for age in agesVector]
+```
+</div>
 
 <!--------------------------------------------------------------->
 
 ## 
 ### Vectorized and Nested conditions with `np.where()` and `np.select()`
 
+<div class="large-code">
 ```{python}
 agesVector = np.array([2, 28, 15, 11, 4, 67, 0, 42, 14, 8])
 
 np.where(agesVector >= 18, "Adult", "Minor")
 ```
-<span style="font-size:24px;">*manages one single condition, similar to `ifelse()` in R*</span>
+</div>
+<span style="font-size:26px;">↳ *manages one single condition, similar to `ifelse()` in R*</span>
 
+<div class="large-code">
 ```{python}
 conditions = [agesVector >= 18, agesVector >= 13, agesVector >= 2]
 choices = ["Adult", "Adolescent", "Child"]
 
 np.select(conditions, choices, default="Infant")
 ```
-<span style="font-size:24px;">*manages multiple nested conditions; no direct equivalent in R, maybe `dplyr::case_when()`*</span>
+</div>
+<span style="font-size:26px;">↳ *manages multiple nested conditions; no direct equivalent in R, maybe `dplyr::case_when()`*</span>
 
 <!-- --------------------------------------------------------------------- -->
 
 ## Loops in Python
 
-Looping in Python is used to repeat actions. `for` and `while` are most common
+Looping in Python is used to repeat actions: `for` and `while` are most common
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -224,8 +247,8 @@ for i in range(niter):
     x = np.random.normal(size=N)
     results[i] = x.mean()
 
-print(results.round(4))
-print(np.std(results).round(4))
+print( results.round(4) )
+print( np.std(results).round(4) )
 ```
 
 <!--------------------------------------------------------------->
@@ -250,7 +273,7 @@ for i in range(niter):
 
 # STEP 2: ESTIMATE STANDARD ERROR
 
-print(np.std(results).round(4))
+print( np.std(results).round(4) )
 ```
 :::
 ::: {.column width="50%"}
@@ -279,7 +302,7 @@ Iterating over a sequence of integers (e.g., “`i in range(niter)`” is a comm
 words = ["this", "is", "a", "vector", "of", "strings"]
 
 for w in words:
-    print(w.upper()*2)
+    print(w.upper()*4)
 ```
 
 ***List comprehension*** is another, compact type of *for* loop over list elements:
@@ -304,7 +327,7 @@ while amount < 1500:
 
 print(month)
 ```
-<div style="font-size:24px;">*Interpretation: it takes 406 months to reach an amount of €$1,500$ when starting with an amount of €$1,000$ with a 0.1% monthly interest rate*</div>
+<div style="font-size:24px;">➜ *it takes 406 months to reach an amount of €$1,500$ when starting with an amount of €$1,000$ with a 0.1% monthly interest rate*</div>
 
 <!--------------------------------------------------------------->
 
@@ -337,22 +360,72 @@ print([i, pval.round(4)])
 
 **`zip()`** pairs elements across multiple sequences while iterating them
 
+<div class="large-code">
+::: {.columns}
+::: {.column width="42%"}
+```{python}
+numbers = [5, 10, 10, 2, 7]
+
+
+for n in numbers:
+   print(n**2)
+```
+:::
+::: {.column width="58%"}
+```{python}
+numbers = [5, 10, 10, 2, 7]
+exponents = [2, 1, 5, 3, 1]
+
+for n, e in zip(numbers, exponents):
+   print(n**e)
+```
+:::
+:::
+</div>
+
+<div class="large-code">
+```{python}
+[n**e for n, e in zip(numbers, exponents)]
+```
+</div>
+
+<div style="font-size:24px;"><em>but note that the latter could be obtained much more easily with `numpy` vectorized operations: <b>`np.array(base) ** np.array(exponent)`</b></em></div>
+
+<!--------------------------------------------------------------->
+
+##  Other iteration: `for` with `zip()`
+
+**`zip()`** pairs elements across multiple sequences while iterating them
+
+<div class="large-code">
 ```{python}
 teacher = ["Pastore", "Granziol", "Feraco","Altoe"]
 course = ["CurrentIssues", "BasicsInference", "SEM","Outliers"]
 hours = [10, 20, 20, 5]
 
 for t, c, h in zip(teacher, course, hours):
-    print(f"{t} teaches {c}, which has {h} hours")
+   print(f"{t} teaches {c} which has {h} hours") # formatted-string
 ```
+</div>
 
+<!--------------------------------------------------------------->
+
+##  Other iteration: `for` with `zip()`
+
+`zip()` is very convenient, but if really you don't like it, you could do the same task using the classical numerical iterator **`i`**
+
+<div class="large-code">
 ```{python}
-base = [5, 10, 10, 2, 7, 15]
-exponent = [2, 1, 2, 5, 5, 2]
+teacher = ["Pastore", "Granziol", "Feraco","Altoe"]
+course = ["CurrentIssues", "BasicsInference", "SEM","Outliers"]
+hours = [10, 20, 20, 5]
 
-result = [b**e for b, e in zip(base, exponent)] ; print(result)
+for i in range(len(teacher)):
+   print(f"{teacher[i]} teaches {course[i]} which has {hours[i]} hours")
 ```
-<div style="font-size:24px;"><em>But note that the latter could be obtained much more easily with `numpy` vectorized operations: <b>`np.array(base) ** np.array(exponent)`</b></em></div>
+</div>
+
+<!--------------------------------------------------------------->
 
 ## Other iteration: `map()`
 
@@ -360,10 +433,9 @@ result = [b**e for b, e in zip(base, exponent)] ; print(result)
 
 <div class="large-code">
 ```{python}
-result = map(len, ["apple", "banana", "pear", "watermelon"]) 
+result = map(len, ["apple", "banana", [1,2,3], "watermelon"]) 
 
-result = list(result)
-print(result)
+list(result)
 ```
 </div>
 
@@ -378,15 +450,15 @@ in `map()`, you need to use `list(...)` to actually generate the result, otherwi
 Custom functions are widely used in Python for efficiently reusing chunks of code. *Define* your functions with **`def`**; the logic is very similar as in R:
 
 ```{python}
+def zScore(vect):
+     vect = np.array(vect)
+     mu = np.mean(vect)
+     sigma = np.std(vect)
+     return ((vect - mu) / sigma)
+
 a = [10, 14, 7.6, 18, 22, 50, 0.5]
 b = [700, 131, 215, 133.2, 190, 4100, 108.9]
 c = [-4.2, -10.2, 2, -15]
-
-def zScore(vect):
-    vect = np.array(vect)
-    mu = np.mean(vect)
-    sigma = np.std(vect)
-    return (vect - mu) / sigma
 
 zScore(a).round(3)
 zScore(b).round(3)
@@ -400,20 +472,21 @@ zScore(c).round(3)
 Let's elaborate the custom `zScore` function a little bit, adding another arguments that allows us to specify whether we want to ignore *missing values*:
 
 ```{python}
+def zScore(vect, naIgnore=False):
+     vect = np.array(vect)
+     if naIgnore==True: 
+           mu = np.nanmean(vect)
+           sigma = np.nanstd(vect)
+     else:
+           mu = np.mean(vect)
+           sigma = np.std(vect)
+     return ((vect - mu) / sigma)
+
+
 myVector = np.array([10, 14, 7.6, np.nan, 18, 22, 50, 0.5, np.nan, 1.4, 7])
-
-def zScore(vect, naIgnore=True):
-    vect = np.array(vect)
-    if naIgnore: 
-        vect = vect[~np.isnan(vect)]
-    mu = np.mean(vect)
-    sigma = np.std(vect)
-    return (vect - mu) / sigma
-
-zScore(myVector, naIgnore=False).round(2)
+zScore(myVector).round(2)
 zScore(myVector, naIgnore=True).round(2)
 ```
-<div style="font-size:24px;">*The `~` operator is equivalent to `not`, but elementwise*</div>
 
 <!--------------------------------------------------------------->
 

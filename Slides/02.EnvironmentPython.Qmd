@@ -81,6 +81,26 @@ pip freeze > requirements.txt
 
 <!------------------------------------------------------------------>
 
+## Project like a pro 😎
+
+- Use a **virtual environment** per project (as a subfolder);
+- Place scripts, notebooks, and data in different subfolders;
+- Use **relative paths** (e.g., `"data/myfile.csv"`);
+- Save results and figures via code (not manually)
+
+```csharp
+myProjectFolder/
+├── venv/             ← virtual environment
+├── data/             ← .csv, .xlsx, etc.
+├── scripts/          ← .py scripts
+├── results/          ← output files, figures
+├── notebooks/        ← markdowns, colab notebooks, etc.
+├── requirements.txt  ← list of installed packages for reproducibility
+└── README.md         ← brief description of the project
+```
+
+<!------------------------------------------------------------------>
+
 ## Installing and importing packages
 
 Installing, inside an IDE console or Colab: 
@@ -164,17 +184,23 @@ myVect = np.array([2.0, 1.5, 7.1, 4.2])
 ```
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="48%"}
 <u>***Method-style syntax***</u>, requires that the object has this method:
+<div class="large-code">
 ```{python}
 myVect.mean()
 ```
+</div>
 :::
-::: {.column width="50%"}
+::: {.column width="4%"}
+:::
+::: {.column width="48%"}
 <u>***Function-style syntax***</u> <br/> (more like R):
+<div class="large-code">
 ```{python}
 np.mean(myVect)
 ```
+</div>
 :::
 :::
 
@@ -194,32 +220,66 @@ np.mean(myVect)
 
 <!------------------------------------------------------------------>
 
-## 
-### Working directory
+## Working directory
 
 <div style="font-size:24px;">
 Equivalent to R's `getwd()` / `setwd()`:
+<div class="large-code">
 ```{python, eval=F}
 import os
 
 os.getcwd()               # Get current working directory
 os.chdir("path/to/folder") # Change working directory
 ```
-In **Colab**, paths are relative to the notebook location in Google Drive
+</div>
+(in **Colab**, paths are relative to the notebook location in Google Drive)
 </div>
 
+<div class="large-code">
+*Relative paths*
+```{python, eval=F}
+path = "myProjectFolder/"
+path = "../myProjectFolder/"
+```
+
+*Absolute paths*
+```{python, eval=F}
+path = "C:/Users/enric/Desktop/myProjectFolder/" # windows-style
+path = "/home/enric/Desktop/myProjectFolder/" # linux-style
+path = "/Users/enric/Desktop/myProjectFolder/" # macOS-style
+```
+</div>
+
+<!------------------------------------------------------------------>
+
+##
 ### Import/Export objects <span style="font-size:32px;">*(no equivalent of `save.image()` of R)*</span>
 ```{python, eval=F}
 import pickle
 
-# Save an object 
+myObject = 10.5
+
 with open("myObject.pkl", "wb") as file:       # "wb" is for "writing"
-    pickle.dump(myObject, file)
+    pickle.dump(myObject, file)                # Save an object 
     
-# Load that object later
 with open("myObject.pkl", "rb") as file:       # "rb" is for "reading"
-    myObject = pickle.load(file)
+    myObject = pickle.load(file)               # Load & assign that object later
 ```
+
+*simpler version*
+
+```{python, eval=F}
+
+myObject = 10.5
+
+pickle.dump(myObject, open("myObject.pkl", "wb")) # Save an object 
+
+myObject = pickle.load(open("myObject.pkl", "rb")) # Load & assign that object later
+```
+
+<div style="font-size:22px">
+*(this simpler version is suboptimal because it doesn't properly close the file after using, but still works)*
+</div>
 
 <!------------------------------------------------------------------>
 
@@ -261,16 +321,16 @@ df.to_excel("exported_data.xlsx", index=False)
 import matplotlib.pyplot as plt
 plt.scatter(np.random.normal(0,1,10), np.random.normal(0,1,10))
 plt.title("Example Plot")
+plt.show()
 
 plt.savefig("myPlot.png", dpi=300)  # export as PNG
-plt.savefig("myPlot.pdf")           # export as PDF
 ```
 <div style="font-size:20px;">
 <br/>
 </div>
 ### Delete an object <span style="font-size:32px;">*(similar to `rm(df)` in R)*</span>
 ```{python, eval=F}
-del df
+del df  # delete object named df
 ```
 <div style="font-size:20px;">
 <br/>
@@ -297,25 +357,5 @@ import numpy as np
 dir(np)[40:70]
 ```
 
-
-<!------------------------------------------------------------------>
-
-## Project like a pro 😎
-
-- Use a **virtual environment** per project (as a subfolder);
-- Place scripts, notebooks, and data in different subfolders;
-- Use **relative paths** (e.g., `"data/myfile.csv"`);
-- Save results and figures via code (not manually)
-
-```csharp
-myProjectFolder/
-├── venv/             ← virtual environment
-├── data/             ← .csv, .xlsx, etc.
-├── scripts/          ← .py scripts
-├── results/          ← output files, figures
-├── notebooks/        ← markdowns, colab notebooks, etc.
-├── requirements.txt  ← list of installed packages for reproducibility
-└── README.md         ← brief description of the project
-```
 
 <!------------------------------------------------------------------>
