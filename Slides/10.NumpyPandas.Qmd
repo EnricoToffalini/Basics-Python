@@ -668,17 +668,26 @@ myDF.groupby("semester")["hours"].mean()
 
 ## Grouped operations (with `.groupby()`)
 
-#### Average multiple columns by group
+#### Compute statistics for multiple columns by group
 <div class="large-code">
 ```{python}
 myDF.groupby("semester")[["hours","wellBoh"]].mean()
+myDF.groupby("semester")[["hours","wellBoh"]].std()
 ```
+</div>
 
-#### Apply multiple functions with `.agg()`
+<!--------------------------------------------------------------------->
+
+## Apply multiple functions with `.agg()`
+
+<div class="large-code">
 ```{python}
+myDF.agg({"hours": ["mean","std","min","max"],
+          "wellBoh": ["mean","std","min","max"]
+          }).round(2)
 myDF.groupby("semester").agg({"hours": ["mean","std","min","max"],
-                               "wellBoh": ["mean","std","median"]
-                                }).round(2)
+                              "wellBoh": ["mean","std","min","max"]
+                             }).round(2)
 ```
 </div>
 
