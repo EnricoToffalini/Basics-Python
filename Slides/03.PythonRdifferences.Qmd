@@ -63,7 +63,7 @@ Many basic aspects of syntax and functions may feel practically the same...
 | Task                 | Python        | R |
 |-----------|-------------|-------------|
 | average   | `np.mean(x)`  | `mean(x)` |
-| standard deviation   |  `np.sd(x)` | `sd(x)` |
+| standard deviation   |  `np.std(x)` | `sd(x)` |
 | square root | `np.sqrt(x)`  | `sqrt(x)`   |
 | linear model  | `smf.ols("y ~ x", data=df).fit()` | `lm(y ~ x, data=df)`   |
 | correlation    |  `np.corrcoef(x, y)` | `cor(x,y)`  |

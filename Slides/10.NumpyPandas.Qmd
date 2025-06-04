@@ -492,6 +492,22 @@ myDF
 <div class="large-code">
 Just index a column that doesn't exist... and fill it!
 ```{python}
+myDF["wellBoh"] = 10
+myDF
+```
+</div>
+
+<!--------------------------------------------------------------------->
+
+## Add new Columns in a DataFrame
+
+```{python, echo=F}         
+myDF.drop("wellBoh",axis=1)
+```
+
+<div class="large-code">
+Just index a column that doesn't exist... and fill it!
+```{python}
 myDF["wellBoh"] = np.random.normal(size=len(myDF)).round(3)
 myDF
 ```
