@@ -1258,7 +1258,7 @@ Enrico Toffalini
 </section>
 <section id="if...else-statement-1" class="slide level2">
 <h2><code>if...else</code> statement</h2>
-<p>Sometimes you need to perform <em>alternative, mutually-exclusive</em> actions:</p>
+<div class="large-code">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">15</span></span>
 <span id="cb3-2"><a href aria-hidden="true" tabindex="-1"></a></span>
@@ -1270,7 +1270,9 @@ Enrico Toffalini
 <pre><code>Minor</code></pre>
 </div>
 </div>
+</div>
 <p>Note that <strong>indentation</strong> is really important!</p>
+<div class="large-code">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">15</span></span>
 <span id="cb5-2"><a href aria-hidden="true" tabindex="-1"></a></span>
@@ -1280,6 +1282,7 @@ Enrico Toffalini
 <span id="cb5-6"><a href aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Minor&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>expected an indented block after &#39;else&#39; statement on line 5 (&lt;string&gt;, line 6)</code></pre>
+</div>
 </div>
 </div>
 <!--------------------------------------------------------------->
@@ -1317,17 +1320,18 @@ Enrico Toffalini
 <span id="cb9-5"><a href aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.random.normal(<span class="fl">0.5</span>, <span class="dv">1</span>, size<span class="op">=</span><span class="dv">30</span>)</span>
 <span id="cb9-6"><a href aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href aria-hidden="true" tabindex="-1"></a>tt <span class="op">=</span> st.ttest_ind(x1, x2)</span>
-<span id="cb9-8"><a href aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tt.pvalue.<span class="bu">round</span>(<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-8"><a href aria-hidden="true" tabindex="-1"></a>pval <span class="op">=</span> tt.pvalue.<span class="bu">round</span>(<span class="dv">4</span>)</span>
+<span id="cb9-9"><a href aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0077</code></pre>
+<pre><code>0.0825</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> tt.pvalue <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> pval <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
 <span id="cb11-2"><a href aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Significant result: proceeding with follow-up analysis&quot;</span>)</span>
 <span id="cb11-3"><a href aria-hidden="true" tabindex="-1"></a>    <span class="co"># Here you could perform other analyses after the preliminary check</span></span>
 <span id="cb11-4"><a href aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb11-5"><a href aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;No significant result: reporting preliminary test only&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Significant result: proceeding with follow-up analysis</code></pre>
+<pre><code>No significant result: reporting preliminary test only</code></pre>
 </div>
 </div>
 <!--------------------------------------------------------------->
@@ -1387,10 +1391,11 @@ Enrico Toffalini
 <p><span style="font-size:26px;">↳ <em>manages one single condition, similar to <code>ifelse()</code> in R</em></span></p>
 <div class="large-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> [agesVector <span class="op">&gt;=</span> <span class="dv">18</span>, agesVector <span class="op">&gt;=</span> <span class="dv">13</span>, agesVector <span class="op">&gt;=</span> <span class="dv">2</span>]</span>
-<span id="cb19-2"><a href aria-hidden="true" tabindex="-1"></a>choices <span class="op">=</span> [<span class="st">&quot;Adult&quot;</span>, <span class="st">&quot;Adolescent&quot;</span>, <span class="st">&quot;Child&quot;</span>]</span>
-<span id="cb19-3"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href aria-hidden="true" tabindex="-1"></a>np.select(conditions, choices, default<span class="op">=</span><span class="st">&quot;Infant&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> [agesVector <span class="op">&gt;=</span> <span class="dv">18</span>, agesVector <span class="op">&gt;=</span> <span class="dv">13</span>, </span>
+<span id="cb19-2"><a href aria-hidden="true" tabindex="-1"></a>                            agesVector <span class="op">&gt;=</span> <span class="dv">2</span>, agesVector <span class="op">&gt;=</span> <span class="dv">0</span>]</span>
+<span id="cb19-3"><a href aria-hidden="true" tabindex="-1"></a>choices <span class="op">=</span> [<span class="st">&quot;Adult&quot;</span>, <span class="st">&quot;Adolescent&quot;</span>, <span class="st">&quot;Child&quot;</span>, <span class="st">&quot;Infant&quot;</span>]</span>
+<span id="cb19-4"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href aria-hidden="true" tabindex="-1"></a>np.select(conditions, choices, default<span class="op">=</span><span class="st">&quot;&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([&#39;Child&#39;, &#39;Adult&#39;, &#39;Adolescent&#39;, &#39;Child&#39;, &#39;Child&#39;, &#39;Adult&#39;,
        &#39;Infant&#39;, &#39;Adult&#39;, &#39;Adolescent&#39;, &#39;Child&#39;], dtype=&#39;&lt;U10&#39;)</code></pre>
@@ -1406,6 +1411,7 @@ Enrico Toffalini
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="for-loop-basics"><code>for</code> loop basics</h3>
+<div class="large-code">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb21-2"><a href aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1426,8 +1432,10 @@ Enrico Toffalini
 16</code></pre>
 </div>
 </div>
+</div>
 </div><div class="column" style="width:50%;">
 <h3 id="time-based-iteration">Time-based iteration</h3>
+<div class="large-code">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb25-2"><a href aria-hidden="true" tabindex="-1"></a></span>
@@ -1440,6 +1448,7 @@ Enrico Toffalini
 1748966364.7001276
 1748966365.7013485
 1748966366.7020855</code></pre>
+</div>
 </div>
 </div>
 </div>

@@ -71,7 +71,7 @@ Sometimes you need to perform *alternative, mutually-exclusive* actions:
 
 ## `if...else` statement
 
-Sometimes you need to perform *alternative, mutually-exclusive* actions: 
+<div class="large-code">
 ```{python}
 #| results: 'hold'
 age = 15
@@ -81,8 +81,11 @@ if age >= 18:
 else:
     print("Minor")
 ```
+</div>
 
 Note that **indentation** is really important!
+
+<div class="large-code">
 ```{python, error=T}
 #| results: 'hold'
 age = 15
@@ -92,7 +95,7 @@ if age >= 18:
 else:
 print("Minor")
 ```
-
+</div>
 
 <!--------------------------------------------------------------->
 
@@ -129,9 +132,10 @@ x1 = np.random.normal(0, 1, size=30)
 x2 = np.random.normal(0.5, 1, size=30)
 
 tt = st.ttest_ind(x1, x2)
-print(tt.pvalue.round(4))
+pval = tt.pvalue.round(4)
+print(pval)
 
-if tt.pvalue < 0.05:
+if pval < 0.05:
     print("Significant result: proceeding with follow-up analysis")
     # Here you could perform other analyses after the preliminary check
 else:
@@ -190,10 +194,11 @@ np.where(agesVector >= 18, "Adult", "Minor")
 
 <div class="large-code">
 ```{python}
-conditions = [agesVector >= 18, agesVector >= 13, agesVector >= 2]
-choices = ["Adult", "Adolescent", "Child"]
+conditions = [agesVector >= 18, agesVector >= 13, 
+                            agesVector >= 2, agesVector >= 0]
+choices = ["Adult", "Adolescent", "Child", "Infant"]
 
-np.select(conditions, choices, default="Infant")
+np.select(conditions, choices, default="")
 ```
 </div>
 <span style="font-size:26px;">↳ *manages multiple nested conditions; no direct equivalent in R, maybe `dplyr::case_when()`*</span>
@@ -207,7 +212,7 @@ Looping in Python is used to repeat actions: `for` and `while` are most common
 ::: {.columns}
 ::: {.column width="50%"}
 ### `for` loop basics
-
+<div class="large-code">
 ```{python}
 for i in range(5):
     print(i)
@@ -215,10 +220,11 @@ for i in range(5):
 for i in range(5):
     print(i**2)
 ```
+</div>
 :::
 ::: {.column width="50%"}
 ### Time-based iteration
-
+<div class="large-code">
 ```{python, cache=T}
 import time
 
@@ -226,6 +232,7 @@ for i in range(5):
     print(time.time())
     time.sleep(1)
 ```
+</div>
 :::
 :::
 

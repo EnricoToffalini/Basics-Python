@@ -554,25 +554,26 @@ myDF
 ::: {.column width="56%"}
 ```{python}         
 df1 = pd.DataFrame({
-  "name": ["Jane", "Jim", "John", "Jack"],
-  "grade": [28, 15, 30, 23]
+  "ID": ["Jane", "Jim", "John", "Jack"],
+  "department": ["dpg","dpg","dpss","dpss"],
+  "age": [21.4, 22.5, 20.2, 23.0]
 })
 df1
 
 df2 = pd.DataFrame({
-  "name": ["Jane", "Jim", "John", "Jack"],
-  "age": [21.4, 22.5, 20.2, 23.0]
+  "ID": ["Jim", "Jack", "John", "Jane"],
+  "grade": [28, 15, 30, 23]
 })
 df2
 ```
 :::
 ::: {.column width="44%"}
 ```{python}
-df = pd.merge(df1, df2, on="name")
+df = pd.merge(df1, df2, on="ID")
 df
 ```
 <br/>
-<div style="font-size:22px;">*be careful! it will lose any row that does not match across both DataFrames by `"name"`! to keep all values and possibly fill with `NaN` (missing values), add argument `how="outer"`*</div>
+<div style="font-size:22px;">*be careful! it will lose any row that does not match across both DataFrames by `"name"`! otherwise, add argument `how="outer"` to keep all values and possibly fill with `NaN` (missing values)*</div>
 :::
 :::
 
@@ -622,7 +623,7 @@ dfWide = pd.DataFrame({
 dfWide
 
 dfLong = dfWide.melt(id_vars=["ID","gender"], var_name="TIME", 
-                          value_name="SCORE", value_vars=["T0","T1"])
+                                value_name="SCORE", value_vars=["T0","T1"])
 dfLong
 ```
 
@@ -639,7 +640,7 @@ dfLong = pd.DataFrame({
 }); dfLong
 
 dfWide = dfLong.pivot(index=["ID","gender"], 
-                        columns="TIME", values="SCORE").reset_index()
+                           columns="TIME", values="SCORE").reset_index()
 dfWide
 ```
 
@@ -651,31 +652,34 @@ dfWide
 myDF
 ```
 
+<div class="large-code">
 #### Count by group
 ```{python}
 myDF.groupby("mandatory").size()
 ```
 
-#### Average by group
+#### Average or sum by group
 ```{python}
-myDF.groupby("mandatory")["hours"].mean()
+myDF.groupby("semester")["hours"].mean()
 ```
+</div>
 
 <!--------------------------------------------------------------------->
 
 ## Grouped operations (with `.groupby()`)
 
 #### Average multiple columns by group
+<div class="large-code">
 ```{python}
-myDF.groupby("mandatory")[["hours","wellBoh"]].mean()
+myDF.groupby("semester")[["hours","wellBoh"]].mean()
 ```
 
-#### Use `.agg()` to apply multiple functions
+#### Apply multiple functions with `.agg()`
 ```{python}
-myDF.groupby("mandatory").agg({"hours": ["mean","std","max"],
-                               "wellBoh": ["mean","std","max"]
-                              })
+myDF.groupby("semester").agg({"hours": ["mean","std","min","max"],
+                               "wellBoh": ["mean","std","median"]
+                                }).round(2)
 ```
-
+</div>
 
 <!--------------------------------------------------------------------->
