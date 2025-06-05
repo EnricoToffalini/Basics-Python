@@ -73,7 +73,7 @@ Depending on interest, we may explore more advanced topics such as data visualiz
 
 ## Materials
 
-### Slides *(in progress!)*
+### Slides
 
 -   [**Intro to This Course, aka Why We Should Use Python**](Slides/00.IntroPython.html){target="_blank"}
 -   [**Getting Started: IDEs, Operations, Basic Types of Data**](Slides/01.GettingStartedPython.html){target="_blank"}
