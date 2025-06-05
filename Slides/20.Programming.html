@@ -1323,7 +1323,7 @@ Enrico Toffalini
 <span id="cb9-8"><a href aria-hidden="true" tabindex="-1"></a>pval <span class="op">=</span> tt.pvalue.<span class="bu">round</span>(<span class="dv">4</span>)</span>
 <span id="cb9-9"><a href aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0825</code></pre>
+<pre><code>0.0121</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> pval <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
 <span id="cb11-2"><a href aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Significant result: proceeding with follow-up analysis&quot;</span>)</span>
@@ -1331,7 +1331,7 @@ Enrico Toffalini
 <span id="cb11-4"><a href aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb11-5"><a href aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;No significant result: reporting preliminary test only&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>No significant result: reporting preliminary test only</code></pre>
+<pre><code>Significant result: proceeding with follow-up analysis</code></pre>
 </div>
 </div>
 <!--------------------------------------------------------------->
@@ -1653,7 +1653,7 @@ STRINGSSTRINGSSTRINGSSTRINGS</code></pre>
 </div>
 </div>
 <div style="font-size:24px;">
-<em>but note that the latter could be obtained much more easily with <code>numpy</code> vectorized operations: <b><code>np.array(base) ** np.array(exponent)</code></b></em>
+<em>but note that the latter could be obtained much more easily with <code>numpy</code> vectorized operations: <b><code>np.array(numbers) ** np.array(exponents)</code></b></em>
 </div>
 <!--------------------------------------------------------------->
 </section>
