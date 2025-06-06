@@ -201,7 +201,7 @@ coordinates = pd.DataFrame( PCA(n_components=2).fit_transform(dfNumStd) )
 # Plot PCA projection as 2-D scatterplot
 sns.scatterplot(x=coordinates[0], y=coordinates[1], hue=clusters, s=70, alpha=.8)
 
-plt.title("PCA 2D projection of KMeans clusters", fontsize=18)
+plt.title("PCA 2D projection of GMM clusters", fontsize=18)
 plt.xlabel("PCA Component 1", fontsize=16)
 plt.ylabel("PCA Component 2", fontsize=16)
 plt.xticks(fontsize=13);
