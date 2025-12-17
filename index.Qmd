@@ -1,7 +1,7 @@
 ---
 title: "Basics of Python for Data Science"
 subtitle: "PhD Course in Psychological Sciences - University of Padova"
-author: "Enrico Toffalini"
+author: "<a href='https://enricotoffalini.github.io/' target='_blank'>Enrico Toffalini</a>"
 include-in-header: assets/header.html
 format: 
   html:
@@ -114,11 +114,11 @@ Depending on interest, we may explore more advanced topics such as data visualiz
 ::: {style="font-size:11px; color:#555555"}
 GitHub repository associated to the present course website: <em>[https://github.com/EnricoToffalini/Basics-Python](https://github.com/EnricoToffalini/Basics-Python){target="_blank"}</em>
 
-Access <b><a href="https://padlet.com/enricotoffalini/basics-c4yn8bbvm2iwr9at" target="_blank">padlet</a></b>
+Access <b><a href="https://padlet.com/enricotoffalini/basicspy-c4yn8bbvm2iwr9at" target="_blank">padlet</a></b>
 
 Many thanks to <b><a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a></b> for sharing his expertise with using GitHub and Quarto, to <b><a href="https://github.com/Mar-Cald" target="_blank">Margherita Calderan</a></b> for her valuable assistance with programming experiments, and <b><a href="https://github.com/feracotommaso" target="_blank">Tommaso Feraco</a></b> for a fruitful collaboration on the use and interpretation of semantic embeddings
 :::
 
 ::: {style="display: flex; align-items: center; gap: 25px; white-space: nowrap"}
-[Read a modest proposal for <a href="https://docs.google.com/document/d/1-2Ty2Sd1QQzCCFt3SZpz3hhRkM3XEdvf/" target="_blank">open source software in the PhD program in Psychological Sciences]{style="font-size: 11px;"} <img src="figures/qrcode_manifesto_opensource.png" style="height: 50px;"/>
+[Read a modest proposal for <a href="https://docs.google.com/document/d/1-2Ty2Sd1QQzCCFt3SZpz3hhRkM3XEdvf/" target="_blank">open source software in the PhD program in Psychological Sciences]{style="font-size: 11px;"} <br/><img src="figures/qrcode_manifesto_opensource.png" style="height: 50px;"/>
 :::
