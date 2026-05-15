@@ -25,14 +25,14 @@ This is a short (10 hours) introductory course on <a href="https://www.python.or
 
 You are encouraged to look at this online book available on GitHub: <a href="https://jakevdp.github.io/PythonDataScienceHandbook//" target="_blank">***Python Data Science Handbook***</a>
 
-## Dates and Rooms 2025
+## Dates and Rooms 2026
 
-| Day                 | Time        | Room |
-|---------------------|-------------|------|
-| Tuesday, June 3rd   | 09:00-11:30 | 4R   |
-| Wednesday, June 4th | 13:00-15:30 | 4R   |
-| Thursday, June 5th  | 09:00-11:30 | 4S   |
-| Friday, June 6th    | 09:00-11:30 | 4S   |
+| Day                  | Time        | Room        |
+|----------------------|-------------|-------------|
+| Tuesday, June 17th   | 09:30-12:30 | 4R (Psico2) |
+| Wednesday, June 18th | 12:30-14:30 | 4R (Psico2) |
+| Thursday, June 19th  | 12:30-14:30 | 4M (Psico2) |
+| Friday, June 22nd    | 09:30-12:30 | 4R (Psico2) |
 
 ## Getting Started
 
