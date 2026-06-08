@@ -86,8 +86,8 @@ Depending on interest, we may explore more advanced topics such as data visualiz
 
 *— The following exercises are fundamental, and they importantly integrate concepts from the slides and introduce new functions and methods that you want to know!*
 
--   [**First steps in Python** *(via Colab)*](https://colab.research.google.com/drive/1wp8LpzaO4wu-I6yhQS6uqD74h_739YWS){target="_blank"}
--   [**First steps with `NumPy` and `Pandas`** *(via Colab)*](https://colab.research.google.com/drive/1m3C52Ps-6g_PghzXEjtG2pr0pWFcB1EY){target="_blank"}
+-   [**First steps in Python**](exercises/Exercises-FirstSteps.html){target="_blank"} [*(also try via Colab)*](https://colab.research.google.com/drive/1wp8LpzaO4wu-I6yhQS6uqD74h_739YWS){target="_blank"}
+-   [**First steps with `NumPy` and `Pandas`**](exercises/Exercises-Numpy-Pandas.html){target="_blank"} [*(also try via Colab)*](https://colab.research.google.com/drive/1m3C52Ps-6g_PghzXEjtG2pr0pWFcB1EY){target="_blank"}
 -   [**Basics of Programming... with some data science**](exercises/Exercises-Programming.html){target="_blank"}
 -   [**Programming like a data scientist**](exercises/Exercises-LikeDataScientist.html){target="_blank"}
 -   [<b>The data <em>nightmare</em> exercise... in Python</b>](exercises/Exercises-NightmarePy.html){target="_blank"}

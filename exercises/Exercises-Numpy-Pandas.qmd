@@ -1,0 +1,64 @@
+---
+title: "First steps with `NumPy` and `pandas`"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    self-contained: true
+    toc-depth: 4  
+    toc-expand: 4
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+Before starting, import the required packages:
+
+```{python}
+#| eval: false
+import numpy as np
+import pandas as pd
+```
+
+## `NumPy`
+
+-   Create a 1-D array of numbers from 1 to 10. Have a look at the `np.arange()` function.
+-   Multiply the previously created vector by 2.
+-   Create a new array of 20 evenly spaced numbers between -1 and 1.
+-   Use the `.repeat()` method to repeat each element in the vector three times.
+-   Create a new array of 100 randomly generated, normally distributed values with mean = 0 and standard deviation = 1.
+-   Compute the mean (`.mean()`) and standard deviation (`.std()`) of the above array, using both:
+    -   the function-style syntax, `<package>.<function>(<object>)`;
+    -   the method-style syntax, `<object>.<method>()`.
+-   Select all elements greater than 0 in the above array, using appropriate indexing with `[ ]`.
+-   Check the help/documentation to inspect what the `np.empty()` function does.
+-   Use the `np.empty()` function to initialize a new vector of 30 floating-point numbers. Hint: use `"float"` or `"float64"`. Then print its content. Does it look empty? Not really.
+-   Now make the previously created array *actually* empty, by filling it with missing values. Hint: use `[:]` for indexing the whole vector at once, and remember that missing values are represented by `np.nan`.
+-   Use the `np.empty()` function to initialize a new array of 30 strings, each composed by a maximum of 3 Unicode characters. Hint: use `"<U3"`. Then:
+    -   fill the first position of the array with a long string;
+    -   print the array and see what happened to that long string.
+-   Create a new array with 5 rows and 15 columns, filled with any kind of randomly generated numbers. Then:
+    -   compute the overall mean, that is, the grand average;
+    -   compute the mean value for each column. Hint: `axis=0`;
+    -   compute the mean value for each row. Hint: `axis=1`;
+    -   now do the same, but compute standard deviations instead of means.
+
+## Mostly `pandas`
+
+-   Generate a new `DataFrame` called `df` with 100 rows and three columns:
+    -   `"id"`, with a sequence of integer numbers representing participants' IDs;
+    -   `"age"`, with floating-point numbers randomly drawn from a uniform distribution between 5 and 10. Hint: `np.random.uniform()`. These are ages in years;
+    -   `"score"`, with floating-point numbers randomly drawn from a normal distribution with mean = 50 and standard deviation = 10. Hint: `np.random.normal()`. These are test scores.
+-   Then make the `"score"` simulated values more realistic: decrease each score by 2 points where age is below 7, and increase it by 2 points where age is above 7.
+-   Now round both `"age"` and `"score"` to one decimal place. Hint: `.round()`.
+-   Now compute the correlation between `"age"` and `"score"`. Hint: `np.corrcoef()`.
+-   Add a new column to the `DataFrame` with the z-scores of the `"score"` variable. Hint: z-scores are scores minus their mean and then divided by their standard deviation.
+-   Filter the rows to see only those where the `"score"` is above average.
+-   Add a new column called `"above"` that includes logical values: `True` if `"score"` is above average, and `False` otherwise.
+-   Use the following methods and attributes to inspect different aspects of the data frame: `.head()`, `.tail()`, `.describe()`, `.ndim`, `.shape`, `.dtypes`.
+
+## A little bit more advanced
+
+-   Create a new column that categorizes scores as `"high"` (\> 60), `"middle"` (45-65), or `"low"` (\< 40). Try to do that without incurring warnings. Hint: use `.loc[]`, or, for a more complex alternative that does everything in a single line of code, use `np.select()` as presented [here](https://enricotoffalini.github.io/Basics-Python/Slides/20.Programming.html).
+-   Compute the median age for each score category, if possible using a single line of code. Hint: use `.groupby()` and `.median()`.

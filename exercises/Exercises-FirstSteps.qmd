@@ -1,0 +1,83 @@
+---
+title: "Exercises - First Steps"
+subtitle: "*Basics of Python for Data Science*"
+include-in-header: assets/header.html
+format: 
+  html:
+    self-contained: true
+    toc-depth: 4  
+    toc-expand: 4
+    code-fold: false 
+    message: false
+    css: "assets/custom.css"
+editor: visual
+---
+
+## Creating objects
+
+-   Create an object with a name allowed in Python and assign it a numerical value, then print it
+-   Create a second object with a different, allowed name, and use it to store the value of the first object squared
+-   Try to create another object with a non-allowed name and see what happens
+-   Create an object and assign it the string `"I love programming :-)"`, then: \* use `type()` to inspect the type of the object and make sure that it is a string; \* repeat the same for an integer and a for floating-point object.
+-   Multiply the previously created string $\times 10$ and see what happens
+
+## Basic operations, functions, and data types
+
+-   Compute the following operations (hint: `import math` for some operations, and know that $π$ can be found as an object inside `math`):
+    -   $\frac{9}{11} + 10$
+    -   $\sqrt{941}$
+    -   $5.6^3$
+    -   $\frac{\sqrt{2 \times 5}\ + 6}{4}$
+    -   $π \times (7^2 - \frac{9.2}{10})$
+    -   $log_2 50$
+-   Store the last of the previous results as an object, then use the appropriate relational operator to see if it is *greater than or equal to* $10$
+-   Round the previously created object to the third digit using the appropriate function for rounding
+-   Use the appropriate relational operator to determine whether $3^2$ + $4^2$ is *equal* to $5^2$ (if this is true, then $3, 4, 5$ is a Pythagorean triple)
+-   `import time`, then open the help/documentation for both the `time` module and for the `time()` function inside it, and see what they do. Then run the `time()` function and calculate what is the *beginning of time* according to Python
+
+## Lists, Tuples, Dictionaries, and indexing
+
+-   Create a new list object with `[ ]` and fill it with objects of different types, then:
+    -   check its `type()`
+    -   check the `type()` of its first element using appropriate indexing with `[ ]`;
+    -   check the `type()` of its last element using appropriate indexing with `[ ]`;
+    -   try to multiply the whole list $\times 5$ and understand what happens;
+    -   try to add $+5$ to the whole list and understand why it doesn't work;
+    -   replace the first element in the list with another element and make sure that it worked.
+-   On the previously created string:
+    -   use the `.append()` method to add a new object at the end of it;
+    -   correctly use the `+` operator to add a new object at the end of it (hint: you can only concatenate a list to another list);
+    -   use the `len()` function to examine the length of the list.
+-   Use the `dir()` function to inspect the methods that can be applied to objects of different types (such as list, string, integer, float), then:
+    -   identify some method that attracts you interest;
+    -   inspect the help/documentation of the chosen method;
+    -   apply it correctly to the relative object using the "`.`" operator.
+-   Create a new tuple object that is equal to a previously created list, but create it using `( )` instead of `[ ]`, then:
+    -   print the first element in the tuple using the appropriate indexing with `[ ]`;
+    -   try to replace the first element in the tuple, and see that it fails;
+    -   use the `dir()` function to inspect the methods that can be applied to the tuple object (and see that they are fewer than the methods that can be applied to a list object).
+-   Create a new dictionary object with `{ }` and fill it with different objects and lists (an example is `myDict = {"x": [1,0.2], "y": ["a","b"], "z": 10}`, but try to create one that could make sense, for example one with a person's name, personal data, scores) then:
+    -   use the `type()` function to make sure it is a dictionary;
+    -   try to access the first element with `[ ]` using an integer index as previously done with the list and tuple, and see that it fails;
+    -   use the `.keys()` method to view all the keys in your dictionary (i.e., the names of all the objects/entries in it);
+    -   access a specific in your dictionary using `[ ]` with a valid key (e.g., `myDict["x"]`).
+
+## Working directory, Packages, Import/Export
+
+-   Use the `getcwd()` function from the `os` module to see the current working directory
+-   Import the `numpy` package with the alias `np`, then:
+    -   use the `dir()` function to inspect all functions available in it;
+    -   use the `help()` function to inspect the documentation of one or more of the `numpy` functions that have picked your interest;
+    -   correctly use that/those function(s).
+-   Download [this dataset](data/firstSteps/Performance.csv) locally, put it in your current working directory, then run the following chunk of code to import it:
+
+```{python}
+#| eval: false
+import pandas as pd
+df = pd.read_csv('Performance.csv')
+```
+
+-   ...hoping that the the importing worked successfully, use the `dir()` function to inspect all methods that can be applied to the just imported `df`, then:
+    -   apply one or two of those methods and see what happens;
+    -   in any case apply the `.head()` and the `.tail()` methods.
+-   Repeat the above operations of the **"Working directory, Packages, Import/Export"** section locally in your IDE 🙂

@@ -13,14 +13,11 @@ format:
 editor: visual
 ---
 
-First of all<br/>
-`import numpy as np`<br/>
-`import matplotlib.pyplot as plt`<br/>
-then:
+First of all<br/> `import numpy as np`<br/> `import matplotlib.pyplot as plt`<br/> then:
 
 -   Write a `for` loop that runs 20 iterations, each time generating and printing a single random number, rounded to the 3^rd^ decimal point, and drawn from a distribution of your choice (e.g., `np.random.binomial()`, `np.random.normal()`, `np.random.gamma()`, `np.random.poisson()`, `np.random.logistic()`).
 
--   Write a `for` loop that runs 20 iterations, each time: 
+-   Write a `for` loop that runs 20 iterations, each time:
 
     -   drawing a single number from a *standard normal distribution* (with `np.random.normal()`);
     -   `if` the number is negative print it, `else` print the string `"positive"`.
@@ -40,13 +37,12 @@ then:
     -   take two numeric arguments as input: `N` and `n_sim`;
     -   initializes an empty array (`np.empty()`) that has `n_sim` elements, all filled with `np.nan`;
     -   run a `for` loop `n_sim` times;
-    -   inside the loop, at each iteration it generates two independent normally distributed variables each with `N` observations, computes the correlation coefficient between them, and stores it in the appropriate position of the previously initialized array *(hint: this had already been done in the exercise above)*; 
+    -   inside the loop, at each iteration it generates two independent normally distributed variables each with `N` observations, computes the correlation coefficient between them, and stores it in the appropriate position of the previously initialized array *(hint: this had already been done in the exercise above)*;
     -   return as output the array filled with simulated correlation coefficients
 
 -   *Extra for advanced users:* Repeat the above exercise on the `simulate_correlations()` custom function, but now adding a third numeric argument as input, called `r`, which defines the true correlation between the two normally distributed variables. To generate correlated variables, you can use `np.random.multivariate_normal()` *(first of all, see and understand the documentation!)*
 
-- You are working with standardized test scores and you want to label each score as `"low"` (below −1), `"average"` (between −1 and +1), or `"high"` (above +1):
+-   You are working with standardized test scores and you want to label each score as `"low"` (below −1), `"average"` (between −1 and +1), or `"high"` (above +1):
 
-    -   Generate an array of 50 standard normal scores; 
+    -   Generate an array of 50 standard normal scores;
     -   Use `np.select()` to transform the scores into the above labels.
-
