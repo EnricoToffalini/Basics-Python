@@ -28,11 +28,11 @@ You are encouraged to look at this online book available on GitHub: <a href="htt
 ## Dates and Rooms 2026
 
 | Day | Time | Room |
-|----|----|----|
-| Tuesday, June 17th | 09:30-12:30 | 4R (Psico2) |
-| Wednesday, June 18th | 9:30-11:30  ⚠️ <span style="color:red;">recently updated time and room</span> | 4T (Psico2) |
-| Thursday, June 19th | 12:30-14:30 | 4M (Psico2) |
-| Friday, June 22nd | 09:30-12:30 | 4R (Psico2) |
+|------------------------|------------------------|------------------------|
+| Wednesday, June 17th | 09:30-12:30 | 4R (Psico2) |
+| Thursday, June 18th | 9:30-11:30 ⚠️ [recently updated time and room]{style="color:red;"} | 4T (Psico2) |
+| Friday, June 19th | 12:30-14:30 | 4M (Psico2) |
+| Monday, June 22nd | 09:30-12:30 | 4R (Psico2) |
 
 ## Getting Started
 
