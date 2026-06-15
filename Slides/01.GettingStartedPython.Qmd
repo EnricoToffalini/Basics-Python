@@ -25,7 +25,13 @@ reticulate::repl_python()
 ## Where to run Python: *terminal / bash*
 
 <div style="text-align: center;">
-  <img src="figures/terminal.png" style="width: 100%;" />
+  <img src="figures/terminal1.png" style="width: 100%;" />
+</div>
+
+## Where to run Python: *terminal / bash*
+
+<div style="text-align: center;">
+  <img src="figures/terminal2.png" style="width: 100%;" />
 </div>
 
 ## Where to run Python: <a href="https://www.spyder-ide.org/" target="_blank">*Spyder*</a> (full IDE)
@@ -170,7 +176,7 @@ ages = np.array([20, 18, 5, 52, 46, 29, 39]) # more on this later!
 ## Basic types of data
 ### numeric and logical
 
-So far, we have already encountered at least two types of data: 
+In the previous slides, we already encountered two types of data: 
 
 - **Numeric**: e.g., `20`,  `11.5`,  `13.28157`;
 
@@ -186,7 +192,7 @@ Unlike R, there is not need to specify "`L`" for integers
 
 Another very important type of data is **string**
 
-This is much like R. Python uses **strings** to represent text, that must be enclosed in quotes (**`' '`**, or **`" "`**), like this:
+This is much like R. Python uses **strings** to represent text, that must be enclosed in quotes (**`' '`** or **`" "`**), like this:
 
 ```{python}
 myName = "Enrico"
@@ -267,11 +273,11 @@ type(nCourses)
 
 You may also inquire data type directly with functions `is.*`:
 ```{python}
-isinstance(isProf, bool)
-isinstance(coursesTaught, bool)
 isinstance(nCourses, int)
 isinstance(nCourses, float)
 isinstance(myName, str)
+isinstance(isProf, bool)
+isinstance(coursesTaught, bool)
 ```
 
 <div style="font-size:26px;">

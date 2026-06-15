@@ -25,10 +25,10 @@ reticulate::repl_python()
 ## Why learning Python?
 
 <div style="font-size:30px;">
-- **Ultra mainstream and global leader in programming and data science!** <a href="https://www.tiobe.com/tiobe-index/" target="_blank">Most used programming language in the world</a>; extremely used in industry, but also increasingly adopted in academia. *Huge job market advantage as a data scientist, inside but especially outside academia!*
-- **Huge community & ecosystem**:  >600,000 packages on PyPI! (more than 30x compared to R);
-- **Free & open-source**, like R... wherever you go, Python will be with you, for free!
-- **Great for reproducibility**: like R, it integrates well with *GitHub*, *Quarto*, *Jupyter*, *RStudio*, *R* itself, and more; allows you to create reports, articles, books, web apps, experiments... A great tool for Open Science!
+- **Ultra mainstream and global leader in programming (and data science!)** <a href="https://www.tiobe.com/tiobe-index/" target="_blank"><b><em>Most used programming language in the world</em></b></a> (June 2026); extremely used in industry, but also increasingly adopted in academia. *Huge job market advantage as a data scientist, inside and even more outside academia!*
+- **Huge community & ecosystem**:  >800,000 packages on PyPI! (more than 30x compared to R);
+- **Free & open-source**, like R... Python will be with you wherever you go, for free!
+- **Great for reproducibility**: like R, it integrates well with *GitHub*, *Quarto*, *Jupyter*, *RStudio*, *R* itself, and more; allows you to create pipelines of analysis, reports, articles, books, web apps, experiments... A great tool for Open Science!
 - **Strong programming language**, considered easier to read than R, and very widely used beyond statistical analysis (e.g., developing web apps, machine learning, deep learning & AI, programming experiments)
 </div>
 
@@ -46,7 +46,7 @@ reticulate::repl_python()
 
 I don't recommend using Python for doing the exact same things you could do with R. R is much more used in this PhD program and generally for statistical analysis in academia. 
 
-So why learning Python? Apart from its importance for "outside academia", you could learn Python for your PhD for: 
+**So why learning Python?** Apart from its importance for "outside academia", you could learn Python for your PhD for: 
 
 1) Advanced applications of **AI**: **pretrained models**, **Natural Language Processing** (e.g., sentiment analysis, text classification, embeddings); 
 2) **Computational efficiency** especially when handling **big data**; 
@@ -156,6 +156,13 @@ Each blue dot is a model with a randomly defined complexity (from 1 to 15 terms,
 </div>
 
 ##
+### Streamlit: lightweight web app framework for Python
+
+<div style="text-align: center;">
+  <a href="https://demo-movies.streamlit.app/?ref=streamlit-io-gallery-favorites" target="_blank"><img src="figures/streamlitdemo.png" style="width: 100%;"/></a>
+</div>
+
+##
 ### Image Classification with AI models via `transformers`
 
 ::: columns
@@ -185,6 +192,39 @@ df = pd.DataFrame(data)
 df['score'] = df['score'].round(4)
 print(df.to_string(index=False))
 ```
+
+
+##
+### Image Classification with AI models via `transformers`
+
+::: columns
+::: {.column width="60%"}
+<div style="text-align: center;">
+  <img src="figures/goku.png" style="width: 75%;" />
+</div>
+:::
+::: {.column width="40%"}
+<div style="font-size:22px;">
+free model used: <br/>`"microsoft/resnet-18"`
+</div>
+
+```{python}
+#| echo: false
+import pandas as pd
+data = [
+    {'label': 'comic book', 'score': 0.997275},
+    {'label': '', 'score': ""},
+    {'label': 'book jacket, dust cover, dust jacket, dust wrapper', 'score': 0.000718},
+    {'label': 'jigsaw puzzle', 'score': 0.000567},
+    {'label': 'puck, hockey puck', 'score': 0.000383},
+    {'label': 'coffee mug', 'score': 0.000140}
+]
+df = pd.DataFrame(data)
+df['score'] = df['score'].round(4)
+print(df.to_string(index=False))
+```
+:::
+:::
 
 
 ##
@@ -218,6 +258,39 @@ df["cosineSimilarity"] = df["cosineSimilarity"].round(4)
 print(df.to_string(index=False))
 ```
 
+
+##
+### Text Classification with AI models via `transformers`
+
+::: columns
+::: {.column width="60%"}
+<div class="large-code">
+<em>
+```
+"The ongoing 2026 FIFA World Cup is bringing together a record 48 teams across the USA, Canada, and Mexico, with group-stage matches already underway. Early results have created excitement, and fans are watching closely as teams battle for a place in the knockout rounds of football’s biggest championship"
+```
+</em>
+</div>
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="30%"}
+<div style="font-size:22px;">
+free model used: <br/>`"all-MiniLM-L12-v2"`
+</div>
+:::
+:::
+
+```{python}
+#| echo: false
+import pandas as pd
+data = {'target': {0: 'sports', 1: 'politics', 2: 'mythology', 3: 'history', 4: 'science'}, 'cosineSimilarity': {0: 0.2022, 1: 0.1298, 2: 0.1177, 3: 0.1065, 4: 0.0894}}
+df = pd.DataFrame(data)
+df["cosineSimilarity"] = df["cosineSimilarity"].round(4)
+print(df.to_string(index=False))
+```
+
+
 ##
 ### Text transcription from audio using `transformers`
 ```python
@@ -228,6 +301,13 @@ whisperpipe("data/gelmanstats.mp3", return_timestamps=True)
 ```
 Hi, my name is Andrew Gelman. I'm a professor of statistics and political science at Columbia. I've been teaching here since 1996. I'm always impressed that the students know more than I do about so many things. Just this morning, a graduate student came to me. He had been looking at data from ticketing, police moving violations. And there's this suspicion that the police have some sort of unofficial quota so that they're supposed to get a certain number of tickets by the end of the month. But you can look at the data and see whether you have more tickets at the very end of the month. He looked at something slightly different. He compared police that had had fewer tickets in the first half of the month to those who had more tickets and found that the ones who had fewer in the first half had a big jump in the second half of the month, which he attributed to a policy where the police don't have a quote of, but they do it comparatively. So if you've been ticketing fewer than other people in your precinct, then they hassle you and tell you you're supposed to do more. But we're still not quite sure. He was just telling me about this today. It's complicated because there could just be a variation. It could just be that the police who had more tickets in the first half have fewer in the second half just because it goes up and it goes down. and you happen to see that. So we have to do more, look at the data in different ways in order to try to understand, like to rule out different explanations for what's happening. I think that at least well it depends on what field you're working on. So if if someone's working, we have a student working on astronomy and there we're working with the astronomy professor David Shimonovich and it's It's very, it's necessary for us to combine our skills. So we have skills in visualizing data and fitting models and computation, but it's not like David Shimano, which gives us the data and we fit it. We have to work together in a collaboration. So that's sort of always the case, that we have to have a bridge connecting the applications to the modeling and the data. I think all the projects I've told you so far are exciting and interesting, and we're We're doing other things too. We have a paper called 19 Things We Learned From The 2016 Election. We're breaking down survey data, looking at how people voted, how young people and old people voted, comparing the gender gap among younger and older voters and among different ethnic groups. That's very challenging. Even if you have a big survey where you want to estimate small subgroups of the population, it requires some statistical modeling. Well, I think the polls were pretty good. They had Hillary Clinton ahead by getting about 52% of the two-party vote, and she actually got 51%, so that wasn't too bad. Polls are often some key states. I think that had to do with non-response, that people, certain Republicans who are not responding to polls in certain states. The way we can go forward is to do more adjustment of surveys. So it's harder and harder to reach people, so more and more adjustment needs to be done, but maybe surveys need to be adjusted also based on whether people are living in urban or rural areas and their partisanship and some other things. So one is never going to do perfect, but there's potential for improvement.
 ```
+
+##
+### A locally running chatbot with Google's <a href="https://huggingface.co/google/gemma-4-E2B" target="_blank"><b><em>Gemma4</b></em></a>
+
+<div style="text-align: center;">
+  <img src="figures/gemma4demo1.png" />
+</div>
 
 ##
 ### Working with semantic embeddings using LLMs (extracted with OpenAI's `text-embedding-ada-002`)
