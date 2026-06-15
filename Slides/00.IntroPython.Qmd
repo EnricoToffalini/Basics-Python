@@ -306,7 +306,7 @@ Hi, my name is Andrew Gelman. I'm a professor of statistics and political scienc
 ### A locally running chatbot with Google's <a href="https://huggingface.co/google/gemma-4-E2B" target="_blank"><b><em>Gemma4</b></em></a>
 
 <div style="text-align: center;">
-  <img src="figures/gemma4demo1.png" />
+  <a href="demo/gemma-4-demo.py" target="_blank"><img src="figures/gemma4demo1.png" /></a>
 </div>
 
 ##

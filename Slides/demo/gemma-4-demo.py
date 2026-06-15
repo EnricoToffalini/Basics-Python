@@ -1,8 +1,11 @@
+# PRELIMINARY INSTALLATION AND PREPARATION OF THE ENVIRONMENT
 # py -3.11 -m venv gemma311.venv
 # .\gemma311.venv\Scripts\Activate.ps1
 # python -m pip install --upgrade pip
 # pip install -U transformers accelerate sentencepiece protobuf huggingface_hub pillow
 # python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+
+# PYTHON CODE - A LOCALLY RUNNING CHATBOT WITH GOOGLE'S GEMMA4
 
 import torch
 from transformers import AutoProcessor, AutoModelForCausalLM
