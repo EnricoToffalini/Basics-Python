@@ -26,7 +26,7 @@ reticulate::repl_python()
 ## Two Languages, Two Philosophies
 
 <div style="font-size:40px;">
-*Python* and *R* are powerful programming languages widely used in data science and in many cases they do not feel much different
+*Python* and *R* are powerful programming languages widely used in data science and in many cases they don't feel much different
 
 But *R* was developed by statisticians for **statistical computing**, **modeling**, and data visualization, while *Python* is more **general-purpose** language designed for **readability**, **efficiency** and **scalability** in large-scale computation across many possible uses. 
 
@@ -57,7 +57,7 @@ Many basic aspects of syntax and functions may feel practically the same...
 
 ## Key differences: BUILT-IN FUNCTIONS for stats
 
-...but for us, it might be a bit annoying that Python does not have built-in functions for statistical- and data-related tasks like
+...but for us, it might be a bit annoying that Python doesn't offer built-in functions for statistical- and data-related tasks like
 
 <div style="font-size:28px;">
 | Task                 | Python        | R |
@@ -65,11 +65,11 @@ Many basic aspects of syntax and functions may feel practically the same...
 | average   | `np.mean(x)`  | `mean(x)` |
 | standard deviation   |  `np.std(x)` | `sd(x)` |
 | square root | `np.sqrt(x)`  | `sqrt(x)`   |
-| linear model  | `smf.ols("y ~ x", data=df).fit()` | `lm(y ~ x, data=df)`   |
 | correlation    |  `np.corrcoef(x, y)` | `cor(x,y)`  |
 | create data frame   | `pd.DataFrame(...)`  | `data.frame(...)` |
 | random normal | `np.random.normal(0,1,size=1)`  | `rnorm(n=1)` |
 | normal cdf | `scipy.stats.norm.cdf(1.96)`  | `pnorm(1.96)` |
+| linear model  | `smf.ols("y ~ x", data=df).fit()` | `lm(y ~ x, data=df)`   |
 </div>
 
 <!-- --------------------------------------------------------------------- -->
@@ -124,7 +124,7 @@ math.pi
 
 ## Key differences: ROLE OF "**`.`**"
 
-using **`.`** to access submodules of modules: `statsmodels.formula.api`, `np.random`; class constructor methods: `.DataFrame()`, `.ols()`; methods: `.fit()`, `.normal()`, `.summary()`; attributes: `.bic`
+using "**`.`**" to access: (1) submodules of modules: `statsmodels.formula.api`, `np.random`; (2) class constructor methods: `.DataFrame()`, `.ols()`; (3) methods: `.fit()`, `.normal()`, `.summary()`; (4) attributes: `.bic`
 <div class="large-code">
 ```python
 import statsmodels.formula.api as smf
@@ -148,6 +148,9 @@ myFit.bic
 ## Key differences: ROLE OF "**`.`**"
 
 <div style="font-size:10px;">
+```python
+myFit.summary()
+```
 ```{python, echo=F, results="as-is"}
 import statsmodels.formula.api as smf
 df = pd.DataFrame({
@@ -160,7 +163,8 @@ myFit = myModel.fit()
 
 x = myFit.summary2().as_text().splitlines()[:-3]
 print("\n".join(x))
-
+```
+```{python, results="as-is"}
 myFit.bic
 ```
 </div>
@@ -326,20 +330,24 @@ ourCourse * 5
 ourCourse + " is a PhD course at Psychological Sciences"
 ```
 
-However, classical numerical operations on vectors may appear incredibly painful for us...
+However, simple numerical operations on vectors may appear painful for us...
 
 ```{python}
+#| error: true
 grades = [10, 11, 12, 13, 14, 15]
-grades = [g + 10 for g in grades]
-print(grades)
+grades + 5
+```
 
+```{python}
+gradesNew = [g + 5 for g in grades]
+print(gradesNew)
 ```
 
 <!-- --------------------------------------------------------------------- -->
 
 ## Key differences: VECTORIZED OPERATIONS
 
-...luckily, there are good packages for data science in Python! To obtain vectorized operations like those we expect for data analysis and we are accustomed to in R, we can use the **`numpy`** package (more on **`numpy`** later!):
+...luckily, there are good packages for data science in Python! To obtain vectorized operations like those we expect for data analysis and we are accustomed to in R, we can use the **`numpy`** package <em>(more on **`numpy`** later!)</em>:
 
 ```{python}
 import numpy as np
@@ -349,6 +357,8 @@ grades = np.array([10,11,12,13,14,15])
 grades * 3
 
 grades + 10
+
+grades ** 2
 ```
 
 <!-- --------------------------------------------------------------------- -->
@@ -356,7 +366,7 @@ grades + 10
 ## Key differences: THE CRUCIAL ROLE OF INDENTATION
 
 <div style="font-size: 30px;">
-Unlike in R, where *syntactic symbols* such as the **curly brackets `{}`** define code blocks, Python uses ***indentation*** (i.e., spaces at the beginning of lines) to delimit blocks of code. **This makes the code more readable... but also unforgiving: indentation is part of the syntax**!
+Unlike in R, where *syntactic symbols* such as the **curly brackets `{}`** define code blocks entirely, Python requires ***indentation*** (i.e., spaces at the beginning of lines). **This makes the code more readable... but also unforgiving: indentation is part of the syntax**!
 </div>
 
 ::: {.columns}
@@ -436,12 +446,12 @@ With mutable types like lists, "`=`" creates a reference, not a copy like in R
 ```{python}
 v1 = ["A","B","C","D"]
 
-newvar = v1
-newvar[0] = "ZZZ"
-newvar
+v2 = v1
+v2[0] = "🙂"
+print(v2)
 ```
 ```{python}
-v1
+print(v1)
 ```
 </div>
 :::
@@ -451,26 +461,26 @@ v1
 ```{r}
 v1 = c("A","B","C","D")
 
-newvar = v1
-newvar[1] = "ZZZ"
-newvar
+v2 = v1
+v2[1] = "🙂"
+print(v2)
 ```
 ```{r}
-v1  # untouched!
+print(v1)  # untouched!
 ```
 </div>
 :::
 :::
 
 <div style="font-size: 30px;">
-This referencing allows for faster, convenient, and memory-efficient operations when editing large datasets, although of course it requires caution to avoid unintended modifications
+This referencing allows for faster, convenient, and memory-efficient operations when editing large datasets / subdatasets, although of course it requires caution to avoid unintended modifications
 </div>
 
 <!-- --------------------------------------------------------------------- -->
 
 ## Key differences: COPYING MUTABLE TYPES
 
-To create a copy, you could use the **`copy()`** function
+To create a copy, you could use the **`.copy()`** method
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -479,12 +489,12 @@ To create a copy, you could use the **`copy()`** function
 ```{python}
 v1 = ["A","B","C","D"]
 
-newvar = v1.copy()
-newvar[0] = "ZZZ"
-newvar
+v2 = v1.copy()
+v2[0] = "🙂"
+print(v2)
 ```
 ```{python}
-v1  # untouched!
+print(v1)  # untouched!
 ```
 </div>
 :::
@@ -494,12 +504,12 @@ v1  # untouched!
 ```{r}
 v1 = c("A","B","C","D")
 
-newvar = v1
-newvar[1] = "ZZZ"
-newvar
+v2 = v1
+v2[1] = "🙂"
+print(v2)
 ```
 ```{r}
-v1  # untouched!
+print(v1)  # untouched!
 ```
 </div>
 :::
@@ -534,7 +544,7 @@ intrcpt, beta0, beta1 = myModel.params
 ```{r, error=T}
 a, b, c = 59.2, 11.4, 98.0
 ```
-<br/><br/><br/><br/>
+<br/><br/><br/>
 ```r
 intrcpt = coef(myModel)[1]
 beta0 = coef(myModel)[2]

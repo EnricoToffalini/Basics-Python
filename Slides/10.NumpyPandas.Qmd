@@ -1,5 +1,5 @@
 ---
-title: "Basics of Data Science: <br/>Numpy and Pandas"
+title: "Basics of Data Science: <br/>NumPy and Pandas"
 author: "Enrico Toffalini"
 include-in-header: ../assets/slidesheader.html
 format:
@@ -26,11 +26,11 @@ reticulate::repl_python()
 
 ## Why NumPy and Pandas?
 
-Most data science pipelines in Python rely on these two packages, as base Python lacks built-in data structures like *vectors* with vectorized operations, *matrices* / *arrays*, and *data frames*
+Most data science pipelines in Python rely on these two packages, as base Python lacks built-in data structures like *vectors* (with vectorized operations), *matrices* / *arrays*, and *data frames*
 
 <div style="font-size:42px;">
-- `numpy`: efficient numerical computing (homogeneous arrays, vectorized operations) and many math, algebraic, and basic statistical functions;
-- `pandas`: fundamental data structures for tabular data (DataFrames), with convenient indexing, reshaping, and data manipulation tools;
+- **`numpy`**: provides efficient numerical computing (homogeneous arrays, vectorized operations) and many mathematical, algebraic, and basic statistical functions;
+- **`pandas`**: provides fundamental data structures for tabular data (*DataFrames*), with convenient indexing, reshaping, and data manipulation tools;
 </div>
 
 <!--------------------------------------------------------------------->
@@ -75,7 +75,7 @@ Unlike basic lists, arrays are **homogenous** and support **fast vectorized oper
 x * 10
 ```
 
-Different ways of doing the same thing:
+different ways of doing the same thing (with *functions* vs *methods*):
 
 ```{python}
 np.round(np.sqrt(x), 4)
@@ -99,16 +99,17 @@ print(ar1 * ar2)       # element-wise multiplication
 print(np.dot(ar1, ar2)) # dot product
 ```
 
-These features make `np.array()` conceptually very similar to the `c()` and `array()` objects of R. However, as we will see, `np.array()` is stricter in enforcing data types
+- These features make `np.array()` conceptually very similar to the `c()` and `array()` objects of R. 
+- However, as we will see, `np.array()` is stricter in **enforcing data types** (which is what allows it to be so efficient for numerical computations, but also makes it a bit less flexible)
 
 <!--------------------------------------------------------------------->
 
 ## Arrays: Structural attributes
 
-What you can inspect for an array: 
+some array's attributes you can inspect
 ```{python}
 x.shape    # tuple of sizes of dimensions
-x.ndim     # just the number of dimensions
+x.ndim     # number of dimensions
 x.size     # total number of elements
 x.itemsize # memory size in bytes taken by a single element
 x.nbytes   # total number of memory bytes occupied by the array
@@ -134,7 +135,7 @@ x.dtype
 
 <!--------------------------------------------------------------------->
 
-## Arrays: Data type coercion
+## Arrays: Data type coercion... is very strict
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -180,7 +181,7 @@ x
 
 ## Arrays: Data type coercion
 
-Actually, this "problem" is part of the secret of what makes Python **`numpy`** so **efficient**... **but be careful**!
+Actually, this "strictness" is part of the secret of what makes Python **`numpy`** so **efficient**... **but be careful**!
 
 How do you avoid this silent coercion? Explicitly state the data type from the beginning!
 
@@ -198,43 +199,70 @@ x
 
 <!--------------------------------------------------------------------->
 
-## Arrays: Slicing and Indexing
+## Arrays: Indexing and Slicing 
 
+::: {.columns}
+::: {.column width="50%"}
+1-D arrays (vectors)
 ```{python}
-x = np.array([10, 20, 30, 40, 50])
+x = np.array([10, 20, 30, 40, 50, 60])
+
 x[0]     # first element
 x[-1]    # last element
+x[-2]    # second last element
 x[1:4]   # elements 1 to 3
+x[1:]   # elements from 1 to end
+x[:3]   # elements from start to 2
 ```
-
+:::
+::: {.column width="50%"}
+2-D arrays (matrices)
 ```{python}
 x = np.array([[1,2,3,4], 
               [5,6,7,8]])
-x[1,0]     # 2nd row, 1st column
+x[1, 0]     # 2nd row, 1st column
 x[-1,-1]   # last row, last column
 x[0,]      # 1st row, all columns
+x[0, 1:3]   # 1st row, columns 1 to 2
+x[:,0]     # all rows, 1st column
+x[:,2:4]   # all rows, columns 1 to 2
 ```
+:::
+:::
 
 <!--------------------------------------------------------------------->
 
 ## `Pandas` Series
 
-`Series` are essentially like 1D `numpy arrays`, but labelled with keys (numerical indexing is deprecated for `Series`)
+`Series` are essentially like 1D `numpy arrays`, but labelled with keys
 
 ```{python}
 import pandas as pd
 grades = pd.Series([28, 15, 30, 23], index=["Jane", "Jim", "John", "Jack"])
-
-print( grades["Jack"] )
-print( grades[grades >= 18] )
-print( grades[["Jack","Jane"]] )
 ```
+
+<br/>
+
+::: {.columns}
+::: {.column width="50%"}
+```{python}
+print(grades)
+```
+:::
+::: {.column width="50%"}
+```{python}
+print(grades["Jack"])
+print(grades[["Jack","Jane"]])
+print(grades[grades >= 18])
+```
+:::
+:::
 
 <!--------------------------------------------------------------------->
 
 ## `Pandas` DataFrame ❤️
 
-`pandas DataFrame` is the classical tabular object we are familiar with; can be seen as a special type of Python `dict` *(dictionary)*, composed of **internally-homogeneous, equally-long, labelled lists**
+Pandas' `DataFrame` is the classical tabular object we are familiar with: it's practically a special type of Python `dict` *(dictionary)*, composed of **equally-long, internally-homogeneous, labelled lists**
 
 ```{python}
 myDF = pd.DataFrame( {
@@ -303,9 +331,19 @@ myDF
 
 <div class="large-code">
 Combine column selection with row selection
+
+::: {.columns}
+::: {.column width="50%"}
 ```{python}
 myDF["teacher"][0:3]
 ```
+:::
+::: {.column width="50%"}
+```{python}
+myDF.teacher[0:3]
+```
+:::
+:::
 </div>
 
 <!--------------------------------------------------------------------->
@@ -328,14 +366,14 @@ myDF[["teacher","course"]]
 
 <!--------------------------------------------------------------------->
 
-## DataFrame: Indexing columns + row slicing
+## DataFrame:               ... + row slicing
 
 ```{python, echo=F}
 myDF
 ```
 
 <div class="large-code">
-Combine column selection with row selection
+Use a list of column names inside the brackets + row selection
 ```{python}
 myDF[["teacher","course"]][0:3]
 ```
@@ -402,15 +440,15 @@ myDF
 <div class="large-code">
 ::: {.columns}
 ::: {.column width="50%"}
-Access rows *and* columns
+Access rows *and* columns by position
 ```{python}
-myDF.loc["t1", "teacher"]
+myDF.iloc[0, 0]
 ```
 :::
 ::: {.column width="50%"}
-Access rows *and* columns
+Access rows *and* columns by labels
 ```{python}
-myDF.iloc[0, 0]
+myDF.loc["t1", "teacher"]
 ```
 :::
 :::
@@ -617,13 +655,19 @@ df
 dfWide = pd.DataFrame({
   "ID": ["id01", "id02", "id03"],
   "gender": ["m", "m", "f"],
+  "age": [22, 20, 23], 
   "T0": [-2.31, -1.70, -2.64],
   "T1": [-1.50, -0.86, -2.30]
 })
+```
+```{python, echo=F}
 dfWide
-
-dfLong = dfWide.melt(id_vars=["ID","gender"], var_name="TIME", 
-                                value_name="SCORE", value_vars=["T0","T1"])
+```
+```{python}
+dfLong = dfWide.melt(id_vars=["ID","gender","age"], var_name="TIME", 
+                                                    value_name="SCORE")
+```
+```{python, echo=F}
 dfLong
 ```
 
@@ -635,12 +679,20 @@ dfLong
 dfLong = pd.DataFrame({
   "ID": ["id01", "id01", "id02", "id02", "id03", "id03"],
   "gender": ["m", "m", "m", "m", "f", "f"],
+  "age": [22,22,20,20,23,23],
   "TIME": ["T0", "T1", "T0", "T1", "T0", "T1"],
   "SCORE": [-2.31, -1.50, -1.70, -0.86, -2.64, -2.30]
-}); dfLong
+})
+```
+```{python, echo=F}
+dfLong
+```
 
-dfWide = dfLong.pivot(index=["ID","gender"], 
+```{python}
+dfWide = dfLong.pivot(index=["ID","gender","age"], 
                            columns="TIME", values="SCORE").reset_index()
+```
+```{python, echo=F}
 dfWide
 ```
 
@@ -653,14 +705,14 @@ myDF
 ```
 
 <div class="large-code">
+#### `mean` or `sum` by group
+```{python}
+myDF.groupby("semester")["hours"].sum()
+```
+
 #### Count by group
 ```{python}
 myDF.groupby("mandatory").size()
-```
-
-#### Average or sum by group
-```{python}
-myDF.groupby("semester")["hours"].mean()
 ```
 </div>
 

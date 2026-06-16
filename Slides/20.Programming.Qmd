@@ -39,7 +39,7 @@ automatically make decisions based on boolean value of a condition
 
 ## Conditional Programming
 
-The logic closely resembles that in R, except that Python uses indentation (**not** curly or round brackets) to define blocks of code
+The logic closely resembles that in R, except that Python uses **indentation** (**not** curly or round brackets) to define blocks of code
 
 <hr/>
 
@@ -122,7 +122,7 @@ else:
 
 ## Example: Preplanned Analysis
 
-Example of **automated decision** in a hypothetical **pre-registered analysis pipeline**:
+Hypothetical **automated decision** in a **pre-registered analysis pipeline**:
 
 ```{python}
 import numpy as np
@@ -137,7 +137,7 @@ print(pval)
 
 if pval < 0.05:
     print("Significant result: proceeding with follow-up analysis")
-    # Here you could perform other analyses after the preliminary check
+    # ...here you could perform other analyses after the preliminary check
 else:
     print("No significant result: reporting preliminary test only")
 ```
@@ -181,18 +181,19 @@ agesVector = np.array([2, 28, 15, 11, 4, 67, 0, 42, 14, 8])
 <!--------------------------------------------------------------->
 
 ## 
-### Vectorized and Nested conditions with `np.where()` and `np.select()`
+### Vectorized and Nested conditions
 
 <div class="large-code">
+**`np.where()`** *(manages one single condition, similar to `ifelse()` in R)*
 ```{python}
 agesVector = np.array([2, 28, 15, 11, 4, 67, 0, 42, 14, 8])
 
 np.where(agesVector >= 18, "Adult", "Minor")
 ```
 </div>
-<span style="font-size:26px;">↳ *manages one single condition, similar to `ifelse()` in R*</span>
 
 <div class="large-code">
+**`np.select()`** *(multiple nested conditions, like `dplyr::case_when()` in R)*
 ```{python}
 conditions = [agesVector >= 18, agesVector >= 13, 
                             agesVector >= 2, agesVector >= 0]
@@ -201,7 +202,6 @@ choices = ["Adult", "Adolescent", "Child", "Infant"]
 np.select(conditions, choices, default="")
 ```
 </div>
-<span style="font-size:26px;">↳ *manages multiple nested conditions; no direct equivalent in R, maybe `dplyr::case_when()`*</span>
 
 <!-- --------------------------------------------------------------------- -->
 
@@ -238,61 +238,65 @@ for i in range(5):
 
 <!--------------------------------------------------------------->
 
-## Monte Carlo Simulation 😃
+## Loops in Python - Monte Carlo Simulation 😃
 
 Repeat a data simulation to estimate the *standard error of the mean*:
 
 ```{python}
+from scipy.stats import ttest_ind
 import numpy as np
-
-N = 30
+np.random.seed(111) # set seed for reproducibility: best practice! 
+N = 50
 niter = 10
-np.random.seed(0) # set seed for reproducibility: best practice! 
-results = np.empty(niter) # initialize empty vector: best practice!
+effsize= 0.3
+pvalues = np.empty(niter) # initialize empty vector: best practice!
 
 for i in range(niter):
-    x = np.random.normal(size=N)
-    results[i] = x.mean()
+    x1 = np.random.normal(0, 1, size=N)
+    x2 = np.random.normal(effsize, 1, size=N)
+    tt = ttest_ind(x1,x2)
+    pvalues[i] = tt.pvalue.round(3)
 
-print( results.round(4) )
-print( np.std(results).round(4) )
+print(pvalues)
+print(np.mean(pvalues < 0.05))
 ```
 
 <!--------------------------------------------------------------->
 
-## Monte Carlo Simulation 😃
+## Loops in Python - Monte Carlo Simulation 😃
 ::: {.columns}
 ::: {.column width="50%"}
-```{python}
-# STEP 1: RUN SIMULATION
-
+```{python, cache=T}
+from scipy.stats import ttest_ind
 import numpy as np
-
-N = 30
+np.random.seed(111)
+N = 50
 niter = 10000
-
-np.random.seed(0)
-results = np.empty(niter) 
+effsize= 0.3
+pvalues = np.empty(niter)
 
 for i in range(niter):
-    x = np.random.normal(size=N)
-    results[i] = x.mean()
+    x1 = np.random.normal(0, 1, size=N)
+    x2 = np.random.normal(effsize, 1,
+                                size=N)
+    tt = ttest_ind(x1,x2)
+    pvalues[i] = tt.pvalue
 
-# STEP 2: ESTIMATE STANDARD ERROR
-
-print( np.std(results).round(4) )
+# ESTIMATE POWER
+print(np.mean(pvalues < 0.05))
 ```
 :::
 ::: {.column width="50%"}
-```{python}
-# STEP 3: PLOT RESULTS
+```{python, cache=T}
+# PLOT RESULTS
 
 import matplotlib.pyplot as plt
 
-plt.hist(results, bins=50)
-
+plt.hist(pvalues, bins=50)
+plt.axvline(0.05, color='red', 
+          linestyle='--', linewidth=3)
 plt.xticks(fontsize=16);
-plt.xlabel("mean",fontsize=16)
+plt.xlabel("p-value",fontsize=16)
 
 plt.show()
 ```
@@ -303,14 +307,25 @@ plt.show()
 
 ## Iterating over Elements
 
-Iterating over a sequence of integers (e.g., “`i in range(niter)`” is a common practice, however you could also iterate directly over the elements of a *List* or other data structures
+Iterating using an integer index in a range (“`i in range(niter)`” is a common practice, but you can also iterate directly over the elements of a *List* or other data structures (even *Strings*)
 
+::: {.columns}
+::: {.column width="50%"}
 ```{python}
-words = ["this", "is", "a", "vector", "of", "strings"]
-
+words = ["this", "is", "a", 
+        "vector", "of", "strings"]
 for w in words:
-    print(w.upper()*4)
+    print(w.upper()*2)
 ```
+:::
+::: {.column width="50%"}
+```{python}
+word = "ciao"
+for lett in word:
+    print(lett*5)
+```
+:::
+:::
 
 ***List comprehension*** is another, compact type of *for* loop over list elements:
 ```{python}
@@ -346,11 +361,11 @@ The `break` command allows to interrupt any loop based on a condition
 import time
 import scipy.stats as st
 
-i = 0
+attempts = 0
 pval = 1
 Start = time.time()
 while pval >= 0.001: # go on until p < 0.001
-  i += 1
+  attempts += 1
   x1 = np.random.normal(0,1,size=30)
   x2 = np.random.normal(0,1,size=30)
   tt = st.ttest_ind(x1, x2)
@@ -358,7 +373,7 @@ while pval >= 0.001: # go on until p < 0.001
   Now = time.time()
   if Now - Start > 10: 
     break            # however, stop if overall time exceeds 10 seconds
-print([i, pval.round(4)])
+print([attempts, pval.round(4)])
 ```
 
 <!--------------------------------------------------------------->
@@ -440,7 +455,8 @@ for i in range(len(teacher)):
 
 <div class="large-code">
 ```{python}
-result = map(len, ["apple", "banana", [1,2,3], "watermelon"]) 
+x = ["apple", "banana", [1,2,3,4], "watermelon"]
+result = map(len, x) 
 
 list(result)
 ```
@@ -464,11 +480,10 @@ def zScore(vect):
      return ((vect - mu) / sigma)
 
 a = [10, 14, 7.6, 18, 22, 50, 0.5]
-b = [700, 131, 215, 133.2, 190, 4100, 108.9]
-c = [-4.2, -10.2, 2, -15]
-
 zScore(a).round(3)
+b = [700, 131, 215, 133.2, 190, 4100, 108.9]
 zScore(b).round(3)
+c = [-4.2, -10.2, 2, -15]
 zScore(c).round(3)
 ```
 

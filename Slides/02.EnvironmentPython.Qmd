@@ -23,53 +23,67 @@ reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/p
 reticulate::repl_python()
 ```
 
-## Virtual Environment
+## Virtual Environments
 
 <div style="font-size:40px;">
-– an **isolated Python environment** that allows you to install packages and manage dependencies **separately from your system/main Python installation**. This helps avoid conflicts between projects that may require different versions of the same packages. `venv`s are routinely used in professional projects. We will not use them systematically in this course, but know that they are **best practice for managing projects ensuring reproducibility**
+→ **isolated Python environments** that allow you to install packages and dependencies **separately from your system/main Python installation**. Helps avoid conflicts across projects that may require different versions of the same packages. 
 
-<em>BTW, something similar now exists also in R via the `renv` package, although unfortunately not widely used</em>
+→ routinely used in professional projects, they are **best practice for managing projects ensuring <em>computational reproducibility</em>**
+
+<em>btw something similar exists in R via the `renv` package, although unfortunately not widely used</em>
 </div>
 
-## Virtual Environment
+## Virtual Environments
 
-<div style="font-size:50px;">
-Practically, it is a **local folder** with **an isolated full Python environment**. It contains:
+<div style="font-size:35px;">
+Practically, they are **local folders** with **an isolated Python environment**. They contain:
 
-- a copy of the **Python interpreter**;
+- a full copy of the **Python interpreter** / a symlink to the main Python installation;
 - **all the packages you install** at the **exact versions** used at that time
 
-This folder can ideally be placed inside your project directory
+This folder is ideally placed inside your project directory
+</div>
+
+<div style="text-align: center;">
+  <img src="figures/venv-example.png" />
 </div>
 
 <!------------------------------------------------------------------>
 
-## Virtual Environment
+## Virtual Environments
 
 Create a virtual environment with this command in your bash/terminal:
 
 ```{bash, eval=F}
-python -m venv nameOfMyEnv
+python -m venv <nameOfVenv>
 ```
 
-then activate it before using
+then, just before using, activate it:
 
 ```{bash, eval=F}
-source nameOfMyEnv/bin/activate     # Linux/macOS
+source <nameOfVenv>/bin/activate     # Linux/macOS
 
-nameOfMyEnv\Scripts\activate.bat    # Windows
-# or alternatively
-nameOfMyEnv\Scripts\activate.ps1    # Windows
+<nameOfVenv>\Scripts\activate        # Windows cmd / powershell
+    # or alternatively
+<nameOfVenv>\Scripts\activate.ps1    # Windows powershell
 ```
 
-...alternatively, inside IDEs, you may activate the `venv` via specific commands like `reticulate::use_virtualenv("nameOfMyEnv", required=T)` (in ***RStudio***), or setting the Python interpreter manually and then restarting the kernel (in ***Spyder***)
+<div style="text-align: center;">
+  <img src="figures/venv-activation.png" />
+</div>
+
+<div style="font-size:26px;">
+... from inside an IDE, you may activate the `venv` via specific commands like `reticulate::use_virtualenv("nameOfMyVenv", required=T)` (in ***R / RStudio***), or setting the Python interpreter manually and then restarting the kernel (in ***Spyder***)
+</div>
 
 <!------------------------------------------------------------------>
 
-## Virtual Environment
+## Virtual Environments
 
 <div style="font-size:30px;">
-Regardless of your main Python installation, you should **reinstall all packages needed for your project inside the local `venv`** (after activating it). This is considered best practice, as it ensures **isolation** across projects and **reproducibility**. At any time, you can export a **`requirements.txt`** file to document the exact versions of all installed packages (this is particularly useful for sharing your environment, e.g., via *GitHub*):
+- In your newly created **`venv`**, you **(re)install all packages required by your project**.
+- Then, at any time, you can export a **`requirements.txt`** file to document the exact versions of all installed packages (this is particularly useful for sharing your environment, e.g., via *GitHub*).
+- This is best practice to **isolate** projects and ensure **reproducibility**. 
 </div>
 ```{bash, eval=F}
 pip freeze > requirements.txt
@@ -81,20 +95,38 @@ pip freeze > requirements.txt
 
 <!------------------------------------------------------------------>
 
+## Virtual Environments
+
+<div style="font-size:34px;">
+- Finally, if someone shares their project with you, or you re-install it on a different computer, you can simply create a new **`venv`**, activate it, and install all required packages at the exact versions specified in **`requirements.txt`**
+</div>
+```{bash, eval=F}
+pip install -r requirements.txt
+
+# alternatively 
+
+python -m pip install -r requirements.txt
+```
+
+<!------------------------------------------------------------------>
+
 ## Project like a pro 😎
 
-- Use a **virtual environment** per project (as a subfolder);
+- Use a different **virtual environment** per project (as a subfolder);
 - Place scripts, notebooks, and data in different subfolders;
 - Use **relative paths** (e.g., `"data/myfile.csv"`);
-- Save results and figures via code (not manually)
+- Save outputs, tables, figures... via code (not manually)
 
 ```csharp
 myProjectFolder/
 ├── venv/             ← virtual environment
 ├── data/             ← .csv, .xlsx, etc.
-├── scripts/          ← .py scripts
-├── results/          ← output files, figures
+├── scripts/          ← .py (also .R) scripts
+├── outputs/          ← different types of output files
 ├── notebooks/        ← markdowns, colab notebooks, etc.
+├── paper/            ← in case you are writing a paper...
+├── tables/           ← possibly convenient to store paper's tables
+├── figures/          ← possibly convenient to store paper's figures
 ├── requirements.txt  ← list of installed packages for reproducibility
 └── README.md         ← brief description of the project
 ```
@@ -108,6 +140,7 @@ Installing, inside an IDE console or Colab:
 !pip install numpy  # install one package
 !pip install numpy pandas seaborn  # install multiple packages
 !pip install numpy==2.2.5  # install package and specify which version 
+!pip install -r requirements.txt  # install packages listed in requirements.txt
 ```
 
 Then, before using any of their functions, import packages and modules:
@@ -119,7 +152,7 @@ import matplotlib.pyplot as plt
 ```
 
 <div style="font-size:30px;">
-**`as`** gives a shorter ***alias*** to a package or module name (e.g., `pd` for `pandas`, `np` for `numpy`); this is convenient because in Python you frequently need to call different functions by *always* specifying the package/module name (unlike in R; unless you import individual functions, e.g., `from numpy import array`)
+"**`as`**" gives a shorter ***alias*** to a package or module name (e.g., `pd` for `pandas`; `np` for `numpy`); this is convenient because in Python you frequently need to call different functions by *always* specifying the package/module name (unlike in R; unless you import individual functions, e.g., `from numpy import array`)
 </div>
 
 <!------------------------------------------------------------------>
@@ -176,7 +209,7 @@ plt.show()
 
 ## Accessing functions as *methods*
 
-In Python, objects may have functions *attached* to them: these are called **methods**, and are accessed using dot (**`.`**) notation *(more on this later!)*
+In Python, objects may have functions *attached* to them: these are called **methods**, and are accessed using dot ("**`.`**") notation *(more on this later!)*
 
 ```{python}
 import numpy as np
@@ -255,30 +288,27 @@ path = "/Users/enric/Desktop/myProjectFolder/" # macOS-style
 ##
 ### Import/Export objects <span style="font-size:32px;">*(no equivalent of `save.image()` of R)*</span>
 ```{python, eval=F}
-import pickle
+myObject = [10.5, 2, 63.11]
 
-myObject = 10.5
+import pickle
 
 with open("myObject.pkl", "wb") as file:       # "wb" is for "writing"
     pickle.dump(myObject, file)                # Save an object 
     
 with open("myObject.pkl", "rb") as file:       # "rb" is for "reading"
-    myObject = pickle.load(file)               # Load & assign that object later
+    myObject = pickle.load(file)               # Load & assign object 
 ```
 
-*simpler version*
+*compact version*
 
 ```{python, eval=F}
-
-myObject = 10.5
-
 pickle.dump(myObject, open("myObject.pkl", "wb")) # Save an object 
 
-myObject = pickle.load(open("myObject.pkl", "rb")) # Load & assign that object later
+myObject = pickle.load(open("myObject.pkl", "rb")) # Load & assign object 
 ```
 
 <div style="font-size:22px">
-*(this simpler version is suboptimal because it doesn't properly close the file after using, but still works)*
+*(the compact version is suboptimal because it doesn't properly close the file after using, but still works)*
 </div>
 
 <!------------------------------------------------------------------>
@@ -323,19 +353,19 @@ plt.scatter(np.random.normal(0,1,10), np.random.normal(0,1,10))
 plt.title("Example Plot")
 plt.show()
 
-plt.savefig("myPlot.png", dpi=300)  # export as PNG
+plt.savefig("myPlot.png", dpi=300)  # export with desired resolution
 ```
 <div style="font-size:20px;">
 <br/>
 </div>
-### Delete an object <span style="font-size:32px;">*(similar to `rm(df)` in R)*</span>
+### Delete an object <span style="font-size:32px;">*(similar to "`rm(df)`" in R)*</span>
 ```{python, eval=F}
-del df  # delete object named df
+del df 
 ```
 <div style="font-size:20px;">
 <br/>
 </div>
-### Listing all objects in workspace <span style="font-size:32px;">*(similar to `ls()` in R)*</span>
+### Listing all objects in workspace <span style="font-size:32px;">*(similar to "`ls()`" in R)*</span>
 ```{python}
 dir()
 ```

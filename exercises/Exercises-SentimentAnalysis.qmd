@@ -26,12 +26,15 @@ To analyze the text, we will use a **pretrained sentiment analysis model** from 
 
 (The chosen hair/beard trimmer product is actually reviewed pretty well overall, but I have deliberately sampled similar numbers of reviews for each level of customer ratings/stars ⭐ to ensure more variability... so the dataset is not actually representative of the actual product ratings)
 
-We will: - Run a pretrained model to perform sentiment analysis on the review texts; - Assess prediction accuracy (i.e., how well the model prediction actually matches the customer stars ⭐); - Plot the relationship between model predictions and customer ratings.
+We will: 
+
+- Run a pretrained model to perform sentiment analysis on the review texts; 
+- Assess prediction accuracy (i.e., how well the model prediction actually matches the customer stars ⭐); 
+- Plot the logistic relationship between model predictions and customer ratings.
 
 ## Preliminary Steps
 
 ```{python}
-# recommended if not already done
 # !pip install transformers
 # !pip install torch
 # !pip install hf_xet
@@ -41,8 +44,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.metrics import confusion_matrix
+
 import transformers
+from sklearn.metrics import confusion_matrix
 from torch.nn.functional import softmax
 ```
 
