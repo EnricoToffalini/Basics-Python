@@ -80,4 +80,3 @@ df = pd.read_csv('Performance.csv')
 -   ...hoping that the the importing worked successfully, use the `dir()` function to inspect all methods that can be applied to the just imported `df`, then:
     -   apply one or two of those methods and see what happens;
     -   in any case apply the `.head()` and the `.tail()` methods.
--   Repeat the above operations of the **"Working directory, Packages, Import/Export"** section locally in your IDE 🙂

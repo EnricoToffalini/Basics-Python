@@ -22,8 +22,8 @@ reticulate::repl_python()
 
 In the [previous exercise](Exercises-UnsupervClustering.html){target="_blank"}, you learned how to use *K-Means* and *GMM* for unsupervised clustering. Now, your task is to assess whether clustering results are robust across different scenarios involving correlated variables, heterogeneous variances, non-normal distributions, and varying numbers of true underlying clusters (`k`). In other words, you will **simulate data** under a range of **assumption violations** (e.g., correlated features, unequal variances, non-Gaussian distributions), and then apply clustering methods to see whether they still:
 
-- Correctly identify the number of underlying clusters;
-- Provide accurate classification (e.g., as evaluated using the *Adjusted Rand Index*).
+-   Correctly identify the number of underlying clusters;
+-   Provide accurate classification (e.g., as evaluated using the *Adjusted Rand Index*).
 
 ## Suggestions
 
@@ -80,7 +80,7 @@ plt.ylabel("x2")
 plt.show()
 ```
 
-### Example of (Adjusted) Rand Index 
+### Example of (Adjusted) Rand Index
 
 The following example on the calculation of the Rand Index is applied the `df` dataframe with 3 true clusters simulated in the previous chunk
 

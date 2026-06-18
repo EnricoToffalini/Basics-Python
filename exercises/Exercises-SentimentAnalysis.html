@@ -2383,21 +2383,57 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>Index([&#39;Summary&#39;, &#39;Text&#39;, &#39;Stars&#39;, &#39;trueSentiment&#39;], dtype=&#39;object&#39;)</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;Summary&quot;</span>][<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0         Good trimmer, waterproof
+1             Quality hair trimmer
+2            One word - Brilliant!
+3    Excellent, at half the price!
+4                   Ideal Purchase
+Name: Summary, dtype: object</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;Text&quot;</span>][<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    I&#39;m on my second one of these, the first laste...
+1    It feels solid, is easy to adjust, and works w...
+2    I&#39;ve been using beard trimmers for approx. 30 ...
+3    As described 100%. &#39;Jobs&#39; done superbly, but I...
+4    After many shavers, i finally think this one h...
+Name: Text, dtype: object</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;Stars&quot;</span>][<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    5
+1    5
+2    5
+3    5
+4    5
+Name: Stars, dtype: int64</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;trueSentiment&quot;</span>][<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    POSITIVE
+1    POSITIVE
+2    POSITIVE
+3    POSITIVE
+4    POSITIVE
+Name: trueSentiment, dtype: object</code></pre>
+</div>
 </div>
 </section>
 <section id="load-the-pretrained-sentiment-model" class="level2">
 <h2 class="anchored" data-anchor-id="load-the-pretrained-sentiment-model">Load the Pretrained Sentiment Model</h2>
 <p>All we need to do is to create a sentiment analysis pipeline specifying the <code>model</code> name and the <code>task</code> that it is required to do. The model is hosted on <a href="https://huggingface.co/" target="_blank">HuggingFace</a> (we must specify the exact <code>&quot;Model Name&quot;</code>), and it is automatically accessed by <code>transformers</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>classifier <span class="op">=</span> transformers.pipeline(task<span class="op">=</span><span class="st">&quot;sentiment-analysis&quot;</span>, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                  model<span class="op">=</span><span class="st">&quot;cardiffnlp/twitter-roberta-base-sentiment&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>classifier <span class="op">=</span> transformers.pipeline(task<span class="op">=</span><span class="st">&quot;sentiment-analysis&quot;</span>, </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                                  model<span class="op">=</span><span class="st">&quot;cardiffnlp/twitter-roberta-base-sentiment&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="run-the-sentiment-analysis-task-for-each-review" class="level2">
 <h2 class="anchored" data-anchor-id="run-the-sentiment-analysis-task-for-each-review">Run the Sentiment Analysis Task for each Review</h2>
 <p>Just for fun and practice, let’s try running the classifier pipeline on a single line of text:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>classifier(<span class="st">&quot;Wow, this product is great! :-D&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>classifier(<span class="st">&quot;Wow, this product is great! :-D&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[{&#39;label&#39;: &#39;LABEL_2&#39;, &#39;score&#39;: 0.9924255609512329}]</code></pre>
 </div>
@@ -2414,17 +2450,17 @@ window.Quarto = {
 </ul>
 <p>Now, let’s run the <code>classifier</code> pipeline on every single cell on the <code>&quot;Text&quot;</code> column of our dataframe, and store the results in a list (using <em>list comprehension</em>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> [classifier(t)[<span class="dv">0</span>] <span class="cf">for</span> t <span class="kw">in</span> df[<span class="st">&quot;Text&quot;</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> [classifier(t)[<span class="dv">0</span>] <span class="cf">for</span> t <span class="kw">in</span> df[<span class="st">&quot;Text&quot;</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s convert the result into a DataFrame for easier manipulation:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> pd.DataFrame(pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> pd.DataFrame(pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, for ease of “human” readability, let’s convert the labels using the <strong><code>np.select()</code></strong> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> [pred[<span class="st">&quot;label&quot;</span>]<span class="op">==</span><span class="st">&quot;LABEL_0&quot;</span>, pred[<span class="st">&quot;label&quot;</span>]<span class="op">==</span><span class="st">&quot;LABEL_1&quot;</span>, pred[<span class="st">&quot;label&quot;</span>]<span class="op">==</span><span class="st">&quot;LABEL_2&quot;</span>]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">&quot;NEGATIVE&quot;</span>, <span class="st">&quot;NEUTRAL&quot;</span>, <span class="st">&quot;POSITIVE&quot;</span>]</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;predictedSentiment&quot;</span>] <span class="op">=</span> np.select(conditions, labels, default<span class="op">=</span><span class="st">&quot;&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> [pred[<span class="st">&quot;label&quot;</span>]<span class="op">==</span><span class="st">&quot;LABEL_0&quot;</span>, pred[<span class="st">&quot;label&quot;</span>]<span class="op">==</span><span class="st">&quot;LABEL_1&quot;</span>, pred[<span class="st">&quot;label&quot;</span>]<span class="op">==</span><span class="st">&quot;LABEL_2&quot;</span>]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">&quot;NEGATIVE&quot;</span>, <span class="st">&quot;NEUTRAL&quot;</span>, <span class="st">&quot;POSITIVE&quot;</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;predictedSentiment&quot;</span>] <span class="op">=</span> np.select(conditions, labels, default<span class="op">=</span><span class="st">&quot;&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="evaluate-predictions" class="level2">
@@ -2432,8 +2468,8 @@ window.Quarto = {
 <p>To assess how well the model is performing, we can compare the predictions (<code>predictedSentiment</code>) to the ground-truth labels in our dataset (<code>trueSentiment</code>). To do so, we can compute a <strong>confusion matrix</strong>: it will tell us how many <code>&quot;POSITIVE&quot;</code> reviews as predicted by the model actually corresponds to ratings of 4-5 stars by the customer, and so on.</p>
 <p>We can use the <code>confusion_matrix()</code> function from the <code>sklearn.metrics</code> submodule, which is analogous to the <code>table()</code> function in R</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CM <span class="op">=</span> confusion_matrix(df[<span class="st">&quot;trueSentiment&quot;</span>], df[<span class="st">&quot;predictedSentiment&quot;</span>], labels<span class="op">=</span>labels)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(CM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>CM <span class="op">=</span> confusion_matrix(df[<span class="st">&quot;trueSentiment&quot;</span>], df[<span class="st">&quot;predictedSentiment&quot;</span>], labels<span class="op">=</span>labels)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(CM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[17  1  2]
  [10  7  3]
@@ -2442,7 +2478,7 @@ window.Quarto = {
 </div>
 <p>For readability, we can transform the counts into proportions (0 to 1, row-wise):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(CM <span class="op">/</span> CM.<span class="bu">sum</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(CM <span class="op">/</span> CM.<span class="bu">sum</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[0.85 0.05 0.1 ]
  [0.5  0.35 0.15]
@@ -2459,10 +2495,10 @@ window.Quarto = {
 <li>First, let’s tokenize the sentence</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="op">=</span> transformers.AutoTokenizer.from_pretrained(<span class="st">&quot;cardiffnlp/twitter-roberta-base-sentiment&quot;</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>tokenSentence <span class="op">=</span> tokenizer(<span class="st">&quot;My day was so-so, but afterall not so bad&quot;</span>, return_tensors<span class="op">=</span><span class="st">&quot;pt&quot;</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tokenSentence)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="op">=</span> transformers.AutoTokenizer.from_pretrained(<span class="st">&quot;cardiffnlp/twitter-roberta-base-sentiment&quot;</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>tokenSentence <span class="op">=</span> tokenizer(<span class="st">&quot;My day was so-so, but afterall not so bad&quot;</span>, return_tensors<span class="op">=</span><span class="st">&quot;pt&quot;</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tokenSentence)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{&#39;input_ids&#39;: tensor([[   0, 2387,  183,   21,   98,   12, 2527,    6,   53,   71, 1250,   45,
            98, 1099,    2]]), &#39;attention_mask&#39;: tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}</code></pre>
@@ -2472,11 +2508,11 @@ window.Quarto = {
 <li>Second, let’s run the model on the tensor of tokens and extract the logits (the first score is for <em>negative</em>, the second for <em>neutral</em>, the third for <em>positive</em>):</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> transformers.AutoModelForSequenceClassification.from_pretrained(<span class="st">&quot;cardiffnlp/twitter-roberta-base-sentiment&quot;</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>logitScores <span class="op">=</span> model(input_ids<span class="op">=</span>tokenSentence[<span class="st">&quot;input_ids&quot;</span>],</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>               attention_mask<span class="op">=</span>tokenSentence[<span class="st">&quot;attention_mask&quot;</span>]).logits</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(logitScores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> transformers.AutoModelForSequenceClassification.from_pretrained(<span class="st">&quot;cardiffnlp/twitter-roberta-base-sentiment&quot;</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>logitScores <span class="op">=</span> model(input_ids<span class="op">=</span>tokenSentence[<span class="st">&quot;input_ids&quot;</span>],</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>               attention_mask<span class="op">=</span>tokenSentence[<span class="st">&quot;attention_mask&quot;</span>]).logits</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(logitScores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tensor([[ 0.4030,  0.2260, -0.6003]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
 </div>
@@ -2486,8 +2522,8 @@ window.Quarto = {
 </ul>
 <p><em>note: softmax does like:</em> <span class="math inline">\(\frac{e^{0.4030}}{e^{0.4030} + e^{0.2260} + e^{-0.6003}} = 0.4536\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> softmax(logitScores, dim<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> softmax(logitScores, dim<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tensor([[0.4536, 0.3800, 0.1663]], grad_fn=&lt;SoftmaxBackward0&gt;)</code></pre>
 </div>
@@ -2496,26 +2532,26 @@ window.Quarto = {
 <li>Finally, to summarize valence as one single score, we could multiply <em>negative</em> -1 times, <em>neutral</em> 0 times, <em>positive</em> +1 times, so the final score will be in a continuous range of [-1, 1]:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>probs[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">*</span>(<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> probs[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">*</span> <span class="dv">0</span> <span class="op">+</span> probs[<span class="dv">0</span>][<span class="dv">2</span>] <span class="op">*</span> (<span class="op">+</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>probs[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">*</span>(<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> probs[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">*</span> <span class="dv">0</span> <span class="op">+</span> probs[<span class="dv">0</span>][<span class="dv">2</span>] <span class="op">*</span> (<span class="op">+</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tensor(-0.2873, grad_fn=&lt;AddBackward0&gt;)</code></pre>
 </div>
 </div>
 <p>Good! Now let’s compute all of this for every customer review:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;valence&quot;</span>] <span class="op">=</span> np.nan</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(df[<span class="st">&quot;Text&quot;</span>])):</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    sentence <span class="op">=</span> tokenizer(df[<span class="st">&quot;Text&quot;</span>][i], return_tensors<span class="op">=</span><span class="st">&quot;pt&quot;</span>)  <span class="co"># encode sentence</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    logitScores <span class="op">=</span> model(<span class="op">**</span>sentence).logits                    <span class="co"># forward pass</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    probs <span class="op">=</span> softmax(logitScores, dim<span class="op">=</span><span class="dv">1</span>)                       <span class="co"># convert to probabilities</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    df.loc[i, <span class="st">&quot;valence&quot;</span>] <span class="op">=</span> <span class="bu">float</span>(probs[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">*</span>(<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span>           <span class="co"># weighted sum: neg = -1</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                                 probs[<span class="dv">0</span>][<span class="dv">1</span>]<span class="op">*</span><span class="dv">0</span> <span class="op">+</span>              <span class="co"># neutral = 0</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                                 probs[<span class="dv">0</span>][<span class="dv">2</span>]<span class="op">*</span>(<span class="op">+</span><span class="dv">1</span>))            <span class="co"># pos = +1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;valence&quot;</span>] <span class="op">=</span> np.nan</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(df[<span class="st">&quot;Text&quot;</span>])):</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    sentence <span class="op">=</span> tokenizer(df[<span class="st">&quot;Text&quot;</span>][i], return_tensors<span class="op">=</span><span class="st">&quot;pt&quot;</span>)  <span class="co"># encode sentence</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    logitScores <span class="op">=</span> model(<span class="op">**</span>sentence).logits                    <span class="co"># forward pass</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    probs <span class="op">=</span> softmax(logitScores, dim<span class="op">=</span><span class="dv">1</span>)                       <span class="co"># convert to probabilities</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    df.loc[i, <span class="st">&quot;valence&quot;</span>] <span class="op">=</span> <span class="bu">float</span>(probs[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">*</span>(<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span>           <span class="co"># weighted sum: neg = -1</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>                                 probs[<span class="dv">0</span>][<span class="dv">1</span>]<span class="op">*</span><span class="dv">0</span> <span class="op">+</span>              <span class="co"># neutral = 0</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>                                 probs[<span class="dv">0</span>][<span class="dv">2</span>]<span class="op">*</span>(<span class="op">+</span><span class="dv">1</span>))            <span class="co"># pos = +1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;string&gt;:5: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
 Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:839.)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                         Summary  ...   valence
 0       Good trimmer, waterproof  ...  0.909970
@@ -2530,14 +2566,14 @@ Consider using tensor.detach() first. (Triggered internally at C:\actions-runner
 <section id="scatter-plot-of-predicted-valence-vs-customers-ratings-stars" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plot-of-predicted-valence-vs-customers-ratings-stars">Scatter Plot of predicted <code>valence</code> vs customers’ ratings <code>stars</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>df[<span class="st">&quot;Stars&quot;</span>], y<span class="op">=</span>df[<span class="st">&quot;valence&quot;</span>], alpha<span class="op">=</span><span class="fl">0.4</span>, s<span class="op">=</span><span class="dv">120</span>, color<span class="op">=</span><span class="st">&quot;darkgreen&quot;</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Model Valence vs User Rating&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;User Rating (Stars)&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Sentiment Valence (from Model)&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>df[<span class="st">&quot;Stars&quot;</span>], y<span class="op">=</span>df[<span class="st">&quot;valence&quot;</span>], alpha<span class="op">=</span><span class="fl">0.4</span>, s<span class="op">=</span><span class="dv">120</span>, color<span class="op">=</span><span class="st">&quot;darkgreen&quot;</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Model Valence vs User Rating&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;User Rating (Stars)&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Sentiment Valence (from Model)&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2545,7 +2581,7 @@ Consider using tensor.detach() first. (Triggered internally at C:\actions-runner
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plt.clf()<span class="op">;</span> plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>plt.clf()<span class="op">;</span> plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong><em>Is there a clear relationship between model valence and actual star ratings?</em></strong></p>
 </section>
@@ -2553,19 +2589,19 @@ Consider using tensor.detach() first. (Triggered internally at C:\actions-runner
 <h3 class="anchored" data-anchor-id="fit-a-logistic-regression">Fit a Logistic Regression</h3>
 <p>Finally, let’s plot a regression line. But we must be careful: since <code>valence</code> is bounded, the relation should not be modeled as linear. Rather, it could be <em>logistic</em> curve. For convenience, let’s first rescale valence from [-1, 1] to [0, 1], and then run a <code>seaborn</code> <code>regplot</code> with a <code>logistic</code> regression:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rescale valence from [−1, +1] → [0, 1] for logistic model</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;valenceRescaled&quot;</span>] <span class="op">=</span> (df[<span class="st">&quot;valence&quot;</span>] <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fit and plot logistic regression: stars → valence</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>sns.regplot(x<span class="op">=</span>df[<span class="st">&quot;Stars&quot;</span>], y<span class="op">=</span>df[<span class="st">&quot;valenceRescaled&quot;</span>], logistic<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>              scatter_kws<span class="op">=</span>{<span class="st">&quot;alpha&quot;</span>: <span class="fl">0.4</span>, <span class="st">&quot;s&quot;</span>:<span class="dv">120</span>}, color<span class="op">=</span><span class="st">&quot;darkgreen&quot;</span>)</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Rescaled Valence ~ Logistic Regression on Stars&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;User Rating (Stars)&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Sentiment Valence (from Model)&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rescale valence from [−1, +1] → [0, 1] for logistic model</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;valenceRescaled&quot;</span>] <span class="op">=</span> (df[<span class="st">&quot;valence&quot;</span>] <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fit and plot logistic regression: stars → valence</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>sns.regplot(x<span class="op">=</span>df[<span class="st">&quot;Stars&quot;</span>], y<span class="op">=</span>df[<span class="st">&quot;valenceRescaled&quot;</span>], logistic<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>              scatter_kws<span class="op">=</span>{<span class="st">&quot;alpha&quot;</span>: <span class="fl">0.4</span>, <span class="st">&quot;s&quot;</span>:<span class="dv">120</span>}, color<span class="op">=</span><span class="st">&quot;darkgreen&quot;</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Rescaled Valence ~ Logistic Regression on Stars&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;User Rating (Stars)&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Sentiment Valence (from Model)&quot;</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2573,7 +2609,7 @@ Consider using tensor.detach() first. (Triggered internally at C:\actions-runner
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plt.clf()<span class="op">;</span> plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.clf()<span class="op">;</span> plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

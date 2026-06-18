@@ -40,23 +40,33 @@ You must analyze a dataset containing some numerical scores per participant. You
 *Import packages*
 
 ```{python}
+# fundamental data science packages
 import pandas as pd
 import numpy as np
+
+# packages for data visualization
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# package for clustering methods (and much more!)
 import sklearn as skl  # includes both k-means and GMM methods
-import matplotlib.pyplot as plt # for data visualization
-import seaborn as sns # for data visualization
 ```
 
-*Import data*
+*Import data and briefly inspect*
 
 ```{python}
 dfTot = pd.read_csv("data/dataForCluster.csv") 
+
+dfTot.shape
+dfTot.head()
 ```
 
 *Take only numeric columns, and drop rows with any missing value*
 
 ```{python}
 dfNum = dfTot.select_dtypes(include=np.number).dropna()
+
+dfNum.shape
 ```
 
 ### *K-Means*
@@ -64,19 +74,28 @@ dfNum = dfTot.select_dtypes(include=np.number).dropna()
 For k-means, it's essential that features have the same variance (otherwise some features might be weighted enormously more than others in the clustering... but try to skip it and see what changes, if you like 🙂). Additionally, features should ideally be orthogonal, otherwise k-means tend to group observations along correlated features. So, preliminary PCA would be warranted! Now we skip it to avoid making this too long, but know that in real research this *would* be important!
 
 ```{python}
-# Standardize all numeric features (mean=0, std=1)
+# Standardize all numeric features (mean=0, std=1) and re-set as DataFrame
 dfNumStd = skl.preprocessing.StandardScaler().fit_transform(dfNum)
-
 dfNumStd = pd.DataFrame(dfNumStd)
+dfNumStd.head()
+
+# re-set column names
 dfNumStd.columns = dfNum.columns
+dfNumStd.head()
 ```
 
-**Compute silhouette scores for various numbers of components `k`**
+### *Compute silhouette scores for various numbers of components `k`*
+
+Import functions for k-means and silhouette scores:
 
 ```{python}
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
+```
 
+Compute silhouette values for `k` from 2 to 6.
+
+```{python}
 Ks = range(2, 7) # from 2 to 6
 silhouetteValues = [] # initialize list of results
 
@@ -88,7 +107,12 @@ for k in Ks:
     # compute and store silhouette score for k
     silhouetteValues.append(silhouette_score(dfNumStd, classification))
 
-# Plot silhouette scores
+np.array(silhouetteValues).round(4)
+```
+
+Plot silhouette scores
+
+```{python}
 plt.figure(figsize=(11,6))
 sns.pointplot(x=list(Ks), y=silhouetteValues, scale=1.5)
 plt.title("Silhouette scores vs k",fontsize=20)

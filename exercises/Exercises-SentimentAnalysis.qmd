@@ -26,11 +26,11 @@ To analyze the text, we will use a **pretrained sentiment analysis model** from 
 
 (The chosen hair/beard trimmer product is actually reviewed pretty well overall, but I have deliberately sampled similar numbers of reviews for each level of customer ratings/stars ⭐ to ensure more variability... so the dataset is not actually representative of the actual product ratings)
 
-We will: 
+We will:
 
-- Run a pretrained model to perform sentiment analysis on the review texts; 
-- Assess prediction accuracy (i.e., how well the model prediction actually matches the customer stars ⭐); 
-- Plot the logistic relationship between model predictions and customer ratings.
+-   Run a pretrained model to perform sentiment analysis on the review texts;
+-   Assess prediction accuracy (i.e., how well the model prediction actually matches the customer stars ⭐);
+-   Plot the logistic relationship between model predictions and customer ratings.
 
 ## Preliminary Steps
 
@@ -60,6 +60,11 @@ It contains customer reviews of a **Panasonic hair/beard trimmer** sold on Amazo
 df = pd.read_excel("data/panasonicTrimmer.xlsx")
 df.shape
 df.columns
+
+df["Summary"][0:5]
+df["Text"][0:5]
+df["Stars"][0:5]
+df["trueSentiment"][0:5]
 ```
 
 ## Load the Pretrained Sentiment Model
