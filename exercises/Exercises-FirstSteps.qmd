@@ -33,7 +33,7 @@ editor: visual
 -   Store the last of the previous results as an object, then use the appropriate relational operator to see if it is *greater than or equal to* $10$
 -   Round the previously created object to the third digit using the appropriate function for rounding
 -   Use the appropriate relational operator to determine whether $3^2$ + $4^2$ is *equal* to $5^2$ (if this is true, then $3, 4, 5$ is a Pythagorean triple)
--   `import time`, then open the help/documentation for both the `time` module and for the `time()` function inside it, and see what they do. Then run the `time()` function and calculate what is the *beginning of time* according to Python
+-   `import time`, then open the help/documentation for the `time()` function inside it, and see what they do. Then run the `time()` function and calculate what is the *beginning of time* according to Python
 
 ## Lists, Tuples, Dictionaries, and indexing
 
