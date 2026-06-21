@@ -705,14 +705,14 @@ myDF
 ```
 
 <div class="large-code">
-#### `mean` or `sum` by group
-```{python}
-myDF.groupby("semester")["hours"].sum()
-```
-
 #### Count by group
 ```{python}
 myDF.groupby("mandatory").size()
+```
+
+#### `mean` or `sum` by group
+```{python}
+myDF.groupby("semester")["hours"].sum()
 ```
 </div>
 
@@ -723,6 +723,7 @@ myDF.groupby("mandatory").size()
 #### Compute statistics for multiple columns by group
 <div class="large-code">
 ```{python}
+myDF.groupby("semester")[["hours","wellBoh"]].sum()
 myDF.groupby("semester")[["hours","wellBoh"]].mean()
 myDF.groupby("semester")[["hours","wellBoh"]].std()
 ```

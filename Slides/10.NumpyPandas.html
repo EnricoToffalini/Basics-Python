@@ -1061,11 +1061,11 @@ t5     Marci              QMP      5       True         2</code></pre>
 <span id="cb157-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester  wellBoh
-0   Pastore    CurrentIssues     10       True         1    0.336
-1  Granziol  BasicsInference     20       True         1   -0.138
-2    Feraco              SEM     20      False         2   -0.670
-3     Altoe         Outliers      5      False         2   -0.793
-4     Marci              QMP      5       True         2   -1.167</code></pre>
+0   Pastore    CurrentIssues     10       True         1    0.792
+1  Granziol  BasicsInference     20       True         1    0.037
+2    Feraco              SEM     20      False         2    0.533
+3     Altoe         Outliers      5      False         2    0.074
+4     Marci              QMP      5       True         2    1.010</code></pre>
 </div>
 </div>
 </div>
@@ -1078,11 +1078,11 @@ t5     Marci              QMP      5       True         2</code></pre>
 <span id="cb159-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester  wellBoh
-0   Pastore    CurrentIssues     10       True         1   50.336
-1  Granziol  BasicsInference     20       True         1   49.862
-2    Feraco              SEM     20      False         2   49.330
-3     Altoe         Outliers      5      False         2   49.207
-4     Marci              QMP      5       True         2   48.833</code></pre>
+0   Pastore    CurrentIssues     10       True         1   50.792
+1  Granziol  BasicsInference     20       True         1   50.037
+2    Feraco              SEM     20      False         2   50.533
+3     Altoe         Outliers      5      False         2   50.074
+4     Marci              QMP      5       True         2   51.010</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1090,11 +1090,11 @@ t5     Marci              QMP      5       True         2</code></pre>
 <span id="cb161-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester     wellBoh
-0   Pastore    CurrentIssues     10       True         1      50.336
-1  Granziol  BasicsInference     20       True         1  100049.862
-2    Feraco              SEM     20      False         2  100049.330
-3     Altoe         Outliers      5      False         2      49.207
-4     Marci              QMP      5       True         2      48.833</code></pre>
+0   Pastore    CurrentIssues     10       True         1      50.792
+1  Granziol  BasicsInference     20       True         1  100050.037
+2    Feraco              SEM     20      False         2  100050.533
+3     Altoe         Outliers      5      False         2      50.074
+4     Marci              QMP      5       True         2      51.010</code></pre>
 </div>
 </div>
 <!--------------------------------------------------------------------->
@@ -1345,32 +1345,32 @@ t5     Marci              QMP      5       True         2</code></pre>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester     wellBoh
-0   Pastore    CurrentIssues     10       True         1      50.336
-1  Granziol  BasicsInference     20       True         1  100049.862
-2    Feraco              SEM     20      False         2  100049.330
-3     Altoe         Outliers      5      False         2      49.207
-4     Marci              QMP      5       True         2      48.833</code></pre>
+0   Pastore    CurrentIssues     10       True         1      50.792
+1  Granziol  BasicsInference     20       True         1  100050.037
+2    Feraco              SEM     20      False         2  100050.533
+3     Altoe         Outliers      5      False         2      50.074
+4     Marci              QMP      5       True         2      51.010</code></pre>
 </div>
 </div>
 <div class="large-code">
-<h4 id="mean-or-sum-by-group"><code>mean</code> or <code>sum</code> by group</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb184"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb184-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>)[<span class="st">"hours"</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>semester
-1    30
-2    30
-Name: hours, dtype: int64</code></pre>
-</div>
-</div>
 <h4 id="count-by-group">Count by group</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb186"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb186-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>).size()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb184"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb184-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"mandatory"</span>).size()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mandatory
 False    2
 True     3
 dtype: int64</code></pre>
+</div>
+</div>
+<h4 id="mean-or-sum-by-group"><code>mean</code> or <code>sum</code> by group</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb186"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb186-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>)[<span class="st">"hours"</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>semester
+1    30
+2    30
+Name: hours, dtype: int64</code></pre>
 </div>
 </div>
 </div>
@@ -1381,19 +1381,26 @@ dtype: int64</code></pre>
 <h4 id="compute-statistics-for-multiple-columns-by-group">Compute statistics for multiple columns by group</h4>
 <div class="large-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb188-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>)[[<span class="st">"hours"</span>,<span class="st">"wellBoh"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb188-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>)[[<span class="st">"hours"</span>,<span class="st">"wellBoh"</span>]].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          hours     wellBoh
+semester                   
+1            30  100100.829
+2            30  100151.617</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>)[[<span class="st">"hours"</span>,<span class="st">"wellBoh"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          hours       wellBoh
 semester                     
-1          15.0  50050.099000
-2          10.0  33382.456667</code></pre>
+1          15.0  50050.414500
+2          10.0  33383.872333</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>)[[<span class="st">"hours"</span>,<span class="st">"wellBoh"</span>]].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb192"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb192-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>)[[<span class="st">"hours"</span>,<span class="st">"wellBoh"</span>]].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             hours       wellBoh
 semester                        
-1         7.071068  70710.342950
-2         8.660254  57735.205898</code></pre>
+1         7.071068  70710.144253
+2         8.660254  57735.021725</code></pre>
 </div>
 </div>
 </div>
@@ -1403,25 +1410,25 @@ semester
 <h2>Apply multiple functions with <code>.agg()</code></h2>
 <div class="large-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb192"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb192-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.agg({<span class="st">"hours"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"min"</span>,<span class="st">"max"</span>],</span>
-<span id="cb192-2"><a href="" aria-hidden="true" tabindex="-1"></a>          <span class="st">"wellBoh"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"min"</span>,<span class="st">"max"</span>]</span>
-<span id="cb192-3"><a href="" aria-hidden="true" tabindex="-1"></a>          }).<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb194"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb194-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.agg({<span class="st">"hours"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"min"</span>,<span class="st">"max"</span>],</span>
+<span id="cb194-2"><a href="" aria-hidden="true" tabindex="-1"></a>          <span class="st">"wellBoh"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"min"</span>,<span class="st">"max"</span>]</span>
+<span id="cb194-3"><a href="" aria-hidden="true" tabindex="-1"></a>          }).<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      hours    wellBoh
-mean  12.00   40049.51
-std    7.58   54772.33
-min    5.00      48.83
-max   20.00  100049.86</code></pre>
+mean  12.00   40050.49
+std    7.58   54772.07
+min    5.00      50.07
+max   20.00  100050.53</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb194"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb194-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>).agg({<span class="st">"hours"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"min"</span>,<span class="st">"max"</span>],</span>
-<span id="cb194-2"><a href="" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"wellBoh"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"min"</span>,<span class="st">"max"</span>]</span>
-<span id="cb194-3"><a href="" aria-hidden="true" tabindex="-1"></a>                             }).<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb196"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb196-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>).agg({<span class="st">"hours"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"min"</span>,<span class="st">"max"</span>],</span>
+<span id="cb196-2"><a href="" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"wellBoh"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"min"</span>,<span class="st">"max"</span>]</span>
+<span id="cb196-3"><a href="" aria-hidden="true" tabindex="-1"></a>                             }).<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         hours                 wellBoh                            
           mean   std min max      mean       std    min        max
 semester                                                          
-1         15.0  7.07  10  20  50050.10  70710.34  50.34  100049.86
-2         10.0  8.66   5  20  33382.46  57735.21  48.83  100049.33</code></pre>
+1         15.0  7.07  10  20  50050.41  70710.14  50.79  100050.04
+2         10.0  8.66   5  20  33383.87  57735.02  50.07  100050.53</code></pre>
 </div>
 </div>
 </div>

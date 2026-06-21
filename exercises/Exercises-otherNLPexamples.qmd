@@ -14,6 +14,11 @@ format:
 editor: visual
 ---
 
+```{r, echo=F, include=F}
+reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/python.exe")
+reticulate::repl_python()
+```
+
 ```{python}
 #| echo: false
 from transformers import logging
@@ -28,15 +33,16 @@ from transformers import pipeline
 
 ## Text Generation
 
-Transformer models like GPT-2 are **pretrained to generate natural language based on linguistic prompts** (we all know *chatGPT*!). Unlike newer GPT versions, *GPT-2* has been made freely available via *HuggingFace*, and it can be used even without an openAI API and billing plan
-
-All we have to do is initialize and use an instance of `pipeline()`, specifying the desired model (`"gpt2"`) and the required task (`"text-generation"`):
+Transformer models like GPT-2 are **pretrained to generate natural language based on linguistic prompts** (we all know *chatGPT*!). Unlike newer GPT versions, *GPT-2* has been made freely available via *HuggingFace*, and it can be used even without an openAI API and any billing plan. All we have to do is initialize and use an instance of `pipeline()` with required task as `"text-generation"` and the desired model (`"gpt2"`).
 
 ::: cell
 ```{python, cache=T}
-textgenerator = pipeline(task="text-generation", model="gpt2")
+textgenerator = pipeline(
+    task="text-generation", 
+    model="gpt2"
+)
 
-text = textgenerator("Once upon a time in academia", max_length=150, temperature=1)
+text = textgenerator("Once upon a time in academia", max_new_tokens=150, temperature=1)
 
 print(text)
 ```
@@ -46,8 +52,23 @@ print(text)
 
 The model continues the text following the initial prompt that you provided with a series of plausible (even though not necessarily coherent) sentences. In addition to the *prompt*, we have passed two arguments:
 
--   `max_length`, which defines the total number of tokens (including the input prompt) in the generated sequence;
+-   `max_new_tokens`, which defines the maximum number of tokens in the generated sequence;
 -   `temperature` which controls the randomness of predictions: lower values make the output more deterministic and even repetitive, while higher values leads to more randomness and creativity, but at extreme values may lead to totally incoherent outputs (`temperature` must be greater than `0` and smaller than `2`).
+
+If you want to use more state-of-the-art models, you can turn to the OpenAI API, but note that to do so you need **a valid** billing plan and have created **a valid API key** (also, the following code may no longer work if OpenAI changes the pipeline interface, which happens quite often):
+
+``` python
+from openai import OpenAI
+
+client = OpenAI(api_key="sk-proj-4slS9XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+
+response = client.responses.create(
+    model="gpt-5.5",
+    input="Once upon a time in academia"
+)
+
+generated_text = response.output_text
+```
 
 ## Audio Speech Transcription
 
@@ -77,7 +98,7 @@ If you prefer not to download and run the whole `whisper` model locally, you cou
 ``` python
 from openai import OpenAI
 
-client = OpenAI(api_key="sk-proj-4slS9XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+client = OpenAI(api_key="sk-proj-4slS9XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
 audio_file = open("data/gelmanstats.mp3", "rb")
 
@@ -95,7 +116,10 @@ Models like BERT (Bidirectional Encoder Representations from Transformers) are t
 The specific model we use here can be found on *HuggingFace* at this link: <a href="https://huggingface.co/google-bert/bert-base-uncased" target="_blank">https://huggingface.co/google-bert/bert-base-uncased</a>
 
 ```{python, cache=T}
-findmaskedword = pipeline(task="fill-mask", model="bert-base-uncased")
+findmaskedword = pipeline(
+    task="fill-mask", 
+    model="bert-base-uncased"
+)
 
 findmaskedword("My professor is [MASK].")
 ```
@@ -119,10 +143,80 @@ Let's try a simple example of **image classification** using a pretrained comput
 from PIL import Image
 myImage = Image.open("data/figureexample.png")
 
-imageclassifier = pipeline(task="image-classification", model="microsoft/resnet-18")
+imageclassifier = pipeline(
+    task="image-classification", 
+    model="microsoft/resnet-18"
+)
 
 predictions = imageclassifier(myImage)
 print(predictions)
+```
+
+## Sentiment Analysis
+
+Sentiment analysis is a typical example of **text classification**. The model receives a short text and predicts its emotional tone.
+
+The default Hugging Face sentiment model is (now) binary: it classifies texts as either just `POSITIVE` or `NEGATIVE` (with the `score` being the confidence, not the emotional intensity). This can be misleading when a sentence is neutral, ambiguous, or mixed. For example, `"The service was okay, nothing special"` is not clearly negative, but a binary model is forced to choose one of the two available labels.
+
+For this reason, we use here a model that includes three sentiment categories: `negative`, `neutral`, and `positive`.
+
+```{python, cache=T}
+#| messages: false
+#| warnings: false
+
+# Load a pre-trained sentiment analysis model
+classifier = pipeline(
+    task="sentiment-analysis",
+    model="cardiffnlp/twitter-roberta-base-sentiment-latest"
+)
+
+# Test the model with some example text
+texts = [
+    "I absolutely love this product! It's amazing.",
+    "This is the worst experience I've ever had.",
+    "The service was okay.",
+    "The movie was neither great nor terrible, just average.",
+    "Will you take other courses after this one?"
+]
+# Run sentiment analysis
+results = classifier(texts)
+results
+```
+
+## Text Classification
+
+*Sentiment analysis* is a special case of a more general task: **text classification**. In text classification, the model assigns each text to **one or more predefined categories**. These categories may represent whatever (different topics, emotions, intentions, clinical risk indicators, or any other labels, provided they existed in the model training set...).
+
+A particularly flexible option is **zero-shot classification**. We provide a list of candidate labels, and the model estimates which label best describes each text. This can be useful for exploratory work, classification of open-ended answers, etc.
+
+```{python, cache=T}
+#| messages: false
+#| warnings: false
+
+zeroshot = pipeline(
+    task="zero-shot-classification",
+    model="typeform/distilbert-base-uncased-mnli"
+)
+
+texts = [
+    "I felt proud after finishing a task that seemed impossible at first.",
+    "I could not sleep because I kept thinking about tomorrow's exam.",
+    "I enjoy solving difficult puzzles and trying new strategies.",
+    "I felt lonely even though I was surrounded by other people.",
+    "I missed having someone to talk to after moving to a new city.",
+    "I was worried that I would make a mistake in front of everyone.",
+    "I feel excited when I make progress on a challenging problem."
+]
+
+candidate_labels = [
+    "anxiety",
+    "motivation",
+    "loneliness"
+]
+
+classification_results = zeroshot(texts, candidate_labels)
+
+classification_results
 ```
 
 ## *What could you do next?*

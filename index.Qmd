@@ -82,7 +82,7 @@ Depending on interest, we may explore more advanced topics such as data visualiz
 -   [**Basics of Data Science: Intro to `NumPy` and `Pandas`**](Slides/10.NumpyPandas.html){target="_blank"}
 -   [**Programming: Conditionals, Loops, Custom Functions**](Slides/20.Programming.html){target="_blank"}
 
-### Exercises
+### Basic Exercises
 
 *— The following exercises are fundamental, and they importantly integrate concepts from the slides and introduce new functions and methods that you want to know!*
 
@@ -91,6 +91,8 @@ Depending on interest, we may explore more advanced topics such as data visualiz
 -   [**Basics of Programming... with some data science**](exercises/Exercises-Programming.html){target="_blank"}
 -   [**Programming like a data scientist**](exercises/Exercises-LikeDataScientist.html){target="_blank"}
 -   [<b>The data <em>nightmare</em> exercise... in Python</b>](exercises/Exercises-NightmarePy.html){target="_blank"}
+
+### More Advanced Exercises
 
 *— These other exercises are beyond the scope of this introductory course, but they could be stimulating and useful as simple tutorials for some users:*
 
@@ -109,14 +111,19 @@ Depending on interest, we may explore more advanced topics such as data visualiz
         **additional mini-tutorial on [AI/LLM as research assistants in systematic reviews](exercises/ExercisesExtra-SystematicReview.html){target="_blank"}**
         :::
 
-        ------------------------------------------------------------------------
+### Other demos
+
+-   [**Stroop task demo with PsychoPy and pandas**](otherdemo/stroop-psychopy-with-pandas.py){target="_blank"}  
+    <span style="font-size:11px">This short script illustrates a use case where Python becomes especially useful for psychological science: implementing an experiment and save analyzable data with Pandas. The demo presents a simple Stroop task with `psychopy`, collects key responses and reaction times, and saves the trial-level data as a `.csv` file with `pandas`. It should be run locally, because PsychoPy requires a graphical window and does not work well in Colab.</span>
+
+------------------------------------------------------------------------
 
 ::: {style="font-size:11px; color:#555555"}
-GitHub repository associated to the present course website: <em>[https://github.com/EnricoToffalini/Basics-Python](https://github.com/EnricoToffalini/Basics-Python){target="_blank"}</em>
+- GitHub repository associated to the present course website: <em>[https://github.com/EnricoToffalini/Basics-Python](https://github.com/EnricoToffalini/Basics-Python){target="_blank"}</em>
 
-Access <b><a href="https://padlet.com/enricotoffalini/basicspy-c4yn8bbvm2iwr9at" target="_blank">padlet</a></b>
+- Access <b><a href="https://padlet.com/enricotoffalini/basicspy-c4yn8bbvm2iwr9at" target="_blank">padlet</a></b>
 
-Many thanks to <b><a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a></b> for sharing his expertise with using GitHub and Quarto, to <b><a href="https://github.com/Mar-Cald" target="_blank">Margherita Calderan</a></b> for her valuable assistance with programming experiments, and <b><a href="https://github.com/feracotommaso" target="_blank">Tommaso Feraco</a></b> for a fruitful collaboration on the use and interpretation of semantic embeddings
+- Many thanks to <b><a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a></b> for sharing his expertise with using GitHub and Quarto, to <b><a href="https://github.com/Mar-Cald" target="_blank">Margherita Calderan</a></b> for her valuable assistance with programming experiments, and <b><a href="https://github.com/feracotommaso" target="_blank">Tommaso Feraco</a></b> for a fruitful collaboration on the use and interpretation of semantic embeddings
 :::
 
 ::: {style="display: flex; align-items: center; gap: 25px; white-space: nowrap"}

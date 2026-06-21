@@ -419,6 +419,8 @@ for n, e in zip(numbers, exponents):
 
 **`zip()`** pairs elements across multiple sequences while iterating them
 
+<br/>
+
 <div class="large-code">
 ```{python}
 teacher = ["Pastore", "Granziol", "Feraco","Altoe"]
@@ -434,7 +436,7 @@ for t, c, h in zip(teacher, course, hours):
 
 ##  Other iteration: `for` with `zip()`
 
-`zip()` is very convenient, but if really you don't like it, you could do the same task using the classical numerical iterator **`i`**
+**`zip()`** is very convenient, but if really you don't like it, you could do the same task using the classical numerical iterator **`i`**
 
 <div class="large-code">
 ```{python}
@@ -514,7 +516,7 @@ zScore(myVector, naIgnore=True).round(2)
 
 ## *Supercompact* Custom Functions with `lambda`
 
-**`lambda`** command allows you to define a function in a single line of code without `def` or `return`; it may be useful for quick transformation, but of course does not allow any complex "logic" / statement
+**`lambda`** command allows you to *define a custom function in a single line of code* without `def` or `return`; it may be useful for quick transformation, but of course does not allow any complex "logic" / statement
 
 <div class="large-code">
 ```{python}
@@ -523,6 +525,24 @@ myVector = np.array([10, 14, 7.6, 18, 22, 50, 0.5, 1.4, 7])
 zScore = lambda x: (x - x.mean()) / x.std()
 
 zScore(myVector)
+```
+</div>
+
+<!--------------------------------------------------------------->
+
+## *Supercompact* Custom Functions with `lambda`
+
+**`lambda`** can take more than one argument 
+
+<br/><br/>
+
+<div class="large-code">
+```{python}
+myVector = np.array([10, 14, 7.6, 18, 22, 50, 0.5, 1.4, 7])
+
+rescale = lambda x, m, s: ((x - x.mean()) / x.std()) * s + m
+
+rescale(myVector, 100, 15)
 ```
 </div>
 

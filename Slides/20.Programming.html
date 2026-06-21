@@ -1168,7 +1168,7 @@ Enrico Toffalini
 <span id="cb9-8"><a href aria-hidden="true" tabindex="-1"></a>pval <span class="op">=</span> tt.pvalue.<span class="bu">round</span>(<span class="dv">4</span>)</span>
 <span id="cb9-9"><a href aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0752</code></pre>
+<pre><code>0.7353</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> pval <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
 <span id="cb11-2"><a href aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Significant result: proceeding with follow-up analysis&quot;</span>)</span>
@@ -1520,6 +1520,7 @@ ooooo</code></pre>
 <section id="other-iteration-for-with-zip-1" class="slide level2">
 <h2>Other iteration: <code>for</code> with <code>zip()</code></h2>
 <p><strong><code>zip()</code></strong> pairs elements across multiple sequences while iterating them</p>
+<p><br></p>
 <div class="large-code">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href aria-hidden="true" tabindex="-1"></a>teacher <span class="op">=</span> [<span class="st">&quot;Pastore&quot;</span>, <span class="st">&quot;Granziol&quot;</span>, <span class="st">&quot;Feraco&quot;</span>,<span class="st">&quot;Altoe&quot;</span>]</span>
@@ -1540,7 +1541,7 @@ Altoe teaches Outliers which has 5 hours</code></pre>
 </section>
 <section id="other-iteration-for-with-zip-2" class="slide level2">
 <h2>Other iteration: <code>for</code> with <code>zip()</code></h2>
-<p><code>zip()</code> is very convenient, but if really you don’t like it, you could do the same task using the classical numerical iterator <strong><code>i</code></strong></p>
+<p><strong><code>zip()</code></strong> is very convenient, but if really you don’t like it, you could do the same task using the classical numerical iterator <strong><code>i</code></strong></p>
 <div class="large-code">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href aria-hidden="true" tabindex="-1"></a>teacher <span class="op">=</span> [<span class="st">&quot;Pastore&quot;</span>, <span class="st">&quot;Granziol&quot;</span>, <span class="st">&quot;Feraco&quot;</span>,<span class="st">&quot;Altoe&quot;</span>]</span>
@@ -1635,7 +1636,7 @@ Altoe teaches Outliers which has 5 hours</code></pre>
 </section>
 <section id="supercompact-custom-functions-with-lambda" class="slide level2">
 <h2><em>Supercompact</em> Custom Functions with <code>lambda</code></h2>
-<p><strong><code>lambda</code></strong> command allows you to define a function in a single line of code without <code>def</code> or <code>return</code>; it may be useful for quick transformation, but of course does not allow any complex “logic” / statement</p>
+<p><strong><code>lambda</code></strong> command allows you to <em>define a custom function in a single line of code</em> without <code>def</code> or <code>return</code>; it may be useful for quick transformation, but of course does not allow any complex “logic” / statement</p>
 <div class="large-code">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href aria-hidden="true" tabindex="-1"></a>myVector <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">14</span>, <span class="fl">7.6</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">1.4</span>, <span class="dv">7</span>])</span>
@@ -1646,6 +1647,26 @@ Altoe teaches Outliers which has 5 hours</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([-0.31638231, -0.03515359, -0.48511954,  0.24607513,  0.52730384,
         2.49590486, -0.98430051, -0.92102405, -0.52730384])</code></pre>
+</div>
+</div>
+</div>
+<!--------------------------------------------------------------->
+</section>
+<section id="supercompact-custom-functions-with-lambda-1" class="slide level2">
+<h2><em>Supercompact</em> Custom Functions with <code>lambda</code></h2>
+<p><strong><code>lambda</code></strong> can take more than one argument</p>
+<p><br><br></p>
+<div class="large-code">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href aria-hidden="true" tabindex="-1"></a>myVector <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">14</span>, <span class="fl">7.6</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">1.4</span>, <span class="dv">7</span>])</span>
+<span id="cb68-2"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href aria-hidden="true" tabindex="-1"></a>rescale <span class="op">=</span> <span class="kw">lambda</span> x, m, s: ((x <span class="op">-</span> x.mean()) <span class="op">/</span> x.std()) <span class="op">*</span> s <span class="op">+</span> m</span>
+<span id="cb68-4"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href aria-hidden="true" tabindex="-1"></a>rescale(myVector, <span class="dv">100</span>, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([ 95.25426541,  99.47269616,  92.72320696, 103.6911269 ,
+       107.90955765, 137.43857287,  85.23549239,  86.18463931,
+        92.09044235])</code></pre>
 </div>
 </div>
 </div>
