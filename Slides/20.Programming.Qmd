@@ -29,7 +29,7 @@ reticulate::repl_python()
 
 ## **`if`** statement
 
-automatically make decisions based on boolean value of a condition
+Automatically make decisions based on the Boolean value of a condition
 
 <div style="text-align: center;">
   <img src="figures/if_chart.png" style="width: 60%;" />
@@ -61,7 +61,7 @@ if age >= 18:
 
 ## `if...else` statement
 
-Sometimes you need to perform *alternative, mutually-exclusive* actions: 
+Sometimes you need to perform *alternative, mutually exclusive* actions: 
 
 <div style="text-align: center;">
   <img src="figures/ifelse_chart.png" style="width: 53%;" />
@@ -101,7 +101,7 @@ print("Minor")
 
 ## `if...elif...else` statement
 
-When you need to evaluate more than just two alternative conditions, you can use sort of *nested conditional statements* with with `if...elif...else`
+When you need to evaluate more than just two alternative conditions, you can use a sort of *nested conditional statements* with `if...elif...else`
 
 <div class="large-code">
 ```{python}
@@ -160,7 +160,7 @@ else:
 ```
 </div>
 <div style="font-size:25px">
-*the error message suggests that I might use `np.any(agesVector >= 18)` or `np.all(agesVector >= 18)`, but this is not what I want! What I want is actually an `if...else` that evaluates across a whole vector of `True`s and `False`s (which should be like the `ifelse()` in R)*
+*the error message suggests that I might use `np.any(agesVector >= 18)` or `np.all(agesVector >= 18)`, but this is not what I want! What I want is actually an `if...else` that evaluates across a whole vector of `True`s and `False`s (like `ifelse()` in R)*
 </div>
 
 <!--------------------------------------------------------------->
@@ -207,7 +207,7 @@ np.select(conditions, choices, default="")
 
 ## Loops in Python
 
-Looping in Python is used to repeat actions: `for` and `while` are most common
+Loops are used to repeat actions: `for` and `while` are the most common
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -240,7 +240,7 @@ for i in range(5):
 
 ## Loops in Python - Monte Carlo Simulation 😃
 
-Repeat a data simulation to estimate the *standard error of the mean*:
+Repeat a data simulation to estimate *statistical power*:
 
 ```{python}
 from scipy.stats import ttest_ind
@@ -307,7 +307,7 @@ plt.show()
 
 ## Iterating over Elements
 
-Iterating using an integer index in a range (“`i in range(niter)`” is a common practice, but you can also iterate directly over the elements of a *List* or other data structures (even *Strings*)
+Iterating using an integer index in a range (“`i in range(niter)`”) is a common practice, but you can also iterate directly over the elements of a *List* or other data structures (even *Strings*)
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -355,7 +355,7 @@ print(month)
 
 ## `break` in loops
 
-The `break` command allows to interrupt any loop based on a condition
+The `break` command allows you to interrupt any loop based on a condition
 
 ```{python}
 import time
@@ -380,7 +380,7 @@ print([attempts, pval.round(4)])
 
 ##  Other iteration: `for` with `zip()`
 
-**`zip()`** pairs elements across multiple sequences while iterating them
+**`zip()`** pairs elements across multiple sequences while iterating over them
 
 <div class="large-code">
 ::: {.columns}
@@ -417,7 +417,7 @@ for n, e in zip(numbers, exponents):
 
 ##  Other iteration: `for` with `zip()`
 
-**`zip()`** pairs elements across multiple sequences while iterating them
+**`zip()`** pairs elements across multiple sequences while iterating over them
 
 <br/>
 
@@ -428,7 +428,7 @@ course = ["CurrentIssues", "BasicsInference", "SEM","Outliers"]
 hours = [10, 20, 20, 5]
 
 for t, c, h in zip(teacher, course, hours):
-   print(f"{t} teaches {c} which has {h} hours") # formatted-string
+   print(f"{t} teaches {c} which has {h} hours") # formatted string
 ```
 </div>
 
@@ -436,7 +436,7 @@ for t, c, h in zip(teacher, course, hours):
 
 ##  Other iteration: `for` with `zip()`
 
-**`zip()`** is very convenient, but if really you don't like it, you could do the same task using the classical numerical iterator **`i`**
+**`zip()`** is very convenient, but if you really don't like it, you could do the same task using the classical numerical iterator **`i`**
 
 <div class="large-code">
 ```{python}
@@ -464,15 +464,15 @@ list(result)
 ```
 </div>
 
-in `map()`, you need to use `list(...)` to actually generate the result, otherwise a non-evaluated "lazy" `map` object is obtained
+In `map()`, you need to use `list(...)` to actually generate the result, otherwise a non-evaluated "lazy" `map` object is obtained
 
-`zip()` and `map()` are about equivalent to `lapply()`/`sapply()` in R
+`map()` is roughly equivalent to `lapply()`/`sapply()` in R
 
 <!--------------------------------------------------------------->
 
 ## Custom Functions
 
-Custom functions are widely used in Python for efficiently reusing chunks of code. *Define* your functions with **`def`**; the logic is very similar as in R:
+Custom functions are widely used in Python for efficiently reusing chunks of code. *Define* your functions with **`def`**; the logic is very similar to R:
 
 ```{python}
 def zScore(vect):
@@ -493,7 +493,7 @@ zScore(c).round(3)
 
 ## Custom Functions with `def`
 
-Let's elaborate the custom `zScore` function a little bit, adding another arguments that allows us to specify whether we want to ignore *missing values*:
+Let's elaborate the custom `zScore` function a little bit, adding another argument that allows us to specify whether we want to ignore *missing values*:
 
 ```{python}
 def zScore(vect, naIgnore=False):
@@ -516,7 +516,7 @@ zScore(myVector, naIgnore=True).round(2)
 
 ## *Supercompact* Custom Functions with `lambda`
 
-**`lambda`** command allows you to *define a custom function in a single line of code* without `def` or `return`; it may be useful for quick transformation, but of course does not allow any complex "logic" / statement
+The **`lambda`** keyword allows you to *define a custom function in a single line of code* without `def` or `return`; it may be useful for quick transformations, but of course it does not allow any complex "logic" / statement
 
 <div class="large-code">
 ```{python}

@@ -26,9 +26,9 @@ reticulate::repl_python()
 ## Two Languages, Two Philosophies
 
 <div style="font-size:40px;">
-*Python* and *R* are powerful programming languages widely used in data science and in many cases they don't feel much different
+*Python* and *R* are powerful programming languages widely used in data science, and in many cases they don't feel much different
 
-But *R* was developed by statisticians for **statistical computing**, **modeling**, and data visualization, while *Python* is more **general-purpose** language designed for **readability**, **efficiency** and **scalability** in large-scale computation across many possible uses. 
+But *R* was developed by statisticians for **statistical computing**, **modeling**, and data visualization, while *Python* is a more **general-purpose** language designed for **readability**, **efficiency** and **scalability** in large-scale computation across many possible uses. 
 
 Their syntax, typing rules and behavior reflect these different purposes...
 </div>
@@ -78,16 +78,16 @@ Many basic aspects of syntax and functions may feel practically the same...
 
 In Python, the dot ("**`.`**") has a very special role and it is part of the **syntax** 
 
-- Access objects attributes, methods and functions: 
+- Access object attributes, methods, and functions: 
   - `df.shape`: access attribute of dataframe `df`;
   - `df.head()`: access method attached to a DataFrame;
-  - `math.sqrt(16)`: access method of a package (like `::` in R);
+  - `math.sqrt(16)`: access function of a package (like `::` in R);
   - `sklearn.linear_model`: access submodule of a package; 
   - `model.fit()`: access function for fitting object `model`;
 - Cannot be used in variable names!
-  - `my.data = 5`: returns error in Python!
+  - `my.data = 5`: returns an error in Python!
 
-On the contrary, in R it has no particular meaning and can be part of names
+By contrast, in R it has no particular meaning and can be part of names
 
 <!-- --------------------------------------------------------------------- -->
 
@@ -124,7 +124,7 @@ math.pi
 
 ## Key differences: ROLE OF "**`.`**"
 
-using "**`.`**" to access: (1) submodules of modules: `statsmodels.formula.api`, `np.random`; (2) class constructor methods: `.DataFrame()`, `.ols()`; (3) methods: `.fit()`, `.normal()`, `.summary()`; (4) attributes: `.bic`
+Using "**`.`**" to access: (1) submodules of modules: `statsmodels.formula.api`, `np.random`; (2) class constructor methods: `.DataFrame()`, `.ols()`; (3) methods: `.fit()`, `.normal()`, `.summary()`; (4) attributes: `.bic`
 <div class="large-code">
 ```python
 import statsmodels.formula.api as smf
@@ -266,7 +266,7 @@ grades
 :::
 :::
 
-But you can use the built-in function `append()`:
+But you can use the built-in `.append()` method:
 ```{python, error = T}
 grades.append("K")
 grades
@@ -399,7 +399,7 @@ if(age >= 18){
 
 ::: {.columns}
 ::: {.column width="50%"}
-**Incorrect indentation in Python raises errors 🤯 **
+**Incorrect indentation in Python raises errors** 🤯
 ```{python, error=T}
 if age >= 18: 
 print("Adult") 
@@ -437,7 +437,7 @@ This enforces clarity in Python code, but requires **discipline**... <br/>Rememb
 
 ## Key differences: COPYING MUTABLE TYPES
 
-With mutable types like lists, "`=`" creates a reference, not a copy like in R
+With mutable types like lists, "`=`" creates a reference, not a copy as in R
 
 ::: {.columns}
 ::: {.column width="50%"}

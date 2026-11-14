@@ -22,9 +22,9 @@ reticulate::repl_python()
 
 We will work with a small dataset of Amazon customer reviews of a hair/beard trimmer.
 
-To analyze the text, we will use a **pretrained sentiment analysis model** from <a href="https://huggingface.co/" target="_blank">HuggingFace</a>. The model is based on RoBERTa *(Robustly Optimized BERT \[Bidirectional Encoder Representations from Transformers\] pretraining Approach)*. Specifically, we will use a model called (`"cardiffnlp/twitter-roberta-base-sentiment"`) which was trained and fine-tuned on Twitter text. I like it because it is quite lightweight and it returns 3 separate sentiment classes: *Negative*, *Neutral*, *Positive*.
+To analyze the text, we will use a **pretrained sentiment analysis model** from <a href="https://huggingface.co/" target="_blank">HuggingFace</a>. The model is based on RoBERTa *(Robustly Optimized BERT \[Bidirectional Encoder Representations from Transformers\] pretraining Approach)*. Specifically, we will use a model called `"cardiffnlp/twitter-roberta-base-sentiment"`, which was trained and fine-tuned on Twitter text. I like it because it is quite lightweight and it returns 3 separate sentiment classes: *Negative*, *Neutral*, *Positive*.
 
-(The chosen hair/beard trimmer product is actually reviewed pretty well overall, but I have deliberately sampled similar numbers of reviews for each level of customer ratings/stars ⭐ to ensure more variability... so the dataset is not actually representative of the actual product ratings)
+(The chosen hair/beard trimmer product is actually reviewed pretty well overall, but I have deliberately sampled similar numbers of reviews for each level of customer ratings/stars ⭐ to ensure more variability... so the dataset is not representative of the actual product ratings)
 
 We will:
 
@@ -54,7 +54,7 @@ from torch.nn.functional import softmax
 
 You can download the dataset from: <a href="data/panasonicTrimmer.xlsx" download>`panasonicTrimmer.xlsx`</a>
 
-It contains customer reviews of a **Panasonic hair/beard trimmer** sold on Amazon, each associated with a short `"Summary"` description, a more extensive `"Text"` review, the number of `"Stars"` rated by the customer (1–5), also manually annotated in a columns names `"trueSentiment"` (1-2 stars: `NEGATIVE`; 3 stars: `NEUTRAL`; 4-5 stars: `POSITIVE`). Let's inspect it first:
+It contains customer reviews of a **Panasonic hair/beard trimmer** sold on Amazon, each associated with a short `"Summary"` description, a more extensive `"Text"` review, the number of `"Stars"` rated by the customer (1–5), also manually annotated in a column named `"trueSentiment"` (1-2 stars: `NEGATIVE`; 3 stars: `NEUTRAL`; 4-5 stars: `POSITIVE`). Let's inspect it first:
 
 ```{python}
 df = pd.read_excel("data/panasonicTrimmer.xlsx")
@@ -69,7 +69,7 @@ df["trueSentiment"][0:5]
 
 ## Load the Pretrained Sentiment Model
 
-All we need to do is to create a sentiment analysis pipeline specifying the `model` name and the `task` that it is required to do. The model is hosted on <a href="https://huggingface.co/" target="_blank">HuggingFace</a> (we must specify the exact `"Model Name"`), and it is automatically accessed by `transformers`.
+All we need to do is to create a sentiment analysis pipeline specifying the `model` name and the `task` it is required to perform. The model is hosted on <a href="https://huggingface.co/" target="_blank">HuggingFace</a> (we must specify the exact `"Model Name"`), and it is automatically accessed by `transformers`.
 
 ```{python}
 classifier = transformers.pipeline(task="sentiment-analysis", 
@@ -86,7 +86,7 @@ classifier("Wow, this product is great! :-D")
 
 Ok, if you try a bit you will realize that for any piece of text it returns two elements:
 
--   ***`"label"`*** which is the predicted sentiment class, it is not directly interpretable, but like:
+-   ***`"label"`*** which is the predicted sentiment class; it is not directly interpretable, but it maps as follows:
 
     -   `"LABEL_0"` → `"NEGATIVE"`;
     -   `"LABEL_1"` → `"NEUTRAL"`;
@@ -94,7 +94,7 @@ Ok, if you try a bit you will realize that for any piece of text it returns two 
 
 -   ***`"score"`*** a confidence value between 0 and 1 indicating the model certainty.
 
-Now, let's run the `classifier` pipeline on every single cell on the `"Text"` column of our dataframe, and store the results in a list (using *list comprehension*)
+Now, let's run the `classifier` pipeline on every single cell of the `"Text"` column of our dataframe, and store the results in a list (using *list comprehension*)
 
 ```{python, cache=T}
 pred = [classifier(t)[0] for t in df["Text"]]
@@ -116,9 +116,9 @@ df["predictedSentiment"] = np.select(conditions, labels, default="")
 
 ## Evaluate Predictions
 
-To assess how well the model is performing, we can compare the predictions (`predictedSentiment`) to the ground-truth labels in our dataset (`trueSentiment`). To do so, we can compute a **confusion matrix**: it will tell us how many `"POSITIVE"` reviews as predicted by the model actually corresponds to ratings of 4-5 stars by the customer, and so on.
+To assess how well the model is performing, we can compare the predictions (`predictedSentiment`) to the ground-truth labels in our dataset (`trueSentiment`). To do so, we can compute a **confusion matrix**: it will tell us how many `"POSITIVE"` reviews as predicted by the model actually correspond to ratings of 4-5 stars by the customer, and so on.
 
-We can use the `confusion_matrix()` function from the `sklearn.metrics` submodule, which is analogous to the `table()` function in R
+We can use the `confusion_matrix()` function from the `sklearn.metrics` submodule, which is analogous to the `table()` function in R.
 
 ```{python, cache=T}
 CM = confusion_matrix(df["trueSentiment"], df["predictedSentiment"], labels=labels)
@@ -131,11 +131,11 @@ For readability, we can transform the counts into proportions (0 to 1, row-wise)
 print(CM / CM.sum(1))
 ```
 
-**Question:** which "sentiment" is more easily confused? why?
+**Question:** which "sentiment" is more easily confused? Why?
 
 ## From Classification to Continuous Sentiment Valence
 
-I actually don't like categorical classification very much. I would prefer to obtain a **continuum score of valence** where one extreme is absolutely negative, and the other is absolutely positive. In fact, our model was trained to assign discrete labels. However, it generates underlying **logit scores** that reflect its confidence for each sentiment class. We can use those as proxies to compute a single continuous valence score.
+I actually don't like categorical classification very much. I would prefer to obtain a **continuous valence score** where one extreme is absolutely negative, and the other is absolutely positive. Our model was actually trained to assign discrete labels. However, it generates underlying **logit scores** that reflect its confidence for each sentiment class. We can use those as proxies to compute a single continuous valence score.
 
 Now, this is a bit technical: instead of relying on the `pipeline`, we need to separately *tokenize* the sentence and apply the *model*
 
@@ -158,16 +158,16 @@ logitScores = model(input_ids=tokenSentence["input_ids"],
 print(logitScores)
 ```
 
--   Third, let's convert logits to probabilities. A logit score can directly be converted into probability; more logit scores can be normalized to probabilities that cumulatively add to one. We can use the `softmax()` function (from the `torch.nn.functional` submodule; `dim=1` tells the function that it must be computed row-wise):
+-   Third, let's convert logits to probabilities. A single logit score can be directly converted into a probability; multiple logit scores can be normalized to probabilities that add up to one. We can use the `softmax()` function (from the `torch.nn.functional` submodule; `dim=1` tells the function that it must be computed row-wise):
 
-*note: softmax does like:* $\frac{e^{0.4030}}{e^{0.4030} + e^{0.2260} + e^{-0.6003}} = 0.4536$
+*note: softmax works like this:* $\frac{e^{0.4030}}{e^{0.4030} + e^{0.2260} + e^{-0.6003}} = 0.4536$
 
 ```{python, cache=T}
 probs = softmax(logitScores, dim=1)
 print(probs)
 ```
 
--   Finally, to summarize valence as one single score, we could multiply *negative* -1 times, *neutral* 0 times, *positive* +1 times, so the final score will be in a continuous range of \[-1, 1\]:
+-   Finally, to summarize valence as one single score, we could weight *negative* by -1, *neutral* by 0, and *positive* by +1, so the final score will be in a continuous range of \[-1, 1\]:
 
 ```{python, cache=T}
 probs[0][0]*(-1) + probs[0][1] * 0 + probs[0][2] * (+1)
@@ -206,7 +206,7 @@ plt.clf(); plt.close()
 
 ### Fit a Logistic Regression
 
-Finally, let's plot a regression line. But we must be careful: since `valence` is bounded, the relation should not be modeled as linear. Rather, it could be *logistic* curve. For convenience, let's first rescale valence from \[-1, 1\] to \[0, 1\], and then run a `seaborn` `regplot` with a `logistic` regression:
+Finally, let's plot a regression line. But we must be careful: since `valence` is bounded, the relation should not be modeled as linear. Rather, it could be a *logistic* curve. For convenience, let's first rescale valence from \[-1, 1\] to \[0, 1\], and then run a `seaborn` `regplot` with a `logistic` regression:
 
 ```{python, cache=T}
 # rescale valence from [−1, +1] → [0, 1] for logistic model
@@ -229,11 +229,11 @@ plt.clf(); plt.close()
 
 ::: {style="font-size:20px;"}
 -   Try to rerun all of the above, but first combine the `"Summary"` column with the more extensive `"Text"` review column (this should improve classification ability even further, because it adds very dense information);
--   Try other *sentiment models* (e.g. search `"sentiment"` on <a href="https://huggingface.co/" target="_blank">HuggingFace</a>);
--   Find out mismatches: try the above pipeline with different types of text and find out where the model possibly disagree strongly with human labels;
--   Translate the reviews and test if the model still works on non-English texts, then find best models for non-English text.
+-   Try other *sentiment models* (e.g., search `"sentiment"` on <a href="https://huggingface.co/" target="_blank">HuggingFace</a>);
+-   Find out mismatches: try the above pipeline with different types of text and find out where the model possibly disagrees strongly with human labels;
+-   Translate the reviews and test if the model still works on non-English texts, then look for better models for non-English text.
 :::
 
 ::: {.callout-warning title="Be careful, the model is not so specific"}
-As said above, this model was trained on **Twitter texts**. Domain shift (e.g., Amazon reviews) can make the performance suboptimal
+As said above, this model was trained on **Twitter texts**. Domain shift (e.g., Amazon reviews) can make the performance suboptimal.
 :::

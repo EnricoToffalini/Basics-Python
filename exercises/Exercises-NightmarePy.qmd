@@ -19,29 +19,29 @@ This is the 🐍 version of the exercise that you (as students of the PhD progra
 
 ## Scenario
 
-You have received messy datasets from students or colleagues who have been collecting data from different tests: INVALSI, Wechsler, an experimental attention task, and personality questionnaires. Before you can do any meaningful analysis, you need to **clean**, **merge**, **combine**, and **analyze** the data
+You have received messy datasets from students or colleagues who have been collecting data from different tests: INVALSI, Wechsler, an experimental attention task, and personality questionnaires. Before you can do any meaningful analysis, you need to **clean**, **merge**, **combine**, and **analyze** the data.
 
 ## Your Final Goals
 
--   Produce a clean dataframe with one row per participant including only the total/aggregate scores for each type of data (e.g., "`InvalsiTot`" for INVALSI items data, "`WechslerTot`" for Wechsler subtests data, "`meanAcc` for the lab-based trials data, "`OpennessTot`" and "`AgreabTot`" for the personality-questionnaires data);
+-   Produce a clean dataframe with one row per participant including only the total/aggregate scores for each type of data (e.g., "`InvalsiTot`" for INVALSI items data, "`WechslerTot`" for Wechsler subtests data, "`meanAcc`" for the lab-based trials data, "`OpennessTot`" and "`AgreabTot`" for the personality-questionnaires data);
 -   Produce a readable correlation matrix between all aggregate scores;
 -   Produce some descriptive statistics for the aggregate scores (e.g., means, standard deviations, skewness coefficients, counts of missing values);
--   T-test comparison on INVALSI data (for males vs females);
--   Some histograms and scatter plots for distributions and pairs of variables.
+-   Conduct a t-test comparison on INVALSI data (for males vs females);
+-   Create some histograms and scatter plots for distributions and pairs of variables.
 
 ### Datasets:
 
--   INVALSI items data: <a href="data/ExerData_Invalsi_1.csv" download="ExerData_Invalsi_1.csv">`ExerData_Invalsi_1.csv`</a> and <a href="data/ExerData_Invalsi_2.csv" download="ExerData_Invalsi_2.csv">`ExerData_Invalsi_2.csv`</a>, participant responses to INVALSI tasks splitted in two different datasets (need to be combined first);
+-   INVALSI items data: <a href="data/ExerData_Invalsi_1.csv" download="ExerData_Invalsi_1.csv">`ExerData_Invalsi_1.csv`</a> and <a href="data/ExerData_Invalsi_2.csv" download="ExerData_Invalsi_2.csv">`ExerData_Invalsi_2.csv`</a>, participant responses to INVALSI tasks split into two different datasets (need to be combined first);
 -   Wechsler subtests data: <a href="data/ExerData_Wechsler.xlsx" download="ExerData_Wechsler.xlsx">`ExerData_Wechsler.xlsx`</a>;
--   Lab-based trials data on an attentional task, includes accuracies to repeated trials: <a href="data/ExerData_LabTrials.csv" download="ExerData_LabTrials.csv">`ExerData_LabTrials.csv`</a>;
--   Personality questionnaires: <a href="data/ExerData_Questionnaires.csv" download="ExerData_Questionnaires.csv">`ExerData_Questionnaires.csv`</a>, includes item-by-item scores for Openness and Agreeableness.
+-   Lab-based trials data on an attentional task, including accuracy on repeated trials: <a href="data/ExerData_LabTrials.csv" download="ExerData_LabTrials.csv">`ExerData_LabTrials.csv`</a>;
+-   Personality questionnaires: <a href="data/ExerData_Questionnaires.csv" download="ExerData_Questionnaires.csv">`ExerData_Questionnaires.csv`</a>, including item-by-item scores for Openness and Agreeableness.
 
 ## Recommended functions and methods
 
 | **Task** | **Subtask** | **Function / Method** |
 |------------------------|------------------------|------------------------|
 | **Data Import** | Load datasets from CSV/Excel | `pd.read_csv(...)` <br/> `pd.read_excel(...)` |
-| **Data Cleaning** | In a DataFrame column, replace character with another (e.g., "," with ".") | `.astype(str).str.replace(",",".")` |
+| **Data Cleaning** | In a DataFrame column, replace a character with another (e.g., "," with ".") | `.astype(str).str.replace(",",".")` |
 |  | Coerce a string column to numbers, handling errors as `NaN` | `pd.to_numeric(..., errors="coerce")` |
 |  | Remove invalid values (e.g., implausibly large scores) replacing them with missing values | `df.loc[...] = np.nan` |
 | **Data Wrangling** | Sum repeated observations by participant | `.groupby(...).sum().reset_index()` |
@@ -51,6 +51,6 @@ You have received messy datasets from students or colleagues who have been colle
 | **Descriptive Stats** | Quickly compute some summary statistics from a DataFrame | `df.describe()` |
 |  | Correlation matrix from a selection of DataFrame columns | `df[[...]].corr()` |
 |  | Skewness and kurtosis of DataFrame column(s) | `.skew()`<br/> `.kurt()` |
-| **Inferential Stats** | Compare genders using t-test, dropping missing values | `ttest_ind(...).dropna()` (from module `scipy.stats`) |
+| **Inferential Stats** | Compare genders using a t-test, dropping missing values | `ttest_ind(..., nan_policy="omit")` (from module `scipy.stats`) |
 | **Visualization** | Histograms (create, show, clear) | `plt.hist(...)`<br/> `plt.show()`<br/> `plt.clf()` |
 |  | Other plots from the `seaborn` package (as `sns`); remember to render them with `plt.show()` after creating them | `sns.boxplot(...)`<br/> `sns.scatterplot(x=...,y=...)`<br/> `sns.regplot(x=...,y=...,scatter=True,ci=95)` |

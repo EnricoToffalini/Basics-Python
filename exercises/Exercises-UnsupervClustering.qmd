@@ -20,7 +20,7 @@ reticulate::repl_python()
 
 ## From raw data to cluster profiles
 
-Let's do some basic unsupervised machine learning / clustering analysis. We will use **K-Means** and **Gaussian Mixture Models (GMM)** to group participants based on their standardized test scores or questionnaire responses
+Let's do some basic unsupervised machine learning / clustering analysis. We will use **K-Means** and **Gaussian Mixture Models (GMM)** to group participants based on their standardized test scores or questionnaire responses.
 
 ## Scenario
 
@@ -28,7 +28,7 @@ You must analyze a dataset containing some numerical scores per participant. You
 
 ## Your Final Goals
 
--   Run clustering with a different number `k` of components;
+-   Run clustering with different numbers `k` of components;
 -   Decide the best number of clusters using appropriate metrics (e.g., silhouette values for *K-Means*; BIC for *GMM*);
 -   Compare clustering results between *K-Means* and *GMM*;
 -   Inspect the average profiles of resulting clusters with data visualization.
@@ -71,7 +71,7 @@ dfNum.shape
 
 ### *K-Means*
 
-For k-means, it's essential that features have the same variance (otherwise some features might be weighted enormously more than others in the clustering... but try to skip it and see what changes, if you like 🙂). Additionally, features should ideally be orthogonal, otherwise k-means tend to group observations along correlated features. So, preliminary PCA would be warranted! Now we skip it to avoid making this too long, but know that in real research this *would* be important!
+For k-means, it's essential that features have the same variance (otherwise some features might be weighted enormously more than others in the clustering... but try to skip it and see what changes, if you like 🙂). Additionally, features should ideally be orthogonal, otherwise k-means tends to group observations along correlated features. So, preliminary PCA would be warranted! Here we skip it to avoid making this too long, but know that in real research this *would* be important!
 
 ```{python}
 # Standardize all numeric features (mean=0, std=1) and re-set as DataFrame
@@ -124,7 +124,7 @@ plt.show(); plt.close()
 ```
 
 -   According to this plot, what is the most appropriate number of clusters?
--   Note that the silhouette score could not be computed for `k = 1`, which is a relevant limitation when using *k-means*, because it leaves it unclear whether the "just one population" solution is actually best; alternatives could be computing the *Duda-Hart* test under some assumptions, or computing additional statistics (e.g., the within-cluster sum of squares (WCSS) / `.inertia_`) and inspect the plot with the "elbow method"
+-   Note that the silhouette score could not be computed for `k = 1`, which is a relevant limitation when using *k-means*, because it leaves it unclear whether the "just one population" solution is actually best; alternatives could be computing the *Duda-Hart* test under some assumptions, or computing additional statistics (e.g., the within-cluster sum of squares (WCSS) / `.inertia_`) and inspecting the plot with the "elbow method"
 
 **Plot cluster profiles when k = 2**
 
@@ -149,7 +149,7 @@ plt.show(); plt.close()
 
 ### *Gaussian Mixture Models*
 
-*GMM* is more flexible than *K-Means*. It is does not assume equal variances across clusters and can model (because it's actually a model) correlations between features (i.e., full covariance structures). It can also be fitted for `k = 1`, so you can formally compare models with different numbers of components, starting from one, using criteria like `BIC` or `AIC`. Its main limitation is the assumption that data within each cluster follow a Gaussian distribution.
+*GMM* is more flexible than *K-Means*. It does not assume equal variances across clusters and can model (because it's actually a model) correlations between features (i.e., full covariance structures). It can also be fitted for `k = 1`, so you can formally compare models with different numbers of components, starting from one, using criteria like `BIC` or `AIC`. Its main limitation is the assumption that data within each cluster follow a Gaussian distribution.
 
 **Compute BIC values for various numbers of components `k`**
 
@@ -211,7 +211,7 @@ plt.show(); plt.close()
 
 ### *Extra: Dimensionality reduction and 2-D scatter plots*
 
-The following chunk runs a *GMM* with `k = 3` clusters. Then, runs a *PCA* to reduce the data to two dimensions for visualization, and finally shows the GMM-predicted clusters in a 2-D scatterplot.
+The following chunk runs a *GMM* with `k = 3` clusters. Then, it runs a *PCA* to reduce the data to two dimensions for visualization, and finally shows the GMM-predicted clusters in a 2-D scatterplot.
 
 ```{python}
 # Fit GMM with 3 components
@@ -234,7 +234,7 @@ plt.legend(fontsize=12)
 plt.show(); plt.close()
 ```
 
-## What could you do, now?
+## What could you do now?
 
 ::: {style="font-size:20px;"}
 -   Repeat using your own dataset, or a dataset publicly available from <a href="https://osf.io/" target="_blank">OSF</a>, <a href="https://zenodo.org/" target="_blank">Zenodo</a>, <a href="https://figshare.com/" target="_blank">Figshare</a>, or elsewhere.
@@ -245,7 +245,7 @@ plt.show(); plt.close()
 ::: {.callout-warning title="Interpret clustering with caution"}
 Clustering techniques such as **K-Means** and **Gaussian Mixture Models (GMM)** will **always assign data points to clusters**, even when no true underlying structure exists, which can create an illusion of meaningful subgroups.
 
-**Avoid interpreting clusters as real psychological types** unless have very strong theoretical and empirical justification.
+**Avoid interpreting clusters as real psychological types** unless you have very strong theoretical and empirical justification.
 
-Personally, I believe that in **virtually no case** clustering can meaningfully reveal any real underlying "category" when using behavioral data, e.g., <a href="https://doi.org/10.1002/ijop.13246" target="_blank">here</a> and <a href="https://doi.org/10.1371/journal.pone.0269584" target="_blank">here</a>.
+Personally, I believe that in **virtually no case** can clustering meaningfully reveal any real underlying "category" when using behavioral data (see, e.g., <a href="https://doi.org/10.1002/ijop.13246" target="_blank">here</a> and <a href="https://doi.org/10.1371/journal.pone.0269584" target="_blank">here</a>).
 :::

@@ -30,7 +30,7 @@ Most data science pipelines in Python rely on these two packages, as base Python
 
 <div style="font-size:42px;">
 - **`numpy`**: provides efficient numerical computing (homogeneous arrays, vectorized operations) and many mathematical, algebraic, and basic statistical functions;
-- **`pandas`**: provides fundamental data structures for tabular data (*DataFrames*), with convenient indexing, reshaping, and data manipulation tools;
+- **`pandas`**: provides fundamental data structures for tabular data (*DataFrames*), with convenient indexing, reshaping, and data manipulation tools.
 </div>
 
 <!--------------------------------------------------------------------->
@@ -69,13 +69,13 @@ x
 
 ## Arrays: Vectorized Operations
 
-Unlike basic lists, arrays are **homogenous** and support **fast vectorized operations**, e.g., `np.sqrt(x)`, `x+5`, `x**2`,  etc.
+Unlike basic lists, arrays are **homogeneous** and support **fast vectorized operations**, e.g., `np.sqrt(x)`, `x+5`, `x**2`,  etc.
 
 ```{python}
 x * 10
 ```
 
-different ways of doing the same thing (with *functions* vs *methods*):
+Different ways of doing the same thing (with *functions* vs *methods*):
 
 ```{python}
 np.round(np.sqrt(x), 4)
@@ -106,7 +106,7 @@ print(np.dot(ar1, ar2)) # dot product
 
 ## Arrays: Structural attributes
 
-some array's attributes you can inspect
+Some array attributes you can inspect:
 ```{python}
 x.shape    # tuple of sizes of dimensions
 x.ndim     # number of dimensions
@@ -209,7 +209,7 @@ x = np.array([10, 20, 30, 40, 50, 60])
 
 x[0]     # first element
 x[-1]    # last element
-x[-2]    # second last element
+x[-2]    # second-to-last element
 x[1:4]   # elements 1 to 3
 x[1:]   # elements from 1 to end
 x[:3]   # elements from start to 2
@@ -225,7 +225,7 @@ x[-1,-1]   # last row, last column
 x[0,]      # 1st row, all columns
 x[0, 1:3]   # 1st row, columns 1 to 2
 x[:,0]     # all rows, 1st column
-x[:,2:4]   # all rows, columns 1 to 2
+x[:,2:4]   # all rows, columns 2 to 3
 ```
 :::
 :::
@@ -234,7 +234,7 @@ x[:,2:4]   # all rows, columns 1 to 2
 
 ## `Pandas` Series
 
-`Series` are essentially like 1D `numpy arrays`, but labelled with keys
+`Series` are essentially like 1D `numpy arrays`, but labeled with keys
 
 ```{python}
 import pandas as pd
@@ -262,7 +262,7 @@ print(grades[grades >= 18])
 
 ## `Pandas` DataFrame ❤️
 
-Pandas' `DataFrame` is the classical tabular object we are familiar with: it's practically a special type of Python `dict` *(dictionary)*, composed of **equally-long, internally-homogeneous, labelled lists**
+Pandas' `DataFrame` is the classical tabular object we are familiar with: it's practically a special type of Python `dict` *(dictionary)*, composed of **equally-long, internally-homogeneous, labeled lists**
 
 ```{python}
 myDF = pd.DataFrame( {
@@ -292,7 +292,7 @@ myDF.info()     # structure
 myDF.dtypes     # data types
 myDF.describe() # summary stats
 ```
-<span style="font-size:24px;">*about equivalent to `str()` and `summary()` in R*</span>
+<span style="font-size:24px;">*roughly equivalent to `str()` and `summary()` in R*</span>
 :::
 :::
 
@@ -454,7 +454,7 @@ myDF.loc["t1", "teacher"]
 :::
 </div>
 <br/>
-*this is very similar to indexing using* `myDF[0,0]` *or* `myDF[0,"teacher"]` *in R*
+*this is very similar to indexing using* `myDF[1,1]` *or* `myDF[1,"teacher"]` *in R*
 
 <!--------------------------------------------------------------------->
 
@@ -473,11 +473,11 @@ myDF.loc[0, "teacher"]
 ```
 </div>
 <br/>
-*by default, rows have no names, and row names are not strictly needed in a DataFrame; without names, integer are used for indexing rows even using *`.loc[]`, *which makes it more similar to R*
+*by default, rows have no names, and row names are not strictly needed in a DataFrame; without names, integers are used for indexing rows even using *`.loc[]`, *which makes it more similar to R*
 
 <!--------------------------------------------------------------------->
 
-## DataFrame Logical indexing
+## DataFrame: Logical indexing
 
 ```{python, echo=F}         
 myDF
@@ -491,7 +491,7 @@ myDF[ (myDF["hours"] > 5) & (myDF["mandatory"] == True) ]
 
 <!--------------------------------------------------------------------->
 
-## DataFrame Logical indexing
+## DataFrame: Logical indexing
 
 ```{python, echo=F}         
 myDF
@@ -505,7 +505,7 @@ myDF[ (myDF["hours"] > 5) & (myDF["mandatory"] == True) ][["teacher","course"]]
 
 <!--------------------------------------------------------------------->
 
-## DataFrame Logical indexing
+## DataFrame: Logical indexing
 
 ```{python, echo=F}         
 myDF
@@ -517,7 +517,7 @@ myDF.loc[ myDF["teacher"] == "Pastore" , ["teacher","course"]]
 myDF.loc[ (myDF["hours"] > 5) & (myDF["mandatory"] == True) , ["teacher","course"]]
 ```
 
-Actually, this is the most recommended! especially for data manipulation
+This is actually the recommended approach for data manipulation!
 
 <!--------------------------------------------------------------------->
 
@@ -611,7 +611,7 @@ df = pd.merge(df1, df2, on="ID")
 df
 ```
 <br/>
-<div style="font-size:22px;">*be careful! it will lose any row that does not match across both DataFrames by `"name"`! otherwise, add argument `how="outer"` to keep all values and possibly fill with `NaN` (missing values)*</div>
+<div style="font-size:22px;">*be careful! it will lose any row that does not match across both DataFrames by `"ID"`! Otherwise, add the argument `how="outer"` to keep all values and possibly fill with `NaN` (missing values)*</div>
 :::
 :::
 
@@ -643,7 +643,7 @@ df = pd.concat([dfDPG, dfDPSS])
 df
 ```
 <br/>
-<div style="font-size:22px;">*this is much like `rbind()` in R, but using the argument `axis` may also work like the function `cbind()`*</div>
+<div style="font-size:22px;">*this is much like `rbind()` in R, but with the argument `axis=1` it can also work like the function `cbind()`*</div>
 :::
 :::
 

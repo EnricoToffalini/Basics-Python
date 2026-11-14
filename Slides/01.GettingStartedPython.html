@@ -241,10 +241,10 @@ Enrico Toffalini
 <h2>Where to run Python? Other options…</h2>
 <div style="font-size:43px;">
 <ul>
-<li><a href="https://code.visualstudio.com/" target="_blank"><strong><em>Visual Studio (VS) Code</em></strong></a>: Full general-purpose, language agnostic code editor, maybe the most used environment for Python today; by Microsoft, but free</li>
-<li><a href="https://www.jetbrains.com/pycharm/" target="_blank"><strong><em>PyCharm</em></strong></a>: powerful IDE dedicated to Python; paid professional licence, but also free version available</li>
-<li><a href="https://jupyter.org/" target="_blank"><strong><em>Jupyter Notebook</em></strong></a>: ideal for reports and markdown; very similar to Colab but run locally; enhanced IDE-like version: <a href="https://jupyterlab.readthedocs.io/en/latest/" target="_blank"><strong><em>JupyterLab</em></strong></a>; free</li>
-<li><a href="https://thonny.org/" target="_blank"><strong><em>Thonny</em></strong></a>: super-simple interface IDE; free</li>
+<li><a href="https://code.visualstudio.com/" target="_blank"><strong><em>Visual Studio (VS) Code</em></strong></a>: Full general-purpose, language-agnostic code editor, maybe the most used environment for Python today; by Microsoft, but free</li>
+<li><a href="https://www.jetbrains.com/pycharm/" target="_blank"><strong><em>PyCharm</em></strong></a>: powerful IDE dedicated to Python; paid professional license, but a free version is also available</li>
+<li><a href="https://jupyter.org/" target="_blank"><strong><em>Jupyter Notebook</em></strong></a>: ideal for reports and markdown; very similar to Colab but runs locally; enhanced IDE-like version: <a href="https://jupyterlab.readthedocs.io/en/latest/" target="_blank"><strong><em>JupyterLab</em></strong></a>; free</li>
+<li><a href="https://thonny.org/" target="_blank"><strong><em>Thonny</em></strong></a>: IDE with a super-simple interface; free</li>
 </ul>
 </div>
 </section>
@@ -268,7 +268,7 @@ Enrico Toffalini
 <span id="cb2-8"><a href="" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y.<span class="bu">round</span>(<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>(The whole thing of installing, loading packages, and using functions is much like R, <a href="https://enricotoffalini.github.io/Basics-R/Slides/1.2.FirstStepsR-2.html" target="_blank"><em>as previously seen</em></a>)</p>
+<p>(Installing and loading packages and using functions works much like in R, <a href="https://enricotoffalini.github.io/Basics-R/Slides/1.2.FirstStepsR-2.html" target="_blank"><em>as previously seen</em></a>)</p>
 </section>
 <section id="use-basic-operations" class="slide level2">
 <h2>Use basic operations</h2>
@@ -452,7 +452,7 @@ Enrico Toffalini
 </section>
 <section id="logical-operators" class="slide level2">
 <h2>Logical operators</h2>
-<p>basic logical operators are <strong><code>and</code></strong>, <strong><code>or</code></strong>, <strong><code>not</code></strong>, just natural language words!</p>
+<p>Basic logical operators are <strong><code>and</code></strong>, <strong><code>or</code></strong>, <strong><code>not</code></strong>, just natural language words!</p>
 <div class="large-code">
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -489,7 +489,7 @@ Enrico Toffalini
 </section>
 <section id="logical-operators-1" class="slide level2">
 <h2>Logical operators</h2>
-<p>however, when dealing with <code>arrays</code> (more on them later!) you need to use elementwise operators, as basic ones will not work!</p>
+<p>However, when dealing with <code>arrays</code> (more on them later!) you need to use elementwise operators, as basic ones will not work!</p>
 <div class="large-code">
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a>ages <span class="op">=</span> np.array([<span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">5</span>, <span class="dv">52</span>, <span class="dv">46</span>, <span class="dv">29</span>, <span class="dv">39</span>]) <span class="co"># more on this later!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -533,14 +533,14 @@ Enrico Toffalini
 <li><p><strong>Numeric</strong>: e.g., <code>20</code>, <code>11.5</code>, <code>13.28157</code>;</p></li>
 <li><p><strong>Logical / Boolean</strong> (i.e., <code>True</code>, <code>False</code>).</p></li>
 </ul>
-<p>Like in R, <strong>numeric</strong> data could actually be <strong><em><code>float</code></em></strong> (“<em>floating-point</em>”) that is with decimals like <code>11.5</code>, and <strong><em><code>int</code></em></strong> (“<em>integer</em>”) like <code>20</code></p>
-<p>Unlike R, there is not need to specify “<code>L</code>” for integers</p>
+<p>As in R, <strong>numeric</strong> data can actually be <strong><em><code>float</code></em></strong> (“<em>floating-point</em>”), that is, with decimals like <code>11.5</code>, or <strong><em><code>int</code></em></strong> (“<em>integer</em>”), like <code>20</code></p>
+<p>Unlike R, there is no need to specify “<code>L</code>” for integers</p>
 </section>
 <section id="basic-types-of-data-1" class="slide level2">
 <h2>Basic types of data</h2>
 <h3 id="strings-text-values">strings (text values)</h3>
 <p>Another very important type of data is <strong>string</strong></p>
-<p>This is much like R. Python uses <strong>strings</strong> to represent text, that must be enclosed in quotes (<strong><code>' '</code></strong> or <strong><code>" "</code></strong>), like this:</p>
+<p>This is much like R. Python uses <strong>strings</strong> to represent text, which must be enclosed in quotes (<strong><code>' '</code></strong> or <strong><code>" "</code></strong>), like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">=</span> <span class="st">"Enrico"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -567,7 +567,7 @@ Enrico Toffalini
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a>myList <span class="op">=</span> [<span class="dv">10</span>, <span class="fl">3.14</span>, <span class="st">"Enrico"</span>, <span class="va">True</span>, [<span class="dv">8</span>, <span class="fl">7.2</span>], <span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Tuples</strong> are exactly the same, just immutable (cannot update their values!)</p>
+<p><strong>Tuples</strong> are exactly the same, just immutable (their values cannot be updated!)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup <span class="op">=</span> (<span class="dv">10</span>, <span class="fl">3.14</span>, <span class="st">"Enrico"</span>, <span class="va">True</span>, [<span class="dv">8</span>, <span class="fl">7.2</span>], <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -577,7 +577,7 @@ Enrico Toffalini
 <div class="cell-output cell-output-stdout">
 <pre><code>10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup[<span class="op">-</span><span class="dv">2</span>] <span class="co"># second last element </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a>myTup[<span class="op">-</span><span class="dv">2</span>] <span class="co"># second-to-last element </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[8, 7.2]</code></pre>
 </div>
@@ -585,14 +585,14 @@ Enrico Toffalini
 </section>
 <section id="basic-types-of-data-3" class="slide level2">
 <h2>Basic types of data</h2>
-<h3 id="dictionaries-unordered-collection-of-key-value-pairs">Dictionaries: unordered collection of key-value pairs</h3>
+<h3 id="dictionaries-collections-of-key-value-pairs">Dictionaries: collections of key-value pairs</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {  <span class="st">"name"</span>: <span class="st">"Jim"</span>,</span>
 <span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"age"</span>: <span class="dv">25</span>,</span>
 <span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a>             <span class="st">"courses"</span>: [<span class="st">"BasicsR"</span>, <span class="st">"BasicPy"</span>, <span class="st">"Simulations"</span>]</span>
 <span id="cb19-4"><a href="" aria-hidden="true" tabindex="-1"></a>          }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Cannot be indexed by numeric position, but by key:</p>
+<p>They cannot be indexed by numeric position, only by key:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a>student[<span class="st">"name"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -614,7 +614,7 @@ Enrico Toffalini
 </section>
 <section id="basic-types-of-data-4" class="slide level2">
 <h2>Basic types of data</h2>
-<h3 id="inspect-variables-types">inspect variables types</h3>
+<h3 id="inspect-variable-types">inspect variable types</h3>
 <p>Python has the built-in <strong><code>type()</code></strong> function to inspect the type of any object:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="" aria-hidden="true" tabindex="-1"></a>myName <span class="op">=</span> <span class="st">"Enrico"</span></span>
@@ -622,7 +622,7 @@ Enrico Toffalini
 <span id="cb28-3"><a href="" aria-hidden="true" tabindex="-1"></a>coursesTaught <span class="op">=</span> [<span class="st">"GenPsy"</span>,<span class="st">"Olfact"</span>,<span class="st">"BasicsR"</span>,<span class="st">"BasicsPy"</span>]</span>
 <span id="cb28-4"><a href="" aria-hidden="true" tabindex="-1"></a>nCourses <span class="op">=</span> <span class="bu">len</span>(coursesTaught)</span>
 <span id="cb28-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># see objects types</span></span>
+<span id="cb28-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># see object types</span></span>
 <span id="cb28-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(myName)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'str'&gt;</code></pre>
@@ -643,8 +643,8 @@ Enrico Toffalini
 </section>
 <section id="basic-types-of-data-5" class="slide level2">
 <h2>Basic types of data</h2>
-<h3 id="inspect-variables-types-1">inspect variables types</h3>
-<p>You may also inquire data type directly with functions <code>is.*</code>:</p>
+<h3 id="inspect-variable-types-1">inspect variable types</h3>
+<p>You may also check the data type directly with the <code>isinstance()</code> function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(nCourses, <span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -668,7 +668,7 @@ Enrico Toffalini
 </div>
 </div>
 <div style="font-size:26px;">
-<p>Python has no built-in missing data type like <code>NA</code> in R. <code>None</code> can be used but is not a type and operations may incur errors. Libraries like <code>numpy</code> and <code>pandas</code> have their own <code>np.nan</code> and <code>pd.NA</code> missing value markers that are more like <code>NA</code> in R.</p>
+<p>Python has no built-in missing data type like <code>NA</code> in R. <code>None</code> can be used, but it is not a missing-data type and operations on it may raise errors. Libraries like <code>numpy</code> and <code>pandas</code> have their own <code>np.nan</code> and <code>pd.NA</code> missing value markers that are more like <code>NA</code> in R.</p>
 </div>
 <!-- --------------------------------------------------------------------- -->
 

@@ -2345,7 +2345,7 @@ window.Quarto = {
 <li>Create an object with a name allowed in Python and assign it a numerical value, then print it</li>
 <li>Create a second object with a different, allowed name, and use it to store the value of the first object squared</li>
 <li>Try to create another object with a non-allowed name and see what happens</li>
-<li>Create an object and assign it the string <code>&quot;I love programming :-)&quot;</code>, then: * use <code>type()</code> to inspect the type of the object and make sure that it is a string; * repeat the same for an integer and a for floating-point object.</li>
+<li>Create an object and assign it the string <code>&quot;I love programming :-)&quot;</code>, then: * use <code>type()</code> to inspect the type of the object and make sure that it is a string; * repeat the same for an integer and a floating-point object.</li>
 <li>Multiply the previously created string <span class="math inline">\(\times 10\)</span> and see what happens</li>
 </ul>
 </section>
@@ -2359,12 +2359,12 @@ window.Quarto = {
 <li><span class="math inline">\(5.6^3\)</span></li>
 <li><span class="math inline">\(\frac{\sqrt{2 \times 5}\ + 6}{4}\)</span></li>
 <li><span class="math inline">\(π \times (7^2 - \frac{9.2}{10})\)</span></li>
-<li><span class="math inline">\(log_2 50\)</span></li>
+<li><span class="math inline">\(\log_2 50\)</span></li>
 </ul></li>
 <li>Store the last of the previous results as an object, then use the appropriate relational operator to see if it is <em>greater than or equal to</em> <span class="math inline">\(10\)</span></li>
-<li>Round the previously created object to the third digit using the appropriate function for rounding</li>
+<li>Round the previously created object to three decimal places using the appropriate function for rounding</li>
 <li>Use the appropriate relational operator to determine whether <span class="math inline">\(3^2\)</span> + <span class="math inline">\(4^2\)</span> is <em>equal</em> to <span class="math inline">\(5^2\)</span> (if this is true, then <span class="math inline">\(3, 4, 5\)</span> is a Pythagorean triple)</li>
-<li><code>import time</code>, then open the help/documentation for the <code>time()</code> function inside it, and see what they do. Then run the <code>time()</code> function and calculate what is the <em>beginning of time</em> according to Python</li>
+<li><code>import time</code>, then open the help/documentation for the <code>time()</code> function inside it, and see what it does. Then run the <code>time()</code> function and work out what the <em>beginning of time</em> is according to Python</li>
 </ul>
 </section>
 <section id="lists-tuples-dictionaries-and-indexing" class="level2">
@@ -2372,14 +2372,14 @@ window.Quarto = {
 <ul>
 <li>Create a new list object with <code>[ ]</code> and fill it with objects of different types, then:
 <ul>
-<li>check its <code>type()</code></li>
+<li>check its <code>type()</code>;</li>
 <li>check the <code>type()</code> of its first element using appropriate indexing with <code>[ ]</code>;</li>
 <li>check the <code>type()</code> of its last element using appropriate indexing with <code>[ ]</code>;</li>
 <li>try to multiply the whole list <span class="math inline">\(\times 5\)</span> and understand what happens;</li>
 <li>try to add <span class="math inline">\(+5\)</span> to the whole list and understand why it doesn’t work;</li>
 <li>replace the first element in the list with another element and make sure that it worked.</li>
 </ul></li>
-<li>On the previously created string:
+<li>On the previously created list:
 <ul>
 <li>use the <code>.append()</code> method to add a new object at the end of it;</li>
 <li>correctly use the <code>+</code> operator to add a new object at the end of it (hint: you can only concatenate a list to another list);</li>
@@ -2387,9 +2387,9 @@ window.Quarto = {
 </ul></li>
 <li>Use the <code>dir()</code> function to inspect the methods that can be applied to objects of different types (such as list, string, integer, float), then:
 <ul>
-<li>identify some method that attracts you interest;</li>
+<li>identify a method that attracts your interest;</li>
 <li>inspect the help/documentation of the chosen method;</li>
-<li>apply it correctly to the relative object using the “<code>.</code>” operator.</li>
+<li>apply it correctly to the corresponding object using the “<code>.</code>” operator.</li>
 </ul></li>
 <li>Create a new tuple object that is equal to a previously created list, but create it using <code>( )</code> instead of <code>[ ]</code>, then:
 <ul>
@@ -2402,7 +2402,7 @@ window.Quarto = {
 <li>use the <code>type()</code> function to make sure it is a dictionary;</li>
 <li>try to access the first element with <code>[ ]</code> using an integer index as previously done with the list and tuple, and see that it fails;</li>
 <li>use the <code>.keys()</code> method to view all the keys in your dictionary (i.e., the names of all the objects/entries in it);</li>
-<li>access a specific in your dictionary using <code>[ ]</code> with a valid key (e.g., <code>myDict[&quot;x&quot;]</code>).</li>
+<li>access a specific entry in your dictionary using <code>[ ]</code> with a valid key (e.g., <code>myDict[&quot;x&quot;]</code>).</li>
 </ul></li>
 </ul>
 </section>
@@ -2413,17 +2413,17 @@ window.Quarto = {
 <li>Import the <code>numpy</code> package with the alias <code>np</code>, then:
 <ul>
 <li>use the <code>dir()</code> function to inspect all functions available in it;</li>
-<li>use the <code>help()</code> function to inspect the documentation of one or more of the <code>numpy</code> functions that have picked your interest;</li>
+<li>use the <code>help()</code> function to inspect the documentation of one or more of the <code>numpy</code> functions that have piqued your interest;</li>
 <li>correctly use that/those function(s).</li>
 </ul></li>
 <li>Download <a href="data/firstSteps/Performance.csv">this dataset</a> locally, put it in your current working directory, then run the following chunk of code to import it:</li>
 </ul>
-<div id="afb85975" class="cell" data-execution_count="1">
+<div id="fc27d09e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;Performance.csv&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>…hoping that the the importing worked successfully, use the <code>dir()</code> function to inspect all methods that can be applied to the just imported <code>df</code>, then:
+<li>…hoping that the import worked successfully, use the <code>dir()</code> function to inspect all methods that can be applied to the just-imported <code>df</code>, then:
 <ul>
 <li>apply one or two of those methods and see what happens;</li>
 <li>in any case apply the <code>.head()</code> and the <code>.tail()</code> methods.</li>

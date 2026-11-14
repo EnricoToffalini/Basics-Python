@@ -20,7 +20,7 @@ reticulate::repl_python()
 
 ## Information/Data Extraction
 
-The following series of code chunks were actually used to **process several PDF documents** in a review and **extract relevant information based on a textual prompt** using a language model (OpenAI GPT-4)
+The following series of code chunks was actually used to **process several PDF documents** in a review and **extract relevant information based on a textual prompt** using a language model (OpenAI GPT-4).
 
 ##### Import libraries
 
@@ -34,14 +34,14 @@ import tiktoken
 ```
 
 - `os`: for file management  
-- `openai`: OpenAI package, interface via API / cloud based 
+- `openai`: OpenAI package, interface via API / cloud-based 
 - `pandas`/`numpy`: data manipulation, as we now know well
 - `PyPDF2`: reading PDF contents  
 - `tiktoken`: estimating token length for OpenAI models
 
 ##### Authenticate with OpenAI API and load the text prompt
 
-You need a valid billing plan, and a valid API key! The billing plan require registering a credit card. The expense is not much unless you process many hundreds of papers
+You need a valid billing plan, and a valid API key! The billing plan requires registering a credit card. The cost is modest unless you process many hundreds of papers.
 
 ```python
 client = openai.OpenAI(api_key="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -58,7 +58,7 @@ filenames = [f for f in allfilenames if f.endswith(".pdf")]
 articles = [os.path.splitext(f)[0] for f in filenames]
 ```
 
-##### Initializes a dataframe to hold the results
+##### Initialize a dataframe to hold the results
 
 ```python
 result = pd.DataFrame({"filename":filenames, 
@@ -69,7 +69,8 @@ result = pd.DataFrame({"filename":filenames,
 
 ##### Iterate through each PDF and extract information using the language model
 
-Below is the core loop:  
+Below is the core loop:
+
 - Saves progress in `_results.csv` (just in case everything crashes)
 - Extracts text from the current PDF  
 - Computes the token count  
@@ -127,5 +128,5 @@ result["length"].sum()
 - Do nothing, just be aware that this is a possibility; 
 - Just give it a try and see how it performs; 
 - Rewrite this for a simpler but important task such as abstract screening; 
-- Re-implement the approach using a free and reproducible model (e.g., LLaMA, Mistral, SciBERT), but be aware that high quality models may be very large and not easily run locally on normal computers 
+- Re-implement the approach using a free and reproducible model (e.g., LLaMA, Mistral, SciBERT), but be aware that high-quality models may be very large and not easily run locally on normal computers. 
 

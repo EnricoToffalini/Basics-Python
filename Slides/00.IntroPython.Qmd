@@ -22,7 +22,7 @@ reticulate::use_python("C:/Users/enric/AppData/Local/Programs/Python/Python313/p
 reticulate::repl_python()
 ```
 
-## Why learning Python?
+## Why learn Python?
 
 <div style="font-size:30px;">
 - **Ultra mainstream and global leader in programming (and data science!)** <a href="https://www.tiobe.com/tiobe-index/" target="_blank"><b><em>Most used programming language in the world</em></b></a> (June 2026); extremely used in industry, but also increasingly adopted in academia. *Huge job market advantage as a data scientist, inside and even more outside academia!*
@@ -46,11 +46,11 @@ reticulate::repl_python()
 
 I don't recommend using Python for doing the exact same things you could do with R. R is much more used in this PhD program and generally for statistical analysis in academia. 
 
-**So why learning Python?** Apart from its importance for "outside academia", you could learn Python for your PhD for: 
+**So why learn Python?** Apart from its importance for "outside academia", you could learn Python for your PhD for: 
 
 1) Advanced applications of **AI**: **pretrained models**, **Natural Language Processing** (e.g., sentiment analysis, text classification, embeddings); 
 2) **Computational efficiency** especially when handling **big data**; 
-3) **Behavioral experiment** (e.g., PsychoPy, OpenSesame are becoming widely used in cognitive science). 
+3) **Behavioral experiments** (e.g., PsychoPy and OpenSesame are widely used in cognitive science). 
 
 ## Python vs R (for us): Different Strengths
 
@@ -70,9 +70,9 @@ I don't recommend using Python for doing the exact same things you could do with
 In fact, Python and R are becoming increasingly integrated, and often used together in research. For example:
 
 - You can use Python in R using `reticulate` and R in Python using `rpy2`;
-- *RStudio* and *Quarto* can run Python script and chunks;
+- *RStudio* and *Quarto* can run Python scripts and chunks;
 - *Jupyter* and *Colab* now allow R kernels;
-- `shiny` and `ggplot` exist also for Python;
+- `shiny` and `ggplot` also exist for Python;
 - `keras` and `tensorflow` can be used in R via `reticulate`; 
 - `ellmer` allows you to use LLMs (including ChatGPT via API!) from inside R;
 - `lme4` can be used inside Python via `pymer4`;
@@ -95,7 +95,7 @@ For R the base `glm()` function was used; for Python `LogisticRegression()` from
 
 <details>
 <summary><strong>Some explanation (click to expand)</strong></summary>
-Gaussian Mixture Models is a type of model-based clustering; for R `Mclusts()` from the `mclust` package was used; for Python `GaussianMixture()` from the `sklearn.mixture` module was used
+Gaussian Mixture Modeling is a type of model-based clustering; for R `Mclust()` from the `mclust` package was used; for Python `GaussianMixture()` from the `sklearn.mixture` module was used
 </details>
 
 <div style="text-align: center;">
@@ -142,7 +142,7 @@ Each blue dot is a model with a randomly defined complexity (from 1 to 15 terms,
 </div>
 
 ##
-### Interactive Data visualization with `plotly`
+### Interactive data visualization with `plotly`
 
 <iframe src="figures/examplePlotlyOnnvll.html"
         style="width:1000px; height:600px; border:none;"
@@ -303,7 +303,7 @@ Hi, my name is Andrew Gelman. I'm a professor of statistics and political scienc
 ```
 
 ##
-### A locally running chatbot with Google's <a href="https://huggingface.co/google/gemma-4-E2B" target="_blank"><b><em>Gemma4</b></em></a>
+### A locally running chatbot with Google's <a href="https://huggingface.co/google/gemma-4-E2B" target="_blank"><b><em>Gemma4</em></b></a>
 
 <div style="text-align: center;">
   <a href="demo/gemma-4-demo.py" target="_blank"><img src="figures/gemma4demo1.png" /></a>
@@ -324,7 +324,7 @@ Hi, my name is Andrew Gelman. I'm a professor of statistics and political scienc
 </div>
 
 ##
-### Embeddings + Clustering, An exercise we will see 😉
+### Embeddings + Clustering: an exercise we will see 😉
 
 <div style="text-align: center;">
   <img src="figures/exampleEmbeddingsEmotText.png" style="width: 82%;" />

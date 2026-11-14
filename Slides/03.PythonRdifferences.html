@@ -210,8 +210,8 @@ Enrico Toffalini
 <section id="two-languages-two-philosophies" class="slide level2">
 <h2>Two Languages, Two Philosophies</h2>
 <div style="font-size:40px;">
-<p><em>Python</em> and <em>R</em> are powerful programming languages widely used in data science and in many cases they don’t feel much different</p>
-<p>But <em>R</em> was developed by statisticians for <strong>statistical computing</strong>, <strong>modeling</strong>, and data visualization, while <em>Python</em> is more <strong>general-purpose</strong> language designed for <strong>readability</strong>, <strong>efficiency</strong> and <strong>scalability</strong> in large-scale computation across many possible uses.</p>
+<p><em>Python</em> and <em>R</em> are powerful programming languages widely used in data science, and in many cases they don’t feel much different</p>
+<p>But <em>R</em> was developed by statisticians for <strong>statistical computing</strong>, <strong>modeling</strong>, and data visualization, while <em>Python</em> is a more <strong>general-purpose</strong> language designed for <strong>readability</strong>, <strong>efficiency</strong> and <strong>scalability</strong> in large-scale computation across many possible uses.</p>
 <p>Their syntax, typing rules and behavior reflect these different purposes…</p>
 </div>
 <!-- --------------------------------------------------------------------- -->
@@ -351,20 +351,20 @@ Enrico Toffalini
 <h2>Key differences: ROLE OF “<strong><code>.</code></strong>”</h2>
 <p>In Python, the dot (“<strong><code>.</code></strong>”) has a very special role and it is part of the <strong>syntax</strong></p>
 <ul>
-<li>Access objects attributes, methods and functions:
+<li>Access object attributes, methods, and functions:
 <ul>
 <li><code>df.shape</code>: access attribute of dataframe <code>df</code>;</li>
 <li><code>df.head()</code>: access method attached to a DataFrame;</li>
-<li><code>math.sqrt(16)</code>: access method of a package (like <code>::</code> in R);</li>
+<li><code>math.sqrt(16)</code>: access function of a package (like <code>::</code> in R);</li>
 <li><code>sklearn.linear_model</code>: access submodule of a package;</li>
 <li><code>model.fit()</code>: access function for fitting object <code>model</code>;</li>
 </ul></li>
 <li>Cannot be used in variable names!
 <ul>
-<li><code>my.data = 5</code>: returns error in Python!</li>
+<li><code>my.data = 5</code>: returns an error in Python!</li>
 </ul></li>
 </ul>
-<p>On the contrary, in R it has no particular meaning and can be part of names</p>
+<p>By contrast, in R it has no particular meaning and can be part of names</p>
 <!-- --------------------------------------------------------------------- -->
 </section>
 <section id="key-differences-role-of-.-1" class="slide level2">
@@ -403,7 +403,7 @@ Enrico Toffalini
 </section>
 <section id="key-differences-role-of-.-2" class="slide level2">
 <h2>Key differences: ROLE OF “<strong><code>.</code></strong>”</h2>
-using “<strong><code>.</code></strong>” to access: (1) submodules of modules: <code>statsmodels.formula.api</code>, <code>np.random</code>; (2) class constructor methods: <code>.DataFrame()</code>, <code>.ols()</code>; (3) methods: <code>.fit()</code>, <code>.normal()</code>, <code>.summary()</code>; (4) attributes: <code>.bic</code>
+Using “<strong><code>.</code></strong>” to access: (1) submodules of modules: <code>statsmodels.formula.api</code>, <code>np.random</code>; (2) class constructor methods: <code>.DataFrame()</code>, <code>.ols()</code>; (3) methods: <code>.fit()</code>, <code>.normal()</code>, <code>.summary()</code>; (4) attributes: <code>.bic</code>
 <div class="large-code">
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb8-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -429,31 +429,31 @@ using “<strong><code>.</code></strong>” to access: (1) submodules of modules
 <div class="cell-output cell-output-stdout">
 <pre><code>                Results: Ordinary least squares
 ================================================================
-Model:              OLS              Adj. R-squared:     0.112  
-Dependent Variable: y                AIC:                58.2074
-Date:               2026-06-16 09:19 BIC:                61.1946
-No. Observations:   20               Log-Likelihood:     -26.104
-Df Model:           2                F-statistic:        2.196  
-Df Residuals:       17               Prob (F-statistic): 0.142  
-R-squared:          0.205            Scale:              0.93708
------------------------------------------------------------------
-               Coef.   Std.Err.     t     P&gt;|t|    [0.025  0.975]
------------------------------------------------------------------
-Intercept     -0.0722    0.2197  -0.3287  0.7464  -0.5358  0.3914
-x1            -0.0934    0.2029  -0.4601  0.6513  -0.5215  0.3348
-x2            -0.4399    0.2126  -2.0695  0.0541  -0.8884  0.0086
+Model:              OLS              Adj. R-squared:     -0.046 
+Dependent Variable: y                AIC:                61.6869
+Date:               2026-11-14 11:44 BIC:                64.6741
+No. Observations:   20               Log-Likelihood:     -27.843
+Df Model:           2                F-statistic:        0.5792 
+Df Residuals:       17               Prob (F-statistic): 0.571  
+R-squared:          0.064            Scale:              1.1152 
+------------------------------------------------------------------
+            Coef.    Std.Err.     t      P&gt;|t|     [0.025   0.975]
+------------------------------------------------------------------
+Intercept   0.0173     0.2520   0.0685   0.9462   -0.5145   0.5490
+x1          0.1736     0.2491   0.6968   0.4954   -0.3520   0.6992
+x2          0.1987     0.2649   0.7504   0.4633   -0.3601   0.7575
 ----------------------------------------------------------------
-Omnibus:              1.038        Durbin-Watson:          1.576
-Prob(Omnibus):        0.595        Jarque-Bera (JB):       0.190
-Skew:                 -0.191       Prob(JB):               0.909
-Kurtosis:             3.286        Condition No.:          1    
+Omnibus:              2.478        Durbin-Watson:          2.013
+Prob(Omnibus):        0.290        Jarque-Bera (JB):       1.174
+Skew:                 -0.141       Prob(JB):               0.556
+Kurtosis:             1.847        Condition No.:          1    
 ================================================================</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a>myFit.bic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>np.float64(61.19457809550074)</code></pre>
+<pre><code>np.float64(64.674145882453)</code></pre>
 </div>
 </div>
 </div>
@@ -573,7 +573,7 @@ Kurtosis:             3.286        Condition No.:          1
 </div>
 </div>
 </div></div>
-<p>But you can use the built-in function <code>append()</code>:</p>
+<p>But you can use the built-in <code>.append()</code> method:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="" aria-hidden="true" tabindex="-1"></a>grades.append(<span class="st">"K"</span>)</span>
 <span id="cb35-2"><a href="" aria-hidden="true" tabindex="-1"></a>grades</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -742,7 +742,7 @@ Kurtosis:             3.286        Condition No.:          1
 <h2>Key differences: THE CRUCIAL ROLE OF INDENTATION</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Incorrect indentation in Python raises errors 🤯 </strong></p>
+<p><strong>Incorrect indentation in Python raises errors</strong> 🤯</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> age <span class="op">&gt;=</span> <span class="dv">18</span>: </span>
 <span id="cb71-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Adult"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -787,7 +787,7 @@ Kurtosis:             3.286        Condition No.:          1
 </section>
 <section id="key-differences-copying-mutable-types" class="slide level2">
 <h2>Key differences: COPYING MUTABLE TYPES</h2>
-<p>With mutable types like lists, “<code>=</code>” creates a reference, not a copy like in R</p>
+<p>With mutable types like lists, “<code>=</code>” creates a reference, not a copy as in R</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <strong>Python</strong>
@@ -906,7 +906,7 @@ Kurtosis:             3.286        Condition No.:          1
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb99-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.4948181801129082</code></pre>
+<pre><code>-1.769628114058219</code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="" aria-hidden="true" tabindex="-1"></a>intrcpt, beta0, beta1 <span class="op">=</span> myModel.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

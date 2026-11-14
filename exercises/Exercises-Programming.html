@@ -2306,7 +2306,7 @@ window.Quarto = {
 
 <p>First of all<br> <code>import numpy as np</code><br> <code>import matplotlib.pyplot as plt</code><br> then:</p>
 <ul>
-<li><p>Write a <code>for</code> loop that runs 20 iterations, each time generating and printing a single random number, rounded to the 3<sup>rd</sup> decimal point, and drawn from a distribution of your choice (e.g., <code>np.random.binomial()</code>, <code>np.random.normal()</code>, <code>np.random.gamma()</code>, <code>np.random.poisson()</code>, <code>np.random.logistic()</code>).</p></li>
+<li><p>Write a <code>for</code> loop that runs 20 iterations, each time generating and printing a single random number, rounded to 3 decimal places, and drawn from a distribution of your choice (e.g., <code>np.random.binomial()</code>, <code>np.random.normal()</code>, <code>np.random.gamma()</code>, <code>np.random.poisson()</code>, <code>np.random.logistic()</code>).</p></li>
 <li><p>Write a <code>for</code> loop that runs 20 iterations, each time:</p>
 <ul>
 <li>drawing a single number from a <em>standard normal distribution</em> (with <code>np.random.normal()</code>);</li>
@@ -2316,17 +2316,17 @@ window.Quarto = {
 <li><p>We want to examine the sampling variability of the correlation between two normally distributed but unrelated variables (i.e., their underlying true correlation is <span class="math inline">\(r = 0\)</span>), when the sample size is <span class="math inline">\(N = 30\)</span>; so write a <code>for</code> loop that:</p>
 <ul>
 <li>runs thousands of iterations, each time generating two independent random variables (using <code>np.random.normal()</code>) with <span class="math inline">\(N = 30\)</span>;</li>
-<li>at each iteration, compute the estimated correlation coefficient with <code>np.corrcoef()</code> and store it as a number in a list or array <em>(warning: <code>np.corrcoeff()</code> returns a small 2x2 matrix, so you have to extract the coefficient of interest from there before storing it)</em>;</li>
+<li>at each iteration, compute the estimated correlation coefficient with <code>np.corrcoef()</code> and store it as a number in a list or array <em>(warning: <code>np.corrcoef()</code> returns a small 2x2 matrix, so you have to extract the coefficient of interest from there before storing it)</em>;</li>
 <li>after completing all the iterations, visualize the distribution of estimated correlation coefficients with <code>plt.hist()</code> <em>(hint: then also call <code>plt.show()</code>)</em> or any other plotting method; also, compute the <code>np.median()</code> and the <em>95% confidence interval</em> using the quantile method (i.e., with <code>np.quantile()</code> setting <code>q=[.025,.975]</code>).</li>
 </ul></li>
 <li><p>Write a custom function called <code>describe_sign()</code> that takes a number as input and returns as output: <code>&quot;negative&quot;</code> if the input value is below zero, <code>&quot;zero&quot;</code> if it is exactly zero, or <code>&quot;positive&quot;</code> if it is greater than zero.</p></li>
-<li><p>Write a custom function called <code>simulate_correlations()</code> that does the following (this is a bit advanced but funny 🙂):</p>
+<li><p>Write a custom function called <code>simulate_correlations()</code> that does the following (this is a bit advanced but fun 🙂):</p>
 <ul>
-<li>take two numeric arguments as input: <code>N</code> and <code>n_sim</code>;</li>
+<li>takes two numeric arguments as input: <code>N</code> and <code>n_sim</code>;</li>
 <li>initializes an empty array (<code>np.empty()</code>) that has <code>n_sim</code> elements, all filled with <code>np.nan</code>;</li>
-<li>run a <code>for</code> loop <code>n_sim</code> times;</li>
-<li>inside the loop, at each iteration it generates two independent normally distributed variables each with <code>N</code> observations, computes the correlation coefficient between them, and stores it in the appropriate position of the previously initialized array <em>(hint: this had already been done in the exercise above)</em>;</li>
-<li>return as output the array filled with simulated correlation coefficients</li>
+<li>runs a <code>for</code> loop <code>n_sim</code> times;</li>
+<li>inside the loop, at each iteration it generates two independent normally distributed variables each with <code>N</code> observations, computes the correlation coefficient between them, and stores it in the appropriate position of the previously initialized array <em>(hint: this has already been done in the exercise above)</em>;</li>
+<li>returns as output the array filled with simulated correlation coefficients</li>
 </ul></li>
 <li><p><em>Extra for advanced users:</em> Repeat the above exercise on the <code>simulate_correlations()</code> custom function, but now adding a third numeric argument as input, called <code>r</code>, which defines the true correlation between the two normally distributed variables. To generate correlated variables, you can use <code>np.random.multivariate_normal()</code> <em>(first of all, see and understand the documentation!)</em></p></li>
 <li><p>You are working with standardized test scores and you want to label each score as <code>&quot;low&quot;</code> (below −1), <code>&quot;average&quot;</code> (between −1 and +1), or <code>&quot;high&quot;</code> (above +1):</p>

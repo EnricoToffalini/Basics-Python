@@ -26,11 +26,11 @@ reticulate::repl_python()
 ## Virtual Environments
 
 <div style="font-size:40px;">
-→ **isolated Python environments** that allow you to install packages and dependencies **separately from your system/main Python installation**. Helps avoid conflicts across projects that may require different versions of the same packages. 
+→ **isolated Python environments** that allow you to install packages and dependencies **separately from your system/main Python installation**. They help avoid conflicts across projects that may require different versions of the same packages. 
 
 → routinely used in professional projects, they are **best practice for managing projects ensuring <em>computational reproducibility</em>**
 
-<em>btw something similar exists in R via the `renv` package, although unfortunately not widely used</em>
+<em>btw something similar exists in R via the `renv` package, although unfortunately it is not widely used</em>
 </div>
 
 ## Virtual Environments
@@ -58,7 +58,7 @@ Create a virtual environment with this command in your bash/terminal:
 python -m venv <nameOfVenv>
 ```
 
-then, just before using, activate it:
+Then, just before using it, activate it:
 
 ```{bash, eval=F}
 source <nameOfVenv>/bin/activate     # Linux/macOS
@@ -308,7 +308,7 @@ myObject = pickle.load(open("myObject.pkl", "rb")) # Load & assign object
 ```
 
 <div style="font-size:22px">
-*(the compact version is suboptimal because it doesn't properly close the file after using, but still works)*
+*(the compact version is suboptimal because it doesn't properly close the file after use, but it still works)*
 </div>
 
 <!------------------------------------------------------------------>
@@ -351,9 +351,8 @@ df.to_excel("exported_data.xlsx", index=False)
 import matplotlib.pyplot as plt
 plt.scatter(np.random.normal(0,1,10), np.random.normal(0,1,10))
 plt.title("Example Plot")
-plt.show()
-
 plt.savefig("myPlot.png", dpi=300)  # export with desired resolution
+plt.show()
 ```
 <div style="font-size:20px;">
 <br/>
@@ -365,7 +364,7 @@ del df
 <div style="font-size:20px;">
 <br/>
 </div>
-### Listing all objects in workspace <span style="font-size:32px;">*(similar to "`ls()`" in R)*</span>
+### List all objects in the workspace <span style="font-size:32px;">*(similar to "`ls()`" in R)*</span>
 ```{python}
 dir()
 ```
@@ -374,7 +373,7 @@ dir()
 
 ## `dir()`
 
-**`dir()`** is a built-in function that does more than just returning a list of objects in workspace; it allows you to inspect all ***attributes*** and ***methods*** of any object
+**`dir()`** is a built-in function that does more than just list the objects in the workspace; it allows you to inspect all ***attributes*** and ***methods*** of any object
 
 ```{python}
 a = [5.2, 2, 0, 98, 11.5, 63.11]

@@ -213,7 +213,7 @@ Enrico Toffalini
 <div style="font-size:42px;">
 <ul>
 <li><strong><code>numpy</code></strong>: provides efficient numerical computing (homogeneous arrays, vectorized operations) and many mathematical, algebraic, and basic statistical functions;</li>
-<li><strong><code>pandas</code></strong>: provides fundamental data structures for tabular data (<em>DataFrames</em>), with convenient indexing, reshaping, and data manipulation tools;</li>
+<li><strong><code>pandas</code></strong>: provides fundamental data structures for tabular data (<em>DataFrames</em>), with convenient indexing, reshaping, and data manipulation tools.</li>
 </ul>
 </div>
 <!--------------------------------------------------------------------->
@@ -255,7 +255,7 @@ Enrico Toffalini
 </section>
 <section id="arrays-vectorized-operations" class="slide level2">
 <h2>Arrays: Vectorized Operations</h2>
-<p>Unlike basic lists, arrays are <strong>homogenous</strong> and support <strong>fast vectorized operations</strong>, e.g., <code>np.sqrt(x)</code>, <code>x+5</code>, <code>x**2</code>, etc.</p>
+<p>Unlike basic lists, arrays are <strong>homogeneous</strong> and support <strong>fast vectorized operations</strong>, e.g., <code>np.sqrt(x)</code>, <code>x+5</code>, <code>x**2</code>, etc.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -264,7 +264,7 @@ Enrico Toffalini
        [340., 520., 190.,  16.,  40., 150.]])</code></pre>
 </div>
 </div>
-<p>different ways of doing the same thing (with <em>functions</em> vs <em>methods</em>):</p>
+<p>Different ways of doing the same thing (with <em>functions</em> vs <em>methods</em>):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(np.sqrt(x), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -311,7 +311,7 @@ Enrico Toffalini
 </section>
 <section id="arrays-structural-attributes" class="slide level2">
 <h2>Arrays: Structural attributes</h2>
-<p>some array’s attributes you can inspect</p>
+<p>Some array attributes you can inspect:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a>x.shape    <span class="co"># tuple of sizes of dimensions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -459,7 +459,7 @@ Enrico Toffalini
 <div class="cell-output cell-output-stdout">
 <pre><code>np.int64(60)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">2</span>]    <span class="co"># second last element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">2</span>]    <span class="co"># second-to-last element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.int64(50)</code></pre>
 </div>
@@ -501,7 +501,7 @@ Enrico Toffalini
 <div class="cell-output cell-output-stdout">
 <pre><code>array([1, 5])</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="" aria-hidden="true" tabindex="-1"></a>x[:,<span class="dv">2</span>:<span class="dv">4</span>]   <span class="co"># all rows, columns 1 to 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="" aria-hidden="true" tabindex="-1"></a>x[:,<span class="dv">2</span>:<span class="dv">4</span>]   <span class="co"># all rows, columns 2 to 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([[3, 4],
        [7, 8]])</code></pre>
@@ -512,7 +512,7 @@ Enrico Toffalini
 </section>
 <section id="pandas-series" class="slide level2">
 <h2><code>Pandas</code> Series</h2>
-<p><code>Series</code> are essentially like 1D <code>numpy arrays</code>, but labelled with keys</p>
+<p><code>Series</code> are essentially like 1D <code>numpy arrays</code>, but labeled with keys</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb76-2"><a href="" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> pd.Series([<span class="dv">28</span>, <span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">23</span>], index<span class="op">=</span>[<span class="st">"Jane"</span>, <span class="st">"Jim"</span>, <span class="st">"John"</span>, <span class="st">"Jack"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -555,7 +555,7 @@ dtype: int64</code></pre>
 </section>
 <section id="pandas-dataframe" class="slide level2">
 <h2><code>Pandas</code> DataFrame ❤️</h2>
-<p>Pandas’ <code>DataFrame</code> is the classical tabular object we are familiar with: it’s practically a special type of Python <code>dict</code> <em>(dictionary)</em>, composed of <strong>equally-long, internally-homogeneous, labelled lists</strong></p>
+<p>Pandas’ <code>DataFrame</code> is the classical tabular object we are familiar with: it’s practically a special type of Python <code>dict</code> <em>(dictionary)</em>, composed of <strong>equally-long, internally-homogeneous, labeled lists</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF <span class="op">=</span> pd.DataFrame( {</span>
 <span id="cb85-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="st">"teacher"</span>: [<span class="st">"Pastore"</span>, <span class="st">"Granziol"</span>, <span class="st">"Feraco"</span>, <span class="st">"Altoe"</span>, <span class="st">"Marci"</span>],</span>
@@ -629,7 +629,7 @@ min     5.000000  1.000000
 max    20.000000  2.000000</code></pre>
 </div>
 </div>
-<p><span style="font-size:24px;"><em>about equivalent to <code>str()</code> and <code>summary()</code> in R</em></span></p>
+<p><span style="font-size:24px;"><em>roughly equivalent to <code>str()</code> and <code>summary()</code> in R</em></span></p>
 </div></div>
 <!--------------------------------------------------------------------->
 </section>
@@ -884,7 +884,7 @@ t5     Marci              QMP      5       True         2</code></pre>
 </div>
 </div></div>
 </div>
-<p><br> <em>this is very similar to indexing using</em> <code>myDF[0,0]</code> <em>or</em> <code>myDF[0,"teacher"]</code> <em>in R</em></p>
+<p><br> <em>this is very similar to indexing using</em> <code>myDF[1,1]</code> <em>or</em> <code>myDF[1,"teacher"]</code> <em>in R</em></p>
 <!--------------------------------------------------------------------->
 </section>
 <section id="dataframe-indexing-rows-columns-1" class="slide level2">
@@ -910,11 +910,11 @@ t5     Marci              QMP      5       True         2</code></pre>
 </div>
 </div>
 </div>
-<p><br> <em>by default, rows have no names, and row names are not strictly needed in a DataFrame; without names, integer are used for indexing rows even using </em><code>.loc[]</code>, <em>which makes it more similar to R</em></p>
+<p><br> <em>by default, rows have no names, and row names are not strictly needed in a DataFrame; without names, integers are used for indexing rows even using </em><code>.loc[]</code>, <em>which makes it more similar to R</em></p>
 <!--------------------------------------------------------------------->
 </section>
 <section id="dataframe-logical-indexing" class="slide level2">
-<h2>DataFrame Logical indexing</h2>
+<h2>DataFrame: Logical indexing</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester
@@ -947,7 +947,7 @@ t5     Marci              QMP      5       True         2</code></pre>
 <!--------------------------------------------------------------------->
 </section>
 <section id="dataframe-logical-indexing-1" class="slide level2">
-<h2>DataFrame Logical indexing</h2>
+<h2>DataFrame: Logical indexing</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester
@@ -980,7 +980,7 @@ t5     Marci              QMP      5       True         2</code></pre>
 <!--------------------------------------------------------------------->
 </section>
 <section id="dataframe-logical-indexing-2" class="slide level2">
-<h2>DataFrame Logical indexing</h2>
+<h2>DataFrame: Logical indexing</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester
@@ -1010,7 +1010,7 @@ t5     Marci              QMP      5       True         2</code></pre>
 1  Granziol  BasicsInference</code></pre>
 </div>
 </div>
-<p>Actually, this is the most recommended! especially for data manipulation</p>
+<p>This is actually the recommended approach for data manipulation!</p>
 <!--------------------------------------------------------------------->
 </section>
 <section id="add-new-columns-in-a-dataframe" class="slide level2">
@@ -1061,11 +1061,11 @@ t5     Marci              QMP      5       True         2</code></pre>
 <span id="cb157-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester  wellBoh
-0   Pastore    CurrentIssues     10       True         1    0.792
-1  Granziol  BasicsInference     20       True         1    0.037
-2    Feraco              SEM     20      False         2    0.533
-3     Altoe         Outliers      5      False         2    0.074
-4     Marci              QMP      5       True         2    1.010</code></pre>
+0   Pastore    CurrentIssues     10       True         1    0.324
+1  Granziol  BasicsInference     20       True         1   -0.483
+2    Feraco              SEM     20      False         2    0.652
+3     Altoe         Outliers      5      False         2    1.001
+4     Marci              QMP      5       True         2    3.418</code></pre>
 </div>
 </div>
 </div>
@@ -1078,11 +1078,11 @@ t5     Marci              QMP      5       True         2</code></pre>
 <span id="cb159-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester  wellBoh
-0   Pastore    CurrentIssues     10       True         1   50.792
-1  Granziol  BasicsInference     20       True         1   50.037
-2    Feraco              SEM     20      False         2   50.533
-3     Altoe         Outliers      5      False         2   50.074
-4     Marci              QMP      5       True         2   51.010</code></pre>
+0   Pastore    CurrentIssues     10       True         1   50.324
+1  Granziol  BasicsInference     20       True         1   49.517
+2    Feraco              SEM     20      False         2   50.652
+3     Altoe         Outliers      5      False         2   51.001
+4     Marci              QMP      5       True         2   53.418</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1090,11 +1090,11 @@ t5     Marci              QMP      5       True         2</code></pre>
 <span id="cb161-2"><a href="" aria-hidden="true" tabindex="-1"></a>myDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester     wellBoh
-0   Pastore    CurrentIssues     10       True         1      50.792
-1  Granziol  BasicsInference     20       True         1  100050.037
-2    Feraco              SEM     20      False         2  100050.533
-3     Altoe         Outliers      5      False         2      50.074
-4     Marci              QMP      5       True         2      51.010</code></pre>
+0   Pastore    CurrentIssues     10       True         1      50.324
+1  Granziol  BasicsInference     20       True         1  100049.517
+2    Feraco              SEM     20      False         2  100050.652
+3     Altoe         Outliers      5      False         2      51.001
+4     Marci              QMP      5       True         2      53.418</code></pre>
 </div>
 </div>
 <!--------------------------------------------------------------------->
@@ -1216,7 +1216,7 @@ t5     Marci              QMP      5       True         2</code></pre>
 </div>
 <br>
 <div style="font-size:22px;">
-<em>be careful! it will lose any row that does not match across both DataFrames by <code>"name"</code>! otherwise, add argument <code>how="outer"</code> to keep all values and possibly fill with <code>NaN</code> (missing values)</em>
+<em>be careful! it will lose any row that does not match across both DataFrames by <code>"ID"</code>! Otherwise, add the argument <code>how="outer"</code> to keep all values and possibly fill with <code>NaN</code> (missing values)</em>
 </div>
 </div></div>
 <!--------------------------------------------------------------------->
@@ -1263,7 +1263,7 @@ t5     Marci              QMP      5       True         2</code></pre>
 </div>
 <br>
 <div style="font-size:22px;">
-<em>this is much like <code>rbind()</code> in R, but using the argument <code>axis</code> may also work like the function <code>cbind()</code></em>
+<em>this is much like <code>rbind()</code> in R, but with the argument <code>axis=1</code> it can also work like the function <code>cbind()</code></em>
 </div>
 </div></div>
 <!--------------------------------------------------------------------->
@@ -1345,11 +1345,11 @@ t5     Marci              QMP      5       True         2</code></pre>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>    teacher           course  hours  mandatory  semester     wellBoh
-0   Pastore    CurrentIssues     10       True         1      50.792
-1  Granziol  BasicsInference     20       True         1  100050.037
-2    Feraco              SEM     20      False         2  100050.533
-3     Altoe         Outliers      5      False         2      50.074
-4     Marci              QMP      5       True         2      51.010</code></pre>
+0   Pastore    CurrentIssues     10       True         1      50.324
+1  Granziol  BasicsInference     20       True         1  100049.517
+2    Feraco              SEM     20      False         2  100050.652
+3     Altoe         Outliers      5      False         2      51.001
+4     Marci              QMP      5       True         2      53.418</code></pre>
 </div>
 </div>
 <div class="large-code">
@@ -1385,22 +1385,22 @@ Name: hours, dtype: int64</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>          hours     wellBoh
 semester                   
-1            30  100100.829
-2            30  100151.617</code></pre>
+1            30  100099.841
+2            30  100155.071</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb190"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>)[[<span class="st">"hours"</span>,<span class="st">"wellBoh"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          hours       wellBoh
 semester                     
-1          15.0  50050.414500
-2          10.0  33383.872333</code></pre>
+1          15.0  50049.920500
+2          10.0  33385.023667</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb192"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb192-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>)[[<span class="st">"hours"</span>,<span class="st">"wellBoh"</span>]].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             hours       wellBoh
 semester                        
-1         7.071068  70710.144253
-2         8.660254  57735.021725</code></pre>
+1         7.071068  70710.107483
+2         8.660254  57734.127709</code></pre>
 </div>
 </div>
 </div>
@@ -1415,10 +1415,10 @@ semester
 <span id="cb194-3"><a href="" aria-hidden="true" tabindex="-1"></a>          }).<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      hours    wellBoh
-mean  12.00   40050.49
-std    7.58   54772.07
-min    5.00      50.07
-max   20.00  100050.53</code></pre>
+mean  12.00   40050.98
+std    7.58   54771.44
+min    5.00      50.32
+max   20.00  100050.65</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb196"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb196-1"><a href="" aria-hidden="true" tabindex="-1"></a>myDF.groupby(<span class="st">"semester"</span>).agg({<span class="st">"hours"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"min"</span>,<span class="st">"max"</span>],</span>
 <span id="cb196-2"><a href="" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"wellBoh"</span>: [<span class="st">"mean"</span>,<span class="st">"std"</span>,<span class="st">"min"</span>,<span class="st">"max"</span>]</span>
@@ -1427,8 +1427,8 @@ max   20.00  100050.53</code></pre>
 <pre><code>         hours                 wellBoh                            
           mean   std min max      mean       std    min        max
 semester                                                          
-1         15.0  7.07  10  20  50050.41  70710.14  50.79  100050.04
-2         10.0  8.66   5  20  33383.87  57735.02  50.07  100050.53</code></pre>
+1         15.0  7.07  10  20  50049.92  70710.11  50.32  100049.52
+2         10.0  8.66   5  20  33385.02  57734.13  51.00  100050.65</code></pre>
 </div>
 </div>
 </div>

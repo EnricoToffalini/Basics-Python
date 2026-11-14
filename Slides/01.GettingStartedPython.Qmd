@@ -57,10 +57,10 @@ reticulate::repl_python()
 ## Where to run Python? Other options...
 
 <div style="font-size:43px;">
-- <a href="https://code.visualstudio.com/" target="_blank">***Visual Studio (VS) Code***</a>: Full general-purpose, language agnostic code editor, maybe the most used environment for Python today; by Microsoft, but free
-- <a href="https://www.jetbrains.com/pycharm/" target="_blank">***PyCharm***</a>: powerful IDE dedicated to Python; paid professional licence, but also free version available
-- <a href="https://jupyter.org/" target="_blank">***Jupyter Notebook***</a>: ideal for reports and markdown; very similar to Colab but run locally; enhanced IDE-like version: <a href="https://jupyterlab.readthedocs.io/en/latest/" target="_blank">***JupyterLab***</a>; free
-- <a href="https://thonny.org/" target="_blank">***Thonny***</a>: super-simple interface IDE; free
+- <a href="https://code.visualstudio.com/" target="_blank">***Visual Studio (VS) Code***</a>: Full general-purpose, language-agnostic code editor, maybe the most used environment for Python today; by Microsoft, but free
+- <a href="https://www.jetbrains.com/pycharm/" target="_blank">***PyCharm***</a>: powerful IDE dedicated to Python; paid professional license, but a free version is also available
+- <a href="https://jupyter.org/" target="_blank">***Jupyter Notebook***</a>: ideal for reports and markdown; very similar to Colab but runs locally; enhanced IDE-like version: <a href="https://jupyterlab.readthedocs.io/en/latest/" target="_blank">***JupyterLab***</a>; free
+- <a href="https://thonny.org/" target="_blank">***Thonny***</a>: IDE with a super-simple interface; free
 </div>
 
 
@@ -88,7 +88,7 @@ y = -0.5 + x*0.3 + np.random.normal(0, 0.8, size=N)
 print(y.round(3))
 ```
 
-(The whole thing of installing, loading packages, and using functions is much like R, <a href="https://enricotoffalini.github.io/Basics-R/Slides/1.2.FirstStepsR-2.html" target="_blank">*as previously seen*</a>)
+(Installing and loading packages and using functions works much like in R, <a href="https://enricotoffalini.github.io/Basics-R/Slides/1.2.FirstStepsR-2.html" target="_blank">*as previously seen*</a>)
 
 ## Use basic operations
 ### Python as calculator: basic operators
@@ -138,7 +138,7 @@ age = 20
 
 ## Logical operators
 
-basic logical operators are **`and`**, **`or`**, **`not`**, just natural language words!
+Basic logical operators are **`and`**, **`or`**, **`not`**, just natural language words!
 
 <div class="large-code">
 ```python
@@ -154,7 +154,7 @@ age = 20
 
 ## Logical operators
 
-however, when dealing with `arrays` (more on them later!) you need to use elementwise operators, as basic ones will not work!
+However, when dealing with `arrays` (more on them later!) you need to use elementwise operators, as basic ones will not work!
 
 <div class="large-code">
 ```python
@@ -182,9 +182,9 @@ In the previous slides, we already encountered two types of data:
 
 - **Logical / Boolean** (i.e., `True`, `False`).
 
-Like in R, **numeric** data could actually be ***`float`*** ("*floating-point*") that is with decimals like `11.5`, and ***`int`*** ("*integer*") like `20`
+As in R, **numeric** data can actually be ***`float`*** ("*floating-point*"), that is, with decimals like `11.5`, or ***`int`*** ("*integer*"), like `20`
 
-Unlike R, there is not need to specify "`L`" for integers
+Unlike R, there is no need to specify "`L`" for integers
 
 
 ## Basic types of data
@@ -192,7 +192,7 @@ Unlike R, there is not need to specify "`L`" for integers
 
 Another very important type of data is **string**
 
-This is much like R. Python uses **strings** to represent text, that must be enclosed in quotes (**`' '`** or **`" "`**), like this:
+This is much like R. Python uses **strings** to represent text, which must be enclosed in quotes (**`' '`** or **`" "`**), like this:
 
 ```{python}
 myName = "Enrico"
@@ -215,7 +215,7 @@ myName > "Bob" # is my name larger than Bob? (yes, alphabetically!)
 myList = [10, 3.14, "Enrico", True, [8, 7.2], 11]
 ```
 
-**Tuples** are exactly the same, just immutable (cannot update their values!)
+**Tuples** are exactly the same, just immutable (their values cannot be updated!)
 
 ```{python}
 myTup = (10, 3.14, "Enrico", True, [8, 7.2], 11)
@@ -224,12 +224,12 @@ myTup = (10, 3.14, "Enrico", True, [8, 7.2], 11)
 Both can be indexed by numeric position using `[ ]`:
 ```{python}
 myTup[0] # first element
-myTup[-2] # second last element 
+myTup[-2] # second-to-last element 
 ```
 
 
 ## Basic types of data
-### Dictionaries: unordered collection of key-value pairs
+### Dictionaries: collections of key-value pairs
 
 ```{python}
 student = {  "name": "Jim",
@@ -238,7 +238,7 @@ student = {  "name": "Jim",
           }
 ```
 
-Cannot be indexed by numeric position, but by key:
+They cannot be indexed by numeric position, only by key:
 
 ```{python}
 student["name"]
@@ -250,7 +250,7 @@ student["courses"][1] # but you can index a list inside a dict
 
 
 ## Basic types of data
-### inspect variables types
+### inspect variable types
 
 Python has the built-in **`type()`** function to inspect the type of any object:
 
@@ -260,7 +260,7 @@ isProf = True
 coursesTaught = ["GenPsy","Olfact","BasicsR","BasicsPy"]
 nCourses = len(coursesTaught)
 
-# see objects types
+# see object types
 type(myName)
 type(isProf)
 type(coursesTaught)
@@ -269,9 +269,9 @@ type(nCourses)
 
 
 ## Basic types of data
-### inspect variables types
+### inspect variable types
 
-You may also inquire data type directly with functions `is.*`:
+You may also check the data type directly with the `isinstance()` function:
 ```{python}
 isinstance(nCourses, int)
 isinstance(nCourses, float)
@@ -281,7 +281,7 @@ isinstance(coursesTaught, bool)
 ```
 
 <div style="font-size:26px;">
-Python has no built-in missing data type like `NA` in R. `None` can be used but is not a type and operations may incur errors. Libraries like `numpy` and `pandas` have their own `np.nan` and `pd.NA` missing value markers that are more like `NA` in R.
+Python has no built-in missing data type like `NA` in R. `None` can be used, but it is not a missing-data type and operations on it may raise errors. Libraries like `numpy` and `pandas` have their own `np.nan` and `pd.NA` missing value markers that are more like `NA` in R.
 </div>
 
 <!-- --------------------------------------------------------------------- -->

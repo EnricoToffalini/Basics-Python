@@ -210,9 +210,9 @@ Enrico Toffalini
 <section id="virtual-environments" class="slide level2">
 <h2>Virtual Environments</h2>
 <div style="font-size:40px;">
-<p>→ <strong>isolated Python environments</strong> that allow you to install packages and dependencies <strong>separately from your system/main Python installation</strong>. Helps avoid conflicts across projects that may require different versions of the same packages.</p>
+<p>→ <strong>isolated Python environments</strong> that allow you to install packages and dependencies <strong>separately from your system/main Python installation</strong>. They help avoid conflicts across projects that may require different versions of the same packages.</p>
 <p>→ routinely used in professional projects, they are <strong>best practice for managing projects ensuring <em>computational reproducibility</em></strong></p>
-<p><em>btw something similar exists in R via the <code>renv</code> package, although unfortunately not widely used</em></p>
+<p><em>btw something similar exists in R via the <code>renv</code> package, although unfortunately it is not widely used</em></p>
 </div>
 </section>
 <section id="virtual-environments-1" class="slide level2">
@@ -236,7 +236,7 @@ Enrico Toffalini
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv <span class="op">&lt;</span>nameOfVenv<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>then, just before using, activate it:</p>
+<p>Then, just before using it, activate it:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;</span>nameOfVenv<span class="op">&gt;</span>/bin/activate     <span class="co"># Linux/macOS</span></span>
 <span id="cb2-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -456,7 +456,7 @@ Equivalent to R’s <code>getwd()</code> / <code>setwd()</code>:
 <span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a>myObject <span class="op">=</span> pickle.load(<span class="bu">open</span>(<span class="st">"myObject.pkl"</span>, <span class="st">"rb"</span>)) <span class="co"># Load &amp; assign object </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="font-size:22px">
-<p><em>(the compact version is suboptimal because it doesn’t properly close the file after using, but still works)</em></p>
+<p><em>(the compact version is suboptimal because it doesn’t properly close the file after use, but it still works)</em></p>
 </div>
 <!------------------------------------------------------------------>
 </section>
@@ -493,9 +493,8 @@ Equivalent to R’s <code>getwd()</code> / <code>setwd()</code>:
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb24-2"><a href="" aria-hidden="true" tabindex="-1"></a>plt.scatter(np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>), np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10</span>))</span>
 <span id="cb24-3"><a href="" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Example Plot"</span>)</span>
-<span id="cb24-4"><a href="" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb24-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>)  <span class="co"># export with desired resolution</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-4"><a href="" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"myPlot.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>)  <span class="co"># export with desired resolution</span></span>
+<span id="cb24-5"><a href="" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="font-size:20px;">
 <p><br></p>
@@ -507,7 +506,7 @@ Equivalent to R’s <code>getwd()</code> / <code>setwd()</code>:
 <div style="font-size:20px;">
 <p><br></p>
 </div>
-<h3 id="listing-all-objects-in-workspace-similar-to-ls-in-r">Listing all objects in workspace <span style="font-size:32px;"><em>(similar to “<code>ls()</code>” in R)</em></span></h3>
+<h3 id="list-all-objects-in-the-workspace-similar-to-ls-in-r">List all objects in the workspace <span style="font-size:32px;"><em>(similar to “<code>ls()</code>” in R)</em></span></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -518,7 +517,7 @@ Equivalent to R’s <code>getwd()</code> / <code>setwd()</code>:
 </section>
 <section id="dir" class="slide level2">
 <h2><code>dir()</code></h2>
-<p><strong><code>dir()</code></strong> is a built-in function that does more than just returning a list of objects in workspace; it allows you to inspect all <strong><em>attributes</em></strong> and <strong><em>methods</em></strong> of any object</p>
+<p><strong><code>dir()</code></strong> is a built-in function that does more than just list the objects in the workspace; it allows you to inspect all <strong><em>attributes</em></strong> and <strong><em>methods</em></strong> of any object</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="fl">5.2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">98</span>, <span class="fl">11.5</span>, <span class="fl">63.11</span>]</span>
 <span id="cb28-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(a)[<span class="dv">37</span>:<span class="dv">47</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

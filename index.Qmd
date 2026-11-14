@@ -21,7 +21,7 @@ reticulate::repl_python()
 
 ## About This Course
 
-This is a short (10 hours) introductory course on <a href="https://www.python.org/" target=_blank>**Python**</a> that is offered within the <a href="https://dottorato.psy.unipd.it/en" target="_blank">PhD program in Psychological Sciences</a> *(University of Padova)*. R is more extensively used for statistical analysis and data science in this PhD program, but familiarity with Python is useful for different purposes, including advanced machine learning applications, deep learning models, natural language processing, computational efficiency in some scenarios, and programming experiments. Also, Python is widely required in industry and business, so basic proficiency with it a valuable asset! No prerequisites, but having attended <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank">*Basics of R for Data Science*</a> may greatly help (well, it is a mandatory course for our PhD students)
+This is a short (10 hours) introductory course on <a href="https://www.python.org/" target=_blank>**Python**</a> that is offered within the <a href="https://dottorato.psy.unipd.it/en" target="_blank">PhD program in Psychological Sciences</a> *(University of Padova)*. R is more extensively used for statistical analysis and data science in this PhD program, but familiarity with Python is useful for different purposes, including advanced machine learning applications, deep learning models, natural language processing, computational efficiency in some scenarios, and programming experiments. Also, Python is widely required in industry and business, so basic proficiency with it is a valuable asset! No prerequisites, but having attended <a href="https://enricotoffalini.github.io/Basics-R/" target="_blank">*Basics of R for Data Science*</a> may greatly help (well, it is a mandatory course for our PhD students)
 
 You are encouraged to look at this online book available on GitHub: <a href="https://jakevdp.github.io/PythonDataScienceHandbook//" target="_blank">***Python Data Science Handbook***</a>
 
@@ -36,7 +36,7 @@ You are encouraged to look at this online book available on GitHub: <a href="htt
 
 ## Getting Started
 
-Bookmark this course homepage to have a quick access to this material (<a href="https://enricotoffalini.github.io/Basics-Python/">https://enricotoffalini.github.io/Basics-Python/</a>). Then do this:
+Bookmark this course homepage to have quick access to this material (<a href="https://enricotoffalini.github.io/Basics-Python/">https://enricotoffalini.github.io/Basics-Python/</a>). Then do this:
 
 1.  **Install Python**: go to the official <a href="https://www.python.org/downloads/" target="_blank">Python download page</a> and follow the installation instructions for your operating system.
 2.  **Install an IDE** *(Integrated Development Environment)*: Suggested IDEs are <a href="https://www.spyder-ide.org/" target="_blank">**Spyder**</a> or <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Posit-**RStudio**</a> (which you should have already installed for the other courses; it also supports Python!).
@@ -49,7 +49,7 @@ import numpy as np
 np.random.normal(0,1,size=10)
 ```
 
-If you get any errors when running the first line, try install the package via terminal with <br/> `pip install numpy`
+If you get any errors when running the first line, try installing the package via terminal with <br/> `pip install numpy`
 
 4.  <b>Take a look at <a href="https://colab.research.google.com/" target="_blank">Colab</a></b>: Some basic practice and exercises will be conducted on <a href="https://colab.research.google.com/" target="_blank">**Google Colab**</a> (you need to log in with a Google account), a free online environment for writing and running Python in the browser without any local installation.
 
@@ -61,15 +61,15 @@ An introduction to Python and its ecosystem: setting up Python locally or in the
 
 ##### Basics of Programming in Python
 
-A hands-on to basic programming concepts such as conditional logic, loops, and write and use custom functions. These are core skills for writing flexible and efficient Python code.
+A hands-on introduction to basic programming concepts such as conditional logic, loops, and writing and using custom functions. These are core skills for writing flexible and efficient Python code.
 
 ##### Entering the World of Data Science in Python: `pandas`, `numpy`, and more
 
-Explore the Python core libraries for data science. We will learn how to manipulate and analyze tabular data with `pandas`, handle arrays and numerical operations with `numpy`, and get a taste of statistical modeling and basic machine learning using `statsmodels` and `scikit-learn`.
+Explore Python's core libraries for data science. We will learn how to manipulate and analyze tabular data with `pandas`, handle arrays and numerical operations with `numpy`, and get a taste of statistical modeling and basic machine learning using `statsmodels` and `scikit-learn`.
 
 ##### A Bit on Fancy Topics?
 
-Depending on interest, we may explore more advanced topics such as data visualization, basic machine learning, and use of deep learning and language models available via <a href="https://huggingface.co/" target="_blank">HuggingFace</a> 🤗, or even simple experiment programming. After all, that's truly why we want to use Python.
+Depending on interest, we may explore more advanced topics such as data visualization, basic machine learning, and the use of deep learning and language models available via <a href="https://huggingface.co/" target="_blank">HuggingFace</a> 🤗, or even simple experiment programming. After all, that's truly why we want to use Python.
 
 ## Materials
 
@@ -114,18 +114,18 @@ Depending on interest, we may explore more advanced topics such as data visualiz
 ### Other demos
 
 -   [**Stroop task demo with PsychoPy and pandas**](otherdemo/stroop-psychopy-with-pandas.py){target="_blank"}  
-    <span style="font-size:11px">This short script illustrates a use case where Python becomes especially useful for psychological science: implementing an experiment and save analyzable data with Pandas. The demo presents a simple Stroop task with `psychopy`, collects key responses and reaction times, and saves the trial-level data as a `.csv` file with `pandas`. It should be run locally, because PsychoPy requires a graphical window and does not work well in Colab.</span>
+    <span style="font-size:11px">This short script illustrates a use case where Python becomes especially useful for psychological science: implementing an experiment and saving analyzable data with Pandas. The demo presents a simple Stroop task with `psychopy`, collects key responses and reaction times, and saves the trial-level data as a `.csv` file with `pandas`. It should be run locally, because PsychoPy requires a graphical window and does not work well in Colab.</span>
 
 ------------------------------------------------------------------------
 
 ::: {style="font-size:11px; color:#555555"}
-- GitHub repository associated to the present course website: <em>[https://github.com/EnricoToffalini/Basics-Python](https://github.com/EnricoToffalini/Basics-Python){target="_blank"}</em>
+- GitHub repository associated with the present course website: <em>[https://github.com/EnricoToffalini/Basics-Python](https://github.com/EnricoToffalini/Basics-Python){target="_blank"}</em>
 
 - Access <b><a href="https://padlet.com/enricotoffalini/basicspy-c4yn8bbvm2iwr9at" target="_blank">padlet</a></b>
 
-- Many thanks to <b><a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a></b> for sharing his expertise with using GitHub and Quarto, to <b><a href="https://github.com/Mar-Cald" target="_blank">Margherita Calderan</a></b> for her valuable assistance with programming experiments, and <b><a href="https://github.com/feracotommaso" target="_blank">Tommaso Feraco</a></b> for a fruitful collaboration on the use and interpretation of semantic embeddings
+- Many thanks to <b><a href="https://github.com/filippogambarota" target="_blank">Filippo Gambarota</a></b> for sharing his expertise in using GitHub and Quarto, to <b><a href="https://github.com/Mar-Cald" target="_blank">Margherita Calderan</a></b> for her valuable assistance with programming experiments, and to <b><a href="https://github.com/feracotommaso" target="_blank">Tommaso Feraco</a></b> for a fruitful collaboration on the use and interpretation of semantic embeddings
 :::
 
 ::: {style="display: flex; align-items: center; gap: 25px; white-space: nowrap"}
-[Read a modest proposal for <a href="https://docs.google.com/document/d/1-2Ty2Sd1QQzCCFt3SZpz3hhRkM3XEdvf/" target="_blank">open source software in the PhD program in Psychological Sciences]{style="font-size: 11px;"} <br/><img src="figures/qrcode_manifesto_opensource.png" style="height: 50px;"/>
+[Read a modest proposal for <a href="https://docs.google.com/document/d/1-2Ty2Sd1QQzCCFt3SZpz3hhRkM3XEdvf/" target="_blank">open source software in the PhD program in Psychological Sciences</a>]{style="font-size: 11px;"} <br/><img src="figures/qrcode_manifesto_opensource.png" style="height: 50px;"/>
 :::

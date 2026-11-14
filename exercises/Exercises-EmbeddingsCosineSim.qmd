@@ -41,7 +41,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 ```
 
-## Import Dataset, Load Pretrained Model, Generate Sentence Embedding
+## Import Dataset, Load Pretrained Model, Generate Sentence Embeddings
 
 You can download the dataset from: <a href="data/emotionalTexts1.csv" download>`emotionalTexts1.csv`</a>. The following steps are the same as in the previous exercise:
 
